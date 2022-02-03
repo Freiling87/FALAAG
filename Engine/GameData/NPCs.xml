@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<NPCs RootImagePath="/Images/NPC/">
+
+	<NPC ID="________" NameGeneral="________" ImagePath="________.jpg" HpMax="100" WeaponID="________" XPReward="0" Cash="0" Faction="None">
+
+		<Dexterity>50</Dexterity>
+
+		<LootItems>
+			<LootItem ID="________" Percentage="100"/>
+			<LootItem ID="________" Percentage="100"/>
+			<LootItem ID="________" Percentage="100"/>
+		
+			</LootItems>
+
+	</NPC>
+
+	<NPC ID="BarFly" NameGeneral="Bar Fly" ImagePath="BarFly_01.jpg" HpMax="100" WeaponID="BeerBottle" XPReward="50" Cash="15" Faction="None">
+		<Dexterity>40</Dexterity>
+		<LootItems>
+			<LootItem ID="BarToken" Percentage="15"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="Dipshit" NameGeneral="Dipshit" ImagePath="Dipshit_01.jpg" HpMax="100" WeaponID="Shotgun" XPReward="500" Cash="1200" Faction="GoldStarSpecials">
+		<Dexterity>55</Dexterity>
+		<LootItems>
+			<LootItem ID="Shotgun" Percentage="100"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="Scavenger" NameGeneral="Scavenger" ImagePath="Scavenger_01.jpg" HpMax="100" WeaponID="ShivCrude" XPReward="100" Cash="50" Faction="None">
+		<Dexterity>70</Dexterity>
+		<LootItems>
+			<LootItem ID="BitsAndBobs" Percentage="50"/>
+			<LootItem ID="DuctTape" Percentage="25"/>
+			<LootItem ID="Gauze" Percentage="25"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="Sleepwalker" NameGeneral="Sleepwalker" ImagePath="Sleepwalker_01.jpg" HpMax="100" WeaponID="BareHands" XPReward="25" Cash="0" Faction="Sleepwalkers">
+		<Dexterity>30</Dexterity>
+		<LootItems>
+			<LootItem ID="DeepReælHeadset" Percentage="100"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="GoldStarSpecial" NameGeneral="Gold Star Special" ImagePath="GoldStarSpecial_01.jpg" HpMax="100" WeaponID="BaseballBat" XPReward="250" Cash="250" Faction="GoldStarSpecials">
+		<Dexterity>65</Dexterity>
+		<LootItems>
+			<LootItem ID="AppleJuiceBox" Percentage="25"/>
+			<LootItem ID="BaseballBat" Percentage="100"/>
+			<LootItem ID="HelmetCrude" Percentage="100"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="Pigeon" NameGeneral="Pigeon" ImagePath="Pigeon_01.jpg" HpMax="10" WeaponID="Beak" XPReward="10" Cash="0" Faction="Pigeons">
+		<Dexterity>90</Dexterity>
+		<LootItems>
+			<LootItem ID="Beak" Percentage="100"/>
+		</LootItems>
+	</NPC>
+
+	<NPC ID="Rat" NameGeneral="Rat" ImagePath="Rat_01.jpg" HpMax="25" WeaponID="BiteSmall" XPReward="25" Cash="0" Faction="Rats">
+
+		<Dexterity>40</Dexterity>
+
+		<LootItems>
+			<LootItem ID="RatSkin" Percentage="100"/>
+			<LootItem ID="RatSkull" Percentage="100"/>
+		
+			</LootItems>
+
+	</NPC>
+
+	<NPC ID="Dog" NameGeneral="Dog" ImagePath="Dog_01.jpg" HpMax="50" WeaponID="BiteMedium" XPReward="50" Cash="0" Faction="None">
+
+		<Dexterity>45</Dexterity>
+
+		<LootItems>
+			<LootItem ID="DogTooth" Percentage="100"/>
+		</LootItems>
+
+		</NPC>
+
+</NPCs>

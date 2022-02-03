@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Gates>
+
+	<!-- #region Doors -->
+	<Gate ID="CurtainedDoorway" Opposite="CurtainedDoorway" ValidFacings="N, E, S, W" ValidModifiers="Broken"/>
+	<Gate ID="Door" Opposite="Door" ValidFacings="N, E, S, W" ValidModifiers="Reinforced, Broken, Locked, Unlocked, Jammed, Hidden, CrossBarClosed, CrossBarOpen, Automatic, AutomaticCloser, Wood, Metal, Vault, Glass"/>
+	<Gate ID="TrapDoor" Opposite="TrapDoor" ValidFacings="A" ValidModifieds="Reinforced, Broken, Locked, Unlocked, Jammed, Hidden, CrossBarClosed, CrossBarOpen, AutomaticCloser"/>
+	<Gate ID="FenceGate" Opposite="FenceGate" ValidFacings="N, E, S, W" ValidModifiers="Broken, Locked, Unlocked, Jammed"/>
+	<!-- #endregion -->
+	<!-- #region Miscellaneous -->
+	<Gate ID="Countertop" Opposite="Countertop" ValidFacings="N, E, S, W" ValidModifiers="LiftGate"/>
+	<Gate ID="WetBar" Opposite="WetBar" ValidFacings="N, E, S, W" ValidModifiers="LiftGate"/>
+	<!-- #endregion -->
+	<!-- #region Walls -->
+	<!-- Might not be indicated on Chunk data, but automatically placed according to Chunk WallType choices. -->
+	<Gate ID="ChainLinkFence">
+		<Climb Difficulty="1" Noise="5"/>
+		<Destroy Difficulty="8" Noise ="3"/>
+	</Gate>
+	<Gate ID="WoodenWall"/>
+	<Gate ID="MetalWall"/>
+	<Gate ID="GlassWall"/>
+	<Gate ID="SolidGround"/>
+	<!-- #endregion -->
+	<!-- #region Windows -->
+	<!-- High Windows in Basements on Z=-1 should just peek out above ground level, allowing people to climb into and out of them. -->
+	<Gate ID="Window" Opposite="Window" ValidFacings="N, E, S, W" ValidModifiers="High, Barred, Bulletproof, OneWayMirror, Small, Large, Broken, Locked, Unlocked, Basement, CurtainClosed, CurtainOpen"/>
+	<!-- #endregion -->
+
+</Gates>

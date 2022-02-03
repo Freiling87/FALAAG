@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<FeatureGroups>
+
+	<FeatureGroup
+	ID="BarbackFurniture">
+		<Features>
+			<Feature
+				ID="BeerTaps"
+				Percent="100"/>
+			<Feature
+				ID="LiquorShelf"
+				Percent="100"/>
+		</Features>
+	</FeatureGroup>
+
+	<FeatureGroup
+		ID="BartopFurniture">
+		<Features>
+			<Feature
+				ID="Bartop"
+				Percent="100"/>
+			<Feature
+				ID="BarStool"
+				Percent="100"/>
+			<Feature
+				ID="BarStool"
+				Percent="100"/>
+			<Feature
+				ID="BarStool"
+				Percent="100"/>
+			<Feature
+				ID="BarStool"
+				Percent="50"/>
+		</Features>
+	</FeatureGroup>
+	
+	
+</FeatureGroups>

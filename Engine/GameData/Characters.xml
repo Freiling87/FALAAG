@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Characters RootImagePath="/Images/Character/">
+
+	<Character
+		ID="Dipshit"
+		Faction="GoldStarSpecials"
+		IntroDialogue=""
+	/>
+	<!-- etc. -->
+	
+</Characters>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Cells RootImagePath="/Images/Cell/">
+
+	<!-- #region Bar -->
+	<Cell ID="BarBack" Name="Bar back area">
+		<!---->
+		<FeatureGroups>
+			<FeatureGroup ID="BarbackFurniture" Percent="100"/>
+			<FeatureGroup ID="BartopFurniture" Percent="100"/>
+		</FeatureGroups>
+	</Cell>
+	<Cell ID="Barroom" Name="Barroom" ChunkType="DiveBar" MinimumFeatures="2">
+		<!-- Minimum Feature markup style A: This would require omitting previously-selected features, or just rerolling until the minimum is met. -->
+		<FeatureGroups>
+			<FeatureGroup ID="Dartboard" Percent="50"/>
+			<FeatureGroup ID="PoolTable" Percent="50"/>
+			<FeatureGroup ID="BoothTable" Percent="50"/>
+			<FeatureGroup ID="TableAndChairs" Percent="50"/>
+		</FeatureGroups>
+	</Cell>
+	<Cell ID="Barroom" Name="Barroom" ChunkType="FancyBar" MinimumFeatures="2">
+		<FeatureGroups>
+			<FeatureGroup ID="ATM" Percent="100"/>
+			<FeatureGroup ID="BoothTable" Percent="50"/>
+			<FeatureGroup ID="TableAndChairs" Percent="50"/>
+		</FeatureGroups>
+	</Cell>
+	
+	<!-- I have Hallway in two different sections. Only time will tell! -->
+	<Cell ID="Hallway" Name="Hallway" ChunkType="DiveBar">
+			<FeatureGroup ID="ATM" Percent="100"/>
+			<FeatureGroup ID="CigaretteMachine" Percent="100"/>
+	
+	</Cell>
+	<!-- #endregion-->
+	<!-- #region Bathrooms -->
+	<Cell ID="BathroomPublicMen" Name="Public Men's Room">
+		<FeatureGroups>
+			<FeatureGroup ID="BathroomFurniture" Percent="100"/>
+			<FeatureGroup ID="BathroomStallsSmall" Percent="100"/>
+			<FeatureGroup ID="Urinals" Percent="100"/>
+		</FeatureGroups>
+	</Cell>
+	<Cell ID="BathroomPublicUnisex" Name="Unisex Public Bathroom">
+		<FeatureGroups>
+			<FeatureGroup ID="BathroomFurniture" Percent="100"/>
+			<FeatureGroup ID="ToiletOpen" Percent="100"/>
+		</FeatureGroups>
+	</Cell>
+	<Cell ID="BathroomPublicWomen" Name="Public Women's Room">
+		<FeatureGroups>
+			<FeatureGroup ID="BathroomFurniture" Percent="100"/>
+			<FeatureGroup ID="BathroomStalls" Percent="100"/>
+		</FeatureGroups>
+	</Cell>
+	<!-- #endregion -->
+	<!-- #region Generic Exteriors -->
+	<Cell ID="ExteriorUtilitiesRural">
+		<!-- Generator, Septic tank, etc. -->
+	</Cell>
+	<!-- #endregion -->
+	<!-- #region Generic Interiors -->
+	<Cell ID="Hallway">
+		
+	</Cell>
+	<!-- #endregion -->
+	<!-- #region Generic Rooftops -->
+	<!-- #endregion -->
+	<!-- #region Generic Subterrane -->
+	<Cell ID="Basement">
+		<FeatureGroups>
+			<FeatureGroup ID="CleaningSupplies" Percent="50"/>
+			<FeatureGroup ID="BasementUtilities" Percent="100"/>
+			<FeatureGroup ID="Stash" Percent="10"/>
+			<FeatureGroup ID="Storage" Percent="95"/>
+			<FeatureGroup ID="Storage" Percent="50"/>
+		</FeatureGroups>
+	</Cell>
+	<!-- #endregion-->
+	<!-- #region Storage -->
+	<Cell ID="Attic">
+	</Cell>
+	<Cell ID="Storeroom" WallGeneration="Override">
+		<!-- This means to override "Exterior Only" Wallgen cells -->
+		<FeatureGroups>
+			<FeatureGroup ID="CleaningSupplies" Percent="50"/>
+			<FeatureGroup ID="Stash" Percent="5"/>
+			<FeatureGroup ID="Storage" Percent="100"/>
+			<FeatureGroup ID="Storage" Percent="25"/>
+			<FeatureGroup ID="Storage" Percent="25"/>
+		</FeatureGroups>
+	</Cell>
+	<Cell ID="WarehouseFloor">
+	</Cell>
+	<!-- #endregion -->
+
+</Cells>

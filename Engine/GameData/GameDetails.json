@@ -1,0 +1,703 @@
+{
+  "Title": "FREE AGENT",
+  "Subtitle": "Life as a Goon",
+  "Version": "0.1.000",
+
+  "Attributes": [
+    {
+      "Key": "BEU",
+      "DisplayName": "Beauty",
+      "DiceNotation": "10d10"
+    },
+
+
+    {
+      "Key": "CDO",
+      "DisplayName": "Cardio",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "CON",
+      "DisplayName": "Confidence",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "COM",
+      "DisplayName": "Composure",
+      "DiceNotation": "10d10"},
+    {
+      "Key": "CRE",
+      "DisplayName": "Creativity",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "EMP",
+      "DisplayName": "Empathy",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "EXT",
+      "DisplayName": "Extraversion",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "FLX",
+      "DisplayName": "Flexibility",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "FMS",
+      "DisplayName": "Fine Motor Skill",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "GMS",
+      "DisplayName": "Gross Motor Skill",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "GRT",
+      "DisplayName": "Grit",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "HGT",
+      "DisplayName": "Height",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "HED",
+      "DisplayName": "Hedonism",
+      "DiceNotation": "10d10"},
+    {
+      "Key": "HOM",
+      "DisplayName": "Homeostasis",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "LOG",
+      "DisplayName": "Logical Intelligence",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "PTC",
+      "DisplayName": "Patience",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "RCT",
+      "DisplayName": "Reaction",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "SEN",
+      "DisplayName": "Sensitivity",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "SIZ",
+      "DisplayName": "Size",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "SPA",
+      "DisplayName": "Spatial Intelligence",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "STR",
+      "DisplayName": "Strength",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "TMP",
+      "DisplayName": "Temperament",
+      "DiceNotation": "10d10"
+    },
+    {
+      "Key": "VER",
+      "DisplayName": "Verbal Intelligence",
+      "DiceNotation": "10d10"
+    }]
+,
+
+  "Archetypes": [
+    {
+      "Key": "APOLLONIAN",
+      "DisplayName": "Apollonian",
+      "Description": "You wanted to play a Paladin.",
+      "AttributeModifiers": [{
+          "Key": "HED",
+          "Modifier": "-40"
+        },{
+          "Key": "SEN",
+          "Modifier": "-20"},{
+          "Key": "GRT",
+          "Modifier": "10"},{
+          "Key": "COM",
+          "Modifier": "20"}]},
+    {
+      "Key": "BIGGUY",
+      "DisplayName": "Big Guy",
+      "Description": "For me?! I don't know what to say!",
+      "AttributeModifiers": [
+        {
+          "Key": "STR",
+          "Modifier": "15"
+        },
+        {
+          "Key": "SIZ",
+          "Modifier": "15"
+        },
+        {
+          "Key": "SIZ",
+          "Modifier": "15"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "15"
+        },
+        {
+          "Key": "FLX",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "CDO",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "FMS",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "-30"
+        }
+      ]
+    },
+    {
+      "Key": "CONCRETETHINKER",
+      "DisplayName": "Concrete Thinker",
+      "Description": "You seem quite at home in the physical plane. ",
+      "AttributeModifiers": [
+        {
+          "Key": "SPA",
+          "Modifier": "15"
+        },
+        {
+          "Key": "GMS",
+          "Modifier": "15"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "15"
+        },
+        {
+          "Key": "COM",
+          "Modifier": "15"
+        },
+        {
+          "Key": "CRE",
+          "Modifier": "-60"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "-30"
+        }
+      ]
+    },
+    {
+      "Key": "DIONYSIAN",
+      "DisplayName": "Dionysian",
+      "Description": "Born to Party!",
+      "AttributeModifiers": [{
+          "Key": "HED",
+          "Modifier": "20"
+        },{
+          "Key": "SEN",
+          "Modifier": "10"},{
+          "Key": "GRT",
+          "Modifier": "-20"},{
+          "Key": "PTC",
+          "Modifier": "-40"}]},
+    {
+      "Key": "ECTOMORPH",
+      "DisplayName": "Ectomorph",
+      "Description": "Careful, there's a breeze coming!",
+      "AttributeModifiers": [
+        {
+          "Key": "SIZ",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "FLX",
+          "Modifier": "10"
+        },
+        {
+          "Key": "CDO",
+          "Modifier": "20"
+        }
+      ]
+    }
+  ,
+    {
+      "Key": "ENDOMORPH",
+      "DisplayName": "Endomorph",
+      "Description": "You are a big sizeable chungus. Congratulations!",
+      "AttributeModifiers": [
+        {
+          "Key": "CDO",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "FLX",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "SIZ",
+          "Modifier": "20"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "10"
+        }
+      ]
+    },
+    {
+      "Key": "FIERY",
+      "DisplayName": "Fiery",
+      "Description": "________",
+      "AttributeModifiers": [
+        {
+          "Key": "CRE",
+          "Modifier": "10"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "EXT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "COM",
+          "Modifier": "-20"
+        }
+      ]
+    },
+    {
+      "Key": "FUNNYFATGUY",
+      "DisplayName": "Funny Fat Guy",
+      "Description": "Funny. You're funny.",
+      "AttributeModifiers": [
+        {
+          "Key": "CRE",
+          "Modifier": "10"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "10"
+        },
+        {
+          "Key": "SIZ",
+          "Modifier": "10"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "GRT",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "CDO",
+          "Modifier": "-20"
+        }
+      ]
+    },
+    {
+      "Key": "GOLDENGOD",
+      "DisplayName": "Golden God",
+      "Description": "In the genetic lottery, you rolled a jackpot. Or... uh, you know what I mean. The downside is that you've never had to work for anything, so you're not exactly versatile.",
+      "AttributeModifiers": [
+        {
+          "Key": "HGT",
+          "Modifier": "20"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "20"
+        },
+        {
+          "Key": "HOM",
+          "Modifier": "20"
+        },
+        {
+          "Key": "BEU",
+          "Modifier": "20"
+        },
+        {
+          "Key": "CRE",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "GRT",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "EMP",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "-40"
+        }
+      ]
+    },
+    {
+      "Key": "GROUNDED",
+      "DisplayName": "Grounded",
+      "Description": "You are a down-to-earth kinda guy.",
+      "AttributeModifiers": [
+        {
+          "Key": "CON",
+          "Modifier": "10"
+        },
+        {
+          "Key": "TMP",
+          "Modifier": "10"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "10"
+        },
+        {
+          "Key": "CRE",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "-20"
+        }
+      ]
+    },
+    {
+      "Key": "JUMPY",
+      "DisplayName": "Jumpy",
+      "Description": "You always know where the exits are.",
+      "AttributeModifiers": [
+        {
+          "Key": "CRE",
+          "Modifier": "10"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "10"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "GMS",
+          "Modifier": "10"
+        },
+        {
+          "Key": "FMS",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "TMP",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "-20"
+        }
+      ]
+    },
+    {
+      "Key": "LONER",
+      "DisplayName": "Loner",
+      "Description": "You don't fit in. You're a real It-Alone-Goer.",
+      "AttributeModifiers": [
+        {
+          "Key": "EXT",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "GRT",
+          "Modifier": "10"},
+        {
+          "Key": "EMP",
+          "Modifier": "-20"},
+        {
+          "Key": "SEN",
+          "Modifier": "10"
+        }
+      ]
+    },
+    {
+      "Key": "OFFINSPACE",
+      "DisplayName": "Off In Space",
+      "Description": "Or at least staring there. You don't seem entirely at-home on the physical plane.",
+      "AttributeModifiers": [
+        {
+          "Key": "CRE",
+          "Modifier": "15"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "15"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "15"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "GMS",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "COM",
+          "Modifier": "-30"
+        }
+      ]
+    },
+    {
+      "Key": "PENCILNECK",
+      "DisplayName": "Pencil-Neck",
+      "Description": "Nerrrrrrrds!",
+      "AttributeModifiers": [
+        {
+          "Key": "STR",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "SIZ",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "20"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "10"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "10"
+        }
+      ]
+    },
+    {
+      "Key": "PSYCHOPATH",
+      "DisplayName": "Psychopath",
+      "Description": "You were born this way. It's not your fault. Still, cut that out.",
+      "AttributeModifiers": [
+        {
+          "Key": "EMP",
+          "Modifier": "-100"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "25"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "25"
+        }
+      ]
+    },
+    {
+      "Key": "RETARDSTRENGTH",
+      "DisplayName": "Retard Strength",
+      "Description": "You're unstoppable! Except by reading, counting, and sometimes swallowing food correctly.",
+      "AttributeModifiers": [
+        {
+          "Key": "STR",
+          "Modifier": "25"
+        },
+        {
+          "Key": "TMP",
+          "Modifier": "25"
+        },
+        {
+          "Key": "GMS",
+          "Modifier": "25"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "-50"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "-50"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "-50"
+        }
+      ]
+    },
+    {
+      "Key": "SENSITIVE",
+      "DisplayName": "Sensitive",
+      "Description": "Smol bean",
+      "AttributeModifiers": [{
+          "Key": "HOM",
+          "Modifier": "-40"
+        },{
+          "Key": "COM",
+          "Modifier": "-20"},{
+          "Key": "CON",
+          "Modifier": "-20"},
+        {
+          "Key": "SEN",
+          "Modifier": "20"
+        },
+        {
+          "Key": "HED",
+          "Modifier": "10"},
+        {
+          "Key": "RCT",
+          "Modifier": "10"
+        }]},
+    {
+      "Key": "SOCIALBUTTERFLY",
+      "DisplayName": "Social Butterfly",
+      "Description": "You are good at finding the right person for your job.",
+      "AttributeModifiers": [
+        {
+          "Key": "EXT",
+          "Modifier": "20"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "10"
+        },
+        {
+          "Key": "COM",
+          "Modifier": "10"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "10"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "GRT",
+          "Modifier": "-40"
+        }
+      ]
+    },
+    {
+      "Key": "SOCIOPATH",
+      "DisplayName": "Sociopath",
+      "Description": "You had a fucked-up childhood. It's not your fault. Still, cut that out.",
+      "AttributeModifiers": [
+        {
+          "Key": "COM",
+          "Modifier": "-50"
+        },
+        {
+          "Key": "EMP",
+          "Modifier": "-50"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "25"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "25"
+        }
+      ]
+    },
+    {
+      "Key": "TRAGICBEAUTY",
+      "DisplayName": "Tragic Beauty",
+      "Description": "No one understaaaaands you, waaaaaahhh",
+      "AttributeModifiers": [{
+          "Key": "BEU",
+          "Modifier": "20"
+        },{
+          "Key": "TMP",
+          "Modifier": "-40"}]},
+    {
+      "Key": "WISHYWASHY",
+      "DisplayName": "Wishy-Washy",
+      "Description": "You go with the flow.",
+      "AttributeModifiers": [
+        {
+          "Key": "FLX",
+          "Modifier": "10"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "10"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "CRE",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "GRT",
+          "Modifier": "-20"},
+        {
+          "Key": "PTC",
+          "Modifier": "10"}
+      ]
+    }
+  ]
+}

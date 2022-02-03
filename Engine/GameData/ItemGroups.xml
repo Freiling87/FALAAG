@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ItemGroups>
+
+	<ItemGroup ID="ATM">
+		<!-- Cross-reference to at least identify the last 4 digits of your target's account, if you are already working off a list. -->
+		<Item ID="ATMReceipts" Percent="100"></Item>
+		<Item ID="DebitCard" Percent="0.01f"></Item>
+	</ItemGroup>
+	
+	<ItemGroup ID="Bartop" ChunkType="DiveBar">
+		<Item ID="BeerBottle" Percent="15"/>
+		<Item ID="BeerBottle" Percent="15"/>
+		<Item ID="CashChange" Percent="5"/>
+		<Item ID="CashTip" Percent="1"/>
+		<Item ID="LowballGlass" Percent="15"/>
+		<Item ID="LowballGlass" Percent="15"/>
+		<Item ID="PintGlass" Percent="15"/>
+		<Item ID="PintGlass" Percent="15"/>
+		<Item ID="Shotglass" Percent="15"/>
+		<Item ID="Shotglass" Percent="15"/>
+		<Item ID="Shotglass" Percent="15"/>
+		<Item ID="Shotglass" Percent="15"/>
+		<Item ID="TipJar" Percent="100"/>
+	</ItemGroup>
+	
+	<ItemGroup ID="Bartop" ChunkType="FancyBar">
+		<Item ID="BrandySnifter" Percent="5"/>
+		<Item ID="BrandySnifter" Percent="5"/>
+		<Item ID="CashTip" Percent="5"/>
+		<Item ID="CashSmall" Percent="1"/>
+		<Item ID="ChampagneFlute" Percent="5"/>
+		<Item ID="ChampagneFlute" Percent="5"/>
+		<Item ID="HighballGlass" Percent="5"/>
+		<Item ID="HighballGlass" Percent="5"/>
+		<Item ID="LowballGlass" Percent="5"/>
+		<Item ID="LowballGlass" Percent="5"/>
+		<Item ID="MartiniGlass" Percent="5"/>
+		<Item ID="MartiniGlass" Percent="5"/>
+		<Item ID="PintGlass" Percent="5"/>
+		<Item ID="PintGlass" Percent="5"/>
+	</ItemGroup>
+
+	<ItemGroup ID="LiquorShelf" ChunkType="DiveBar">
+		<Item ID="BarFlySwatter" Percent="5"/>
+		<Item ID="LiquorFancy" Percent="10"/>
+		<Item ID="LiquorFancy" Percent="10"/>
+		<Item ID="LiquorWell" Percent="50"/>
+		<Item ID="LiquorWell" Percent="50"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+	</ItemGroup>
+
+	<ItemGroup ID="LiquorShelf" ChunkType="FancyBar">
+		<Item ID="LiquorFancy" Percent="50"/>
+		<Item ID="LiquorFancy" Percent="50"/>
+		<Item ID="LiquorFancy" Percent="50"/>
+		<Item ID="LiquorFancy" Percent="50"/>
+		<Item ID="LiquorFancy" Percent="100"/>
+		<Item ID="LiquorFancy" Percent="100"/>
+		<Item ID="LiquorFancy" Percent="100"/>
+		<Item ID="LiquorFancy" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="LiquorWell" Percent="100"/>
+		<Item ID="TipJar" Percent="100"/>
+	</ItemGroup>
+	
+</ItemGroups>

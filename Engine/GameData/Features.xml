@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- A Feature has much in common with an Item, but serves as a sublocation that can store items. -->
+<!-- Consider an Int for size -->
+<Features>
+	
+	<Feature
+		ID="ATM"
+		Name="ATM"
+		Type="Automat"
+		Structure="AutomatSecure"
+		Hookups="Power"
+		Size="L">
+	</Feature>
+	
+	<Feature
+		ID="Liquor Shelf"
+		Name="Liquor Shelf"
+		Type="StorageFurniture"
+		Structure="WoodFurniture"
+		Hookups="None"
+		Size="L">
+		<ObjectGroups>
+			<ObjectGroup ID="LiquorShelf"/>
+		</ObjectGroups>
+	</Feature>
+
+	<Feature
+		ID="Urinal"
+		Name="Urinal"
+		Type="UtilityFurniture"
+		Structure="Porcelain"
+		Hookups="Water"
+		Size="L">
+	</Feature>
+	
+</Features>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Automats>
+	
+	<Automat 
+		ID="AutoPawnMachine"
+		Name="Auto-Pawn Machine">
+		<InventoryItems>
+			<Item 
+				ID="BaseballBat" 
+				Quantity="2"/>
+			<Item 
+				ID="Screwdriver" 
+				Quantity="6"/>
+			<Item
+				ID="Shotgun"
+				Quantity="1"/>
+		</InventoryItems>
+	</Automat>
+	
+</Automats>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Districts
+	RootImagePath="/Images/Cell/">
+
+	<District
+		ID="Slums"
+		Name="Slums">
+
+		<MapChunks>
+			<Chunk ID="DiveBar" ></Chunk>
+		</MapChunks>
+		
+	</District>
+
+</Districts>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Jobs>
+
+	<Job
+		ID="ChaseOutBarFlies"
+		Name="Chase Out Bar Flies"
+		Description="This fucking bowling team keeps coming in, buying beer all night. I'm trying to run a seedy joint here, and these guys are killing the vibe. I'll never get a gang to make this their hideout at this rate! Thing is, they never cause any trouble so I can't really run them out myself. Can you... take care of it?"
+		RewardXP="1500"
+		RewardCash="1500">
+		<ItemsToComplete>
+			<Item
+				ID="BowlingTeamCard"
+				Quantity="4"/>
+		</ItemsToComplete>
+		<RewardItems>
+			<Item
+				ID="Beer"
+				Quantity="24"/>
+		</RewardItems>
+	</Job>
+	
+	<Job
+			ID="SpecialHeadgear"
+			Name="Special Headgear"
+			Description="Those DeepReæl headsets are reinforced because so many people fall and hit their heads. I wanna turn 'em into helmets for my boys. Bring me 12 headsets, $25 a pop."
+			RewardXP="400"
+			RewardCash="400">
+		<ItemsToComplete>
+			<Item
+				ID="DeepReælHeadset"
+				Quantity="12"/>
+		</ItemsToComplete>
+		<RewardItems>
+			<Item
+				ID="BitsAndBobs"
+				Quantity="12"/>
+		</RewardItems>
+	</Job>
+	
+</Jobs>
