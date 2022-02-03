@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
+    <ProjectReference Include="..\FALAAG.ViewModels\FALAAG.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
