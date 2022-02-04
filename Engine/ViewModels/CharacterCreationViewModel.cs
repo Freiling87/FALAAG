@@ -10,23 +10,15 @@ namespace Engine.ViewModels
 {
     public class CharacterCreationViewModel : INotifyPropertyChanged
     {
-        private Archetype _selectedArchetype;
-        private int _totalMod;
+		private int _totalMod;
         private int _totalRoll;
         private int _totalNet;
 
         public GameDetails GameDetails { get; }
         public event PropertyChangedEventHandler PropertyChanged;
-        public Archetype SelectedArchetype
-        {
-            get => _selectedArchetype;
-            set
-            {
-                _selectedArchetype = value;
-            }
-        }
-        public string Name { get; set; }
-        public ObservableCollection<EntityAttribute> PlayerAttributes { get; set; } = new ObservableCollection<EntityAttribute>();
+		public Archetype SelectedArchetype { get; set; }
+		public string Name { get; init; }
+        public ObservableCollection<EntityAttribute> PlayerAttributes { get; } = new ObservableCollection<EntityAttribute>();
         public int TotalMod
         {
             get => _totalMod;

@@ -4,9 +4,9 @@ namespace Engine.Models
 {
     public class GameDetails
     {
-        public string Title { get; set; }
-        public string Subtitle { get; set; }
-        public string Version { get; set; }
+        public string Title { get; }
+        public string Subtitle { get; }
+        public string Version { get; }
 
         public List<EntityAttribute> Attributes { get; } = new List<EntityAttribute>();
         public List<Archetype> Archetypes { get; }  = new List<Archetype>();

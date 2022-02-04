@@ -6,23 +6,13 @@ namespace Engine.Models
     // Pattern: Constructor Chain
     public class EntityAttribute : INotifyPropertyChanged
     {
-        private int _modifiedValue;
-
-        public int BaseValue { get; set; }
+		public int BaseValue { get; set; }
         public string DisplayName { get; }
         public string DiceNotation { get; }
         public string Key { get; }
-        public int ModifiedValue
-        {
-            get => _modifiedValue;
-            set
-            {
-                _modifiedValue = value;
-            }
-        }
-        public int Modifier { get; set; }
+		public int ModifiedValue { get; set; }
+		public int Modifier { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         // Constructor that will use DiceService to create a BaseValue.
         // The constructor this calls will put that same value into BaseValue and ModifiedValue

@@ -13,24 +13,15 @@ namespace Engine.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
 
-        #region Header
-        private Automat _currentAutomat;
-        private Battle _currentBattle;
+		#region Header
+		private Battle _currentBattle;
         private Cell _currentCell;
-        private GameDetails _gameDetails;
-        private NPC _currentNPC;
+		private NPC _currentNPC;
         private Player _player;
 
-        [JsonIgnore]
-        public Automat CurrentAutomat
-        {
-            get { return _currentAutomat; }
-            set
-            {
-                _currentAutomat = value;
-            }
-        }
-        public Cell CurrentCell
+		[JsonIgnore]
+		public Automat CurrentAutomat { get; private set; }
+		public Cell CurrentCell
         {
 			get { return _currentCell; }
             set
@@ -86,16 +77,9 @@ namespace Engine.ViewModels
         }
         [JsonIgnore]
         public World CurrentWorld { get; }
-        [JsonIgnore]
-        public GameDetails GameDetails
-        {
-            get => _gameDetails;
-            set
-            {
-                _gameDetails = value;
-            }
-        }
-        [JsonIgnore]
+		[JsonIgnore]
+		public GameDetails GameDetails { get; private set; }
+		[JsonIgnore]
         public bool HasAutomat => CurrentAutomat != null;
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;

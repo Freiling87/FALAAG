@@ -7,11 +7,30 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFUI", "WPFUI\WPFUI.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{B8B62A00-A64E-441C-A7F5-9C96E073BC73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALAAG.ViewModels", "FALAAG.ViewModels\FALAAG.ViewModels.csproj", "{C889B0CC-77F6-4037-9B44-10DEA891CC39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.ViewModels", "FALAAG.ViewModels\FALAAG.ViewModels.csproj", "{C889B0CC-77F6-4037-9B44-10DEA891CC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALAAG.Models", "FALAAG.Models\FALAAG.Models.csproj", "{EFB8F566-3CFD-4179-BE66-DA978CD74EF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.Models", "FALAAG.Models\FALAAG.Models.csproj", "{EFB8F566-3CFD-4179-BE66-DA978CD74EF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALAAG.Services", "FALAAG.Services\FALAAG.Services.csproj", "{E062F306-69DA-4942-B50F-7F56E29FAE38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.Services", "FALAAG.Services\FALAAG.Services.csproj", "{E062F306-69DA-4942-B50F-7F56E29FAE38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88251530-FF24-4B41-B0CB-0513F915AA9C}"
+	ProjectSection(SolutionItems) = preProject
+		GameFiles\GameData\Automats.xml = GameFiles\GameData\Automats.xml
+		GameFiles\GameData\Cells - New.xml = GameFiles\GameData\Cells - New.xml
+		GameFiles\GameData\Cells.xml = GameFiles\GameData\Cells.xml
+		GameFiles\GameData\Characters.xml = GameFiles\GameData\Characters.xml
+		GameFiles\GameData\Chunks.xml = GameFiles\GameData\Chunks.xml
+		GameFiles\GameData\Districts.xml = GameFiles\GameData\Districts.xml
+		GameFiles\GameData\FeatureGroups.xml = GameFiles\GameData\FeatureGroups.xml
+		GameFiles\GameData\Features.xml = GameFiles\GameData\Features.xml
+		GameFiles\GameData\GameDetails.json = GameFiles\GameData\GameDetails.json
+		GameFiles\GameData\Gates.xml = GameFiles\GameData\Gates.xml
+		GameFiles\GameData\ItemGroups.xml = GameFiles\GameData\ItemGroups.xml
+		GameFiles\GameData\Items.xml = GameFiles\GameData\Items.xml
+		GameFiles\GameData\Jobs.xml = GameFiles\GameData\Jobs.xml
+		GameFiles\GameData\NPCs.xml = GameFiles\GameData\NPCs.xml
+		GameFiles\GameData\Recipes.xml = GameFiles\GameData\Recipes.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

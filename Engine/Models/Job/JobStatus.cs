@@ -10,17 +10,8 @@ namespace Engine.Models
 {
 	public class JobStatus : INotifyPropertyChanged
 	{
-		private bool _isCompleted;
-
 		public event PropertyChangedEventHandler PropertyChanged;
-		public bool IsCompleted 
-		{ 
-			get => _isCompleted;
-			set
-			{
-				_isCompleted = value;
-			}
-		}
+		public bool IsCompleted { get; set; }
 		public Job Job { get; }
 
 		public JobStatus(Job job)

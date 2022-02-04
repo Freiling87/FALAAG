@@ -5,27 +5,11 @@ namespace Engine.Models
 {
     public class GroupedInventoryItem : INotifyPropertyChanged
     {
-		#region Header
-		private Item _item;
-        private int _quantity;
-
-        public Item Item
-        {
-            get { return _item; }
-            set
-            {
-                _item = value;
-            }
-        }
-        public int Quantity
-        {
-            get { return _quantity; }
-            set
-            {
-                _quantity = value;
-            }
-        }
+        #region Header
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Item Item { get; set; }
+		public int Quantity { get; set; }
 
         public GroupedInventoryItem(Item item, int quantity)
         {

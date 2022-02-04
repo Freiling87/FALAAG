@@ -9,30 +9,16 @@ namespace Engine.Models
 {
     public abstract class Entity : PhysicalObject, INotifyPropertyChanged
     {
-        #region Properties
+		#region Properties
 
-        private int _cash;
-        private Item _currentConsumable;
+		private Item _currentConsumable;
         private Item _currentWeapon;
         private Dialogue _introduction;
-        private string _nameActual;
-        private string _nameGeneral;
-        private int _hpCur;
-        private int _hpMax;
-        private string _id;
-        private Inventory _inventory;
-        private int _level;
-        private bool _useActualName = false;
+		private string _id;
+		private bool _useActualName = false;
 
-		public int Cash
-        {
-            get => _cash; 
-            private set
-            {
-                _cash = value;
-            }
-        }
-        public Item CurrentConsumable
+		public int Cash { get; private set; }
+		public Item CurrentConsumable
         {
             get => _currentConsumable;
             set
@@ -64,66 +50,24 @@ namespace Engine.Models
                     _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
             }
         }
-        public int HpCur
-        {
-            get => _hpCur; 
-            private set
-            {
-                _hpCur = value;
-            }
-        }
-        public int HpMax
-        {
-            get => _hpMax;
-            protected set
-            {
-                _hpMax = value;
-            }
-        }
-        public string ID { 
+		public int HpCur { get; private set; }
+		public int HpMax { get; protected set; }
+		public string ID { 
             get => _id; 
             set => _id = value; 
         }
-        public Inventory Inventory
-        {
-            get => _inventory;
-            private set
-            {
-                _inventory = value;
-            }
-        }
-        public int Level
-        {
-            get => _level; 
-            protected set
-            {
-                _level = value;
-            }
-        }
-        public string Name
+		public Inventory Inventory { get; private set; }
+		public int Level { get; protected set; }
+		public string Name
         {
             get =>
                 _useActualName ?
-                    _nameActual :
-                    _nameGeneral;
+                    NameActual :
+                    NameGeneral;
 		}
-        public string NameActual
-		{
-            get => _nameActual; 
-            private set
-            {
-                _nameActual = value;
-            }
-        }
-        public string NameGeneral
-        {
-            get => _nameGeneral; 
-            private set
-            {
-                _nameGeneral = value;
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
+		public string NameActual { get; private set; }
+		public string NameGeneral { get; private set; }
+		public event PropertyChangedEventHandler PropertyChanged;
         public bool UseActualName
 		{
             get => _useActualName; 
