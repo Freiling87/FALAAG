@@ -45,10 +45,6 @@ namespace Engine.Factories
                     return Item.ItemCategory.Miscellaneous;
             }
         }
-        public static string ItemName(string itemTypeID) =>
-            // ?. is null conditional: If FirstOrDefault() does not return a null, retrieve Name.
-            // ?? is null-coalescing: If Name ends up null, then output "".
-            _gameItemTemplates.FirstOrDefault(i => i.ID == itemTypeID)?.Name ?? "";
         private static void LoadItemsFromNodes(XmlNodeList nodes)
         {
             if (nodes == null)

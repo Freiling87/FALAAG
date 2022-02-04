@@ -33,22 +33,27 @@ namespace Engine.Factories
                 List<ItemQuantity> rewardItems = new List<ItemQuantity>();
 
                 foreach (XmlNode childNode in node.SelectNodes("./ItemsToComplete/Item"))
-                    itemsToComplete.Add(new ItemQuantity(childNode.AttributeAsString("ID"),
-                                                         childNode.AttributeAsInt("Quantity")));
+                {
+                    Item item = ItemFactory.CreateItem(childNode.AttributeAsString("ID"));
+                    itemsToComplete.Add(new ItemQuantity(item, childNode.AttributeAsInt("Quantity")));
+                }
 
                 foreach (XmlNode childNode in node.SelectNodes("./RewardItems/Item"))
-                    rewardItems.Add(new ItemQuantity(childNode.AttributeAsString("ID"),
-                                                     childNode.AttributeAsInt("Quantity")));
+                {
+                    Item item = ItemFactory.CreateItem(childNode.AttributeAsString("ID"));
+                    rewardItems.Add(new ItemQuantity(item, childNode.AttributeAsInt("Quantity")));
+                }
 
                 _Jobs.Add(new Job(node.AttributeAsString("ID"),
-                                      node.AttributeAsString("Name"),
-                                      node.AttributeAsString("Description"),
-                                      itemsToComplete,
-                                      node.AttributeAsInt("RewardXP"),
-                                      node.AttributeAsInt("RewardCash"),
-                                      rewardItems));
+                                node.SelectSingleNode("./Name")?.InnerText ?? "",
+                                node.SelectSingleNode("./Description")?.InnerText ?? "",
+                                itemsToComplete,
+                                node.AttributeAsInt("RewardXP"),
+                                node.AttributeAsInt("RewardCash"),
+                                rewardItems));
             }
         }
+
 
         internal static Job GetJobByID(string id) =>
             _Jobs.FirstOrDefault(Job => Job.ID == id);

@@ -1,21 +1,18 @@
-﻿using Engine.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class ItemQuantity
     {
-        public string ID { get; }
-        public int Quantity { get; }
-        public string QuantityItemDescription => $"{Quantity} {ItemFactory.ItemName(ID)}";
+        private readonly Item _item;
 
-        public ItemQuantity(string itemID, int quantity)
+        public string ID => _item.ID;
+        public int Quantity { get; }
+
+        public string QuantityItemDescription =>
+            $"{Quantity} {_item.Name}";
+
+        public ItemQuantity(Item item, int quantity)
         {
-            ID = itemID;
+            _item = item;
             Quantity = quantity;
         }
     }

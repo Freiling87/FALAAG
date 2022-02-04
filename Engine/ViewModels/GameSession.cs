@@ -119,7 +119,7 @@ namespace Engine.ViewModels
                 _messageBroker.RaiseMessage("You lack one or more required ingredients:");
 
                 foreach (ItemQuantity itemQuantity in recipe.Ingredients)
-                    _messageBroker.RaiseMessage($"  {itemQuantity.Quantity} {ItemFactory.ItemName(itemQuantity.ID)}");
+                    _messageBroker.RaiseMessage($"  {itemQuantity.QuantityItemDescription}");
             }
         }
         public void UseCurrentConsumable()
