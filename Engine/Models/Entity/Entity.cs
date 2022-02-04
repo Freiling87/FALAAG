@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Engine.Services;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Engine.Models
 {
-    public abstract class Entity : PhysicalObject
+    public abstract class Entity : PhysicalObject, INotifyPropertyChanged
     {
         #region Properties
 
@@ -29,7 +30,6 @@ namespace Engine.Models
             private set
             {
                 _cash = value;
-                OnPropertyChanged();
             }
         }
         public Item CurrentConsumable
@@ -48,8 +48,6 @@ namespace Engine.Models
                 {
                     _currentConsumable.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-
-                OnPropertyChanged();
             }
         }
         public Item CurrentWeapon
@@ -64,8 +62,6 @@ namespace Engine.Models
 
                 if (_currentWeapon != null)
                     _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
-
-                OnPropertyChanged();
             }
         }
         public int HpCur
@@ -74,7 +70,6 @@ namespace Engine.Models
             private set
             {
                 _hpCur = value;
-                OnPropertyChanged();
             }
         }
         public int HpMax
@@ -83,7 +78,6 @@ namespace Engine.Models
             protected set
             {
                 _hpMax = value;
-                OnPropertyChanged();
             }
         }
         public string ID { 
@@ -96,7 +90,6 @@ namespace Engine.Models
             private set
             {
                 _inventory = value;
-                OnPropertyChanged();
             }
         }
         public int Level
@@ -105,7 +98,6 @@ namespace Engine.Models
             protected set
             {
                 _level = value;
-                OnPropertyChanged();
             }
         }
         public string Name
@@ -121,7 +113,6 @@ namespace Engine.Models
             private set
             {
                 _nameActual = value;
-                OnPropertyChanged();
             }
         }
         public string NameGeneral
@@ -130,16 +121,15 @@ namespace Engine.Models
             private set
             {
                 _nameGeneral = value;
-                OnPropertyChanged();
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
         public bool UseActualName
 		{
             get => _useActualName; 
             set
             {
                 _useActualName = value;
-                OnPropertyChanged();
             }
         }
 

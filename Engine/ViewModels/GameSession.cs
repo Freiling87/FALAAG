@@ -3,13 +3,14 @@ using Engine.Models;
 using Engine.Services;
 using Newtonsoft.Json;
 using System.Linq;
+using System.ComponentModel;
 
 namespace Engine.ViewModels
 {
-	public class GameSession : BaseNotificationClass
+	public class GameSession : INotifyPropertyChanged
     {
         public string Version { get; } = "0.1.000";
-
+        public event PropertyChangedEventHandler PropertyChanged;
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
 
         #region Header
@@ -27,8 +28,6 @@ namespace Engine.ViewModels
             set
             {
                 _currentAutomat = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(HasAutomat));
             }
         }
         public Cell CurrentCell
@@ -37,15 +36,6 @@ namespace Engine.ViewModels
             set
             {
                 _currentCell = value;
-
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(HasCellA));
-                OnPropertyChanged(nameof(HasCellB));
-                OnPropertyChanged(nameof(HasCellE));
-                OnPropertyChanged(nameof(HasCellN));
-                OnPropertyChanged(nameof(HasCellS));
-                OnPropertyChanged(nameof(HasCellW));
-
                 CurrentNPC = _currentCell.GetNPC();
                 CompleteJobsAtLocation();
                 GivePlayerJobsAtLocation();
@@ -71,9 +61,6 @@ namespace Engine.ViewModels
                     _currentBattle = new Battle(Player, CurrentNPC);
                     _currentBattle.OnCombatVictory += OnCurrentNPCKilled;
                 }
-
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(HasNPC));
             }
         }
         public Player Player
@@ -99,7 +86,6 @@ namespace Engine.ViewModels
         }
         [JsonIgnore]
         public World CurrentWorld { get; }
-        // As it's simply derived, this is an example of where you can fully omit a backing (_private) variable, so it's hooked into OnPropertyChanged in public NPC CurrentNPC's setter.
         [JsonIgnore]
         public GameDetails GameDetails
         {
@@ -107,7 +93,6 @@ namespace Engine.ViewModels
             set
             {
                 _gameDetails = value;
-                OnPropertyChanged();
             }
         }
         [JsonIgnore]

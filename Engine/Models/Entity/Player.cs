@@ -18,7 +18,6 @@ namespace Engine.Models
             private set 
             { 
                 _xp = value;
-                OnPropertyChanged();
                 SetLevelAndMaximumHitPoints();
             }
         }

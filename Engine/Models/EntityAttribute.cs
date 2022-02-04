@@ -1,26 +1,28 @@
 ﻿using Engine.Services;
+using System.ComponentModel;
 
 namespace Engine.Models
 {
     // Pattern: Constructor Chain
-    public class EntityAttribute : BaseNotificationClass
+    public class EntityAttribute : INotifyPropertyChanged
     {
         private int _modifiedValue;
-        public int Modifier { get; set; }
-        public string Key { get; }
+
+        public int BaseValue { get; set; }
         public string DisplayName { get; }
         public string DiceNotation { get; }
-        public int BaseValue { get; set; }
-
+        public string Key { get; }
         public int ModifiedValue
         {
             get => _modifiedValue;
             set
             {
                 _modifiedValue = value;
-                OnPropertyChanged();
             }
         }
+        public int Modifier { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         // Constructor that will use DiceService to create a BaseValue.
         // The constructor this calls will put that same value into BaseValue and ModifiedValue

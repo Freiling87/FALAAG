@@ -1,8 +1,9 @@
 ﻿using Engine.Services;
+using System.ComponentModel;
 
 namespace Engine.Models
 {
-    public class GroupedInventoryItem : BaseNotificationClass
+    public class GroupedInventoryItem : INotifyPropertyChanged
     {
 		#region Header
 		private Item _item;
@@ -14,7 +15,6 @@ namespace Engine.Models
             set
             {
                 _item = value;
-                OnPropertyChanged();
             }
         }
         public int Quantity
@@ -23,15 +23,16 @@ namespace Engine.Models
             set
             {
                 _quantity = value;
-                OnPropertyChanged();
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public GroupedInventoryItem(Item item, int quantity)
         {
             Item = item;
             Quantity = quantity;
         }
+
 		#endregion
 	}
 }

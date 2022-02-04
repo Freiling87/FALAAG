@@ -4,10 +4,11 @@ using System.Linq;
 using Engine.Factories;
 using Engine.Models;
 using Engine.Services;
+using System.ComponentModel;
 
 namespace Engine.ViewModels
 {
-    public class CharacterCreationViewModel : BaseNotificationClass
+    public class CharacterCreationViewModel : INotifyPropertyChanged
     {
         private Archetype _selectedArchetype;
         private int _totalMod;
@@ -15,13 +16,13 @@ namespace Engine.ViewModels
         private int _totalNet;
 
         public GameDetails GameDetails { get; }
+        public event PropertyChangedEventHandler PropertyChanged;
         public Archetype SelectedArchetype
         {
             get => _selectedArchetype;
             set
             {
                 _selectedArchetype = value;
-                OnPropertyChanged();
             }
         }
         public string Name { get; set; }
@@ -32,7 +33,6 @@ namespace Engine.ViewModels
             set
             {
                 _totalMod = value;
-                OnPropertyChanged();
             }
         }
         public int TotalRoll
@@ -41,7 +41,6 @@ namespace Engine.ViewModels
             set
             {
                 _totalRoll = value;
-                OnPropertyChanged();
             }
         }
         public int TotalNet 
@@ -50,7 +49,6 @@ namespace Engine.ViewModels
             set
             {
                 _totalNet = value;
-                OnPropertyChanged();
             }
         }
 
