@@ -6,7 +6,7 @@ using Engine.Models;
 using Engine.Services;
 using System.ComponentModel;
 
-namespace Engine.ViewModels
+namespace FALAAG.ViewModels
 {
     public class CharacterCreationViewModel : INotifyPropertyChanged
     {

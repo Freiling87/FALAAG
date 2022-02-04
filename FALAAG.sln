@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.Models", "FALAAG.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.Services", "FALAAG.Services\FALAAG.Services.csproj", "{E062F306-69DA-4942-B50F-7F56E29FAE38}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88251530-FF24-4B41-B0CB-0513F915AA9C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameData", "GameData", "{88251530-FF24-4B41-B0CB-0513F915AA9C}"
 	ProjectSection(SolutionItems) = preProject
 		GameFiles\GameData\Automats.xml = GameFiles\GameData\Automats.xml
 		GameFiles\GameData\Cells - New.xml = GameFiles\GameData\Cells - New.xml
@@ -30,6 +30,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		GameFiles\GameData\Jobs.xml = GameFiles\GameData\Jobs.xml
 		GameFiles\GameData\NPCs.xml = GameFiles\GameData\NPCs.xml
 		GameFiles\GameData\Recipes.xml = GameFiles\GameData\Recipes.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{2AD88C1E-10EF-491C-9652-F96995ED6B72}"
+	ProjectSection(SolutionItems) = preProject
+		Utilities\XiMpLe.exe = Utilities\XiMpLe.exe
 	EndProjectSection
 EndProject
 Global

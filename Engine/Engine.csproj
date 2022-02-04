@@ -205,4 +205,8 @@
     <Folder Include="Models\Behavior\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,5 @@
 ﻿using System;
-using Engine.EventArgs;
+using FALAAG.Models.EventArgs;
 using Engine.Services;
 using static Engine.Services.CombatService;
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.EventArgs
+namespace FALAAG.Models.EventArgs
 {
     public class GameMessageEventArgs : System.EventArgs // Create custom event argument
     {

@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Engine\Engine.csproj" />
     <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
     <ProjectReference Include="..\FALAAG.Services\FALAAG.Services.csproj" />
   </ItemGroup>

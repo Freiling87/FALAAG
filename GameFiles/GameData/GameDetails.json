@@ -396,22 +396,15 @@
     {
       "Key": "JUMPY",
       "DisplayName": "Jumpy",
-      "Description": "You always know where the exits are.",
+      "Description": "You always know where the exits are."
+    ,
       "AttributeModifiers": [
         {
+          "Key": "CON",
+          "Modifier": "-20"
+        },
+        {
           "Key": "CRE",
-          "Modifier": "10"
-        },
-        {
-          "Key": "SEN",
-          "Modifier": "10"
-        },
-        {
-          "Key": "RCT",
-          "Modifier": "10"
-        },
-        {
-          "Key": "GMS",
           "Modifier": "10"
         },
         {
@@ -419,15 +412,23 @@
           "Modifier": "-20"
         },
         {
-          "Key": "CON",
-          "Modifier": "-20"
-        },
-        {
-          "Key": "TMP",
-          "Modifier": "-20"
+          "Key": "GMS",
+          "Modifier": "10"
         },
         {
           "Key": "PTC",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "RCT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "10"
+        },
+        {
+          "Key": "COM",
           "Modifier": "-20"
         }
       ]
