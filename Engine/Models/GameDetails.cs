@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Engine.Models
 {
@@ -10,6 +11,11 @@ namespace Engine.Models
 
         public List<EntityAttribute> Attributes { get; } = new List<EntityAttribute>();
         public List<Archetype> Archetypes { get; }  = new List<Archetype>();
+
+        public List<Archetype> BodyTypes { get; set; } // Archetypes.Where(a => a.Group == "Body").ToList().
+        public List<Archetype> MindTypes { get; set;  }
+        public List<Archetype> PersonaTypes { get; set; }
+        public List<Archetype> SpiritTypes { get; set; }
 
         public GameDetails(string title, string subtitle, string version)
         {

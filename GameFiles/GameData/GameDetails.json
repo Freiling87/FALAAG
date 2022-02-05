@@ -123,6 +123,7 @@
     {
       "Key": "APOLLONIAN",
       "DisplayName": "Apollonian",
+      "Group": "Spirit",
       "Description": "You wanted to play a Paladin.",
       "AttributeModifiers": [{
           "Key": "HED",
@@ -137,23 +138,20 @@
     {
       "Key": "BIGGUY",
       "DisplayName": "Big Guy",
+      "Group": "Body",
       "Description": "For me?! I don't know what to say!",
       "AttributeModifiers": [
         {
           "Key": "STR",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "SIZ",
-          "Modifier": "15"
-        },
-        {
-          "Key": "SIZ",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "HGT",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "FLX",
@@ -176,6 +174,7 @@
     {
       "Key": "CONCRETETHINKER",
       "DisplayName": "Concrete Thinker",
+      "Group": "Mind",
       "Description": "You seem quite at home in the physical plane. ",
       "AttributeModifiers": [
         {
@@ -211,6 +210,7 @@
     {
       "Key": "DIONYSIAN",
       "DisplayName": "Dionysian",
+      "Group": "Spirit",
       "Description": "Born to Party!",
       "AttributeModifiers": [{
           "Key": "HED",
@@ -225,6 +225,7 @@
     {
       "Key": "ECTOMORPH",
       "DisplayName": "Ectomorph",
+      "Group": "Body",
       "Description": "Careful, there's a breeze coming!",
       "AttributeModifiers": [
         {
@@ -249,6 +250,7 @@
     {
       "Key": "ENDOMORPH",
       "DisplayName": "Endomorph",
+      "Group": "Body",
       "Description": "You are a big sizeable chungus. Congratulations!",
       "AttributeModifiers": [
         {
@@ -272,6 +274,7 @@
     {
       "Key": "FIERY",
       "DisplayName": "Fiery",
+      "Group": "Spirit",
       "Description": "________",
       "AttributeModifiers": [
         {
@@ -295,6 +298,7 @@
     {
       "Key": "FUNNYFATGUY",
       "DisplayName": "Funny Fat Guy",
+      "Group": "Persona",
       "Description": "Funny. You're funny.",
       "AttributeModifiers": [
         {
@@ -320,12 +324,19 @@
         {
           "Key": "CDO",
           "Modifier": "-20"
-        }
+        },
+        {
+          "Key": "HED",
+          "Modifier": "10"},
+        {
+          "Key": "TMP",
+          "Modifier": "-20"}
       ]
     },
     {
       "Key": "GOLDENGOD",
       "DisplayName": "Golden God",
+      "Group": "Spirit",
       "Description": "In the genetic lottery, you rolled a jackpot. Or... uh, you know what I mean. The downside is that you've never had to work for anything, so you're not exactly versatile.",
       "AttributeModifiers": [
         {
@@ -365,6 +376,7 @@
     {
       "Key": "GROUNDED",
       "DisplayName": "Grounded",
+      "Group": "Spirit",
       "Description": "You are a down-to-earth kinda guy.",
       "AttributeModifiers": [
         {
@@ -396,6 +408,7 @@
     {
       "Key": "JUMPY",
       "DisplayName": "Jumpy",
+      "Group": "Mind",
       "Description": "You always know where the exits are."
     ,
       "AttributeModifiers": [
@@ -436,6 +449,7 @@
     {
       "Key": "LONER",
       "DisplayName": "Loner",
+      "Group": "Persona",
       "Description": "You don't fit in. You're a real It-Alone-Goer.",
       "AttributeModifiers": [
         {
@@ -457,19 +471,20 @@
     {
       "Key": "OFFINSPACE",
       "DisplayName": "Off In Space",
+      "Group": "Mind",
       "Description": "Or at least staring there. You don't seem entirely at-home on the physical plane.",
       "AttributeModifiers": [
         {
           "Key": "CRE",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "LOG",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "VER",
-          "Modifier": "15"
+          "Modifier": "20"
         },
         {
           "Key": "SEN",
@@ -492,6 +507,7 @@
     {
       "Key": "PENCILNECK",
       "DisplayName": "Pencil-Neck",
+      "Group": "Mixed",
       "Description": "Nerrrrrrrds!",
       "AttributeModifiers": [
         {
@@ -523,6 +539,7 @@
     {
       "Key": "PSYCHOPATH",
       "DisplayName": "Psychopath",
+      "Group": "Mind",
       "Description": "You were born this way. It's not your fault. Still, cut that out.",
       "AttributeModifiers": [
         {
@@ -540,8 +557,9 @@
       ]
     },
     {
-      "Key": "RETARDSTRENGTH",
-      "DisplayName": "Retard Strength",
+      "Key": "ESPECIALLYSTRONG",
+      "DisplayName": "Especially Strong",
+      "Group": "Mixed",
       "Description": "You're unstoppable! Except by reading, counting, and sometimes swallowing food correctly.",
       "AttributeModifiers": [
         {
@@ -573,6 +591,7 @@
     {
       "Key": "SENSITIVE",
       "DisplayName": "Sensitive",
+      "Group": "Mind",
       "Description": "Smol bean",
       "AttributeModifiers": [{
           "Key": "HOM",
@@ -596,6 +615,7 @@
     {
       "Key": "SOCIALBUTTERFLY",
       "DisplayName": "Social Butterfly",
+      "Group": "Persona",
       "Description": "You are good at finding the right person for your job.",
       "AttributeModifiers": [
         {
@@ -631,6 +651,7 @@
     {
       "Key": "SOCIOPATH",
       "DisplayName": "Sociopath",
+      "Group": "Mind",
       "Description": "You had a fucked-up childhood. It's not your fault. Still, cut that out.",
       "AttributeModifiers": [
         {
@@ -654,6 +675,7 @@
     {
       "Key": "TRAGICBEAUTY",
       "DisplayName": "Tragic Beauty",
+      "Group": "Body",
       "Description": "No one understaaaaands you, waaaaaahhh",
       "AttributeModifiers": [{
           "Key": "BEU",
@@ -664,6 +686,7 @@
     {
       "Key": "WISHYWASHY",
       "DisplayName": "Wishy-Washy",
+      "Group": "Mind",
       "Description": "You go with the flow.",
       "AttributeModifiers": [
         {

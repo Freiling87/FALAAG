@@ -28,9 +28,15 @@ namespace WPFUI
             Close();
         }
 
-        private void Archetype_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Archetye_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             VM.ApplyAttributeModifiers();
         }
-    }
+
+		private void AttributeGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+	}
 }

@@ -9,7 +9,7 @@ namespace Engine.Models
     {
         public string ID { get; }
         [JsonIgnore]
-        public string Name { get; }
+        public string Name { get; set;  }
 
         [JsonIgnore] public List<ItemQuantity> Ingredients { get; }
         [JsonIgnore]

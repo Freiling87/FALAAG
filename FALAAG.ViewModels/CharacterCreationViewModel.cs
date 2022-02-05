@@ -13,12 +13,13 @@ namespace FALAAG.ViewModels
 		private int _totalMod;
         private int _totalRoll;
         private int _totalNet;
+        private bool _pinName;
 
         public GameDetails GameDetails { get; }
         public event PropertyChangedEventHandler PropertyChanged;
-		public Archetype SelectedArchetype { get; set; }
-		public string Name { get; init; }
+		public string Name { get; set; }
         public ObservableCollection<EntityAttribute> PlayerAttributes { get; } = new ObservableCollection<EntityAttribute>();
+        public bool PinName { get => _pinName; set => _pinName = value; }
         public int TotalMod
         {
             get => _totalMod;
@@ -44,26 +45,40 @@ namespace FALAAG.ViewModels
             }
         }
 
-        public bool HasArchetypes =>
-            GameDetails.Archetypes.Any();
-
         public bool HasArchetypeAttributeModifiers =>
-            HasArchetypes && 
             GameDetails.Archetypes.Any(r => r.AttributeModifiers.Any());
 
-        public CharacterCreationViewModel()
+        public bool PinBodyTypeChoice { get; set; }
+        public bool PinMindTypeChoice { get; set; }
+		public bool PinPersonaTypeChoice { get; set; }
+		public bool PinSpiritTypeChoice { get; set; }
+        public Archetype SelectedBodyType { get; set; }
+        public Archetype SelectedMindType { get; set; }
+		public Archetype SelectedPersonaType { get; set; }
+		public Archetype SelectedSpiritType { get; set; }
+
+		public CharacterCreationViewModel()
         {
             GameDetails = GameDetailsService.ReadGameDetails();
-
-            if (HasArchetypes)
-                SelectRandomArchetype();
-
             RollNewCharacter();
         }
 
-        public void RollNewCharacter()
+		public void RollNewCharacter()
         {
-            SelectRandomArchetype();
+            if (!PinName)
+                Name = RollRandomName();
+
+            if (!PinBodyTypeChoice)
+                SelectRandomBodyType();
+
+            if (!PinMindTypeChoice)
+                SelectRandomMindType();
+
+            if (!PinPersonaTypeChoice)
+                SelectRandomPersonaType();
+
+            if (!PinSpiritTypeChoice)
+                SelectRandomSpiritType();
 
             PlayerAttributes.Clear();
 
@@ -73,31 +88,74 @@ namespace FALAAG.ViewModels
                 PlayerAttributes.Add(playerAttribute);
             }
 
-            RetotalAggregateMeasures();
             ApplyAttributeModifiers();
+            RetotalAggregateMeasures();
         }
+
+        public string RollRandomName()
+		{
+            return "John Doe";
+		}
+
         public void RetotalAggregateMeasures()
 		{
             TotalRoll = GameDetails.Attributes.Sum(a => a.BaseValue);
             TotalMod = GameDetails.Attributes.Sum(a => a.Modifier);
             TotalNet = TotalRoll + TotalMod;
         }
-        public void SelectRandomArchetype()
+
+        public void SelectRandomBodyType()
 		{
             var random = new Random();
-            int index = random.Next(GameDetails.Archetypes.Count);
-            SelectedArchetype = GameDetails.Archetypes[index];
-		}
+            int index = random.Next(GameDetails.BodyTypes.Count);
+            SelectedBodyType = GameDetails.BodyTypes[index];
+        }
+        public void SelectRandomMindType()
+        {
+            var random = new Random();
+            int index = random.Next(GameDetails.MindTypes.Count);
+            SelectedMindType = GameDetails.MindTypes[index];
+        }
+        public void SelectRandomPersonaType()
+        {
+            var random = new Random();
+            int index = random.Next(GameDetails.PersonaTypes.Count);
+            SelectedPersonaType = GameDetails.PersonaTypes[index];
+        }
+        public void SelectRandomSpiritType()
+        {
+            var random = new Random();
+            int index = random.Next(GameDetails.SpiritTypes.Count);
+            SelectedSpiritType = GameDetails.SpiritTypes[index];
+        }
 
         public void ApplyAttributeModifiers()
         {
+            // TODO: This is where we need to combine all 4 archetypes' attribute modifiers into the Mod Column
+
             foreach (EntityAttribute playerAttribute in PlayerAttributes)
             {
-                var attributeArchetypeModifier = 
-                    SelectedArchetype.AttributeModifiers.FirstOrDefault(pam => pam.Key.Equals(playerAttribute.Key));
+                playerAttribute.Modifier = 0;
 
-                // For display in creator screen, may not be the best way
-                playerAttribute.Modifier = attributeArchetypeModifier?.Modifier ?? 0;
+                AttributeModifier bodyTypeModifier = 
+                    SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+
+                playerAttribute.Modifier = bodyTypeModifier?.Modifier ?? 0;
+
+                AttributeModifier mindTypeModifier =
+                    SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+
+                playerAttribute.Modifier += mindTypeModifier?.Modifier ?? 0;
+
+                AttributeModifier personaTypeModifier =
+                    SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+
+                playerAttribute.Modifier += personaTypeModifier?.Modifier ?? 0;
+
+                AttributeModifier spiritTypeModifier =
+                    SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+
+                playerAttribute.Modifier += spiritTypeModifier?.Modifier ?? 0;
 
                 playerAttribute.ModifiedValue =
                     playerAttribute.BaseValue + playerAttribute.Modifier;

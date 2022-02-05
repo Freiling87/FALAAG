@@ -46,7 +46,6 @@ namespace Engine.Factories
                 foreach (XmlNode childNode in node.SelectNodes("./OutputItems/Item"))
                 {
                     Item item = ItemFactory.CreateItem(childNode.AttributeAsString("ID"));
-
                     outputItems.Add(new ItemQuantity(item, childNode.AttributeAsInt("Quantity")));
                 }
 

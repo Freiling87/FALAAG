@@ -37,6 +37,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 		Utilities\XiMpLe.exe = Utilities\XiMpLe.exe
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{5B589084-D0AC-46C6-991D-2992B4814D4E}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\LicensesConsumed.md = Docs\LicensesConsumed.md
+		Docs\Notes.md = Docs\Notes.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

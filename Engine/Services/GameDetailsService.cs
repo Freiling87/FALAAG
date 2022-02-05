@@ -2,6 +2,7 @@
 using Engine.Models;
 using Engine.Shared;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace Engine.Services
 {
@@ -32,7 +33,8 @@ namespace Engine.Services
                     {
                         Key = token.StringValueOf("Key"),
                         Description = token.StringValueOf("Description"),
-                        DisplayName = token.StringValueOf("DisplayName")
+                        DisplayName = token.StringValueOf("DisplayName"),
+                        Group = token.StringValueOf("Group"),
                     };
 
                     if (token["AttributeModifiers"] != null)
@@ -49,6 +51,12 @@ namespace Engine.Services
 
                     gameDetails.Archetypes.Add(archetype);
                 }
+
+                gameDetails.BodyTypes = gameDetails.Archetypes.Where(a => a.Group == "Body").ToList();
+                gameDetails.MindTypes = gameDetails.Archetypes.Where(a => a.Group == "Mind").ToList();
+                gameDetails.PersonaTypes = gameDetails.Archetypes.Where(a => a.Group == "Persona").ToList();
+                gameDetails.SpiritTypes = gameDetails.Archetypes.Where(a => a.Group == "Spirit").ToList();
+
             }
 
             return gameDetails;
