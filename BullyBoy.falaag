@@ -1,0 +1,316 @@
+{
+  "Player": {
+    "NarrationEntry": null,
+    "Name": "NameGeneral_Placeholder",
+    "HpCur": 6,
+    "Cash": 10,
+    "Xp": 250,
+    "Level": 3,
+    "Attributes": [
+      {
+        "DisplayName": "Beauty",
+        "BaseValue": 57,
+        "Modifier": 0,
+        "ModifiedValue": 57,
+        "DiceNotation": "5d20",
+        "Key": "BEU"
+      },
+      {
+        "DisplayName": "Cardio",
+        "BaseValue": 48,
+        "Modifier": -30,
+        "ModifiedValue": 18,
+        "DiceNotation": "5d20",
+        "Key": "CDO"
+      },
+      {
+        "DisplayName": "Confidence",
+        "BaseValue": 68,
+        "Modifier": 20,
+        "ModifiedValue": 88,
+        "DiceNotation": "5d20",
+        "Key": "CON"
+      },
+      {
+        "DisplayName": "Composure",
+        "BaseValue": 38,
+        "Modifier": 35,
+        "ModifiedValue": 73,
+        "DiceNotation": "5d20",
+        "Key": "COM"
+      },
+      {
+        "DisplayName": "Creativity",
+        "BaseValue": 59,
+        "Modifier": -60,
+        "ModifiedValue": -1,
+        "DiceNotation": "5d20",
+        "Key": "CRE"
+      },
+      {
+        "DisplayName": "Empathy",
+        "BaseValue": 40,
+        "Modifier": -40,
+        "ModifiedValue": 0,
+        "DiceNotation": "5d20",
+        "Key": "EMP"
+      },
+      {
+        "DisplayName": "Extraversion",
+        "BaseValue": 57,
+        "Modifier": 0,
+        "ModifiedValue": 57,
+        "DiceNotation": "5d20",
+        "Key": "EXT"
+      },
+      {
+        "DisplayName": "Flexibility",
+        "BaseValue": 57,
+        "Modifier": -30,
+        "ModifiedValue": 27,
+        "DiceNotation": "5d20",
+        "Key": "FLX"
+      },
+      {
+        "DisplayName": "Fine Motor Skill",
+        "BaseValue": 89,
+        "Modifier": -15,
+        "ModifiedValue": 74,
+        "DiceNotation": "5d20",
+        "Key": "FMS"
+      },
+      {
+        "DisplayName": "Gross Motor Skill",
+        "BaseValue": 61,
+        "Modifier": 15,
+        "ModifiedValue": 76,
+        "DiceNotation": "5d20",
+        "Key": "GMS"
+      },
+      {
+        "DisplayName": "Grit",
+        "BaseValue": 45,
+        "Modifier": 0,
+        "ModifiedValue": 45,
+        "DiceNotation": "5d20",
+        "Key": "GRT"
+      },
+      {
+        "DisplayName": "Height",
+        "BaseValue": 47,
+        "Modifier": -15,
+        "ModifiedValue": 32,
+        "DiceNotation": "5d20",
+        "Key": "HGT"
+      },
+      {
+        "DisplayName": "Hedonism",
+        "BaseValue": 43,
+        "Modifier": 0,
+        "ModifiedValue": 43,
+        "DiceNotation": "5d20",
+        "Key": "HED"
+      },
+      {
+        "DisplayName": "Homeostasis",
+        "BaseValue": 71,
+        "Modifier": 0,
+        "ModifiedValue": 71,
+        "DiceNotation": "5d20",
+        "Key": "HOM"
+      },
+      {
+        "DisplayName": "Logical Intelligence",
+        "BaseValue": 26,
+        "Modifier": -30,
+        "ModifiedValue": -4,
+        "DiceNotation": "5d20",
+        "Key": "LOG"
+      },
+      {
+        "DisplayName": "Patience",
+        "BaseValue": 54,
+        "Modifier": -20,
+        "ModifiedValue": 34,
+        "DiceNotation": "5d20",
+        "Key": "PTC"
+      },
+      {
+        "DisplayName": "Reaction",
+        "BaseValue": 63,
+        "Modifier": 0,
+        "ModifiedValue": 63,
+        "DiceNotation": "5d20",
+        "Key": "RCT"
+      },
+      {
+        "DisplayName": "Sensitivity",
+        "BaseValue": 51,
+        "Modifier": 15,
+        "ModifiedValue": 66,
+        "DiceNotation": "5d20",
+        "Key": "SEN"
+      },
+      {
+        "DisplayName": "Size",
+        "BaseValue": 55,
+        "Modifier": 15,
+        "ModifiedValue": 70,
+        "DiceNotation": "5d20",
+        "Key": "SIZ"
+      },
+      {
+        "DisplayName": "Spatial Intelligence",
+        "BaseValue": 57,
+        "Modifier": 15,
+        "ModifiedValue": 72,
+        "DiceNotation": "5d20",
+        "Key": "SPA"
+      },
+      {
+        "DisplayName": "Strength",
+        "BaseValue": 71,
+        "Modifier": 30,
+        "ModifiedValue": 101,
+        "DiceNotation": "5d20",
+        "Key": "STR"
+      },
+      {
+        "DisplayName": "Temperament",
+        "BaseValue": 33,
+        "Modifier": -20,
+        "ModifiedValue": 13,
+        "DiceNotation": "5d20",
+        "Key": "TMP"
+      },
+      {
+        "DisplayName": "Verbal Intelligence",
+        "BaseValue": 53,
+        "Modifier": -30,
+        "ModifiedValue": 23,
+        "DiceNotation": "5d20",
+        "Key": "VER"
+      }
+    ],
+    "Inventory": {
+      "Items": [
+        {
+          "NarrationEntry": null,
+          "ID": "BareHands"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkin"
+        },
+        {
+          "NarrationEntry": null,
+          "ID": "RatSkull"
+        }
+      ]
+    },
+    "RecipesKnown": [
+      {
+        "ID": "ShivCrude_01"
+      },
+      {
+        "ID": "ShivCrude_02"
+      }
+    ],
+    "JobsActive": [],
+    "CurrentWeapon": {
+      "NarrationEntry": null,
+      "ID": "BareHands"
+    },
+    "CurrentConsumable": null,
+    "HpMax": 130,
+    "ID": null,
+    "NameActual": "Bully Boy",
+    "NameGeneral": "NameGeneral_Placeholder",
+    "UseActualName": false
+  },
+  "CurrentCell": {
+    "_messageBroker": {},
+    "NarrationEntry": null,
+    "X": 0,
+    "Y": 0,
+    "Z": -1,
+    "Automats": [],
+    "Gates": [],
+    "NPCs": [],
+    "PhysicalFeatures": [],
+    "Items": null
+  },
+  "Version": "0.1.000"
+}

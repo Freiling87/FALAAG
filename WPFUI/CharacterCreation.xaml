@@ -44,13 +44,19 @@
 		<Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" Width ="Auto" Background="LightGoldenrodYellow">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
 			</Grid.RowDefinitions>
@@ -62,13 +68,15 @@
 			
 			<!-- Name -->
 			<Label Grid.Row="0" Grid.Column="0"
-				FontWeight="Bold"
-				Content="Name "
-				HorizontalContentAlignment="Right"/>
+					FontWeight="Bold"
+					FontSize="20"
+					Content="N  A  M  E"
+					HorizontalContentAlignment="Center"/>
 			<TextBox Grid.Row="0" Grid.Column="1"
-                 Width="460"
-                 HorizontalAlignment="Center"
-                 Text="{Binding Name}"/>
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					Text="{Binding Name}"/>
 			<CheckBox  Grid.Row="0" Grid.Column="2" 
 					   Width="16" Height="16" 
 					   HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -76,109 +84,130 @@
 					   IsChecked="{Binding PinName}"/>
 
 			<!-- Body -->
-			<Label Grid.Row="1" Grid.Column="0"
-				FontWeight="Bold"
-				Content="Body "
-				HorizontalContentAlignment="Right"/>
-			<ComboBox Grid.Row="1" Grid.Column="1"
-                  Width="460"
-                  HorizontalAlignment="Center"
-                  ItemsSource="{Binding GameDetails.BodyTypes}"
-                  DisplayMemberPath="DisplayName"
-                  SelectedItem="{Binding SelectedBodyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="1" Grid.Column="2" 
-					  Width="16" Height="16" 
-					  HorizontalAlignment="Center" VerticalAlignment="Center" 
-					  Margin="0,0,0,0"
-					  IsChecked="{Binding PinBodyTypeChoice}"/>
+			<Label Grid.Row="2" Grid.Column="0"
+					FontWeight="Bold"
+					FontSize="20"
+					Content="B  O  D  Y"
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="2" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					ItemsSource="{Binding GameDetails.BodyTypes}"
+					DisplayMemberPath="DisplayName"
+					SelectedItem="{Binding SelectedBodyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="2" Grid.Column="2" 
+					Width="16" Height="16" 
+					HorizontalAlignment="Center" VerticalAlignment="Center" 
+					IsChecked="{Binding PinBodyTypeChoice}"/>
 			
-			<TextBlock Grid.Row="2" Grid.Column="0"
-					Grid.ColumnSpan="3"
-					Width="620"
-					Height="60"
-					Background="White"
-					Text="{Binding SelectedBodyType.Description}"
-					TextWrapping="Wrap"/>
+			<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+						Height="60"
+						Width="600"
+						HorizontalAlignment="Right"
+						Background="White"
+					   
+						Text="{Binding SelectedBodyType.Description}"
+						TextAlignment="Right"
+						TextWrapping="Wrap"/>
 
 			<!-- Mind -->
-			<Label Grid.Row="3" Grid.Column="0"
-				FontWeight="Bold"
-				Content="Mind "
-				HorizontalContentAlignment="Right"/>
-			<ComboBox Grid.Row="3" Grid.Column="1"
-                  Width="460"
-                  HorizontalAlignment="Center"
-                  ItemsSource="{Binding GameDetails.MindTypes}"
-                  DisplayMemberPath="DisplayName"
-                  SelectedItem="{Binding SelectedMindType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="3" Grid.Column="2" 
+			<Label Grid.Row="5" Grid.Column="0"
+					FontWeight="Bold"
+					FontSize="20"
+					Content="M  I  N  D"
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="5" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					ItemsSource="{Binding GameDetails.MindTypes}"
+					DisplayMemberPath="DisplayName"
+					SelectedItem="{Binding SelectedMindType, 
+									Mode=TwoWay, 
+									UpdateSourceTrigger=PropertyChanged}"
+					SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="5" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinMindTypeChoice}"/>
 
-			<TextBlock Grid.Row="4" Grid.Column="0"
-				   Grid.ColumnSpan="3"
-					Width="620"
-				   Height="60"
-				   Background="White"
-				   Text="{Binding SelectedMindType.Description}"
-				   TextWrapping="Wrap"/>
+			<TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+						Height="60"
+						Width="600"
+						HorizontalAlignment="Right"
+						Background="White"
+					   
+						Text="{Binding SelectedMindType.Description}"
+						TextAlignment="Right"
+						TextWrapping="Wrap"/>
 			
 			<!-- Persona -->
-			<Label Grid.Row="5" Grid.Column="0"
-				FontWeight="Bold"
-				Content="Persona "
-				HorizontalContentAlignment="Right"/>
-			<ComboBox Grid.Row="5" Grid.Column="1"
-                  Width="460"
-                  HorizontalAlignment="Center"
-                  ItemsSource="{Binding GameDetails.PersonaTypes}"
-                  DisplayMemberPath="DisplayName"
-                  SelectedItem="{Binding SelectedPersonaType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="5" Grid.Column="2" 
+			<Label Grid.Row="8" Grid.Column="0"
+					FontWeight="Bold"
+					FontSize="16"
+					Content=" P E R S O N A "
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="8" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					ItemsSource="{Binding GameDetails.PersonaTypes}"
+					DisplayMemberPath="DisplayName"
+					SelectedItem="{Binding SelectedPersonaType, 
+									Mode=TwoWay, 
+									UpdateSourceTrigger=PropertyChanged}"
+					SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="8" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinPersonaTypeChoice}"/>
 
-			<TextBlock Grid.Row="6" Grid.Column="0"
-				   Grid.ColumnSpan="3"
-					Width="620"
-				   Height="60"
-					   Background="White"
-				   Text="{Binding SelectedPersonaType.Description}"
-				   TextWrapping="Wrap"/>
+			<TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
+						Height="60"
+						Width="600"
+						HorizontalAlignment="Right"
+						Background="White"
+					   
+						Text="{Binding SelectedPersonaType.Description}"
+						TextAlignment="Right"
+						TextWrapping="Wrap"/>
 			
 			<!-- Spirit -->
-			<Label Grid.Row="7" Grid.Column="0"
-				FontWeight="Bold"
-				Content="Spirit "
-				HorizontalContentAlignment="Right"/>
-			<ComboBox Grid.Row="7" Grid.Column="1"
-                  Width="460"
-                  HorizontalAlignment="Center"
-                  ItemsSource="{Binding GameDetails.SpiritTypes}"
-                  DisplayMemberPath="DisplayName"
-                  SelectedItem="{Binding SelectedSpiritType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="7" Grid.Column="2" 
+			<Label Grid.Row="11" Grid.Column="0"
+					FontWeight="Bold"
+					FontSize="18"
+					Content=" S P I R I T "
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="11" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					ItemsSource="{Binding GameDetails.SpiritTypes}"
+					DisplayMemberPath="DisplayName"
+					SelectedItem="{Binding SelectedSpiritType, 
+									Mode=TwoWay, 
+									UpdateSourceTrigger=PropertyChanged}"
+					SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="11" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinSpiritTypeChoice}"/>
-			
-			<TextBlock Grid.Row="8" Grid.Column="0"
-				   Grid.ColumnSpan="3"
-					Width="620"
-				   Height="60"
-					   Background="White"
-				   Text="{Binding SelectedSpiritType.Description}"
-				   TextWrapping="Wrap"/>
-			
+
+			<TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"
+						Height="60"
+						Width="600"
+						HorizontalAlignment="Right"
+						Background="White"
+					   
+						Text="{Binding SelectedSpiritType.Description}"
+						TextAlignment="Right"
+						TextWrapping="Wrap"/>
+
 			<!-- Buttons -->
 			<Grid Grid.Row="99" Grid.Column="0"
                   Grid.ColumnSpan="3">
@@ -211,15 +240,23 @@
 		
 
 		<!-- Attribute Reporting Grid-->
+		<!-- For Conditional Formatting: 
+		https://www.codeproject.com/articles/683429/guide-to-wpf-datagrid-formatting-using-bindings -->
+		<!-- TODO: Move totals directly under Attribute DataGrid-->
+
 		<DataGrid x:Name="AttributeGrid"
-				  Grid.Row="1" Grid.Column="2"
-                  Grid.ColumnSpan="2"
+				  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                   ItemsSource="{Binding PlayerAttributes}"
                   AutoGenerateColumns="False"
+				  
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
+				  CanUserResizeRows="False"
+				  CanUserResizeColumns="False"
+				  CanUserReorderColumns="False"
+				  
                   HeadersVisibility="Column"
-				  AlternatingRowBackground="LightGoldenrodYellow" SelectionChanged="AttributeGrid_SelectionChanged">
+				  AlternatingRowBackground="LightGoldenrodYellow">
 
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Attribute"
