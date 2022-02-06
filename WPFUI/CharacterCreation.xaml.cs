@@ -32,11 +32,5 @@ namespace WPFUI
         {
             VM.ApplyAttributeModifiers();
         }
-
-		private void AttributeGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
 	}
 }

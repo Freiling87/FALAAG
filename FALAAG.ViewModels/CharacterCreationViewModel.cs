@@ -52,10 +52,14 @@ namespace FALAAG.ViewModels
         public bool PinBodyTypeChoice { get; set; }
         public bool PinMindTypeChoice { get; set; }
 		public bool PinPersonaTypeChoice { get; set; }
+        public bool PinRaceChoice { get; set; }
+        public bool PinSex { get; set; }
 		public bool PinSpiritTypeChoice { get; set; }
         public Archetype SelectedBodyType { get; set; }
         public Archetype SelectedMindType { get; set; }
 		public Archetype SelectedPersonaType { get; set; }
+        public Archetype SelectedRace { get; set; }
+        public Archetype SelectedSex { get; set; }
 		public Archetype SelectedSpiritType { get; set; }
 
 		public CharacterCreationViewModel()
@@ -69,17 +73,23 @@ namespace FALAAG.ViewModels
             if (!PinName)
                 Name = RollRandomName();
 
+            if (!PinSex)
+                SelectedSex = RandomSex();
+
             if (!PinBodyTypeChoice)
-                SelectRandomBodyType();
+                SelectedBodyType = RandomBodyType();
 
             if (!PinMindTypeChoice)
-                SelectRandomMindType();
+                SelectedMindType = RandomMindType();
 
             if (!PinPersonaTypeChoice)
-                SelectRandomPersonaType();
+                SelectedPersonaType = RandomPersonaType();
+
+            if (!PinRaceChoice)
+                SelectedRace = RandomRace();
 
             if (!PinSpiritTypeChoice)
-                SelectRandomSpiritType();
+                SelectedSpiritType = RandomSpiritType();
 
             PlayerAttributes.Clear();
 
@@ -110,67 +120,51 @@ namespace FALAAG.ViewModels
             TotalNet = TotalRoll + TotalMod;
         }
 
-        public void SelectRandomBodyType()
-		{
-            var random = new Random();
-            int index = random.Next(GameDetails.BodyTypes.Count);
-            SelectedBodyType = GameDetails.BodyTypes[index];
-        }
-        public void SelectRandomMindType()
-        {
-            var random = new Random();
-            int index = random.Next(GameDetails.MindTypes.Count);
-            SelectedMindType = GameDetails.MindTypes[index];
-        }
-        public void SelectRandomPersonaType()
-        {
-            var random = new Random();
-            int index = random.Next(GameDetails.PersonaTypes.Count);
-            SelectedPersonaType = GameDetails.PersonaTypes[index];
-        }
-        public void SelectRandomSpiritType()
-        {
-            var random = new Random();
-            int index = random.Next(GameDetails.SpiritTypes.Count);
-            SelectedSpiritType = GameDetails.SpiritTypes[index];
-        }
+        public Archetype RandomBodyType() =>
+            GameDetails.BodyTypes[new Random().Next(GameDetails.BodyTypes.Count())];
+        public Archetype RandomMindType() =>
+            GameDetails.MindTypes[new Random().Next(GameDetails.MindTypes.Count())];
+        public Archetype RandomPersonaType() =>
+            GameDetails.PersonaTypes[new Random().Next(GameDetails.PersonaTypes.Count())];
+        public Archetype RandomRace() =>
+            GameDetails.Races[new Random().Next(GameDetails.Races.Count())];
+        public Archetype RandomSex() =>
+            GameDetails.Sexes[new Random().Next(2)];
+        public Archetype RandomSpiritType() =>
+            GameDetails.SpiritTypes[new Random().Next(GameDetails.SpiritTypes.Count())];
 
         public void ApplyAttributeModifiers()
         {
-            // TODO: This is where we need to combine all 4 archetypes' attribute modifiers into the Mod Column
-
             foreach (EntityAttribute playerAttribute in PlayerAttributes)
             {
                 playerAttribute.Modifier = 0;
 
+                AttributeModifier raceModifier =
+                    SelectedRace.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                playerAttribute.Modifier = raceModifier?.Modifier ?? 0;
+                AttributeModifier sexModifier =
+                    SelectedSex.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                playerAttribute.Modifier += sexModifier?.Modifier ?? 0;
                 AttributeModifier bodyTypeModifier = 
                     SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
-
-                playerAttribute.Modifier = bodyTypeModifier?.Modifier ?? 0;
-
+                playerAttribute.Modifier += bodyTypeModifier?.Modifier ?? 0;
                 AttributeModifier mindTypeModifier =
                     SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
-
                 playerAttribute.Modifier += mindTypeModifier?.Modifier ?? 0;
-
                 AttributeModifier personaTypeModifier =
                     SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
-
                 playerAttribute.Modifier += personaTypeModifier?.Modifier ?? 0;
-
                 AttributeModifier spiritTypeModifier =
                     SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
-
                 playerAttribute.Modifier += spiritTypeModifier?.Modifier ?? 0;
-
-                playerAttribute.ModifiedValue =
-                    playerAttribute.BaseValue + playerAttribute.Modifier;
+                // Add Attribute Modifiers as a Percentage Bonus
+                playerAttribute.ModifiedValue = (int)((float)playerAttribute.BaseValue * (1.00f + (playerAttribute.Modifier / 100.00f)));
             }
         }
 
         public Player GetPlayer()
         {
-            Player player = new Player(Name, "NameGeneral_Placeholder", 0, 10, 10, PlayerAttributes, 10);
+            Player player = new Player(Name, Name, 0, 100, 100, PlayerAttributes, 110);
 
             // Give player default inventory items, weapons, recipes, etc.
             player.InventoryAddItem(ItemFactory.CreateItem("BareHands"));

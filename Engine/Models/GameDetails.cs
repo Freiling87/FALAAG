@@ -15,6 +15,8 @@ namespace Engine.Models
         public List<Archetype> BodyTypes { get; set; } // Archetypes.Where(a => a.Group == "Body").ToList().
         public List<Archetype> MindTypes { get; set;  }
         public List<Archetype> PersonaTypes { get; set; }
+        public List<Archetype> Races { get; set; }
+        public List<Archetype> Sexes { get; set; }
         public List<Archetype> SpiritTypes { get; set; }
 
         public GameDetails(string title, string subtitle, string version)

@@ -207,7 +207,6 @@ This shouldn't be as big in this game. Treat it like IRL experience: The charact
 Leveling here might even be something like Oblivion (puke), where each skill levels independently with use. It most matches real life, and since all that is hidden from the player it shouldn't be cumbersome.
 
 ### Archetypes
-Basically traits, but only available in Character Creation.
 Modify base attributes, by a percentage of the score rolled (not a percentage of the maximum possible score)
 TODO: Add additional behaviors with Archetypes. They should feel like a different playstyle, akin to SOR classes. 
 E.g., Schizophrenic occasionally has conversations with demons who berate and insult him

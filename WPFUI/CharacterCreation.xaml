@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         FontSize="10pt"
 		FontFamily="Consolas"
-        Title="{Binding GameDetails.Title}" Height="666" Width="1333">
+        Title="{Binding GameDetails.Title}" Height="860" Width="1333">
 
 	<Grid Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center">
 		<Grid.RowDefinitions>
@@ -36,13 +36,19 @@
 			   FontStyle="Oblique"
 			   FontSize="64"
 			   Height="120"
+			   VerticalAlignment="Center"
                HorizontalAlignment="Center"
 			   VerticalContentAlignment="Center"
                Content="    GET BORN RIGHT NOW, FOR FREE!    "/>
 
-		<!-- Controls Grid -->
-		<Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" Width ="Auto" Background="LightGoldenrodYellow">
+		<!-- Controls Grid / Left Half -->
+		<Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width ="Auto" Background="LightGoldenrodYellow">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="14"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="14"/>
 				<RowDefinition Height="Auto"/>
@@ -65,31 +71,74 @@
 				<ColumnDefinition Width="470"/>
 				<ColumnDefinition Width="30"/>
 			</Grid.ColumnDefinitions>
-			
+
 			<!-- Name -->
-			<Label Grid.Row="0" Grid.Column="0"
+			<Label Grid.Row="1" Grid.Column="0"
 					FontWeight="Bold"
 					FontSize="20"
 					Content="N  A  M  E"
 					HorizontalContentAlignment="Center"/>
-			<TextBox Grid.Row="0" Grid.Column="1"
+			<TextBox Grid.Row="1" Grid.Column="1"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Right"
 					Height="24"
 					Text="{Binding Name}"/>
-			<CheckBox  Grid.Row="0" Grid.Column="2" 
+			<CheckBox  Grid.Row="1" Grid.Column="2" 
 					   Width="16" Height="16" 
 					   HorizontalAlignment="Center" VerticalAlignment="Center" 
 					   Margin="0,0,0,0" 
 					   IsChecked="{Binding PinName}"/>
 
+			<!-- Race -->
+			<Label Grid.Row="3" Grid.Column="0"
+					FontWeight="Bold"
+					FontSize="20"
+					Content="R  A  C  E"
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="3" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					  ItemsSource="{Binding GameDetails.Races}"
+					  DisplayMemberPath="DisplayName"
+					  SelectedItem="{Binding SelectedRace, Mode=TwoWay,
+					  UpdateSourceTrigger=PropertyChanged}"
+					  SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="3" Grid.Column="2" 
+					Width="16" Height="16" 
+					HorizontalAlignment="Center" VerticalAlignment="Center" 
+					IsChecked="{Binding PinRaceChoice}"/>
+			
+			<!-- Sex -->
+			<Label Grid.Row="5" Grid.Column="0"
+					FontWeight="UltraBold"
+				   FontStyle="Oblique"
+				   Foreground="Crimson"
+				   Background="LightPink"
+					FontSize="14"
+					Content="  S    E    X  "
+					HorizontalContentAlignment="Center"/>
+			<ComboBox Grid.Row="5" Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Right"
+					Height="24"
+					  ItemsSource="{Binding GameDetails.Sexes}"
+					  DisplayMemberPath="DisplayName"
+					  SelectedItem="{Binding SelectedSex, Mode=TwoWay,
+					  UpdateSourceTrigger=PropertyChanged}"
+					  SelectionChanged="Archetye_OnSelectionChanged"/>
+			<CheckBox Grid.Row="5" Grid.Column="2" 
+					Width="16" Height="16" 
+					HorizontalAlignment="Center" VerticalAlignment="Center" 
+					IsChecked="{Binding PinSexChoice}"/>
+
 			<!-- Body -->
-			<Label Grid.Row="2" Grid.Column="0"
+			<Label Grid.Row="7" Grid.Column="0"
 					FontWeight="Bold"
 					FontSize="20"
 					Content="B  O  D  Y"
 					HorizontalContentAlignment="Center"/>
-			<ComboBox Grid.Row="2" Grid.Column="1"
+			<ComboBox Grid.Row="7" Grid.Column="1"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Right"
 					Height="24"
@@ -97,12 +146,12 @@
 					DisplayMemberPath="DisplayName"
 					SelectedItem="{Binding SelectedBodyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="2" Grid.Column="2" 
+			<CheckBox Grid.Row="7" Grid.Column="2" 
 					Width="16" Height="16" 
 					HorizontalAlignment="Center" VerticalAlignment="Center" 
 					IsChecked="{Binding PinBodyTypeChoice}"/>
-			
-			<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+
+			<TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
 						Height="60"
 						Width="600"
 						HorizontalAlignment="Right"
@@ -113,12 +162,12 @@
 						TextWrapping="Wrap"/>
 
 			<!-- Mind -->
-			<Label Grid.Row="5" Grid.Column="0"
+			<Label Grid.Row="10" Grid.Column="0"
 					FontWeight="Bold"
 					FontSize="20"
 					Content="M  I  N  D"
 					HorizontalContentAlignment="Center"/>
-			<ComboBox Grid.Row="5" Grid.Column="1"
+			<ComboBox Grid.Row="10" Grid.Column="1"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Right"
 					Height="24"
@@ -128,13 +177,13 @@
 									Mode=TwoWay, 
 									UpdateSourceTrigger=PropertyChanged}"
 					SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="5" Grid.Column="2" 
+			<CheckBox Grid.Row="10" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinMindTypeChoice}"/>
 
-			<TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+			<TextBlock Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2"
 						Height="60"
 						Width="600"
 						HorizontalAlignment="Right"
@@ -143,14 +192,14 @@
 						Text="{Binding SelectedMindType.Description}"
 						TextAlignment="Right"
 						TextWrapping="Wrap"/>
-			
+
 			<!-- Persona -->
-			<Label Grid.Row="8" Grid.Column="0"
+			<Label Grid.Row="13" Grid.Column="0"
 					FontWeight="Bold"
 					FontSize="16"
 					Content=" P E R S O N A "
 					HorizontalContentAlignment="Center"/>
-			<ComboBox Grid.Row="8" Grid.Column="1"
+			<ComboBox Grid.Row="13" Grid.Column="1"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Right"
 					Height="24"
@@ -160,13 +209,13 @@
 									Mode=TwoWay, 
 									UpdateSourceTrigger=PropertyChanged}"
 					SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="8" Grid.Column="2" 
+			<CheckBox Grid.Row="13" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinPersonaTypeChoice}"/>
 
-			<TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"
+			<TextBlock Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"
 						Height="60"
 						Width="600"
 						HorizontalAlignment="Right"
@@ -175,14 +224,14 @@
 						Text="{Binding SelectedPersonaType.Description}"
 						TextAlignment="Right"
 						TextWrapping="Wrap"/>
-			
+
 			<!-- Spirit -->
-			<Label Grid.Row="11" Grid.Column="0"
+			<Label Grid.Row="16" Grid.Column="0"
 					FontWeight="Bold"
 					FontSize="18"
 					Content=" S P I R I T "
 					HorizontalContentAlignment="Center"/>
-			<ComboBox Grid.Row="11" Grid.Column="1"
+			<ComboBox Grid.Row="16" Grid.Column="1"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Right"
 					Height="24"
@@ -192,13 +241,13 @@
 									Mode=TwoWay, 
 									UpdateSourceTrigger=PropertyChanged}"
 					SelectionChanged="Archetye_OnSelectionChanged"/>
-			<CheckBox Grid.Row="11" Grid.Column="2" 
+			<CheckBox Grid.Row="16" Grid.Column="2" 
 					  Width="16" Height="16" 
 					  HorizontalAlignment="Center" VerticalAlignment="Center" 
 					  Margin="0,0,0,0" 
 					  IsChecked="{Binding PinSpiritTypeChoice}"/>
 
-			<TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"
+			<TextBlock Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"
 						Height="60"
 						Width="600"
 						HorizontalAlignment="Right"
@@ -235,20 +284,27 @@
                     Click="UseThisPlayer_OnClick"/>
 
 			</Grid>
-			
+
 		</Grid>
-		
 
-		<!-- Attribute Reporting Grid-->
-		<!-- For Conditional Formatting: 
-		https://www.codeproject.com/articles/683429/guide-to-wpf-datagrid-formatting-using-bindings -->
-		<!-- TODO: Move totals directly under Attribute DataGrid-->
+		<!-- Attribute Grid / Right Half -->
+		<Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width ="Auto" Background="LightGoldenrodYellow">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
 
-		<DataGrid x:Name="AttributeGrid"
-				  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+			<DataGrid x:Name="AttributeGrid"
+				  Grid.Row="0" Grid.Column="0" 
                   ItemsSource="{Binding PlayerAttributes}"
                   AutoGenerateColumns="False"
 				  
+					  HorizontalContentAlignment="Stretch"
+					  HorizontalAlignment="Stretch"
+					  Width="630"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
 				  CanUserResizeRows="False"
@@ -258,77 +314,78 @@
                   HeadersVisibility="Column"
 				  AlternatingRowBackground="LightGoldenrodYellow">
 
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="Attribute"
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Attribute"
                                     Binding="{Binding DisplayName}"
                                     Width="*"/>
 
-				<DataGridTextColumn Header="Roll"
+					<DataGridTextColumn Header="Roll"
                                     Binding="{Binding BaseValue}"
 									Width="50">
-					<DataGridTextColumn.ElementStyle>
-						<Style TargetType="TextBlock">
-							<Setter Property="HorizontalAlignment" Value="Right" />
-						</Style>
-					</DataGridTextColumn.ElementStyle>
-				</DataGridTextColumn>
+						<DataGridTextColumn.ElementStyle>
+							<Style TargetType="TextBlock">
+								<Setter Property="HorizontalAlignment" Value="Right" />
+							</Style>
+						</DataGridTextColumn.ElementStyle>
+					</DataGridTextColumn>
 
-				<DataGridTextColumn Header="Mod"
-									Binding="{Binding Modifier}"
+					<DataGridTextColumn Header="Mod"
+									Binding="{Binding Modifier, StringFormat='\{0\}%'}"
 									Width="50">
-					<DataGridTextColumn.ElementStyle>
-						<Style TargetType="TextBlock">
-							<Setter Property="HorizontalAlignment" Value="Right" />
-						</Style>
-					</DataGridTextColumn.ElementStyle>
-				</DataGridTextColumn>
+						<DataGridTextColumn.ElementStyle>
+							<Style TargetType="TextBlock">
+								<Setter Property="HorizontalAlignment" Value="Right" />
+							</Style>
+						</DataGridTextColumn.ElementStyle>
+					</DataGridTextColumn>
 
-				<DataGridTextColumn Header="Net"
+					<DataGridTextColumn Header="Net"
                                     Binding="{Binding ModifiedValue}"
                                     Visibility="{Binding HasArchetypeAttributeModifiers, 
                                                  Converter={StaticResource BooleanToVisibilityConverter}}"
 									Width="50">
-					<DataGridTextColumn.ElementStyle>
-						<Style TargetType="TextBlock">
-							<Setter Property="HorizontalAlignment" Value="Right" />
-						</Style>
-					</DataGridTextColumn.ElementStyle>
-				</DataGridTextColumn>
-			</DataGrid.Columns>
+						<DataGridTextColumn.ElementStyle>
+							<Style TargetType="TextBlock">
+								<Setter Property="HorizontalAlignment" Value="Right" />
+							</Style>
+						</DataGridTextColumn.ElementStyle>
+					</DataGridTextColumn>
+				</DataGrid.Columns>
 
-		</DataGrid>
+			</DataGrid>
 
-		<!-- Totals Row -->
-		<Grid Grid.Row="2" Grid.Column="2"
-			  Grid.ColumnSpan="2">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="50"/>
-				<ColumnDefinition Width="50"/>
-				<ColumnDefinition Width="50"/>
-			</Grid.ColumnDefinitions>
+			<!-- Totals Row -->
+			<Grid Grid.Row="1" Grid.Column="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="50"/>
+					<ColumnDefinition Width="50"/>
+					<ColumnDefinition Width="50"/>
+				</Grid.ColumnDefinitions>
 
-			<Label Grid.Row="0" Grid.Column="0"
+				<Label Grid.Row="0" Grid.Column="0"
 			   Content="Totals:"
 			   FontWeight="Bold"
 				HorizontalContentAlignment="Right">
-			</Label>
+				</Label>
 
-			<Label Grid.Row="0" Grid.Column="1"
+				<Label Grid.Row="0" Grid.Column="1"
 			   Content="{Binding TotalRoll}"
 				HorizontalContentAlignment="Right">
-			</Label>
+				</Label>
 
-			<Label Grid.Row="0" Grid.Column="2"
+				<Label Grid.Row="0" Grid.Column="2"
 			   Content="{Binding TotalMod}"
 				HorizontalContentAlignment="Right">
-			</Label>
+				</Label>
 
-			<Label Grid.Row="0" Grid.Column="3"
+				<Label Grid.Row="0" Grid.Column="3"
 			   Content="{Binding TotalNet}"
 				HorizontalContentAlignment="Right">
-			</Label>
+				</Label>
 
+			</Grid>
+			
 		</Grid>
 		
 	</Grid>

@@ -7,119 +7,519 @@
     {
       "Key": "BEU",
       "DisplayName": "Beauty",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "CDO",
       "DisplayName": "Cardio",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "CON",
       "DisplayName": "Confidence",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "COM",
       "DisplayName": "Composure",
-      "DiceNotation": "5d20"},
+      "DiceNotation": "3d33"},
     {
       "Key": "CRE",
       "DisplayName": "Creativity",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "EMP",
       "DisplayName": "Empathy",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "EXT",
       "DisplayName": "Extraversion",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "FLX",
       "DisplayName": "Flexibility",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "FMS",
       "DisplayName": "Fine Motor Skill",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "GMS",
       "DisplayName": "Gross Motor Skill",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "GRT",
       "DisplayName": "Grit",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "HGT",
       "DisplayName": "Height",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "HED",
       "DisplayName": "Hedonism",
-      "DiceNotation": "5d20"},
+      "DiceNotation": "3d33"},
     {
       "Key": "HOM",
       "DisplayName": "Homeostasis",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "LOG",
       "DisplayName": "Logical Intelligence",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "PTC",
       "DisplayName": "Patience",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "RCT",
       "DisplayName": "Reaction",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "SEN",
       "DisplayName": "Sensitivity",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "SIZ",
       "DisplayName": "Size",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "SPA",
       "DisplayName": "Spatial Intelligence",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "STR",
       "DisplayName": "Strength",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "TMP",
       "DisplayName": "Temperament",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     },
     {
       "Key": "VER",
       "DisplayName": "Verbal Intelligence",
-      "DiceNotation": "5d20"
+      "DiceNotation": "3d33"
     }]
 ,
 
   "Archetypes": [
+    {
+      "Key": "MaleSex",
+      "DisplayName": "Male",
+      "Group": "Sex",
+      "Description": "AMAB",
+      "AttributeModifiers": [{
+          "Key": "HOM",
+          "Modifier": "-18"},
+        {
+          "Key": "EXT",
+          "Modifier": "-18"},
+        {
+          "Key": "STR",
+          "Modifier": "36"
+        },{
+          "Key": "SIZ",
+          "Modifier": "4"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "4"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "4"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "4"},
+        {
+          "Key": "TMP",
+          "Modifier": "-4"},
+        {
+          "Key": "COM",
+          "Modifier": "-4"},
+        {
+          "Key": "IMM",
+          "Modifier": "-4"}]},
+    {
+      "Key": "FemaleSex",
+      "DisplayName": "Female",
+      "Group": "Sex",
+      "Description": "AFAB",
+      "AttributeModifiers": [
+        {
+          "Key": "HOM",
+          "Modifier": "18"},
+        {
+          "Key": "EXT",
+          "Modifier": "18"},
+        {
+          "Key": "STR",
+          "Modifier": "-36"
+        },
+        {
+          "Key": "VER",
+          "Modifier": "4"},
+        {
+          "Key": "COM",
+          "Modifier": "4"},
+        {
+          "Key": "IMM",
+          "Modifier": "4"},{
+          "Key": "SIZ",
+          "Modifier": "-4"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "-4"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "-4"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "-4"}]},
+    {
+      "Key": "DECLINESEX",
+      "DisplayName": "Decline",
+      "Group": "Sex",
+      "Description": "You will have to roleplay that.",
+      "AttributeModifiers": [{
+          "Key": "SIZ",
+          "Modifier": "0"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "0"
+        }]},
+    {
+      "Key": "ALPHAHUMAN",
+      "DisplayName": "Alpha-Human",
+      "Group": "Race",
+      "Description": "Your genes were carefully altered to give you the best chances. The aristocracy wouldn't have it any other way.",
+      "AttributeModifiers": [{
+          "Key": "HOM",
+          "Modifier": "10"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "CDO",
+          "Modifier": "10"},
+        {
+          "Key": "BEU",
+          "Modifier": "10"},
+        {
+          "Key": "EMP",
+          "Modifier": "-20"},
+        {
+          "Key": "GRT",
+          "Modifier": "-40"},
+        {
+          "Key": "PTC",
+          "Modifier": "-20"}]},
+    {
+      "Key": "BETAHUMAN",
+      "DisplayName": "Beta-Human",
+      "Group": "Race",
+      "Description": "Baseline human. Does not necessarily mean you will eat the bugs.",
+      "AttributeModifiers": [{
+          "Key": "SIZ",
+          "Modifier": "0"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "0"
+        }]},
+    {
+      "Key": "GAMMAHUMAN",
+      "DisplayName": "Gamma-Homunculus",
+      "Group": "Race",
+      "Description": "Executively-hamstrung soldier and enforcer caste. They must be constantly programmed, or else they are subject to an avolitional disorder.",
+      "AttributeModifiers": [{
+          "Key": "BEU",
+          "Modifier": "10"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "10"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "10"},
+        {
+          "Key": "CDO",
+          "Modifier": "10"},
+        {
+          "Key": "HOM",
+          "Modifier": "10"},
+        {
+          "Key": "GRT",
+          "Modifier": "-100"}]},
+    {
+      "Key": "DELTAHUMAN",
+      "DisplayName": "Delta-Homunculus",
+      "Group": "Race",
+      "Description": "Ape-human hybrids developed as a servant class.",
+      "AttributeModifiers": [{
+          "Key": "SEN",
+          "Modifier": "25"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "25"
+        },
+        {
+          "Key": "GMS",
+          "Modifier": "25"},
+        {
+          "Key": "FMS",
+          "Modifier": "25"},
+        {
+          "Key": "RCT",
+          "Modifier": "25"},
+        {
+          "Key": "FLX",
+          "Modifier": "25"},
+        {
+          "Key": "LOG",
+          "Modifier": "25"},
+        {
+          "Key": "EMP",
+          "Modifier": "-50"},
+        {
+          "Key": "EXT",
+          "Modifier": "-50"},
+        {
+          "Key": "SIZ",
+          "Modifier": "-50"},
+        {
+          "Key": "HGT",
+          "Modifier": "-50"},
+        {
+          "Key": "STR",
+          "Modifier": "25"},
+        {
+          "Key": "VER",
+          "Modifier": "-50"},
+        {
+          "Key": "PTC",
+          "Modifier": "-50"}]},
+    {
+      "Key": "OMEGAHUMAN",
+      "DisplayName": "Omega-Homunculus",
+      "Group": "Race",
+      "Description": "Short, squat humanoids developed for dangerous work and organ farming.",
+      "AttributeModifiers": [{
+          "Key": "SIZ",
+          "Modifier": "10"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "-20"
+        },
+        {
+          "Key": "HOM",
+          "Modifier": "-10"},
+        {
+          "Key": "STR",
+          "Modifier": "10"},
+        {
+          "Key": "TMP",
+          "Modifier": "10"},
+        {
+          "Key": "CDO",
+          "Modifier": "-10"},
+        {
+          "Key": "BTY",
+          "Modifier": "-20"}]},
+    {
+      "Key": "PYTHEAN",
+      "DisplayName": "Pythean",
+      "Group": "Race",
+      "Description": "Those raised in deep space who seek the relics of an unknown civilization.",
+      "AttributeModifiers": [
+        {
+          "Key": "BEU",
+          "Modifier": "10"},
+        {
+          "Key": "EMP",
+          "Modifier": "10"},{
+          "Key": "HGT",
+          "Modifier": "10"
+        },
+        {
+          "Key": "PTC",
+          "Modifier": "10"},
+        {
+          "Key": "SEN",
+          "Modifier": "10"},
+        {
+          "Key": "SPA",
+          "Modifier": "10"},
+        {
+          "Key": "CDO",
+          "Modifier": "-10"},
+        {
+          "Key": "EXT",
+          "Modifier": "-10"},
+        {
+          "Key": "SIZ",
+          "Modifier": "-30"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "-40"},
+        {
+          "Key": "HOM",
+          "Modifier": "-30"}]},
+    {
+      "Key": "YETI",
+      "DisplayName": "Yeti",
+      "Group": "Race",
+      "Description": "Our Cro-Magnoid cousins, back from the underdepths!",
+      "AttributeModifiers": [{
+          "Key": "SIZ",
+          "Modifier": "15"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "15"
+        },
+        {
+          "Key": "EXT",
+          "Modifier": "-30"},
+        {
+          "Key": "HGT",
+          "Modifier": "15"},
+        {
+          "Key": "FMS",
+          "Modifier": "-30"},
+        {
+          "Key": "RCT",
+          "Modifier": "-30"}]},
+    {
+      "Key": "GAMER",
+      "DisplayName": "Gamer",
+      "Group": "Race",
+      "Description": "A race bred to be drone pilots, and not really worth much else.",
+      "AttributeModifiers": [{
+          "Key": "RCT",
+          "Modifier": "30"
+        },
+        {
+          "Key": "FMS",
+          "Modifier": "30"
+        },
+        {
+          "Key": "SPA",
+          "Modifier": "30"},
+        {
+          "Key": "FLX",
+          "Modifier": "-15"},
+        {
+          "Key": "VER",
+          "Modifier": "-15"},
+        {
+          "Key": "EXT",
+          "Modifier": "-30"},
+        {
+          "Key": "COM",
+          "Modifier": "-30"},
+        {
+          "Key": "STR",
+          "Modifier": "-30"},
+        {
+          "Key": "BEU",
+          "Modifier": "-30"},
+        {
+          "Key": "HOM",
+          "Modifier": "-30"}]},
+    {
+      "Key": "TOOFER",
+      "DisplayName": "Toofer",
+      "Group": "Race",
+      "Description": "\"Homo Duplex,\" a breed of human from North America.",
+      "AttributeModifiers": [{
+          "Key": "SIZ",
+          "Modifier": "50"
+        },
+        {
+          "Key": "HGT",
+          "Modifier": "25"},
+        {
+          "Key": "CON",
+          "Modifier": "25"},
+        {
+          "Key": "STR",
+          "Modifier": "-25"
+        },
+        {
+          "Key": "FMS",
+          "Modifier": "-25"},
+        {
+          "Key": "VER",
+          "Modifier": "-50"},
+        {
+          "Key": "LOG",
+          "Modifier": "-50"},
+        {
+          "Key": "CDO",
+          "Modifier": "-50"}]},
+    {
+      "Key": "FATSO",
+      "DisplayName": "Fatso",
+      "Group": "Body",
+      "Description": "You're a fat person. You're expecting this to have advantages.",
+      "AttributeModifiers": [
+        {
+          "Key": "HED",
+          "Modifier": "20"},
+        {
+          "Key": "SEN",
+          "Modifier": "20"},
+        {
+          "Key": "FMS",
+          "Modifier": "-20"},
+        {
+          "Key": "GRT",
+          "Modifier": "-20"},
+        {
+          "Key": "BEU",
+          "Modifier": "-20"},
+        {
+          "Key": "COM",
+          "Modifier": "-20"},{
+          "Key": "SIZ",
+          "Modifier": "40"
+        },
+        {
+          "Key": "STR",
+          "Modifier": "-40"
+        },
+        {
+          "Key": "CDO",
+          "Modifier": "-40"}]},
     {
       "Key": "BEANPOLE",
       "DisplayName": "Beanpole",
@@ -1642,6 +2042,50 @@
         {
           "Key": "SEN",
           "Modifier": "0"
-        }]}
+        }]},
+    {
+      "Key": "LIAR",
+      "DisplayName": "Liar",
+      "Group": "Mind",
+      "Description": "You really should see about those pants.",
+      "AttributeModifiers": [{
+          "Key": "CRE",
+          "Modifier": "10"
+        },
+        {
+          "Key": "COM",
+          "Modifier": "10"
+        },
+        {
+          "Key": "EMP",
+          "Modifier": "-20"},
+        {
+          "Key": "GRT",
+          "Modifier": "-20"}]},
+    {
+      "Key": "KNOWITALL",
+      "DisplayName": "Know-it-All",
+      "Group": "Persona",
+      "Description": "Wow, that's crazy. ",
+      "AttributeModifiers": [{
+          "Key": "VER",
+          "Modifier": "10"
+        },
+        {
+          "Key": "LOG",
+          "Modifier": "20"
+        },
+        {
+          "Key": "CON",
+          "Modifier": "10"},
+        {
+          "Key": "COM",
+          "Modifier": "-20"},
+        {
+          "Key": "EMP",
+          "Modifier": "-40"},
+        {
+          "Key": "SEN",
+          "Modifier": "-20"}]}
   ]
 }

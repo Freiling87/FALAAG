@@ -55,6 +55,8 @@ namespace Engine.Services
                 gameDetails.BodyTypes = gameDetails.Archetypes.Where(a => a.Group == "Body").ToList();
                 gameDetails.MindTypes = gameDetails.Archetypes.Where(a => a.Group == "Mind").ToList();
                 gameDetails.PersonaTypes = gameDetails.Archetypes.Where(a => a.Group == "Persona").ToList();
+                gameDetails.Races = gameDetails.Archetypes.Where(a => a.Group == "Race").ToList();
+                gameDetails.Sexes = gameDetails.Archetypes.Where(a => a.Group == "Sex").ToList();
                 gameDetails.SpiritTypes = gameDetails.Archetypes.Where(a => a.Group == "Spirit").ToList();
 
             }
