@@ -50,6 +50,7 @@ namespace Engine.Models
                     _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
             }
         }
+        public string DescriptionLong { get; set; }
 		public int HpCur { get; private set; }
 		public int HpMax { get; protected set; }
 		public string ID { 
@@ -67,7 +68,7 @@ namespace Engine.Models
 		}
 		public string NameActual { get; private set; }
 		public string NameGeneral { get; private set; }
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         public bool UseActualName
 		{
             get => _useActualName; 

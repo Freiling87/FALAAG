@@ -15,6 +15,7 @@ namespace FALAAG.ViewModels
         private int _totalNet;
         private bool _pinName;
 
+        public string DescriptionFull { get; set; }
         public GameDetails GameDetails { get; }
         public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
@@ -90,9 +91,14 @@ namespace FALAAG.ViewModels
 
             ApplyAttributeModifiers();
             RetotalAggregateMeasures();
+            GenerateFullDescription();
         }
 
-        public string RollRandomName()
+		private void GenerateFullDescription()
+		{
+		}
+
+		public string RollRandomName()
 		{
             return "John Doe";
 		}
