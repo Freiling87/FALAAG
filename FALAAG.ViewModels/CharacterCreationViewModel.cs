@@ -52,7 +52,7 @@ namespace FALAAG.ViewModels
         public bool PinBodyTypeChoice { get; set; }
         public bool PinMindTypeChoice { get; set; }
 		public bool PinPersonaTypeChoice { get; set; }
-        public bool PinRaceChoice { get; set; }
+        public bool PinRace { get; set; }
         public bool PinSex { get; set; }
 		public bool PinSpiritTypeChoice { get; set; }
         public Archetype SelectedBodyType { get; set; }
@@ -85,7 +85,7 @@ namespace FALAAG.ViewModels
             if (!PinPersonaTypeChoice)
                 SelectedPersonaType = RandomPersonaType();
 
-            if (!PinRaceChoice)
+            if (!PinRace)
                 SelectedRace = RandomRace();
 
             if (!PinSpiritTypeChoice)

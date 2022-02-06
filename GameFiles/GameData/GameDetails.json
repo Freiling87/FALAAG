@@ -121,7 +121,7 @@
 
   "Archetypes": [
     {
-      "Key": "MaleSex",
+      "Key": "MALE",
       "DisplayName": "Male",
       "Group": "Sex",
       "Description": "AMAB",
@@ -159,7 +159,7 @@
           "Key": "IMM",
           "Modifier": "-4"}]},
     {
-      "Key": "FemaleSex",
+      "Key": "FEMALE",
       "DisplayName": "Female",
       "Group": "Sex",
       "Description": "AFAB",
