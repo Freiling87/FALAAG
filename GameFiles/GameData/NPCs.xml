@@ -54,10 +54,10 @@
 		</LootItems>
 	</NPC>
 
-	<NPC ID="Pigeon" NameGeneral="Pigeon" ImagePath="Pigeon_01.jpg" HpMax="10" WeaponID="Beak" XPReward="10" Cash="0" Faction="Pigeons">
+	<NPC ID="Pigeon" NameGeneral="Pigeon" ImagePath="Pigeon_01.jpg" HpMax="10" WeaponID="BeakWeapon" XPReward="10" Cash="0" Faction="Pigeons">
 		<Dexterity>90</Dexterity>
 		<LootItems>
-			<LootItem ID="Beak" Percentage="100"/>
+			<LootItem ID="BeakMisc" Percentage="100"/>
 		</LootItems>
 	</NPC>
 

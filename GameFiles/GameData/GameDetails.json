@@ -2031,19 +2031,6 @@
           "Key": "TMP",
           "Modifier": "-30"}]},
     {
-      "Key": "SPIRIT",
-      "DisplayName": "Placeholder",
-      "Group": "Spirit",
-      "Description": "Might remove this category.",
-      "AttributeModifiers": [{
-          "Key": "CON",
-          "Modifier": "0"
-        },
-        {
-          "Key": "SEN",
-          "Modifier": "0"
-        }]},
-    {
       "Key": "LIAR",
       "DisplayName": "Liar",
       "Group": "Mind",
@@ -2086,6 +2073,19 @@
           "Modifier": "-40"},
         {
           "Key": "SEN",
-          "Modifier": "-20"}]}
+          "Modifier": "-20"}]},
+    {
+      "Key": "SPIRIT",
+      "DisplayName": "Placeholder",
+      "Group": "Spirit",
+      "Description": "Might remove this category.",
+      "AttributeModifiers": [{
+          "Key": "CON",
+          "Modifier": "0"
+        },
+        {
+          "Key": "SEN",
+          "Modifier": "0"
+        }]}
   ]
 }

@@ -185,7 +185,7 @@
 		<Description>Gross, but honestly kind of cool. Wait, I shouldn't encourage you.</Description>
 
 		<Ingredients>
-			<Item ID="Beak" Quantity="13"/>
+			<Item ID="BeakMisc" Quantity="13"/>
 			<Item ID="BitsAndBobs" Quantity="1"/>
 		</Ingredients>
 

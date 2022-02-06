@@ -2,7 +2,7 @@
 using D20Tek.DiceNotation.DieRoller;
 using System;
 
-namespace Engine.Services
+namespace FALAAG.Core
 {
     public class DiceService : IDiceService
     {

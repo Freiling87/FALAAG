@@ -2,7 +2,7 @@
 <Items>
 	
   <Weapons>
-		<Weapon ID="Beak" Name="Beak" Description="The pokey thing on the front of birds." Value="0" DamageDice="1d2"/>
+		<Weapon ID="BeakWeapon" Name="Beak" Description="The pokey thing on the front of birds." Value="0" DamageDice="1d2"/>
 		<Weapon ID="BareHands" Name="Bare Hands" Description="You... know what hands are, right?" Value="0" DamageDice="1d12"/>
 		<Weapon ID="BarFlySwatter" Name="Bar Fly Swatter" Description="A baseball bat wrapped in medical gauze. For when you don't want to kill your customers, just get them out the door." Value="20" DamageDice="10d2"/>
 		<Weapon ID="BaseballBat" Name="Baseball Bat" Description="It's just a Slugger now. Louisville is gone." Value="25" DamageDice="12d2"/>
@@ -30,6 +30,7 @@
   </HealingItems>
 			
   <MiscellaneousItems>
+		<MiscellaneousItem ID="BeakMisc" Name="Beak" Description="The pokey thing on the front of birds." Value="0"/>
     <MiscellaneousItem ID="BitsAndBobs" Name="Bits and Bobs" Description="Nails, twine, shit like that. This is not a hoarding simulator." Value="2"/>
 		<MiscellaneousItem ID="BarToken" Name="BarToken" Description="A plastic token that looks like a poker chip. It's emblazoned with the logo for a place called {ItemCreatorBusiness}." Value="0"/>
 		<MiscellaneousItem ID="DeepReælHeadset" Name="DeepReæl Headset" Description="A VR headset that induces dreams in the user. Most commonly seen on the heads of Sleepwalkers, oblivious to their surroundings. It's reinforced because they so often fall and hit their heads on concrete." Value="20"/>

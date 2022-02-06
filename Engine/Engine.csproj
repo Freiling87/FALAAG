@@ -206,6 +206,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FALAAG.Core\FALAAG.Core.csproj" />
     <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
   </ItemGroup>
 

@@ -68,7 +68,6 @@ namespace Engine.Models
 		}
 		public string NameActual { get; private set; }
 		public string NameGeneral { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
         public bool UseActualName
 		{
             get => _useActualName; 
