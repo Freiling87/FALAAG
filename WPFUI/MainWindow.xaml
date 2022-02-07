@@ -69,7 +69,6 @@
 			<!-- Player Inventory Details -->
 			<Canvas Top="{Binding InventoryDetails.Top}" Left="{Binding InventoryDetails.Left}"
                     Width="Auto" Height="Auto"
-                    x:Name="PlayerInventoryDetailsPopup"
                     MinHeight="{Binding InventoryDetails.MinHeight}"
                     MaxHeight="{Binding InventoryDetails.MaxHeight}"
                     MinWidth="{Binding InventoryDetails.MinWidth}"
@@ -137,6 +136,158 @@
 
 			</Canvas>
 
+			<!-- Player Jobs Details -->
+			<Canvas Top="{Binding JobDetails.Top}" Left="{Binding JobDetails.Left}"
+                    Width="Auto" Height="Auto"
+                    MinHeight="{Binding JobDetails.MinHeight}"
+                    MaxHeight="{Binding JobDetails.MaxHeight}"
+                    MinWidth="{Binding JobDetails.MinWidth}"
+                    MaxWidth="{Binding JobDetails.MaxWidth}"
+                    Visibility="{Binding JobDetails.IsVisible, Converter={StaticResource BooleanToVisibility}}">
+
+				<Border BorderBrush="Navy" BorderThickness="3"
+                        Background="LightSteelBlue">
+
+					<Grid Margin="2,2,2,2">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="4"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Row="0" Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Content="Jobs"/>
+
+						<Button Grid.Row="0" Grid.Column="1"
+                                Width="25"
+                                FontWeight="Bold"
+                                Content="X"
+                                Click="CloseJobsWindow_OnClick">
+							<Button.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="3"/>
+								</Style>
+							</Button.Resources>
+						</Button>
+
+						<DataGrid Grid.Row="2" Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  ItemsSource="{Binding Player.JobsActive}"
+                                  AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  VerticalScrollBarVisibility="Auto"
+                                  MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=MaxHeight}"
+                                  Width="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=ActualWidth}">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="Name"
+                                                    Binding="{Binding Job.Name, Mode=OneWay}"
+                                                    Width="*">
+									<DataGridTextColumn.CellStyle>
+										<Style TargetType="DataGridCell">
+											<Setter Property="ToolTip"
+                                                    Value="{Binding Job.ToolTipContents}"/>
+										</Style>
+									</DataGridTextColumn.CellStyle>
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Done?"
+                                                    Binding="{Binding IsCompleted, Mode=OneWay}"
+                                                    Width="Auto"/>
+							</DataGrid.Columns>
+						</DataGrid>
+
+					</Grid>
+
+				</Border>
+
+			</Canvas>
+
+			<!-- Player Recipes Details -->
+			<Canvas Top="{Binding RecipesDetails.Top}" Left="{Binding RecipesDetails.Left}"
+                    Width="Auto" Height="Auto"
+                    MinHeight="{Binding RecipesDetails.MinHeight}"
+                    MaxHeight="{Binding RecipesDetails.MaxHeight}"
+                    MinWidth="{Binding RecipesDetails.MinWidth}"
+                    MaxWidth="{Binding RecipesDetails.MaxWidth}"
+                    Visibility="{Binding RecipesDetails.IsVisible, Converter={StaticResource BooleanToVisibility}}">
+
+				<Border BorderBrush="Navy" BorderThickness="3"
+                        Background="LightSteelBlue">
+
+					<Grid Margin="2,2,2,2">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="4"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Row="0" Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Content="Recipes"/>
+
+						<Button Grid.Row="0" Grid.Column="1"
+                                Width="25"
+                                FontWeight="Bold"
+                                Content="X"
+                                Click="CloseRecipesWindow_OnClick">
+							<Button.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="3"/>
+								</Style>
+							</Button.Resources>
+						</Button>
+
+						<DataGrid Grid.Row="2" Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  ItemsSource="{Binding Player.RecipesKnown}"
+                                  AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  VerticalScrollBarVisibility="Auto"
+                                  MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=MaxHeight}"
+                                  Width="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=ActualWidth}">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="Name"
+                                                    Binding="{Binding Name, Mode=OneWay}"
+                                                    Width="*">
+									<DataGridTextColumn.CellStyle>
+										<Style TargetType="DataGridCell">
+											<Setter Property="ToolTip"
+                                                    Value="{Binding ToolTipContents}"/>
+										</Style>
+									</DataGridTextColumn.CellStyle>
+								</DataGridTextColumn>
+								<DataGridTemplateColumn MinWidth="75">
+									<DataGridTemplateColumn.CellTemplate>
+										<DataTemplate>
+											<Button Click="OnClick_Craft"
+                                                    Width="55"
+                                                    Content="Craft"/>
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+							</DataGrid.Columns>
+						</DataGrid>
+
+					</Grid>
+
+				</Border>
+
+			</Canvas>
+
 		</Canvas>
 
 		<!-- Player stats -->
@@ -156,12 +307,16 @@
 
 			<Label Grid.Row="0" Grid.Column="0" Content="Name:"/>
 			<Label Grid.Row="0" Grid.Column="1" Content="{Binding Player.Name}"/>
+			
 			<Label Grid.Row="1" Grid.Column="0" Content="HP:"/>
 			<Label Grid.Row="1" Grid.Column="1" Content="{Binding Player.HpCur}"/>
+			
 			<Label Grid.Row="2" Grid.Column="0" Content="Cash:"/>
 			<Label Grid.Row="2" Grid.Column="1" Content="{Binding Player.Cash}"/>
+			
 			<Label Grid.Row="3" Grid.Column="0" Content="XP:"/>
 			<Label Grid.Row="3" Grid.Column="1" Content="{Binding Player.Xp}"/>
+			
 			<Label Grid.Row="4" Grid.Column="0" Content="Level:"/>
 			<Label Grid.Row="4" Grid.Column="1" Content="{Binding Player.Level}"/>
 
@@ -204,7 +359,6 @@
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
-
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="3*"/>
 				<ColumnDefinition Width="2*"/>
@@ -300,92 +454,8 @@
 
 		</Grid>
 
-		<!-- Tabbed DataGrids -->
-		<Grid Grid.Row="2" Grid.Column="0" ZIndex="1"
-              Background="LightGoldenrodYellow">
-
-			<TabControl x:Name="PlayerDataTabControl">
-				
-				<!-- Inventory -->
-				<TabItem Header="Inventory"
-						 x:Name="InventoryTabItem">
-					<DataGrid ItemsSource="{Binding Player.Inventory.GroupedInventory}"
-                              AutoGenerateColumns="False"
-                              HeadersVisibility="Column">
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="Description"
-                                                Binding="{Binding Item.Name, Mode=OneWay}"
-                                                Width="*"/>
-							<DataGridTextColumn Header="Qty"
-                                                IsReadOnly="True"
-                                                Width="Auto"
-                                                Binding="{Binding Quantity, Mode=OneWay}"/>
-							<DataGridTextColumn Header="Value"
-                                                Binding="{Binding Item.Value, Mode=OneWay}"
-                                                Width="Auto"/>
-						</DataGrid.Columns>
-					</DataGrid>
-				</TabItem>
-
-				<!-- Recipes -->
-				<TabItem Header="Crafting"
-						x:Name="RecipesTabItem">
-					<DataGrid ItemsSource="{Binding Player.RecipesKnown}"
-							  AutoGenerateColumns="False"
-							  HeadersVisibility="Column">
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="Name"
-                                Binding="{Binding Name, Mode=OneWay}"
-                                Width="*">
-								<DataGridTextColumn.CellStyle>
-									<Style TargetType="DataGridCell">
-										<Setter Property="ToolTip"
-												Value="{Binding ToolTipContents}"/>
-									</Style>
-								</DataGridTextColumn.CellStyle>
-							</DataGridTextColumn>
-							<DataGridTemplateColumn MinWidth="75">
-								<DataGridTemplateColumn.CellTemplate>
-									<DataTemplate>
-										<Button Click="OnClick_Craft"
-												Width="55"
-												Content="Craft"/>
-									</DataTemplate>
-								</DataGridTemplateColumn.CellTemplate>
-							</DataGridTemplateColumn>
-						</DataGrid.Columns>
-					</DataGrid>
-				</TabItem>
-
-				<!-- Jobs -->
-				<TabItem Header="Jobs"
-						x:Name="JobsTabItem">
-					<DataGrid ItemsSource="{Binding Player.JobsActive}"
-							  AutoGenerateColumns="False"
-							  HeadersVisibility="Column">
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="Name"
-                                Binding="{Binding Job.Name, Mode=OneWay}"
-                                Width="*">
-								<DataGridTextColumn.CellStyle>
-									<Style TargetType="DataGridCell">
-										<Setter Property="ToolTip"
-												Value="{Binding Job.ToolTipContents}"/>
-									</Style>
-								</DataGridTextColumn.CellStyle>
-							</DataGridTextColumn>
-							<DataGridTextColumn Header="Done?"
-                                Binding="{Binding IsCompleted, Mode=OneWay}"
-                                Width="Auto"/>
-						</DataGrid.Columns>
-					</DataGrid>
-				</TabItem>
-
-			</TabControl>
-		</Grid>
-
 		<!-- Action controls -->
-		<Grid Grid.Row="2" Grid.Column="1" ZIndex="1"
+		<Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ZIndex="1"
               Background="Lavender">
 
 			<Grid.RowDefinitions>

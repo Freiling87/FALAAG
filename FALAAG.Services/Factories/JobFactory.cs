@@ -45,8 +45,8 @@ namespace FALAAG.Factories
                 }
 
                 _Jobs.Add(new Job(node.AttributeAsString("ID"),
-                                node.SelectSingleNode("./Name")?.InnerText ?? "",
-                                node.SelectSingleNode("./Description")?.InnerText ?? "",
+                                node.AttributeAsString("Name"),
+                                node.AttributeAsString("Description"),
                                 itemsToComplete,
                                 node.AttributeAsInt("RewardXP"),
                                 node.AttributeAsInt("RewardCash"),

@@ -51,7 +51,8 @@ namespace FALAAG.Factories
 
                 Recipe recipe =
                     new Recipe(node.AttributeAsString("ID"),
-                        node.SelectSingleNode("./Name")?.InnerText ?? "",
+                        node.AttributeAsString("Name"),
+                        node.AttributeAsString("Description"),
                         ingredients, outputItems);
 
                 _recipes.Add(recipe);

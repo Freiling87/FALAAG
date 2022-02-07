@@ -2,8 +2,7 @@
 
 <Recipes>
 
-	<Recipe ID="________" Name="________">
-		<Description>test</Description>
+	<Recipe ID="________" Name="________" Description="test">
 		<Ingredients>
 			<Item ID="________" Quantity="1"/>
 			<Item ID="________" Quantity="1"/>
@@ -14,8 +13,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="BarFlySwatter" Name="Bar Fly Swatter">
-		<Description>test</Description>
+	<Recipe ID="BarFlySwatter" Name="Bar Fly Swatter" Description="test">
 		<Ingredients>
 			<Item ID="BaseballBat" Quantity="1"/>
 			<Item ID="Gauze" Quantity="4"/>
@@ -25,8 +23,7 @@
 		</OutputItems>
 	</Recipe>
 	
-	<Recipe ID="HelmetCrude" Name="Crude Helmet">
-		<Description>test</Description>
+	<Recipe ID="HelmetCrude" Name="Crude Helmet" Description="test">
 		<Ingredients>
 			<Item ID="DeepReælHeadset" Quantity="1"/>
 			<Item ID="Screwdriver" Quantity="1"/>
@@ -38,8 +35,7 @@
 		</OutputItems>
 	</Recipe>
 	
-	<Recipe ID="ShivCrude_01" Name="Crude Shiv">
-		<Description>test</Description>
+	<Recipe ID="ShivCrude_01" Name="Crude Shiv" Description="test">
 		<Ingredients>
 			<Item ID="ShardOfGlass" Quantity="1"/>
 			<Item ID="Gauze" Quantity="1"/>
@@ -49,8 +45,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="ShivCrude_02" Name="Crude Shiv">
-		<Description>test</Description>
+	<Recipe ID="ShivCrude_02" Name="Crude Shiv" Description="test">
 		<Ingredients>
 			<Item ID="ShardOfMetal" Quantity="1"/>
 			<Item ID="DuctTape" Quantity="1"/>
@@ -60,8 +55,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="NailBat" Name="Nail Bat">
-		<Description>test</Description>
+	<Recipe ID="NailBat" Name="Nail Bat" Description="test">
 		<Ingredients>
 			<Item ID="BaseballBat" Quantity="1"/>
 			<Item ID="BitsAndBobs" Quantity="8"/>
@@ -71,8 +65,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="HandWraps_01" Name="Hand Wraps">
-		<Description>test</Description>
+	<Recipe ID="HandWraps_01" Name="Hand Wraps" Description="test">
 		<Ingredients>
 			<Item ID="Gauze" Quantity="3"/>
 		</Ingredients>
@@ -81,8 +74,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="HandWraps_02" Name="Hand Wraps">
-		<Description>test</Description>
+	<Recipe ID="HandWraps_02" Name="Hand Wraps" Description="test">
 		<Ingredients>
 			<Item ID="DuctTape" Quantity="3"/>
 		</Ingredients>
@@ -91,8 +83,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="HandWrapsSpiked" Name="Spiked Hand Wraps">
-		<Description>test</Description>
+	<Recipe ID="HandWrapsSpiked" Name="Spiked Hand Wraps" Description="test">
 		<Ingredients>
 			<Item ID="HandWraps" Quantity="1"/>
 			<Item ID="BitsAndBobs" Quantity="4"/>
@@ -102,9 +93,7 @@
 		</OutputItems>
 	</Recipe>
 
-	<Recipe ID="RatskinCoat" Name="Ratskin Coat">
-
-		<Description>Is there some sort of medication you're supposed to be taking?</Description>
+	<Recipe ID="RatskinCoat" Name="Ratskin Coat" Description="Is there some sort of medication you're supposed to be taking?">
 
 		<Ingredients>
 			<Item ID="RatSkin" Quantity="12"/>
@@ -117,9 +106,7 @@
 
 		</Recipe>
 
-	<Recipe ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat">
-
-		<Description>Add spikes to this freaky shit.</Description>
+	<Recipe ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat" Description="Add spikes to this freaky shit.">
 
 		<Ingredients>
 			<Item ID="RatSkinCoat" Quantity="1"/>
@@ -132,9 +119,7 @@
 
 		</Recipe>
 
-	<Recipe ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat">
-
-		<Description>Add armor plating, because why not?</Description>
+	<Recipe ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat" Description="Add armor plating, because why not?">
 
 		<Ingredients>
 			<Item ID="RatSkinCoat" Quantity="1"/>
@@ -149,9 +134,7 @@
 
 		</Recipe>
 
-	<Recipe ID="RatskinCoatFinal_01" Name="Ratsmasher Armor">
-
-		<Description>All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!</Description>
+	<Recipe ID="RatskinCoatFinal_01" Name="Ratsmasher Armor" Description="All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!">
 
 		<Ingredients>
 			<Item ID="RatSkinCoatReinforced" Quantity="1"/>
@@ -164,9 +147,7 @@
 
 		</Recipe>
 
-	<Recipe ID="RatskinCoatFinal_02" Name="Ratsmasher Armor">
-
-		<Description>All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!</Description>
+	<Recipe ID="RatskinCoatFinal_02" Name="Ratsmasher Armor" Description="All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!">
 
 		<Ingredients>
 			<Item ID="RatskinCoatSpiked" Quantity="1"/>
@@ -180,9 +161,7 @@
 
 		</Recipe>
 
-	<Recipe ID="BirdBeakNecklace" Name="Bird Beak Necklace">
-
-		<Description>Gross, but honestly kind of cool. Wait, I shouldn't encourage you.</Description>
+	<Recipe ID="BirdBeakNecklace" Name="Bird Beak Necklace" Description="Gross, but honestly kind of cool. Wait, I shouldn't encourage you.">
 
 		<Ingredients>
 			<Item ID="BeakMisc" Quantity="13"/>
@@ -195,9 +174,7 @@
 
 		</Recipe>
 
-	<Recipe ID="RatSkullNecklace" Name="Rat Skull Necklace">
-
-		<Description>Gross, but honestly kind of cool. Wait, I shouldn't encourage you.</Description>
+	<Recipe ID="RatSkullNecklace" Name="Rat Skull Necklace" Description="Gross, but honestly kind of cool. Wait, I shouldn't encourage you.">
 
 		<Ingredients>
 			<Item ID="RatSkull" Quantity="13"/>
@@ -210,9 +187,7 @@
 
 		</Recipe>
 
-	<Recipe ID="DogToothNecklace" Name="Dog Tooth Necklace">
-
-		<Description>Gross, but honestly kind of cool. Wait, I shouldn't encourage you.</Description>
+	<Recipe ID="DogToothNecklace" Name="Dog Tooth Necklace" Description="Gross, but honestly kind of cool. Wait, I shouldn't encourage you.">
 
 		<Ingredients>
 			<Item ID="DogTooth" Quantity="13"/>
@@ -225,9 +200,7 @@
 
 		</Recipe>
 
-	<Recipe ID="StreetDruidNecklace" Name="Street Druid Necklace">
-
-		<Description>Special. You and every schizophrenic wandering the streets.</Description>
+	<Recipe ID="StreetDruidNecklace" Name="Street Druid Necklace" Description="Special. You and every schizophrenic wandering the streets.">
 
 		<Ingredients>
 			<Item ID="DogToothNecklace" Quantity="1"/>

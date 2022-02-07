@@ -9,7 +9,9 @@ namespace FALAAG.Models
     {
         public string ID { get; }
         [JsonIgnore]
-        public string Name { get; set;  }
+        public string Name { get; set; }
+        [JsonIgnore]
+        public string Description { get; set; }
 
         [JsonIgnore] public List<ItemQuantity> Ingredients { get; }
         [JsonIgnore]
@@ -17,17 +19,21 @@ namespace FALAAG.Models
 
         [JsonIgnore]
         public string ToolTipContents =>
-            "Ingredients" + Environment.NewLine +
+            Name + Environment.NewLine + Environment.NewLine +
+            Description + Environment.NewLine + Environment.NewLine +
+
+            "Inputs" + Environment.NewLine +
             "===========" + Environment.NewLine +
             string.Join(Environment.NewLine, Ingredients.Select(i => i.QuantityItemDescription)) +
             Environment.NewLine + Environment.NewLine +
-            "Creates" + Environment.NewLine +
+            "Results" + Environment.NewLine +
             "===========" + Environment.NewLine +
             string.Join(Environment.NewLine, OutputItems.Select(i => i.QuantityItemDescription));
 
-        public Recipe(string id, string name, List<ItemQuantity> ingredients, List<ItemQuantity> outputItems)
+        public Recipe(string id, string name, string description, List<ItemQuantity> ingredients, List<ItemQuantity> outputItems)
         {
             ID = id;
+            Description = description;
             Name = name;
             Ingredients = ingredients;
             OutputItems = outputItems;

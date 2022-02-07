@@ -85,6 +85,8 @@ namespace FALAAG.ViewModels
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;
         public PopupDetails InventoryDetails { get; set; }
+        public PopupDetails JobDetails { get; set; }
+        public PopupDetails RecipesDetails { get; set; }
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -96,8 +98,28 @@ namespace FALAAG.ViewModels
             InventoryDetails = new PopupDetails
             {
                 IsVisible = false,
-                Top = 225,
+                Top = 500,
+                Left = 10,
+                MinHeight = 75,
+                MaxHeight = 175,
+                MinWidth = 250,
+                MaxWidth = 400
+            }; 
+            JobDetails = new PopupDetails
+            {
+                IsVisible = false,
+                Top = 500,
                 Left = 275,
+                MinHeight = 75,
+                MaxHeight = 175,
+                MinWidth = 250,
+                MaxWidth = 400
+            };
+            RecipesDetails = new PopupDetails
+            {
+                IsVisible = false,
+                Top = 500,
+                Left = 575,
                 MinHeight = 75,
                 MaxHeight = 175,
                 MinWidth = 250,
