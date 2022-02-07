@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.csproj" />
     <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
     <ProjectReference Include="..\FALAAG.Services\FALAAG.Services.csproj" />
   </ItemGroup>

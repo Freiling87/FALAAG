@@ -130,7 +130,7 @@
 			<CheckBox Grid.Row="5" Grid.Column="2" 
 					Width="16" Height="16" 
 					HorizontalAlignment="Center" VerticalAlignment="Center" 
-					IsChecked="{Binding PinSexChoice}"/>
+					IsChecked="{Binding PinSex}"/>
 
 			<!-- Body -->
 			<Label Grid.Row="7" Grid.Column="0"

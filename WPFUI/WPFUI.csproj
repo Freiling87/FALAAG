@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\FALAAG.Core\FALAAG.Core.csproj" />
     <ProjectReference Include="..\FALAAG.Models\FALAAG.Models.csproj" />
     <ProjectReference Include="..\FALAAG.ViewModels\FALAAG.ViewModels.csproj" />
   </ItemGroup>

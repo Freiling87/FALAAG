@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Services;
-using Engine.ViewModels;
-using FALAAG.Core;
+﻿using FALAAG.Core;
 
-namespace Engine.TimeSystem
+namespace FALAAG.TimeSystem
 {
 	public class ScheduledEvent
 	{
