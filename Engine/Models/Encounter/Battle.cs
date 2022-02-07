@@ -1,7 +1,7 @@
 ﻿using System;
 using FALAAG.Models.EventArgs;
 using FALAAG.Core;
-using static Engine.Services.CombatService;
+using Engine.Shared;
 
 namespace Engine.Models
 {
@@ -28,6 +28,22 @@ namespace Engine.Models
 
             if (FirstAttacker(_player, _opponent) == Combatant.Opponent)
                 AttackPlayer();
+        }
+
+        private enum Combatant
+        {
+            Player,
+            Opponent
+        }
+
+        private static Combatant FirstAttacker(Entity actor, Entity target)
+        {
+            int dexA = actor.GetAttribute("GMS").ModifiedValue + DiceService.Instance.Roll(10, 10).Value;
+            int dexB = target.GetAttribute("GMS").ModifiedValue + DiceService.Instance.Roll(10, 10).Value;
+
+            return dexA >= dexB
+                ? Combatant.Player
+                : Combatant.Opponent;
         }
 
         public void AttackOpponent()
