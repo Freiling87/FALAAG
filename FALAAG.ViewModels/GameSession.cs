@@ -84,6 +84,7 @@ namespace FALAAG.ViewModels
         public bool HasAutomat => CurrentAutomat != null;
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;
+        public PopupDetails InventoryDetails { get; set; }
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -91,6 +92,17 @@ namespace FALAAG.ViewModels
             CurrentWorld = WorldFactory.CreateWorld();
             Player = player;
             CurrentCell = CurrentWorld.LocationAt(x, y, z);
+
+            InventoryDetails = new PopupDetails
+            {
+                IsVisible = false,
+                Top = 225,
+                Left = 275,
+                MinHeight = 75,
+                MaxHeight = 175,
+                MinWidth = 250,
+                MaxWidth = 400
+            };
         }
 
         #endregion
