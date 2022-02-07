@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Engine.Models;
 using Engine.Services;
 using Engine.ViewModels;
 using Microsoft.Win32;
@@ -27,14 +28,14 @@ namespace WPFUI
 
             if (openFileDialog.ShowDialog() == true)
             {
-                GameSession gameSession =
+                GameState gameState =
                     SaveGameService.LoadLastSaveOrCreateNew(openFileDialog.FileName);
 
                 MainWindow mainWindow =
-                    new MainWindow(gameSession.Player,
-                                   gameSession.CurrentCell.X,
-                                   gameSession.CurrentCell.Y,
-                                   gameSession.CurrentCell.Z);
+                    new MainWindow(gameState.Player,
+                                   gameState.X,
+                                   gameState.Y,
+                                   gameState.Z);
 
                 mainWindow.Show();
                 Close();

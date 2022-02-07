@@ -2,7 +2,6 @@
 using System.IO;
 using Engine.Factories;
 using Engine.Models;
-using Engine.ViewModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
@@ -11,11 +10,11 @@ namespace Engine.Services
 {
     public static class SaveGameService
     {
-        public static void Save(GameSession gameSession, string filePath) =>
+        public static void Save(GameState gameState, string filePath) =>
             File.WriteAllText(filePath, 
-                JsonConvert.SerializeObject(gameSession, Formatting.Indented));
+                JsonConvert.SerializeObject(gameState, Formatting.Indented));
 
-        public static GameSession LoadLastSaveOrCreateNew(string filePath)
+        public static GameState LoadLastSaveOrCreateNew(string filePath)
         {
             if (!File.Exists(filePath)) 
                 throw new FileNotFoundException($"Filename: {filePath}");
@@ -24,10 +23,10 @@ namespace Engine.Services
             {
                 JObject data = JObject.Parse(File.ReadAllText(filePath));
                 Player player = CreatePlayer(data);
-                int x = (int)data[nameof(GameSession.CurrentCell)][nameof(Cell.X)];
-                int y = (int)data[nameof(GameSession.CurrentCell)][nameof(Cell.Y)];
-                int z = (int)data[nameof(GameSession.CurrentCell)][nameof(Cell.Z)];
-                return new GameSession(player, x, y, z);
+                int x = (int)data[nameof(GameState.X)];
+                int y = (int)data[nameof(GameState.Y)];
+                int z = (int)data[nameof(GameState.Z)];
+                return new GameState(player, x, y, z);
             }
             catch
 			{
@@ -38,13 +37,13 @@ namespace Engine.Services
         private static Player CreatePlayer(JObject data)
         {
             Player player =
-                new Player((string)data[nameof(GameSession.Player)][nameof(Player.Name)],
+                new Player((string)data[nameof(GameState.Player)][nameof(Player.Name)],
                             "Player",
-                           (int)data[nameof(GameSession.Player)][nameof(Player.Xp)],
-                           (int)data[nameof(GameSession.Player)][nameof(Player.HpMax)],
-                           (int)data[nameof(GameSession.Player)][nameof(Player.HpCur)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.Xp)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.HpMax)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.HpCur)],
                            GetPlayerAttributes(data),
-                           (int)data[nameof(GameSession.Player)][nameof(Player.Cash)]);
+                           (int)data[nameof(GameState.Player)][nameof(Player.Cash)]);
 
             PopulatePlayerInventory(data, player);
             PopulatePlayerJobs(data, player);
@@ -57,7 +56,7 @@ namespace Engine.Services
             List<EntityAttribute> attributes =
                 new List<EntityAttribute>();
 
-            foreach (JToken itemToken in (JArray)data[nameof(GameSession.Player)]
+            foreach (JToken itemToken in (JArray)data[nameof(GameState.Player)]
                 [nameof(Player.Attributes)])
             {
                 attributes.Add(new EntityAttribute(
@@ -73,7 +72,7 @@ namespace Engine.Services
         private static void PopulatePlayerInventory(JObject data, Player player)
         {
             foreach (JToken itemToken in (JArray)data
-                [nameof(GameSession.Player)]
+                [nameof(GameState.Player)]
                             [nameof(Player.Inventory)]
                                    [nameof(Inventory.Items)])
             {
@@ -84,7 +83,7 @@ namespace Engine.Services
         private static void PopulatePlayerJobs(JObject data, Player player)
         {
             foreach (JToken JobToken in (JArray)data
-                [nameof(GameSession.Player)]
+                [nameof(GameState.Player)]
                             [nameof(Player.JobsActive)])
             {
                 string ID = (string)JobToken[nameof(JobStatus.Job)][nameof(Job.ID)];
@@ -97,7 +96,7 @@ namespace Engine.Services
         private static void PopulatePlayerRecipes(JObject data, Player player)
         {
             foreach (JToken recipeToken in (JArray)data
-                [nameof(GameSession.Player)]
+                [nameof(GameState.Player)]
                             [nameof(Player.RecipesKnown)])
             {
                 string recipeId = (string)recipeToken[nameof(Recipe.ID)];

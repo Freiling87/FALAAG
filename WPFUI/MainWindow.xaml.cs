@@ -110,9 +110,12 @@ namespace WPFUI
                 };
 
             if (saveFileDialog.ShowDialog() == true)
-			{
-				SaveGameService.Save(_gameSession, saveFileDialog.FileName);
-			}
+            {
+                SaveGameService.Save(new GameState(_gameSession.Player,
+                    _gameSession.CurrentCell.X,
+                    _gameSession.CurrentCell.Y,
+                    _gameSession.CurrentCell.Z), saveFileDialog.FileName);
+            }
         }
         #endregion
         #region Narration
