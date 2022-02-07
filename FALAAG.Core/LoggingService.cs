@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace FALAAG.Services
+namespace FALAAG.Core
 {
     public static class LoggingService
     {

@@ -5,12 +5,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using FALAAG.Models.EventArgs;
 using Engine.Models;
 using Engine.Services;
 using Engine.ViewModels;
 using Microsoft.Win32;
 using WPFUI.Windows;
+using FALAAG.Core;
 
 namespace WPFUI
 {

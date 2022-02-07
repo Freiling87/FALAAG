@@ -19,7 +19,6 @@ namespace Engine.Models
         // Need to set in XML reader
         [JsonIgnore]
         public string ImagePath { get; }
-        public MessageBroker _messageBroker = MessageBroker.GetInstance();
 
         [JsonIgnore]
         public Automat AutomatHere { get; set; } // Temp

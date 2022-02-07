@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using FALAAG.Services;
+using FALAAG.Core;
 
 namespace WPFUI
 {

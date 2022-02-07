@@ -1,6 +1,6 @@
 ﻿using System;
 using FALAAG.Models.EventArgs;
-using Engine.Services;
+using FALAAG.Core;
 using static Engine.Services.CombatService;
 
 namespace Engine.Models

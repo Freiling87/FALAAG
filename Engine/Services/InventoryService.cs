@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Engine.Factories;
 using Engine.Models;
 
 namespace Engine.Services
@@ -13,27 +12,10 @@ namespace Engine.Services
     {
         public static Inventory AddItem(this Inventory inventory, Item item) =>
             inventory.AddItems(new List<Item> { item });
-
-        public static Inventory AddItemFromFactory(this Inventory inventory, string ID) => 
-            inventory.AddItems(new List<Item> { ItemFactory.CreateItem(ID) });
-
         public static Inventory AddItems(this Inventory inventory, IEnumerable<Item> items) =>
             new Inventory(inventory.Items.Concat(items));
-
-        public static Inventory AddItems(this Inventory inventory, IEnumerable<ItemQuantity> itemQuantities)
-        {
-            List<Item> itemsToAdd = new List<Item>();
-
-            foreach (ItemQuantity itemQuantity in itemQuantities)
-                for (int i = 0; i < itemQuantity.Quantity; i++)
-                    itemsToAdd.Add(ItemFactory.CreateItem(itemQuantity.ID));
-
-            return inventory.AddItems(itemsToAdd);
-        }
-
         public static Inventory RemoveItem(this Inventory inventory, Item item) =>
             inventory.RemoveItems(new List<Item> { item });
-
         public static Inventory RemoveItems(this Inventory inventory, IEnumerable<Item> items)
         {
             // REFACTOR: Look for a cleaner solution, with fewer temporary variables.
@@ -45,9 +27,7 @@ namespace Engine.Services
 
             return new Inventory(workingInventory);
         }
-
-        public static Inventory RemoveItems(this Inventory inventory,
-                                            IEnumerable<ItemQuantity> itemQuantities)
+        public static Inventory RemoveItems(this Inventory inventory,IEnumerable<ItemQuantity> itemQuantities)
         {
             // REFACTOR
             Inventory workingInventory = inventory;
@@ -58,8 +38,5 @@ namespace Engine.Services
 
             return workingInventory;
         }
-
-        public static List<Item> ItemsThatAre(this IEnumerable<Item> inventory, Item.ItemCategory category) =>
-            inventory.Where(i => i.Category == category).ToList();
     }
 }

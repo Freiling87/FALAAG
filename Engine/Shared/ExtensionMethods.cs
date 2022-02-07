@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Xml;
 using Engine.Models;
+using System.Collections.Generic;
 
 namespace Engine.Shared
 {
@@ -40,5 +41,8 @@ namespace Engine.Shared
         {
             return entity.Attributes.First(pa => pa.Key.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
         }
+
+        public static List<Item> ItemsThatAre(this IEnumerable<Item> inventory, Item.ItemCategory category) =>
+            inventory.Where(i => i.Category == category).ToList();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using FALAAG.Models.EventArgs;
 
 /* For info on why Singleton as opposed to Static, 
  * As well as general info on the MessageBroker pattern:
@@ -10,7 +9,7 @@ using FALAAG.Models.EventArgs;
  *  - Static GetInstance() to retrieve Singleton
  */
 
-namespace Engine.Services
+namespace FALAAG.Core
 {
     public class MessageBroker
     {
@@ -23,7 +22,7 @@ namespace Engine.Services
         public static MessageBroker GetInstance() =>
             s_messageBroker;
 
-        internal void RaiseMessage(string message) =>
+        public void RaiseMessage(string message) =>
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
     }
 }
