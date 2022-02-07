@@ -58,6 +58,7 @@ namespace WPFUI
 
             _userInputActions.Add(Key.I, () => _gameSession.InventoryDetails.IsVisible = !_gameSession.InventoryDetails.IsVisible);
             _userInputActions.Add(Key.J, () => _gameSession.JobDetails.IsVisible = !_gameSession.JobDetails.IsVisible);
+            _userInputActions.Add(Key.P, () => _gameSession.PlayerDetails.IsVisible = !_gameSession.PlayerDetails.IsVisible);
             _userInputActions.Add(Key.R, () => _gameSession.RecipesDetails.IsVisible = !_gameSession.RecipesDetails.IsVisible);
         }
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
@@ -127,6 +128,10 @@ namespace WPFUI
         private void CloseJobsWindow_OnClick(object sender, RoutedEventArgs e)
         {
             _gameSession.JobDetails.IsVisible = false;
+        }
+        private void ClosePlayerDetailsWindow_OnClick(object sender, RoutedEventArgs e)
+        {
+            _gameSession.PlayerDetails.IsVisible = false;
         }
         private void CloseRecipesWindow_OnClick(object sender, RoutedEventArgs e)
         {

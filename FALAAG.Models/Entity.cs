@@ -50,7 +50,9 @@ namespace FALAAG.Models
             }
         }
         public string DescriptionLong { get; set; }
-		public int HpCur { get; private set; }
+        [JsonIgnore]
+        public string Hp => $"{HpCur}/{HpMax}";
+        public int HpCur { get; private set; }
 		public int HpMax { get; protected set; }
 		public string ID { 
             get => _id; 

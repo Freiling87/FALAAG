@@ -170,6 +170,7 @@ namespace FALAAG.ViewModels
             player.InventoryAddItem(ItemFactory.CreateItem("BareHands"));
             player.LearnRecipe(RecipeFactory.RecipeByID("ShivCrude_01"));
             player.LearnRecipe(RecipeFactory.RecipeByID("ShivCrude_02"));
+            player.InventoryAddItem(ItemFactory.CreateItem("Beer"));
 
             return player;
         }
