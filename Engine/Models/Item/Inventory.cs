@@ -66,5 +66,33 @@ namespace Engine.Models
         }
 
         #endregion
+        public Inventory AddItem(Item item) =>
+            AddItems(new List<Item> { item });
+        public Inventory AddItems(IEnumerable<Item> items) =>
+            new Inventory(Items.Concat(items));
+        public Inventory RemoveItem(Item item) =>
+            RemoveItems(new List<Item> { item });
+        public Inventory RemoveItems(IEnumerable<Item> items)
+        {
+            // REFACTOR: Look for a cleaner solution, with fewer temporary variables.
+            List<Item> workingInventory = Items.ToList();
+            IEnumerable<Item> itemsToRemove = items.ToList();
+
+            foreach (Item item in itemsToRemove)
+                workingInventory.Remove(item);
+
+            return new Inventory(workingInventory);
+        }
+        public Inventory RemoveItems(IEnumerable<ItemQuantity> itemQuantities)
+        {
+            // REFACTOR
+            Inventory workingInventory = new Inventory(Items);
+
+            foreach (ItemQuantity itemQuantity in itemQuantities)
+                for (int i = 0; i < itemQuantity.Quantity; i++)
+                    workingInventory = workingInventory.RemoveItem(workingInventory.Items.First(item => item.ID == itemQuantity.ID));
+
+            return workingInventory;
+        }
     }
 }
