@@ -1,17 +1,11 @@
 ﻿using System.Collections.Generic;
-using Engine.Factories;
-using Engine.Services;
-using FALAAG.Core;
 
 namespace Engine.Models
 {
     public class NPC : Entity
     {
-        private readonly List<ItemPercentage> _lootTable =
-            new List<ItemPercentage>();
-
-        public string ID { get; }
         public string ImagePath { get; }
+        public List<ItemPercentage> LootTable { get; } = new List<ItemPercentage>();
         public int XpReward { get; }
 
         public NPC(string id, string nameActual, string nameGeneral, string imagePath,
@@ -28,24 +22,14 @@ namespace Engine.Models
 
         public void AddItemToLootTable(string id, int percentage)
         {
-            _lootTable.RemoveAll(ip => ip.ID == id);
-            _lootTable.Add(new ItemPercentage(id, percentage));
+            LootTable.RemoveAll(ip => ip.ID == id);
+            LootTable.Add(new ItemPercentage(id, percentage));
         }
 
-        public NPC GetNewInstance()
+        public NPC Clone()
         {
-            NPC newNPC =
-                new NPC(ID, NameActual, NameGeneral, ImagePath, HpMax, Attributes,
-                            CurrentWeapon, XpReward, Cash);
-
-            foreach (ItemPercentage itemPercentage in _lootTable)
-            {
-                newNPC.AddItemToLootTable(itemPercentage.ID, itemPercentage.Percentage);
-
-                if (DiceService.Instance.Roll(100).Value <= itemPercentage.Percentage)
-                    newNPC.InventoryAddItem(ItemFactory.CreateItem(itemPercentage.ID));
-            }
-
+            NPC newNPC = new NPC(ID, NameActual, NameGeneral, ImagePath, HpMax, Attributes, CurrentWeapon, XpReward, Cash);
+            newNPC.LootTable.AddRange(LootTable);
             return newNPC;
         }
     }

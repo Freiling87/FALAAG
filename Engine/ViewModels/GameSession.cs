@@ -27,7 +27,7 @@ namespace Engine.ViewModels
             set
             {
                 _currentCell = value;
-                CurrentNPC = _currentCell.GetNPC();
+                CurrentNPC = NPCFactory.GetNPCFromCellEncounters(CurrentCell);
                 CompleteJobsAtLocation();
                 GivePlayerJobsAtLocation();
                 CurrentAutomat = CurrentCell.AutomatHere;
@@ -270,7 +270,7 @@ namespace Engine.ViewModels
         private void OnConsumableActionPerformed(object sender, string result) =>
             _messageBroker.RaiseMessage(result);
         private void OnCurrentNPCKilled(object sender, System.EventArgs eventArgs) =>
-            CurrentNPC = CurrentCell.GetNPC();
+            CurrentNPC = NPCFactory.GetNPCFromCellEncounters(CurrentCell);
         private void OnPlayerKilled(object sender, System.EventArgs eventArgs)
         {
             _messageBroker.RaiseMessage("");

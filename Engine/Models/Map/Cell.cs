@@ -1,6 +1,4 @@
-﻿using Engine.Factories;
-using Engine.Services;
-using FALAAG.Core;
+﻿using Engine.Services;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,26 +51,6 @@ namespace Engine.Models
                 Encounters.First(m => m.NpcID == npcID).ChanceOfEncountering = chanceOfEncountering;
             else
                 Encounters.Add(new NPCEncounter(npcID, chanceOfEncountering));
-        }
-
-        public NPC GetNPC()
-        {
-            if (!Encounters.Any())
-                return null;
-
-            int totalChances = Encounters.Sum(m => m.ChanceOfEncountering);
-            int randomNumber = DiceService.Instance.Roll(totalChances, 1).Value;
-            int runningTotal = 0;
-
-            foreach (NPCEncounter npcEncounter in Encounters)
-            {
-                runningTotal += npcEncounter.ChanceOfEncountering;
-
-                if (randomNumber <= runningTotal)
-                    return NPCFactory.GetNPC(npcEncounter.NpcID);
-            }
-
-            return NPCFactory.GetNPC(Encounters.Last().NpcID);
         }
 	}
 }

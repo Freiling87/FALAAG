@@ -6,6 +6,7 @@ using System.Xml;
 using Engine.Models;
 using Engine.Services;
 using Engine.Shared;
+using FALAAG.Core;
 
 namespace Engine.Factories
 {
@@ -13,7 +14,7 @@ namespace Engine.Factories
     {
         private const string _contentDataFilePath = ".\\GameData\\NPCs.xml";
         private static readonly GameDetails s_gameDetails;
-        private static readonly List<NPC> _NPCTemplates = new List<NPC>();
+        private static readonly List<NPC> s_NPCTemplates = new List<NPC>();
 
         static NPCFactory()
         {
@@ -31,6 +32,26 @@ namespace Engine.Factories
             }
             else
                 throw new FileNotFoundException($"Missing data file: {_contentDataFilePath}");
+        }
+
+        public static NPC GetNPCFromCellEncounters(Cell cell)
+        {
+            if (!cell.Encounters.Any())
+                return null;
+
+            int totalChances = cell.Encounters.Sum(m => m.ChanceOfEncountering);
+            int randomNumber = DiceService.Instance.Roll(totalChances, 1).Value;
+            int runningTotal = 0;
+
+            foreach (NPCEncounter NPCEncounter in cell.Encounters)
+            {
+                runningTotal += NPCEncounter.ChanceOfEncountering;
+
+                if (randomNumber <= runningTotal)
+                    return GetNPC(NPCEncounter.NpcID);
+            }
+
+            return GetNPC(cell.Encounters.Last().NpcID);
         }
 
         private static void LoadNPCsFromNodes(XmlNodeList nodes, string rootImagePath)
@@ -67,13 +88,19 @@ namespace Engine.Factories
                         lootItemNode.AttributeAsInt("Percentage"));
                 }
 
-                _NPCTemplates.Add(NPC);
+                s_NPCTemplates.Add(NPC);
             }
         }
 
-        public static NPC GetNPC(string id)
+        private static NPC GetNPC(string id)
         {
-            return _NPCTemplates.FirstOrDefault(m => m.ID == id)?.GetNewInstance();
+            NPC newNPC = s_NPCTemplates.FirstOrDefault(m => m.ID == id).Clone();
+
+            foreach (ItemPercentage itemPercentage in newNPC.LootTable)
+                if (DiceService.Instance.Roll(100).Value <= itemPercentage.Percentage)
+                    newNPC.InventoryAddItem(ItemFactory.CreateItem(itemPercentage.ID));
+
+            return newNPC;
         }
 
         public static string RandomName()
