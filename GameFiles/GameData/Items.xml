@@ -2,7 +2,7 @@
 <Items>
 	
   <Weapons>
-		<Weapon ID="BeakWeapon" Name="Beak" Description="The pokey thing on the front of birds." Value="0" DamageDice="1d2"/>
+		<Weapon ID="BeakWeapon" Name="Beak" Description="N/A" Value="0" DamageDice="1d2"/>
 		<Weapon ID="BareHands" Name="Bare Hands" Description="You... know what hands are, right?" Value="0" DamageDice="1d12"/>
 		<Weapon ID="BarFlySwatter" Name="Bar Fly Swatter" Description="A baseball bat wrapped in medical gauze. For when you don't want to kill your customers, just get them out the door." Value="20" DamageDice="10d2"/>
 		<Weapon ID="BaseballBat" Name="Baseball Bat" Description="It's just a Slugger now. Louisville is gone." Value="25" DamageDice="12d2"/>
@@ -18,10 +18,12 @@
 		<Weapon ID="BiteSmall" Name="Bite" Description="N/A" Value="0" DamageDice="1d4"/>
 		<Weapon ID="BiteMedium" Name="Bite" Description="N/A" Value="0" DamageDice="2d4"/>
 		<Weapon ID="BiteLarge" Name="Bite" Description="N/A" Value="0" DamageDice="7d2"/>
+		<Weapon ID="ZipGun" Name="Zip Gun" Description="It's made out of trash. You trust it?" Value="200" DamageDice="3d8"/>
+		<Weapon ID="Pipe" Name="Pipe" Description="Just a length of pipe." Value="4" DamageDice="2d8"/>
+		<Weapon ID="PipeRifle" Name="Pipe Rifle" Description="It's made out of trash. You trust it?" Value="300" DamageDice="4d8"/>
   </Weapons>
 	
   <HealingItems>
-		<HealingItem ID="________" Name="________" Description="________" Value="99999999" HitPointsToHeal="99999999"/>
 		<HealingItem ID="Beer" Name="Beer" Description="Beer." Value="12" HitPointsToHeal="12"/>
 		<HealingItem ID="Gauze" Name="Gauze" Description="Dress wounds with it." Value="10" HitPointsToHeal="10"/>
 		<HealingItem ID="Painkiller" Name="Painkiller" Description="Don't get hooked! Or do. Fuck your stupid life." Value="20" HitPointsToHeal="20"/>
@@ -43,13 +45,14 @@
   </MiscellaneousItems>
 
 	<WearableItems>
-		<WearableItem ID="HelmetCrude" Name="Crude Helmet" Description="A DeepReæl Headset with the machinery stripped out. You might still start dreaming, if you get hit hard enough." Value="5" Slot="HeadOuter" Protection="3"/>
-		<WearableItem ID="RatskinCoat" Name="Ratskin Coat" Description="You look unhinged in this, you freak." Value="10" Slot="BodyOuter" Protection="3"/>
-		<WearableItem ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="5"/>
-		<WearableItem ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="9"/>
-		<WearableItem ID="RatskinCoatFinal" Name="Ratsmasher Armor" Description="All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!" Value="100" Slot="BodyOuter" Protection="12"/>
-		<WearableItem ID="DogToothNecklace" Name="Dog Tooth Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="BirdBeakNecklace" Name="Bird Beak Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
+		<WearableItem ID="DogToothNecklace" Name="Dog Tooth Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
+		<WearableItem ID="HelmetCrude" Name="Crude Helmet" Description="A DeepReæl Headset with the machinery stripped out. You might still start dreaming, if you get hit hard enough." Value="5" Slot="HeadOuter" Protection="3"/>
+		<WearableItem ID="HelmetCrudeSpiked" Name="Crude Spiked Helmet" Description="This isn't Mad Max, retard." Value="10" Slot="HeadOuter" Protection="5"/>
+		<WearableItem ID="RatskinCoat" Name="Ratskin Coat" Description="You look unhinged in this, you freak." Value="10" Slot="BodyOuter" Protection="3"/>
+		<WearableItem ID="RatskinCoatFinal" Name="Ratsmasher Armor" Description="All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!" Value="100" Slot="BodyOuter" Protection="12"/>
+		<WearableItem ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="9"/>
+		<WearableItem ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="5"/>
 		<WearableItem ID="RatSkullNecklace" Name="Rat Skull Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="StreetDruidNecklace" Name="Street Druid Necklace" Description="There are *so many* dead animal parts on this necklace. You should be proud!" Value="25" Slot="NeckOuter" Protection="5"/>
 	</WearableItems>
