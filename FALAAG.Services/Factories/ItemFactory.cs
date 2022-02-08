@@ -61,7 +61,7 @@ namespace FALAAG.Factories
                     itemCategory == Item.ItemCategory.Weapon);
 
                 if (itemCategory == Item.ItemCategory.Weapon)
-                    gameItem.Action = new AttackWithWeapon(gameItem, node.AttributeAsString("DamageDice"));
+                    gameItem.Action = new ItemAttack(gameItem, node.AttributeAsString("DamageDice"));
                 else if (itemCategory == Item.ItemCategory.Consumable)
                     gameItem.Action = new Heal(gameItem,
                         node.AttributeAsInt("HitPointsToHeal"));

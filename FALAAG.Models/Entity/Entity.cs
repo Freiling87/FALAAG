@@ -78,6 +78,11 @@ namespace FALAAG.Models
             }
         }
 
+        public int Arousal { get; private set; } // Master measure, attributed by inclinations below
+        public int Fatigue { get; private set; }
+        public int Fear { get; private set; }
+        public int Pain { get; private set; }
+
         public ObservableCollection<EntityAttribute> Attributes { get; } = new ObservableCollection<EntityAttribute>();
 
         [JsonIgnore]

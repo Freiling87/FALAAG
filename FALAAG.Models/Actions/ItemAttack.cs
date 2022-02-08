@@ -5,11 +5,11 @@ using FALAAG.Core;
 
 namespace FALAAG.Actions
 {
-    public class AttackWithWeapon : BaseAction, IAction
+    public class ItemAttack : ItemAction, IAction
     {
         private readonly string _damageDice;
 
-        public AttackWithWeapon(Item itemInUse, string damageDice)
+        public ItemAttack(Item itemInUse, string damageDice)
             : base(itemInUse)
         {
             if (itemInUse.Category != Item.ItemCategory.Weapon)
@@ -23,8 +23,8 @@ namespace FALAAG.Actions
 
         private static bool AttackSucceeded(Entity actor, Entity target)
         {
-            int dexA = actor.GetAttribute("GMS").ModifiedValue + DiceService.Instance.Roll(10, 10).Value;
-            int dexB = target.GetAttribute("GMS").ModifiedValue + DiceService.Instance.Roll(10, 10).Value;
+            int dexA = actor.GetAttribute("GMS").ModifiedValue * DiceService.Instance.Roll(100, 1).Value / 100;
+            int dexB = target.GetAttribute("GMS").ModifiedValue * DiceService.Instance.Roll(100, 1).Value / 100;
 
             return dexA >= dexB;
         }

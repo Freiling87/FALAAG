@@ -50,7 +50,7 @@ namespace FALAAG.Models
         {
             if (_player.CurrentWeapon == null)
             {
-                _messageBroker.RaiseMessage("You must select a weapon, to attack.");
+                _messageBroker.RaiseMessage("You must select a weapon to attack.");
                 return;
             }
 

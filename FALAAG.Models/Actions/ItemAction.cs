@@ -3,12 +3,12 @@ using FALAAG.Models;
 
 namespace FALAAG.Actions
 {
-    public abstract class BaseAction
+    public abstract class ItemAction
     {
         protected readonly Item _itemInUse;
         public event EventHandler<string> OnActionPerformed;
 
-        protected BaseAction(Item itemInUse)
+        protected ItemAction(Item itemInUse)
         {
             _itemInUse = itemInUse;
         }

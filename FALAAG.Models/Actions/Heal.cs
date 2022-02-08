@@ -3,7 +3,7 @@ using FALAAG.Models;
 
 namespace FALAAG.Actions
 {
-    public class Heal : BaseAction, IAction
+    public class Heal : ItemAction, IAction
     {
         private readonly int _hitPointsToHeal;
 
