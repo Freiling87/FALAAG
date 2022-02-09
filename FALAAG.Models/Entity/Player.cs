@@ -24,10 +24,10 @@ namespace FALAAG.Models
 
 		public event EventHandler OnLeveledUp;
 
-        public Player(string nameActual, string nameGeneral, int xp, int hpMax, int hpCur, IEnumerable<EntityAttribute> attributes, int cash) : 
-                    base("Player", nameActual, nameGeneral, hpMax, hpCur, attributes, cash)
+        public Player(string nameActual, string nameGeneral, IEnumerable<EntityAttribute> attributes, IEnumerable<Skill> skills) : 
+                    base("Player", nameActual, nameGeneral, attributes, skills)
 		{
-            Xp = xp;
+            Xp = 0;
         }
         #endregion
         public void AddExperience(int xp) =>

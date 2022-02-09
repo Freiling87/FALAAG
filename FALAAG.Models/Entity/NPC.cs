@@ -9,10 +9,11 @@ namespace FALAAG.Models
         public int XpReward { get; }
 
         public NPC(string id, string nameActual, string nameGeneral, string imagePath,
-                       int hpMax, IEnumerable<EntityAttribute> attributes,
+                       IEnumerable<EntityAttribute> attributes,
+                       IEnumerable<Skill> skills,
                        Item currentWeapon,
-                       int xpReward, int cash) :
-            base(id, nameActual, nameGeneral, hpMax, hpMax, attributes, cash)
+                       int xpReward) :
+            base(id, nameActual, nameGeneral, attributes, new List<Skill>())
         {
             ID = id;
             ImagePath = imagePath;
@@ -28,7 +29,7 @@ namespace FALAAG.Models
 
         public NPC Clone()
         {
-            NPC newNPC = new NPC(ID, NameActual, NameGeneral, ImagePath, HpMax, Attributes, CurrentWeapon, XpReward, Cash);
+            NPC newNPC = new NPC(ID, NameActual, NameGeneral, ImagePath, Attributes, new List<Skill>(), CurrentWeapon, XpReward);
             newNPC.LootTable.AddRange(LootTable);
             return newNPC;
         }

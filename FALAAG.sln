@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{5B589084-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FALAAG.Core", "FALAAG.Core\FALAAG.Core.csproj", "{B0E13F05-CFFD-4911-B3E6-CF8D62D4C0D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameFiles", "GameFiles", "{47C322D8-B037-4A90-9A2A-FE1A33661EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88251530-FF24-4B41-B0CB-0513F915AA9C} = {47C322D8-B037-4A90-9A2A-FE1A33661EBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87337AD4-371A-4259-8407-4E7228B39FAE}

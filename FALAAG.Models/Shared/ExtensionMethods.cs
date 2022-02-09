@@ -39,7 +39,7 @@ namespace FALAAG.Models.Shared
 
         public static EntityAttribute GetAttribute(this Entity entity, string attributeKey)
         {
-            return entity.Attributes.First(pa => pa.Key.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
+            return entity.Attributes.First(pa => pa.ID.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public static List<Item> ItemsThatAre(this IEnumerable<Item> inventory, Item.ItemCategory category) =>

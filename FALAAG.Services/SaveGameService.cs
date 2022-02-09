@@ -11,8 +11,7 @@ namespace FALAAG.Services
 	public static class SaveGameService
     {
         public static void Save(GameState gameState, string filePath) =>
-            File.WriteAllText(filePath, 
-                JsonConvert.SerializeObject(gameState, Formatting.Indented));
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(gameState, Formatting.Indented));
 
         public static GameState LoadLastSaveOrCreateNew(string filePath)
         {
@@ -36,14 +35,10 @@ namespace FALAAG.Services
 
         private static Player CreatePlayer(JObject data)
         {
-            Player player =
-                new Player((string)data[nameof(GameState.Player)][nameof(Player.Name)],
-                            "Player",
-                           (int)data[nameof(GameState.Player)][nameof(Player.Xp)],
-                           (int)data[nameof(GameState.Player)][nameof(Player.HpMax)],
-                           (int)data[nameof(GameState.Player)][nameof(Player.HpCur)],
-                           GetPlayerAttributes(data),
-                           (int)data[nameof(GameState.Player)][nameof(Player.Cash)]);
+            Player player = new Player((string)data[nameof(GameState.Player)][nameof(Player.Name)],
+                "Player",
+                GetPlayerAttributes(data),
+                GetPlayerSkills(data));
 
             PopulatePlayerInventory(data, player);
             PopulatePlayerJobs(data, player);
@@ -53,28 +48,42 @@ namespace FALAAG.Services
 
         private static IEnumerable<EntityAttribute> GetPlayerAttributes(JObject data)
         {
-            List<EntityAttribute> attributes =
-                new List<EntityAttribute>();
+            List<EntityAttribute> attributes = new List<EntityAttribute>();
 
-            foreach (JToken itemToken in (JArray)data[nameof(GameState.Player)]
-                [nameof(Player.Attributes)])
+            foreach (JToken itemToken in (JArray)data[nameof(GameState.Player)][nameof(Player.Attributes)])
             {
                 attributes.Add(new EntityAttribute(
-                                   (string)itemToken[nameof(EntityAttribute.Key)],
+                                   (string)itemToken[nameof(EntityAttribute.ID)],
                                    (string)itemToken[nameof(EntityAttribute.DisplayName)],
+								   (string)itemToken[nameof(EntityAttribute.Description)],
                                    (string)itemToken[nameof(EntityAttribute.DiceNotation)],
                                    (int)itemToken[nameof(EntityAttribute.BaseValue)],
-                                   (int)itemToken[nameof(EntityAttribute.ModifiedValue)]));
+                                   (int)itemToken[nameof(EntityAttribute.ModifiedValue)]
+                                   ));
             }
 
             return attributes;
         }
+        private static IEnumerable<Skill> GetPlayerSkills (JObject data)
+        {
+            List<Skill> skills = new List<Skill>();
+
+            foreach (JToken itemToken in (JArray)data
+                [nameof(GameState.Player)][nameof(Player.Skills)])
+            {
+                skills.Add(new Skill(
+                                   (string)itemToken[nameof(Skill.ID)],
+                                   (string)itemToken[nameof(Skill.Name)],
+                                   (string)itemToken[nameof(Skill.Description)]
+                                   ));
+            }
+
+            return skills;
+        }
         private static void PopulatePlayerInventory(JObject data, Player player)
         {
             foreach (JToken itemToken in (JArray)data
-                [nameof(GameState.Player)]
-                            [nameof(Player.Inventory)]
-                                   [nameof(Inventory.Items)])
+                [nameof(GameState.Player)][nameof(Player.Inventory)][nameof(Inventory.Items)])
             {
                 string itemId = (string)itemToken[nameof(Item.ID)];
                 player.InventoryAddItem(ItemFactory.CreateItem(itemId));

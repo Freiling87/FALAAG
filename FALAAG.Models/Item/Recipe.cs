@@ -12,6 +12,7 @@ namespace FALAAG.Models
         public string Name { get; set; }
         [JsonIgnore]
         public string Description { get; set; }
+        public Item GoalItem { get; set; }
 
         [JsonIgnore] public List<ItemQuantity> Ingredients { get; }
         [JsonIgnore]
@@ -20,7 +21,7 @@ namespace FALAAG.Models
         [JsonIgnore]
         public string ToolTipContents =>
             Name + Environment.NewLine + Environment.NewLine +
-            Description + Environment.NewLine + Environment.NewLine +
+            Description + Environment.NewLine + Environment.NewLine + // TODO: Change to GoalItem.Description
 
             "Inputs" + Environment.NewLine +
             "===========" + Environment.NewLine +

@@ -5,7 +5,7 @@ using FALAAG.Core;
 
 namespace FALAAG.Actions
 {
-    public class ItemAttack : ItemAction, IAction
+    public class ItemAttack : ItemAction, IItemAction
     {
         private readonly string _damageDice;
 

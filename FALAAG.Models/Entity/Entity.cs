@@ -84,6 +84,7 @@ namespace FALAAG.Models
         public int Pain { get; private set; }
 
         public ObservableCollection<EntityAttribute> Attributes { get; } = new ObservableCollection<EntityAttribute>();
+        public ObservableCollection<Skill> Skills { get; } = new ObservableCollection<Skill>();
 
         [JsonIgnore]
         public bool IsAlive => HpCur > 0;
@@ -96,17 +97,19 @@ namespace FALAAG.Models
         public event EventHandler<string> OnActionPerformed;
         public event EventHandler OnKilled;
 
-        protected Entity(string ID, string nameActual, string nameGeneral, int hpMax, int hpCur, IEnumerable<EntityAttribute> attributes, int cash, int level = 1)
+        protected Entity(string ID, string nameActual, string nameGeneral, IEnumerable<EntityAttribute> attributes, IEnumerable<Skill> skills)
         {
-            Cash = cash;
-            HpCur = hpCur;
-            HpMax = hpMax;
-            Level = level;
+            Cash = 0;
+            HpCur = 100;
+            HpMax = 100;
+            Level = 1;
             NameActual = nameActual;
             NameGeneral = nameGeneral;
 
             foreach (EntityAttribute attribute in attributes)
                 Attributes.Add(attribute);
+            foreach (Skill skill in skills)
+                Skills.Add(skill);
 
             Inventory = new Inventory();
         }

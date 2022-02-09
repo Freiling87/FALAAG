@@ -20,11 +20,13 @@ namespace FALAAG.Models
 		}
 
 		[JsonIgnore]
-		public IAction Action { get; set; }
+		public IItemAction Action { get; set; }
 		[JsonIgnore]
 		public ItemCategory Category { get; }
 		[JsonIgnore]
 		public bool unstackable { get; }
+		[JsonIgnore]
+		public string Description { get; }
 		public string ID { get; }
 		[JsonIgnore]
 		public string Name { get; }
@@ -38,10 +40,11 @@ namespace FALAAG.Models
 		public int SellPriceSimple =>
 			(int)(Value * 0.7f);
 
-		public Item(ItemCategory category, string itemTypeID, string name, int price,
-						bool isUnique = false, IAction action = null)
+		public Item(ItemCategory category, string itemTypeID, string name, string description, int price,
+						bool isUnique = false, IItemAction action = null)
 		{
 			Category = category;
+			Description = description;
 			ID = itemTypeID;
 			Name = name;
 			Value = price;
@@ -53,6 +56,6 @@ namespace FALAAG.Models
 			Action?.Execute(actor, target);
 
 		public Item Clone() =>
-			new Item(Category, ID, Name, Value, unstackable, Action);
+			new Item(Category, ID, Name, Description, Value, unstackable, Action);
 	}
 }

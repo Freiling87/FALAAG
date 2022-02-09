@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FALAAG.Actions
 {
-	public interface IAction
+	public interface IItemAction
 	{
 		event EventHandler<string> OnActionPerformed;
 		void Execute(Entity actor, Entity target);

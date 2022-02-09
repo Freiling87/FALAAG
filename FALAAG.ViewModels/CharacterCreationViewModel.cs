@@ -92,14 +92,22 @@ namespace FALAAG.ViewModels
                 SelectedSpiritType = RandomSpiritType();
 
             PlayerAttributes.Clear();
+            PlayerSkills.Clear();
 
             foreach (EntityAttribute playerAttribute in GameDetails.Attributes)
             {
                 playerAttribute.ReRoll();
                 PlayerAttributes.Add(playerAttribute);
             }
-
             ApplyAttributeModifiers();
+
+            foreach (Skill skill in GameDetails.Skills)
+            {
+                skill.ReRoll();
+                PlayerSkills.Add(skill);
+            }
+            ApplySkillModifiers();
+
             RetotalAggregateMeasures();
             GenerateFullDescription();
         }
@@ -127,27 +135,37 @@ namespace FALAAG.ViewModels
                 playerAttribute.Modifier = 0;
 
                 AttributeModifier raceModifier =
-                    SelectedRace.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedRace.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier = raceModifier?.Modifier ?? 0;
+
                 AttributeModifier sexModifier =
-                    SelectedSex.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedSex.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier += sexModifier?.Modifier ?? 0;
+
                 AttributeModifier bodyTypeModifier =
-                    SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier += bodyTypeModifier?.Modifier ?? 0;
+
                 AttributeModifier mindTypeModifier =
-                    SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier += mindTypeModifier?.Modifier ?? 0;
+
                 AttributeModifier personaTypeModifier =
-                    SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier += personaTypeModifier?.Modifier ?? 0;
+
                 AttributeModifier spiritTypeModifier =
-                    SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
+                    SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
                 playerAttribute.Modifier += spiritTypeModifier?.Modifier ?? 0;
 
-                // Add Attribute Modifiers as a Percentage Bonus
+                // Add Modifiers as a Percentage Bonus
                 playerAttribute.ModifiedValue = (int)Math.Clamp(playerAttribute.BaseValue * (1.00f + (playerAttribute.Modifier / 100.00f)), 0, 100);
             }
+        }
+
+        public void ApplySkillModifiers()
+        {
+
         }
 
         public Player GetPlayer()

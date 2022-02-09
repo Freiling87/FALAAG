@@ -9,5 +9,6 @@ namespace FALAAG.Models
         public string Description { get; set; }
         public string Group { get; set; } // Body, Mind, Persona, Spirit
         public List<AttributeModifier> AttributeModifiers { get; } = new List<AttributeModifier>();
-    }
+		public List<SkillModifier> SkillModifiers { get; set; }
+	}
 }

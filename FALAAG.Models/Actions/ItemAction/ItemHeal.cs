@@ -3,11 +3,11 @@ using FALAAG.Models;
 
 namespace FALAAG.Actions
 {
-    public class Heal : ItemAction, IAction
+    public class ItemHeal : ItemAction, IItemAction
     {
         private readonly int _hitPointsToHeal;
 
-        public Heal(Item itemInUse, int hitPointsToHeal) : base(itemInUse)
+        public ItemHeal(Item itemInUse, int hitPointsToHeal) : base(itemInUse)
         {
             if (itemInUse.Category != Item.ItemCategory.Consumable)
             {

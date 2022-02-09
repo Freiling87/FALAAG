@@ -33,6 +33,7 @@ namespace FALAAG.Factories
 
         public static Item CreateItem(string itemTypeID) =>
             _gameItemTemplates.FirstOrDefault(item => item.ID == itemTypeID)?.Clone();
+
         private static Item.ItemCategory DetermineItemCategory(string itemType)
         {
             switch (itemType)
@@ -45,6 +46,7 @@ namespace FALAAG.Factories
                     return Item.ItemCategory.Miscellaneous;
             }
         }
+
         private static void LoadItemsFromNodes(XmlNodeList nodes)
         {
             if (nodes == null)
@@ -57,13 +59,14 @@ namespace FALAAG.Factories
                 Item gameItem = new Item(itemCategory,
                     node.AttributeAsString("ID"),
                     node.AttributeAsString("Name"),
+                    node.AttributeAsString("Description"),
                     node.AttributeAsInt("Value"),
                     itemCategory == Item.ItemCategory.Weapon);
 
                 if (itemCategory == Item.ItemCategory.Weapon)
                     gameItem.Action = new ItemAttack(gameItem, node.AttributeAsString("DamageDice"));
                 else if (itemCategory == Item.ItemCategory.Consumable)
-                    gameItem.Action = new Heal(gameItem,
+                    gameItem.Action = new ItemHeal(gameItem,
                         node.AttributeAsInt("HitPointsToHeal"));
 
                 _gameItemTemplates.Add(gameItem);

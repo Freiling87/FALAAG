@@ -21,9 +21,32 @@ namespace FALAAG.Services
             foreach (JToken token in gameDetailsJson["Attributes"])
             {
                 gameDetails.Attributes.Add(new EntityAttribute(token.StringValueOf("Key"),
-                                                                     token.StringValueOf("DisplayName"),
-                                                                     token.StringValueOf("Description"),
-                                                                     token.StringValueOf("DiceNotation")));
+                                                                token.StringValueOf("DisplayName"),
+                                                                token.StringValueOf("Description"),
+                                                                token.StringValueOf("DiceNotation")));
+            }
+
+            if (gameDetailsJson["Skills"] != null)
+            {
+                foreach (JToken token in gameDetailsJson["Skills"])
+                {
+                    Skill Skill = new Skill(
+                        token.StringValueOf("ID"),
+                        token.StringValueOf("Name"),
+                        token.StringValueOf("Description"));
+
+                    if (token["AttributeComponents"] != null)
+                    {
+                        foreach (JToken childToken in token["AttributeComponents"])
+                        {
+                            Skill.AttributeComponents.Add(new AttributeComponent(
+                                childToken.StringValueOf("Key"),
+                                childToken.IntValueOf("Percent")));
+                        }
+                    }
+
+                    gameDetails.Skills.Add(Skill);
+                }
             }
 
             if (gameDetailsJson["Archetypes"] != null)
@@ -44,7 +67,7 @@ namespace FALAAG.Services
                         {
                             archetype.AttributeModifiers.Add(new AttributeModifier
                             {
-                                Key = childToken.StringValueOf("Key"),
+                                ID = childToken.StringValueOf("Key"),
                                 Modifier = childToken.IntValueOf("Modifier")
                             });
                         }

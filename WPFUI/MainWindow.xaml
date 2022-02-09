@@ -88,6 +88,7 @@
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*"/>
 							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
 						</Grid.ColumnDefinitions>
 
 						<Label Grid.Row="0" Grid.Column="0"
@@ -95,7 +96,8 @@
                                FontWeight="Bold"
                                Content="Player Details"/>
 
-						<Button Grid.Row="0" Grid.Column="1"
+						<!-- X Button -->
+						<Button Grid.Row="0" Grid.Column="3"
                                 HorizontalAlignment="Right"
                                 Width="25"
                                 FontWeight="Bold"
@@ -108,9 +110,9 @@
 							</Button.Resources>
 						</Button>
 
-						<!-- Sets the background color for the two player data rows -->
+						<!-- Background Color -->
 						<Border Grid.Row="2" Grid.Column="0"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="3"
                                 Grid.RowSpan="2"
                                 Background="LightPink">
 						</Border>
@@ -152,6 +154,7 @@
 
 						</Canvas>
 
+						<!-- General details -->
 						<Grid Grid.Row="3" Grid.Column="0"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Top"
@@ -185,7 +188,7 @@
                                    Content="{Binding Player.Hp}"/>
 						</Grid>
 
-						<!-- Player Attributes -->
+						<!-- Attributes -->
 						<ListBox Grid.Row="3" Grid.Column="1"
                                  Margin="5,5,5,5"
                                  ItemsSource="{Binding Player.Attributes}">
@@ -213,6 +216,34 @@
 							</ListBox.ItemTemplate>
 						</ListBox>
 
+						<!-- Skills -->
+						<ListBox Grid.Row="3" Grid.Column="2"
+                                 Margin="5,5,5,5"
+                                 ItemsSource="{Binding Player.Skills}"
+								 MinWidth="200"> <!-- Can remove once populated -->
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<StackPanel Orientation="Horizontal">
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition SharedSizeGroup="Description"/>
+											</Grid.ColumnDefinitions>
+											<TextBlock Text="{Binding Name}"
+                                                       HorizontalAlignment="Left"
+                                                       MinWidth="200"
+													   ToolTip="{Binding Description}"/>
+										</Grid>
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition SharedSizeGroup="ModifiedValue"/>
+											</Grid.ColumnDefinitions>
+											<TextBlock Text="{Binding ModifiedValueDescriptor}"
+                                                       HorizontalAlignment="Right"/>
+										</Grid>
+									</StackPanel>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
 					</Grid>
 
 				</Border>

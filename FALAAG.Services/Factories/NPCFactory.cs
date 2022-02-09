@@ -64,9 +64,9 @@ namespace FALAAG.Factories
                 var attributes = s_gameDetails.Attributes;
 
                 // Temporary, be patient.
-                attributes.First(a => a.Key.Equals("GMS")).BaseValue =
+                attributes.First(a => a.ID.Equals("GMS")).BaseValue =
                     Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText);
-                attributes.First(a => a.Key.Equals("GMS")).ModifiedValue =
+                attributes.First(a => a.ID.Equals("GMS")).ModifiedValue =
                     Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText);
 
                 NPC NPC =
@@ -74,11 +74,10 @@ namespace FALAAG.Factories
                             RandomName(),
                             node.AttributeAsString("NameGeneral"),
                             $".{rootImagePath}{node.AttributeAsString("ImagePath")}",
-                            node.AttributeAsInt("HpMax"),
                             attributes,
+                            new List<Skill>(),
                             ItemFactory.CreateItem(node.AttributeAsString("WeaponID")),
-                            node.AttributeAsInt("XPReward"),
-                            node.AttributeAsInt("Cash"));
+                            node.AttributeAsInt("XPReward"));
 
                 XmlNodeList lootItemNodes = node.SelectNodes("./LootItems/LootItem");
                 if (lootItemNodes != null)

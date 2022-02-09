@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Skills>
+	<Skill ID="Lockpick" Name="Lockpick" Description="Pick a lock.">
+		<AttributeComponents>
+			<AttributeComponent ID="FMS" Percent="35" />
+			<AttributeComponent ID="SEN" Percent="10" />
+		</AttributeComponents>
+	</Skill>
+	
+	<Skill ID="Climb" Name="Climb" Description="Climb.">
+		<AttributeComponents>
+
+		</AttributeComponents>
+	</Skill>
+	
+</Skills>

@@ -10,6 +10,7 @@ namespace FALAAG.Models
 
         public List<EntityAttribute> Attributes { get; } = new List<EntityAttribute>();
         public List<Archetype> Archetypes { get; }  = new List<Archetype>();
+        public List<Skill> Skills { get; } = new List<Skill>();
 
         public List<Archetype> BodyTypes { get; set; }
         public List<Archetype> MindTypes { get; set;  }

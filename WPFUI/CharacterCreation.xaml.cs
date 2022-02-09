@@ -31,6 +31,7 @@ namespace WPFUI
         private void Archetye_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             VM.ApplyAttributeModifiers();
+            VM.ApplySkillModifiers();
         }
 	}
 }
