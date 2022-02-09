@@ -198,13 +198,14 @@
 											</Grid.ColumnDefinitions>
 											<TextBlock Text="{Binding DisplayName}"
                                                        HorizontalAlignment="Left"
-                                                       MinWidth="200"/>
+                                                       MinWidth="200"
+													   ToolTip="{Binding Description}"/>
 										</Grid>
 										<Grid>
 											<Grid.ColumnDefinitions>
 												<ColumnDefinition SharedSizeGroup="ModifiedValue"/>
 											</Grid.ColumnDefinitions>
-											<TextBlock Text="{Binding ModifiedValue}"
+											<TextBlock Text="{Binding ModifiedValueDescriptor}"
                                                        HorizontalAlignment="Right"/>
 										</Grid>
 									</StackPanel>
@@ -271,7 +272,14 @@
 							<DataGrid.Columns>
 								<DataGridTextColumn Header="Description"
                                                     Binding="{Binding Item.Name, Mode=OneWay}"
-                                                    Width="*"/>
+                                                    Width="*">
+									<DataGridTextColumn.CellStyle>
+										<Style TargetType="DataGridCell">
+											<Setter Property="ToolTip"
+                                                    Value="{Binding Item.Description}"/>
+										</Style>
+									</DataGridTextColumn.CellStyle>
+								</DataGridTextColumn>
 								<DataGridTextColumn Header="Qty"
                                                     IsReadOnly="True"
                                                     Width="Auto"

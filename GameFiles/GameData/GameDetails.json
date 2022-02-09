@@ -7,115 +7,138 @@
     {
       "Key": "BEU",
       "DisplayName": "Beauty",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Physical attractiveness, as measured by inborn preferences. I'm the fucking beholder!"
     },
     {
       "Key": "CDO",
       "DisplayName": "Cardio",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Heart health and endurance."
     },
     {
       "Key": "CON",
       "DisplayName": "Confidence",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "You have no clue what this is, you fucking dweeb."
     },
     {
       "Key": "COM",
       "DisplayName": "Composure",
-      "DiceNotation": "3d33"},
+      "DiceNotation": "3d33",
+      "Description": "Keeping your cool, especially under pressure."},
     {
       "Key": "CRE",
       "DisplayName": "Creativity",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "This attribute is like... um... it's like when you're creative."
     },
     {
       "Key": "EMP",
       "DisplayName": "Empathy",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "More important than it sounds - high or low."
     },
     {
       "Key": "EXT",
       "DisplayName": "Extraversion",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Desire and ability to socialize."
     },
     {
       "Key": "FLX",
       "DisplayName": "Flexibility",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Physical flexibility, not mental."
     },
     {
       "Key": "FMS",
       "DisplayName": "Fine Motor Skill",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "The ability to manipulate small objects."
     },
     {
       "Key": "GMS",
       "DisplayName": "Gross Motor Skill",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "The ability to move your body in a coordinated fashion."
     },
     {
       "Key": "GRT",
       "DisplayName": "Grit",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Long-term determination and resolve."
     },
     {
       "Key": "HGT",
       "DisplayName": "Height",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Height."
     },
     {
       "Key": "HED",
       "DisplayName": "Hedonism",
-      "DiceNotation": "3d33"},
+      "DiceNotation": "3d33",
+      "Description": "Degree of pleasure-drive."},
     {
       "Key": "HOM",
       "DisplayName": "Homeostasis",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Immunity and balance."
     },
     {
       "Key": "LOG",
       "DisplayName": "Logical Intelligence",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Dealing with abstracts and systems."
     },
     {
       "Key": "PTC",
       "DisplayName": "Patience",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "A virtue."
     },
     {
       "Key": "RCT",
       "DisplayName": "Reaction",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Speed of mental and physical reaction."
     },
     {
       "Key": "SEN",
       "DisplayName": "Sensitivity",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Sight, Hearing, etc., to include sensation of pains and pleasures."
     },
     {
       "Key": "SIZ",
       "DisplayName": "Size",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Physical width & girth. Size higher than Strength indicates a fat character."
     },
     {
       "Key": "SPA",
       "DisplayName": "Spatial Intelligence",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Ability to estimate distances, angles, weights and volumes."
     },
     {
       "Key": "STR",
       "DisplayName": "Strength",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "Physical power."
     },
     {
       "Key": "TMP",
       "DisplayName": "Temperament",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "The degree of ambient happiness of a character. Both extreme high and low scores indicate instability."
     },
     {
       "Key": "VER",
       "DisplayName": "Verbal Intelligence",
-      "DiceNotation": "3d33"
+      "DiceNotation": "3d33",
+      "Description": "The ability to assess and author communication with layers of meaning."
     }]
 ,
 

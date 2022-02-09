@@ -22,6 +22,7 @@ namespace FALAAG.Services
             {
                 gameDetails.Attributes.Add(new EntityAttribute(token.StringValueOf("Key"),
                                                                      token.StringValueOf("DisplayName"),
+                                                                     token.StringValueOf("Description"),
                                                                      token.StringValueOf("DiceNotation")));
             }
 

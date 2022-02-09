@@ -317,7 +317,15 @@
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Attribute"
                                     Binding="{Binding DisplayName}"
-                                    Width="*"/>
+                                    Width="*">
+
+						<DataGridTextColumn.CellStyle>
+							<Style TargetType="DataGridCell">
+								<Setter Property="ToolTip"
+                                                    Value="{Binding Description}"/>
+							</Style>
+						</DataGridTextColumn.CellStyle>
+					</DataGridTextColumn>
 
 					<DataGridTextColumn Header="Roll"
                                     Binding="{Binding BaseValue}"

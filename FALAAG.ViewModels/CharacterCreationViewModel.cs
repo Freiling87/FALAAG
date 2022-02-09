@@ -13,14 +13,13 @@ namespace FALAAG.ViewModels
 		private int _totalMod;
         private int _totalRoll;
         private int _totalNet;
-        private bool _pinName;
 
         public string DescriptionFull { get; set; }
         public GameDetails GameDetails { get; }
         public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
         public ObservableCollection<EntityAttribute> PlayerAttributes { get; } = new ObservableCollection<EntityAttribute>();
-        public bool PinName { get => _pinName; set => _pinName = value; }
+        public ObservableCollection<Skill> PlayerSkills { get; } = new ObservableCollection<Skill>();
         public int TotalMod
         {
             get => _totalMod;
@@ -51,7 +50,8 @@ namespace FALAAG.ViewModels
 
         public bool PinBodyTypeChoice { get; set; }
         public bool PinMindTypeChoice { get; set; }
-		public bool PinPersonaTypeChoice { get; set; }
+        public bool PinName { get; set; }
+        public bool PinPersonaTypeChoice { get; set; }
         public bool PinRace { get; set; }
         public bool PinSex { get; set; }
 		public bool PinSpiritTypeChoice { get; set; }
@@ -120,19 +120,6 @@ namespace FALAAG.ViewModels
             TotalNet = TotalRoll + TotalMod;
         }
 
-        public Archetype RandomBodyType() =>
-            GameDetails.BodyTypes[new Random().Next(GameDetails.BodyTypes.Count())];
-        public Archetype RandomMindType() =>
-            GameDetails.MindTypes[new Random().Next(GameDetails.MindTypes.Count())];
-        public Archetype RandomPersonaType() =>
-            GameDetails.PersonaTypes[new Random().Next(GameDetails.PersonaTypes.Count())];
-        public Archetype RandomRace() =>
-            GameDetails.Races[new Random().Next(GameDetails.Races.Count())];
-        public Archetype RandomSex() =>
-            GameDetails.Sexes[new Random().Next(2)];
-        public Archetype RandomSpiritType() =>
-            GameDetails.SpiritTypes[new Random().Next(GameDetails.SpiritTypes.Count())];
-
         public void ApplyAttributeModifiers()
         {
             foreach (EntityAttribute playerAttribute in PlayerAttributes)
@@ -145,7 +132,7 @@ namespace FALAAG.ViewModels
                 AttributeModifier sexModifier =
                     SelectedSex.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
                 playerAttribute.Modifier += sexModifier?.Modifier ?? 0;
-                AttributeModifier bodyTypeModifier = 
+                AttributeModifier bodyTypeModifier =
                     SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
                 playerAttribute.Modifier += bodyTypeModifier?.Modifier ?? 0;
                 AttributeModifier mindTypeModifier =
@@ -157,16 +144,16 @@ namespace FALAAG.ViewModels
                 AttributeModifier spiritTypeModifier =
                     SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.Key.Equals(playerAttribute.Key));
                 playerAttribute.Modifier += spiritTypeModifier?.Modifier ?? 0;
+
                 // Add Attribute Modifiers as a Percentage Bonus
-                playerAttribute.ModifiedValue = (int)((float)playerAttribute.BaseValue * (1.00f + (playerAttribute.Modifier / 100.00f)));
+                playerAttribute.ModifiedValue = (int)Math.Clamp(playerAttribute.BaseValue * (1.00f + (playerAttribute.Modifier / 100.00f)), 0, 100);
             }
         }
 
         public Player GetPlayer()
         {
-            Player player = new Player(Name, Name, 0, 100, 100, PlayerAttributes, 110);
+            Player player = new Player(Name, Name, PlayerAttributes, PlayerSkills);
 
-            // Give player default inventory items, weapons, recipes, etc.
             player.InventoryAddItem(ItemFactory.CreateItem("BareHands"));
             player.LearnRecipe(RecipeFactory.RecipeByID("ShivCrude_01"));
             player.LearnRecipe(RecipeFactory.RecipeByID("ShivCrude_02"));
@@ -174,5 +161,20 @@ namespace FALAAG.ViewModels
 
             return player;
         }
+
+        #region Rollers
+        public Archetype RandomBodyType() =>
+            GameDetails.BodyTypes[new Random().Next(GameDetails.BodyTypes.Count())];
+        public Archetype RandomMindType() =>
+            GameDetails.MindTypes[new Random().Next(GameDetails.MindTypes.Count())];
+        public Archetype RandomPersonaType() =>
+            GameDetails.PersonaTypes[new Random().Next(GameDetails.PersonaTypes.Count())];
+        public Archetype RandomRace() =>
+            GameDetails.Races[new Random().Next(GameDetails.Races.Count())];
+        public Archetype RandomSex() =>
+            GameDetails.Sexes[new Random().Next(2)];
+        public Archetype RandomSpiritType() =>
+            GameDetails.SpiritTypes[new Random().Next(GameDetails.SpiritTypes.Count())];
+		#endregion
     }
 }

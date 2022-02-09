@@ -1,4 +1,5 @@
 ﻿using FALAAG.Core;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace FALAAG.Models
@@ -13,24 +14,21 @@ namespace FALAAG.Models
 		public int ModifiedValue { get; set; }
 		public int Modifier { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        public string Description { get; set; }
+        public List<Skill> UsedIn = new List<Skill>(); // Should be a one-time generated assignment by querying all skills that have a matching SkillComponent, in order of its importance.
 
-        // Constructor that will use DiceService to create a BaseValue.
-        // The constructor this calls will put that same value into BaseValue and ModifiedValue
-        public EntityAttribute(string key, string displayName, string diceNotation)                                     // A
-            : this(key, displayName, diceNotation, DiceService.Instance.Roll(diceNotation).Value)                       // B
+        public EntityAttribute(string key, string displayName, string description, string diceNotation)                                     // A
+            : this(key, displayName, description, diceNotation, DiceService.Instance.Roll(diceNotation).Value)                       // B
         { }
 
-        // Constructor that takes a baseValue and also uses it for modifiedValue,
-        // for when we're creating a new attribute
-        public EntityAttribute(string key, string displayName, string diceNotation, int baseValue)                      // B
-            : this(key, displayName, diceNotation, baseValue, baseValue)                                                // C
+        public EntityAttribute(string key, string displayName, string description, string diceNotation, int baseValue)                      // B
+            : this(key, displayName, description, diceNotation, baseValue, baseValue)                                                // C
         { }
 
-        // This constructor is eventually called by the others, 
-        // or used when reading a Player's attributes from a saved game file.
-        public EntityAttribute(string key, string displayName, string diceNotation, int baseValue, int modifiedValue)   // C
+        public EntityAttribute(string key, string displayName, string description, string diceNotation, int baseValue, int modifiedValue)   // C
         {
             Key = key;
+            Description = description;
             DisplayName = displayName;
             DiceNotation = diceNotation;
             BaseValue = baseValue;
