@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FALAAG.Core
 { 
-    public class GameMessageEventArgs : System.EventArgs // Create custom event argument
+    public class GameMessageEventArgs : EventArgs // Create custom event argument
     {
         public string Message { get; private set; }
 

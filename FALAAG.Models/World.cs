@@ -10,10 +10,10 @@ namespace FALAAG.Models
 	{
 		private readonly List<Cell> _cells = new List<Cell>();
 
-		public void AddLocation(Cell location) =>
+		public void AddCell(Cell location) =>
 			_cells.Add(location);
 
-		public Cell LocationAt(int x, int y, int z) =>
+		public Cell GetCell(int x, int y, int z) =>
 			_cells.Where(l => 
 				l.X == x && 
 				l.Y == y && 

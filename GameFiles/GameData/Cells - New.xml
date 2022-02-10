@@ -2,7 +2,7 @@
 
 <Cells RootImagePath="/Images/Cell/">
 
-	<!-- #region Bar -->
+	<!-- #region Barroom -->
 	<Cell ID="BarBack" Name="Bar back area">
 		<!---->
 		<FeatureGroups>

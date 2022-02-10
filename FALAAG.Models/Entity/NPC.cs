@@ -7,8 +7,9 @@ namespace FALAAG.Models
         public string ImagePath { get; }
         public List<ItemPercentage> LootTable { get; } = new List<ItemPercentage>();
         public int XpReward { get; }
+		public int Importance { get; set; }
 
-        public NPC(string id, string nameActual, string nameGeneral, string imagePath,
+		public NPC(string id, string nameActual, string nameGeneral, string imagePath,
                        IEnumerable<EntityAttribute> attributes,
                        IEnumerable<Skill> skills,
                        Item currentWeapon,

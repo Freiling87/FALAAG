@@ -1,0 +1,187 @@
+﻿using FALAAG.Core;
+using FALAAG.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FALAAG.ViewModels
+{
+	public static class Narrator
+	{
+		public enum NarrativePerson
+		{
+			Second,
+			Third
+		}
+		public enum NarrativeTense
+		{
+			Present,
+			Past
+		}
+
+		public static void OnMovement(Cell cell)
+		{
+			IntroduceCell(cell);
+			IntroduceNPCs(cell);
+			IntroduceFeatures(cell);
+			IntroduceGates(cell);
+			IntroduceItems(cell);
+		}
+
+		// Introduction methods should have more detail than normal. Reintroduce will be for when the player has already encountered the object and gets the idea.
+		public static void IntroduceCell(Cell cell)
+		{
+            string narration = PlayerCharacterPronoun() + " enter a " + cell.Name + ".";
+
+            MessageBroker.GetInstance().RaiseMessage(narration);
+        }
+        public static void IntroduceNPC(NPC npc)
+		{
+            string narration = "You see a " + npc.Name + ".";
+
+            MessageBroker.GetInstance().RaiseMessage(narration);
+        }
+		public static void IntroduceNPCs(Cell cell)
+		{
+			if (!cell.NPCs?.Any() ?? false)
+				return;
+
+			List<NPC> unintroduced = cell.NPCs;
+			List<Role> roles = cell.NPCs.Select(n => n.CurrentRole).Distinct().ToList();
+			// Consider replacing Role with current Activity.
+			List<NPC> somebodies = cell.NPCs.Where(n => n.Importance > 50).ToList();
+			List<NPC> nobodies = cell.NPCs.Where(n => n.Importance <= 50).ToList();
+
+			foreach (NPC npc in cell.NPCs)
+				MessageBroker.GetInstance().RaiseMessage("A " + npc.Name + " is here.");
+		}
+		public static void IntroduceFeatures(Cell cell)
+		{
+			if (!cell.Features?.Any() ?? false)
+				return;
+
+			List<string> featureTypes = cell.Features.Select(f => f.Name).Distinct().ToList();
+
+			foreach (string featureType in featureTypes)
+			{
+				List<Feature> features = cell.Features.Where(f => f.Name == featureType).ToList();
+				string narration = "";
+
+				if (features.Count == 1)
+				{
+					narration = "There is a " + featureType + " here.";
+				}
+				else
+				{
+					narration = "There are " + features.Count.ToString() + " " + featureType + "s here.";
+				}
+
+				MessageBroker.GetInstance().RaiseMessage(narration);
+			}
+		}
+		public static void IntroduceGate(Gate gate)
+		{
+			string narration = "There is a " + gate.Name + " to the " + gate.Direction + ".";
+
+			MessageBroker.GetInstance().RaiseMessage(narration);
+		}
+		public static void IntroduceGates(Cell cell)
+		{
+			if (!cell.Gates?.Any() ?? false)
+				return;
+
+			List<string> gateTypes = cell.Gates.Select(g => g.Name).Distinct().ToList();
+
+			foreach (string gateType in gateTypes)
+			{
+				List<Gate> gates = cell.Gates.Where(g => g.Name == gateType).ToList();
+				string narration = "";
+
+				if(gates.Count == 1)
+				{
+					narration = "There is a " + gateType + " to the " + gates[0].Direction + ".";
+				}
+				else
+				{
+					narration = "There are " + gateType + "s to the "
+						+ ListDirections(cell.Gates.Where(g => g.Name == gateType).Select(g => g.Direction).ToList())
+						+ ".";
+				}
+
+				MessageBroker.GetInstance().RaiseMessage(narration);
+			}
+		}
+		public static void IntroduceItems(Cell cell)
+		{
+			if (!cell.Items?.Any() ?? false)
+				return;
+
+			List<string> itemTypes = cell.Items.Select(f => f.Name).Distinct().ToList();
+
+			foreach (string itemType in itemTypes)
+			{
+				List<Item> items = cell.Items.Where(f => f.Name == itemType).ToList();
+				string narration = "";
+
+				if (items.Count == 1)
+				{
+					narration = "There is a " + itemType + " here.";
+				}
+				else
+				{
+					narration = "There are " + items.Count.ToString() + " " + itemType + "s here.";
+				}
+
+				MessageBroker.GetInstance().RaiseMessage(narration);
+			}
+		}
+		public static string ListDirections(List<Direction> directions)
+		{
+			string list = "";
+
+			foreach (Direction direction in directions)
+			{
+				list += direction.ToString();
+
+				if (direction == directions.Last())
+					continue; // Do not assume this is the end of the sentence.
+				else if (direction == directions[directions.Count() - 1])
+					list += " and ";
+				else
+					list += ", ";
+			}
+
+			return list;
+		}
+		public static string PlayerCharacterPronoun()
+		{
+			return "You";
+		}
+		public static string Conjugate(List<Noun> actors, Verb verb, NarrativeTense tense)
+		{
+			// TODO: Create list of Irregulars with XML-stored conjugations. 
+			string conjugation = "";
+
+			if (verb.Irregular)
+			{
+
+			}
+			else
+			{
+				if (tense == NarrativeTense.Past)
+					conjugation += "ed";
+				else if (tense == NarrativeTense.Present)
+				{
+					if (actors.Count == 1)
+						conjugation += "s";
+				}
+					
+			}
+
+			return conjugation;
+		}
+
+	}
+}

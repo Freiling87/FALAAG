@@ -57,7 +57,7 @@ namespace FALAAG.Factories
                 // TODO: I think Automat was split up to accept multiple, and that's why it's no longer appearing.
                 AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
 
-                world.AddLocation(cell);
+                world.AddCell(cell);
             }
         }
 

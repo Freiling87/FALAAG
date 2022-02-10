@@ -29,8 +29,6 @@ namespace FALAAG.Models
 		public string Description { get; }
 		public string ID { get; }
 		[JsonIgnore]
-		public string Name { get; }
-		[JsonIgnore]
 		public int Mass { get; }
 		[JsonIgnore]
 		public int Value { get; }
@@ -39,6 +37,7 @@ namespace FALAAG.Models
 		[JsonIgnore]
 		public int SellPriceSimple =>
 			(int)(Value * 0.7f);
+		public Feature StoringFeature { get; set; }
 
 		public Item(ItemCategory category, string itemTypeID, string name, string description, int price,
 						bool isUnique = false, IItemAction action = null)

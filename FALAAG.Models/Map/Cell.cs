@@ -26,12 +26,13 @@ namespace FALAAG.Models
         [JsonIgnore]
         public string EntryDescription { get; set; }
         public List<Automat> Automats { get; set; } = new List<Automat>();
+        public List<Feature> Features { get; set; } = new List<Feature>();
         public List<Gate> Gates { get; set; } = new List<Gate>();
         public List<NPC> NPCs { get; set; } = new List<NPC>();
         public List<Feature> PhysicalFeatures { get; set; } = new List<Feature>();
         [JsonIgnore]
         public List<Job> JobsHere { get; set; } = new List<Job>();
-		public List<Item> Items { get; private set; }
+        public List<Item> Items { get; set; } = new List<Item>();
 
 		public Cell(int x, int y, int z, string name, string description, string imagePath)
         {

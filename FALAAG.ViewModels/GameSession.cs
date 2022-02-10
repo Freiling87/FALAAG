@@ -94,7 +94,7 @@ namespace FALAAG.ViewModels
             PopulateGameDetails();
             CurrentWorld = WorldFactory.CreateWorld();
             Player = player;
-            CurrentCell = CurrentWorld.LocationAt(x, y, z);
+            CurrentCell = CurrentWorld.GetCell(x, y, z);
 
             InventoryDetails = new PopupDetails
             {
@@ -187,73 +187,62 @@ namespace FALAAG.ViewModels
         #region Movement
         public void MoveToCell(Cell cell)
 		{
-            CurrentCell = CurrentWorld.LocationAt(cell.X, cell.Y, cell.Z);
-            //ClearNarrationPanel();
-            CurrentCell.NarrateEntry();
-
-            foreach (NPC npc in CurrentCell.NPCs.Where(npc => Player.Noticed(npc)))
-                npc.NarrateEntry();
-
-            foreach (Automat automat in CurrentCell.Automats.Where(Automat => Player.Noticed(Automat)))
-                automat.NarrateEntry();
-
-            foreach (Gate gate in CurrentCell.Gates.Where(gate => Player.Noticed(gate)))
-                gate.NarrateEntry();
-
-            foreach (Feature feature in CurrentCell.PhysicalFeatures.Where(feature => Player.Noticed(feature)))
-                feature.NarrateEntry();
-
-            foreach (Item item in CurrentCell.Items.Where(Item => Player.Noticed(Item)))
-                item.NarrateEntry();
+            CurrentCell = CurrentWorld.GetCell(cell.X, cell.Y, cell.Z);
+            Narrator.OnMovement(CurrentCell);
+        }
+        public void MoveToCell(int x, int y, int z)
+        {
+            CurrentCell = CurrentWorld.GetCell(x, y, z);
+            Narrator.OnMovement(CurrentCell);
         }
         public void MoveNorth()
         {
             if (HasCellN)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z);
+                MoveToCell(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z);
         }
         public void MoveEast()
         {
             if (HasCellE)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z);
+                MoveToCell(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z);
         }
         public void MoveSouth()
         {
             if (HasCellS)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z);
+                MoveToCell(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z);
         }
         public void MoveWest()
         {
             if (HasCellW)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z);
+                MoveToCell(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z);
         }
         public void Ascend()
 		{
             if (HasCellA)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1);
+                MoveToCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1);
         }
         public void Descend()
         {
             if (HasCellB)
-                CurrentCell = CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1);
+                MoveToCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1);
         }
         [JsonIgnore]
         public bool HasCellN => 
-            CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z) != null;
+            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z) != null;
         [JsonIgnore]
         public bool HasCellE =>
-            CurrentWorld.LocationAt(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z) != null;
+            CurrentWorld.GetCell(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z) != null;
         [JsonIgnore]
         public bool HasCellS =>
-            CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z) != null;
+            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z) != null;
         [JsonIgnore]
         public bool HasCellW =>
-            CurrentWorld.LocationAt(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z) != null;
+            CurrentWorld.GetCell(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z) != null;
         [JsonIgnore]
         public bool HasCellA =>
-            CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1) != null;
+            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1) != null;
         [JsonIgnore]
         public bool HasCellB =>
-            CurrentWorld.LocationAt(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1) != null;
+            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1) != null;
         #endregion
         #region NPCs
         #endregion
@@ -322,7 +311,7 @@ namespace FALAAG.ViewModels
             _messageBroker.RaiseMessage("");
             _messageBroker.RaiseMessage($"You got knocked the fuck out!");
 
-            CurrentCell = CurrentWorld.LocationAt(0, 0, 0);
+            CurrentCell = CurrentWorld.GetCell(0, 0, 0);
             Player.HealCompletely();
         }
         private void OnPlayerLeveledUp(object sender, System.EventArgs eventArgs)

@@ -30,7 +30,7 @@
                Content="Trade"/>
 		<Label Grid.Row="1" Grid.Column="0"
                HorizontalAlignment="Center"
-               Content="{Binding CurrentPlayer.Name}"/>
+               Content="{Binding Player.Name}"/>
 		<Label Grid.Row="1" Grid.Column="1"
                HorizontalAlignment="Center"
                Content="{Binding CurrentAutomat.Name}"/>
@@ -38,7 +38,7 @@
 		<!-- Sell Datagrid -->
 		<DataGrid Grid.Row="2" Grid.Column="0"
                   Margin="10"
-                  ItemsSource="{Binding CurrentPlayer.Inventory.GroupedInventory}"
+                  ItemsSource="{Binding Player.Inventory.GroupedInventory}"
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
                   CanUserAddRows="False"

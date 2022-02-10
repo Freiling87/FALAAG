@@ -69,6 +69,7 @@ namespace FALAAG.Models
 		}
 		public string NameActual { get; private set; }
 		public string NameGeneral { get; private set; }
+        public Role CurrentRole { get; set; } // Proprietor, Bodyguard, etc.
         public bool UseActualName
 		{
             get => _useActualName; 
@@ -166,9 +167,10 @@ namespace FALAAG.Models
             CurrentWeapon.PerformAction(this, target);
         }
 
-        public static bool Noticed(PhysicalObject physObject)
+        public static int Noticed(PhysicalObject physObject)
         {
-            return true;
+            // This is an Int so that noticed things can be listed in order of pertinence.
+            return 100;
         }
         #region Private functions
         private void RaiseActionPerformedEvent(object sender, string result) =>
