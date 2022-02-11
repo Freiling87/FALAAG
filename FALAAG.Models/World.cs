@@ -8,13 +8,13 @@ namespace FALAAG.Models
 {
 	public class World
 	{
-		private readonly List<Cell> _cells = new List<Cell>();
+		private readonly List<Cell> _mapCells = new List<Cell>();
 
 		public void AddCell(Cell location) =>
-			_cells.Add(location);
+			_mapCells.Add(location);
 
 		public Cell GetCell(int x, int y, int z) =>
-			_cells.Where(l => 
+			_mapCells.Where(l => 
 				l.X == x && 
 				l.Y == y && 
 				l.Z == z).DefaultIfEmpty(null).FirstOrDefault();

@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace FALAAG.Models
 {
-	public enum Direction
+	public enum CartesianAxis
 	{
-		East,
-		North,
-		South,
-		West,
-		Above,
-		Below,
-		Center
+		X,
+		Y,
+		Z
 	}
 }
