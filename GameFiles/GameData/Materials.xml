@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Materials>
+	<Material ID="FabricLight">
+		
+	</Material>
+	<Material ID="WoodMedium">
+		
+	</Material>
+	<!-- Etc. -->
+</Materials>

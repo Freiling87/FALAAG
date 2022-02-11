@@ -2,6 +2,7 @@
 
 <!-- A Feature has much in common with an Item, but serves as a sublocation that can store items. -->
 <!-- Consider an Int for size -->
+<!-- TODO: Just merge this into Items, since you want people to be able to throw furniture and the like. -->
 <Features>
 	
 	<Feature

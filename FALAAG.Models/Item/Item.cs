@@ -30,6 +30,8 @@ namespace FALAAG.Models
 		public string ID { get; }
 		[JsonIgnore]
 		public int Mass { get; }
+		public Material Material { get; }
+		public int Size { get; }
 		[JsonIgnore]
 		public int Value { get; }
 		[JsonIgnore]
