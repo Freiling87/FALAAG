@@ -34,10 +34,10 @@
   <MiscellaneousItems>
 		<MiscellaneousItem ID="BeakMisc" Name="Beak" Description="The pokey thing on the front of birds." Value="0"/>
     <MiscellaneousItem ID="BitsAndBobs" Name="Bits and Bobs" Description="Nails, twine, shit like that. This is not a hoarding simulator." Value="2"/>
-		<MiscellaneousItem ID="BarToken" Name="BarToken" Description="A plastic token that looks like a poker chip. It's emblazoned with the logo for a place called {ItemCreatorBusiness}." Value="0"/>
-		<MiscellaneousItem ID="DeepReælHeadset" Name="DeepReæl Headset" Description="A VR headset that induces dreams in the user. Most commonly seen on the heads of Sleepwalkers, oblivious to their surroundings. It's reinforced because they so often fall and hit their heads on concrete." Value="20"/>
+		<MiscellaneousItem ID="BarToken" Name="Bar Token" Description="A plastic token that looks like a poker chip. It's emblazoned with the logo for a place called {ItemCreatorBusiness}." Value="0"/>
+		<MiscellaneousItem ID="DeepReælHeadset" Name="DeepReæl© Headset" Description="A VR headset that induces dreams in the user. Most commonly seen on the heads of Sleepwalkers, oblivious to their surroundings. It's reinforced because they so often fall and hit their heads on concrete." Value="20"/>
 		<MiscellaneousItem ID="DuctTape" Name="Duct Tape" Description="The good shit. HVAC technicians use cheaper stuff nowadays." Value="20"/>
-		<MiscellaneousItem ID="WD69" Name="WD-69" Description="This industrial lubricant is all-purpose. Well no, I guess you can't use it for *that*, sicko." Value="20"/>
+		<MiscellaneousItem ID="WD69" Name="WD-69©" Description="This industrial lubricant is all-purpose. Well no, I guess you can't use it for *that*, sicko." Value="20"/>
 		<MiscellaneousItem ID="RatSkin" Name="Rat Skin" Description="You sick fuck." Value="4"/>
 		<MiscellaneousItem ID="DogTooth" Name="Dog Tooth" Description="Yes, it's a canine." Value="2"/>
 		<MiscellaneousItem ID="RatSkull" Name="Rat Skull" Description="Not even caved in." Value="1"/>
@@ -56,5 +56,43 @@
 		<WearableItem ID="RatSkullNecklace" Name="Rat Skull Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="StreetDruidNecklace" Name="Street Druid Necklace" Description="There are *so many* dead animal parts on this necklace. You should be proud!" Value="25" Slot="NeckOuter" Protection="5"/>
 	</WearableItems>
+
+	<FeatureAttachmentItems>
+		<FeatureAttachmentItem ID="TumblerLockStandard" Name="Tumbler Lock" Description="" Value="">
+      <ValidActions>
+        <ValidAction ID="Lockpick" Difficulty="'25" Noise="'5"/>
+        <ValidAction ID="Force" Difficulty="'50" Noise="'50"/>
+      </ValidActions>
+      <Modifiers>
+      </Modifiers>
+    </FeatureAttachmentItem>
+		<FeatureAttachmentItem ID="Padlock_01" Name="Mastur© Padlock" Description="" Value="">
+      <ValidActions>
+        <ValidAction ID="Lockpick" Difficulty="'25" Noise="'5"/>
+        <ValidAction ID="Force" Difficulty="'50" Noise="'50"/>
+      </ValidActions>
+    </FeatureAttachmentItem>
+		<FeatureAttachmentItem ID="Padlock_02" Name="Dinks© Padlock" Description="" Value="">
+      <ValidActions>
+        <ValidAction ID="Lockpick" Difficulty="'50" Noise="'5"/>
+        <ValidAction ID="Force" Difficulty="'40" Noise="'50"/>
+      </ValidActions>
+    </FeatureAttachmentItem>
+		<FeatureAttachmentItem ID="GlassTint" Name="Glass Tint">
+			<ValidActions></ValidActions>
+			<Modifiers>
+        <Modifier ID="Visibility" Effect="'25" />
+        <Modifier ID="Test" Effect="'0"/>
+      </Modifiers>
+		</FeatureAttachmentItem>
+		<FeatureAttachmentItem ID="OneWayMirror" Name="One-Way Mirror">
+			<ValidActions></ValidActions>
+			<Modifiers>
+        <Modifier ID="Opacity" Effect="'100"/>
+        <Modifier ID="Test" Effect="'0"/>
+      
+      </Modifiers>
+			</FeatureAttachmentItem>
+	</FeatureAttachmentItems>
 
 </Items>

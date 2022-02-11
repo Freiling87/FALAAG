@@ -16,4 +16,9 @@
     <ProjectReference Include="..\FALAAG.Core\FALAAG.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Actions\Repertoires\" />
+    <Folder Include="Actions\SkillChecks\" />
+  </ItemGroup>
+
 </Project>

@@ -52,49 +52,125 @@ namespace FALAAG.Factories
                                  node.AttributeAsString("Description"),
                                  $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
 
+                AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
+                AddGates(cell, node.SelectNodes("./Gates/Gate"));
                 AddNPCs(cell, node.SelectNodes("./NPCs/NPC"));
                 AddJobs(cell, node.SelectNodes("./Jobs/Job"));
-                // TODO: I think Automat was split up to accept multiple, and that's why it's no longer appearing.
-                AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
 
                 world.AddCell(cell);
             }
         }
 
-        private static void AddNPCs(Cell location, XmlNodeList monsters)
+        #region Cell Population
+        private static void AddNPCs(Cell cell, XmlNodeList npcs)
         {
-            if (monsters == null)
+            if (npcs == null)
                 return;
 
-            foreach (XmlNode monsterNode in monsters)
-                location.AddNPC(monsterNode.AttributeAsString("ID"), 
-                                monsterNode.AttributeAsInt("Percent"));
+            foreach (XmlNode gateNode in npcs)
+                cell.AddNPC(
+                    gateNode.AttributeAsString("ID"),
+                    gateNode.AttributeAsInt("Percent"));
         }
 
-        private static void AddJobs(Cell location, XmlNodeList quests)
-        {
-            if (quests == null)
+        private static void AddGates(Cell cell, XmlNodeList gates)
+		{
+            if (gates == null)
                 return;
 
-            foreach (XmlNode questNode in quests)
-                location.JobsHere.Add(JobFactory.GetJobByID(questNode.AttributeAsString("ID")));
+            foreach (XmlNode gateNode in gates)
+			{
+                Gate gate = GateFactory.GetGateByID(gateNode.AttributeAsString("ID"));
+                cell.Gates.Add(gate);
+                gate.Cell = cell;
+			}
+		}
+
+        private static void AddJobs(Cell cell, XmlNodeList jobs)
+        {
+            if (jobs == null)
+                return;
+
+            foreach (XmlNode questNode in jobs)
+                cell.JobsHere.Add(JobFactory.GetJobByID(questNode.AttributeAsString("ID")));
         }
 
-        private static void AddAutomat(Cell location, XmlNode automatHere)
+        private static void AddAutomat(Cell cell, XmlNode automatHere)
         {
+            // TODO: Move to Cell.
             if (automatHere == null)
                 return;
 
-            location.AutomatHere=
+            cell.AutomatHere =
                 AutomatFactory.GetAutomatByID(automatHere.AttributeAsString("ID"));
         }
-        private static void AddAutomats(Cell location, XmlNodeList automatsHere)
+
+        private static void AddAutomats(Cell cell, XmlNodeList automatsHere)
         {
             if (automatsHere == null)
                 return;
 
             foreach (XmlNode automat in automatsHere)
-                location.Automats.Add(AutomatFactory.GetAutomatByID(automat.AttributeAsString("ID")));
+                cell.Automats.Add(AutomatFactory.GetAutomatByID(automat.AttributeAsString("ID")));
         }
+
+        #endregion
+        #region Cell Operations
+        private static bool CanCellFit(Cell cell, int x, int y, int z, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
+        {
+
+
+            return true;
+        }
+
+        #endregion
+        #region Chunk Operations
+        private static void FlipChunk(Chunk chunk, CartesianAxis axis)
+		{
+
+        }
+
+        private static void PlaceChunk(Chunk chunkTemplate, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
+		{
+            Chunk chunk = chunkTemplate.Clone();
+
+            if (flipX)
+                FlipChunk(chunk, CartesianAxis.X);
+
+            if (flipY)
+                FlipChunk(chunk, CartesianAxis.Y);
+
+            if (flipZ)
+                FlipChunk(chunk, CartesianAxis.Z);
+
+            if (rotate)
+                RotateChunk(chunk);
+
+
+            // Since Chunk transformations involve cloning, there is the possibility of redundancy here since we're cloning cells as well. Whatever the final form, ensure that we're not making a bunch of unused objects that never get deleted.
+            foreach (Cell cellTemplate in chunk.Cells)
+			{
+                Cell cell = cellTemplate.Clone();
+
+                cell.X += mapX;
+                cell.Y += mapY;
+                cell.Z += mapZ;
+			}
+
+		}
+
+        private static void RotateChunk(Chunk chunk, int rotations = 1, bool Clockwise = true)
+        {
+
+        }
+
+        private static bool CanChunkFit(Chunk chunk, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
+        {
+            // TODO: Check for reciprocally overriding gate placements
+
+
+            return true;
+        }
+		#endregion
     }
 }

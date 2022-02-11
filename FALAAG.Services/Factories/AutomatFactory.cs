@@ -11,7 +11,7 @@ namespace FALAAG.Factories
     {
         private const string _contentDataFilepath = ".\\GameData\\Automats.xml";
 
-        private static readonly List<Automat> _Automats = new List<Automat>();
+        private static readonly List<Automat> _automatTemplates = new List<Automat>();
 
         static AutomatFactory()
         {
@@ -41,11 +41,11 @@ namespace FALAAG.Factories
                         Automat.InventoryAddItem(ItemFactory.CreateItem(childNode.AttributeAsString("ID")));
                 }
 
-                _Automats.Add(Automat);
+                _automatTemplates.Add(Automat);
             }
         }
 
         public static Automat GetAutomatByID(string id) =>
-            _Automats.FirstOrDefault(t => t.ID == id);
+            _automatTemplates.FirstOrDefault(t => t.ID == id);
     }
 }

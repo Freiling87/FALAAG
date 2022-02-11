@@ -6,9 +6,9 @@ namespace FALAAG.Models
 {
 	public class Cell : PhysicalObject
     {
-        public int X { get; }
-        public int Y { get; }
-        public int Z { get; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Z { get; set; }
         [JsonIgnore]
         public string Name { get; }
         [JsonIgnore]
@@ -36,6 +36,8 @@ namespace FALAAG.Models
 
 		public Cell(int x, int y, int z, string name, string description, string imagePath)
         {
+            // TODO: On adding to map, detect Priority gates in neighbors, and place them in this Cell.
+
             X = x;
             Y = y;
             Z = z;
@@ -51,5 +53,11 @@ namespace FALAAG.Models
             else
                 Encounters.Add(new NPCEncounter(npcID, chanceOfEncountering));
         }
+
+        public void GetGate(Direction direction) =>
+            Gates.Where(g => g.Direction == direction).FirstOrDefault();
+
+        public Cell Clone() =>
+            new Cell(X, Y, Z, Name, Description, ImagePath);
 	}
 }
