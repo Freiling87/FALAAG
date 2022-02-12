@@ -45,12 +45,12 @@ namespace WPFUI
         private void InitializeUserInputActions()
         {
             // To pass arguments with these action delegates, see https://soscsrpg.com/build-a-c-wpf-rpg/lesson-13-1-add-keyboard-input-for-actions-using-delegates/
-            _userInputActions.Add(Key.W, () => _gameSession.MoveNorth());
-            _userInputActions.Add(Key.A, () => _gameSession.MoveWest());
-            _userInputActions.Add(Key.S, () => _gameSession.MoveSouth());
-            _userInputActions.Add(Key.D, () => _gameSession.MoveEast());
-            _userInputActions.Add(Key.Q, () => _gameSession.Ascend());
-            _userInputActions.Add(Key.Z, () => _gameSession.Descend());
+            _userInputActions.Add(Key.W, () => _gameSession.MoveDirection(Direction.North));
+            _userInputActions.Add(Key.A, () => _gameSession.MoveDirection(Direction.West));
+            _userInputActions.Add(Key.S, () => _gameSession.MoveDirection(Direction.South));
+            _userInputActions.Add(Key.D, () => _gameSession.MoveDirection(Direction.East));
+            _userInputActions.Add(Key.Q, () => _gameSession.MoveDirection(Direction.Above));
+            _userInputActions.Add(Key.Z, () => _gameSession.MoveDirection(Direction.Below));
 
             _userInputActions.Add(Key.X, () => _gameSession.AttackCurrentNPC());
             _userInputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
@@ -188,32 +188,20 @@ namespace WPFUI
 		#region Movement
 		// Sender: the button itself, in this case
 		// EventArgs: One or more objects of RoutedEventArgs type.
-		private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
-        {
-            _gameSession.MoveNorth();
-        }
-        private void OnClick_MoveWest(object sender, RoutedEventArgs e)
-        {
-            _gameSession.MoveWest();
-        }
-        private void OnClick_MoveEast(object sender, RoutedEventArgs e)
-        {
-            _gameSession.MoveEast();
-        }
-        private void OnClick_MoveSouth(object sender, RoutedEventArgs e)
-        {
-            _gameSession.MoveSouth();
-        }
-        private void OnClick_Ascend(object sender, RoutedEventArgs e)
-		{
-            _gameSession.Ascend();
-		}
-        private void OnClick_Descend(object sender, RoutedEventArgs e)
-		{
-            _gameSession.Descend();
-		}
-		#endregion
-		#region Actions
+		private void OnClick_MoveNorth(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.North);
+        private void OnClick_MoveWest(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.West);
+        private void OnClick_MoveEast(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.East);
+        private void OnClick_MoveSouth(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.South);
+        private void OnClick_Ascend(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.Above);
+        private void OnClick_Descend(object sender, RoutedEventArgs e) =>
+            _gameSession.MoveDirection(Direction.Below);
+        #endregion
+        #region Actions
         private void OnClick_AttackNPC(object sender, RoutedEventArgs e)
 		{
             _gameSession.AttackCurrentNPC();

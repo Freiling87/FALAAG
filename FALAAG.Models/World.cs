@@ -18,5 +18,23 @@ namespace FALAAG.Models
 				l.X == x && 
 				l.Y == y && 
 				l.Z == z).DefaultIfEmpty(null).FirstOrDefault();
-	}
+
+        public Cell GetNeighbor(Cell cell, Direction direction) =>
+            GetCell(
+                direction == Direction.East
+                    ? cell.X + 1
+                    : direction == Direction.West
+                        ? cell.X - 1
+                        : cell.X,
+                direction == Direction.North
+                    ? cell.Y + 1
+                    : direction == Direction.South
+                        ? cell.Y - 1
+                        : cell.Y,
+                direction == Direction.Above
+                    ? cell.Z + 1
+                    : direction == Direction.Below
+                        ? cell.Z - 1
+                        : cell.Z);
+    }
 }

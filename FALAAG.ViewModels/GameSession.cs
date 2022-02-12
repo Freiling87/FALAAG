@@ -195,54 +195,18 @@ namespace FALAAG.ViewModels
             CurrentCell = CurrentWorld.GetCell(x, y, z);
             Narrator.OnMovement(CurrentCell);
         }
-        public void MoveNorth()
-        {
-            if (HasCellN)
-                MoveToCell(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z);
-        }
-        public void MoveEast()
-        {
-            if (HasCellE)
-                MoveToCell(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z);
-        }
-        public void MoveSouth()
-        {
-            if (HasCellS)
-                MoveToCell(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z);
-        }
-        public void MoveWest()
-        {
-            if (HasCellW)
-                MoveToCell(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z);
-        }
-        public void Ascend()
+        public void MoveDirection(Direction direction)
 		{
-            if (HasCellA)
-                MoveToCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1);
-        }
-        public void Descend()
-        {
-            if (HasCellB)
-                MoveToCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1);
-        }
-        [JsonIgnore]
-        public bool HasCellN => 
-            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y + 1, CurrentCell.Z) != null;
-        [JsonIgnore]
-        public bool HasCellE =>
-            CurrentWorld.GetCell(CurrentCell.X + 1, CurrentCell.Y, CurrentCell.Z) != null;
-        [JsonIgnore]
-        public bool HasCellS =>
-            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y - 1, CurrentCell.Z) != null;
-        [JsonIgnore]
-        public bool HasCellW =>
-            CurrentWorld.GetCell(CurrentCell.X - 1, CurrentCell.Y, CurrentCell.Z) != null;
-        [JsonIgnore]
-        public bool HasCellA =>
-            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z + 1) != null;
-        [JsonIgnore]
-        public bool HasCellB =>
-            CurrentWorld.GetCell(CurrentCell.X, CurrentCell.Y, CurrentCell.Z - 1) != null;
+            if (CanMoveTo(direction))
+                MoveToCell(CurrentWorld.GetNeighbor(CurrentCell, direction));
+		}
+        public bool CanMoveTo(Direction direction)
+		{
+            if (CurrentWorld.GetNeighbor(CurrentCell, direction) == null)
+                return false;
+
+            return true;
+		}
         #endregion
         #region NPCs
         #endregion
