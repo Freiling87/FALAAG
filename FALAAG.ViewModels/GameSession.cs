@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.ComponentModel;
 using FALAAG.Core;
+using System;
 
 namespace FALAAG.ViewModels
 {
@@ -185,33 +186,87 @@ namespace FALAAG.ViewModels
         #region Message Log
         #endregion
         #region Movement
-        public void MoveToCell(Cell cell)
-		{
-            CurrentCell = CurrentWorld.GetCell(cell.X, cell.Y, cell.Z);
-            Narrator.OnMovement(CurrentCell);
-        }
-        public void MoveToCell(int x, int y, int z)
+        public bool HasCellA
         {
-            CurrentCell = CurrentWorld.GetCell(x, y, z);
-            Narrator.OnMovement(CurrentCell);
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.Above) != null;
+            }
+        }
+        public bool HasCellB
+        {
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.Below) != null;
+            }
+        }
+        public bool HasCellE
+        {
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.East) != null;
+            }
+        }
+        public bool HasCellN
+        {
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.North) != null;
+            }
+        }
+        public bool HasCellS
+        {
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.South) != null;
+            }
+        }
+        public bool HasCellW
+        {
+            get
+            {
+                return CurrentWorld.GetNeighbor(CurrentCell, Direction.West) != null;
+            }
         }
         public void MoveDirection(Direction direction)
 		{
             if (CanMoveTo(direction))
                 MoveToCell(CurrentWorld.GetNeighbor(CurrentCell, direction));
 		}
-        public bool CanMoveTo(Direction direction)
-		{
-            if (CurrentWorld.GetNeighbor(CurrentCell, direction) == null)
-                return false;
+        public bool CanMoveTo(Direction direction) =>
+            CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
+        public void MoveToCell(Cell cell) =>
+            MoveToCell(cell.X, cell.Y, cell.Z);
+        public void MoveToCell(int x, int y, int z)
+        {
+            Cell targetCell = CurrentWorld.GetCell(x, y, z);
+            Direction? path = GetDirectionFromCell(targetCell);
+            Wall wall = targetCell.Walls.FirstOrDefault(w => w.Direction == path); 
+            
+   //         if (wall != null && wall.)
+			//{
 
-            return true;
+			//}
+
+            CurrentCell = targetCell;
+            Narrator.OnMovement(CurrentCell);
+        }
+
+		private Direction? GetDirectionFromCell(Cell targetCell)
+		{
+			foreach (Direction direction in Enum.GetValues(typeof(Direction)))
+			{
+                if (CurrentWorld.GetNeighbor(CurrentCell, direction) == targetCell)
+                    return direction;
+			}
+
+            return null;
 		}
-        #endregion
-        #region NPCs
-        #endregion
-        #region Jobs
-        private void CompleteJobsAtLocation()
+		#endregion
+		#region NPCs
+		#endregion
+		#region Jobs
+		private void CompleteJobsAtLocation()
         {
             foreach (Job job in CurrentCell.JobsHere)
             {

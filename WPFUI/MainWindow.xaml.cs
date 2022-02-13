@@ -137,7 +137,6 @@ namespace WPFUI
         {
             _gameSession.RecipesDetails.IsVisible = false;
         }
-
         private void GameCanvas_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton != MouseButton.Left)
@@ -148,7 +147,6 @@ namespace WPFUI
             movingElement.CaptureMouse();
             e.Handled = true;
         }
-
         private void GameCanvas_OnMouseMove(object sender, MouseEventArgs e)
         {
             if (_dragStart == null || e.LeftButton != MouseButtonState.Pressed)
@@ -167,7 +165,6 @@ namespace WPFUI
             Canvas.SetTop(movingElement, mousePosition.Y - _dragStart.Value.Y);
             e.Handled = true;
         }
-
         private void GameCanvas_OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             var movingElement = (UIElement)sender;
@@ -184,22 +181,27 @@ namespace WPFUI
             GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
             GameMessages.ScrollToEnd();
         }
-		#endregion
-		#region Movement
-		// Sender: the button itself, in this case
-		// EventArgs: One or more objects of RoutedEventArgs type.
-		private void OnClick_MoveNorth(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.North);
-        private void OnClick_MoveWest(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.West);
-        private void OnClick_MoveEast(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.East);
-        private void OnClick_MoveSouth(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.South);
+        #endregion
+        #region Movement
+        // Sender: the button itself, in this case
+        // EventArgs: One or more objects of RoutedEventArgs type.
         private void OnClick_Ascend(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.Above);
+            MoveDirection(Direction.Above);
         private void OnClick_Descend(object sender, RoutedEventArgs e) =>
-            _gameSession.MoveDirection(Direction.Below);
+            MoveDirection(Direction.Below);
+        private void OnClick_MoveEast(object sender, RoutedEventArgs e) =>
+            MoveDirection(Direction.East);
+        private void OnClick_MoveNorth(object sender, RoutedEventArgs e) =>
+            MoveDirection(Direction.North);
+        private void OnClick_MoveSouth(object sender, RoutedEventArgs e) =>
+            MoveDirection(Direction.South);
+        private void OnClick_MoveWest(object sender, RoutedEventArgs e) =>
+            MoveDirection(Direction.West);
+        private void MoveDirection(Direction direction)
+		{
+            ClearMessageLog();
+            _gameSession.MoveDirection(direction);
+        }
         #endregion
         #region Actions
         private void OnClick_AttackNPC(object sender, RoutedEventArgs e)

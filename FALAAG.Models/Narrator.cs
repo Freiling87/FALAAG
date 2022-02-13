@@ -26,7 +26,7 @@ namespace FALAAG.ViewModels
 			IntroduceCell(cell);
 			IntroduceNPCs(cell);
 			IntroduceFeatures(cell);
-			IntroduceGates(cell);
+			IntroduceWalls(cell);
 			IntroduceItems(cell);
 		}
 
@@ -81,32 +81,32 @@ namespace FALAAG.ViewModels
 				MessageBroker.GetInstance().RaiseMessage(narration);
 			}
 		}
-		public static void IntroduceGate(Gate gate)
+		public static void IntroduceWall(Wall wall)
 		{
-			string narration = "There is a " + gate.Name + " to the " + gate.Direction + ".";
+			string narration = "There is a " + wall.Name + " to the " + wall.Direction + ".";
 
 			MessageBroker.GetInstance().RaiseMessage(narration);
 		}
-		public static void IntroduceGates(Cell cell)
+		public static void IntroduceWalls(Cell cell)
 		{
-			if (!cell.Gates?.Any() ?? false)
+			if (!cell.Walls?.Any() ?? false)
 				return;
 
-			List<string> gateTypes = cell.Gates.Select(g => g.Name).Distinct().ToList();
+			List<string> wallTypes = cell.Walls.Select(g => g.Name).Distinct().ToList();
 
-			foreach (string gateType in gateTypes)
+			foreach (string wallType in wallTypes)
 			{
-				List<Gate> gates = cell.Gates.Where(g => g.Name == gateType).ToList();
+				List<Wall> walls = cell.Walls.Where(g => g.Name == wallType).ToList();
 				string narration = "";
 
-				if(gates.Count == 1)
+				if(walls.Count == 1)
 				{
-					narration = "There is a " + gateType + " to the " + gates[0].Direction + ".";
+					narration = "There is a " + wallType + " to the " + walls[0].Direction + ".";
 				}
 				else
 				{
-					narration = "There are " + gateType + "s to the "
-						+ ListDirections(cell.Gates.Where(g => g.Name == gateType).Select(g => g.Direction).ToList())
+					narration = "There are " + wallType + "s to the "
+						+ ListDirections(cell.Walls.Where(g => g.Name == wallType).Select(g => g.Direction).ToList())
 						+ ".";
 				}
 

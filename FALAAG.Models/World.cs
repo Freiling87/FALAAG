@@ -14,10 +14,10 @@ namespace FALAAG.Models
 			_mapCells.Add(location);
 
 		public Cell GetCell(int x, int y, int z) =>
-			_mapCells.Where(l => 
-				l.X == x && 
-				l.Y == y && 
-				l.Z == z).DefaultIfEmpty(null).FirstOrDefault();
+			_mapCells.Where(c => 
+				c.X == x && 
+				c.Y == y && 
+				c.Z == z).DefaultIfEmpty(null).FirstOrDefault();
 
         public Cell GetNeighbor(Cell cell, Direction direction) =>
             GetCell(

@@ -45,9 +45,9 @@
 				 Name="Junkyard"
 				 Description="Junkyard"
 				 ImageFilename="Junkyard_01.jpg">
-		<Gates>
-			<Gate ID ="ChainLinkFence" Direction="East"/>
-		</Gates>
+		<Walls>
+			<Wall ID ="ChainLinkFence" Direction="East"/>
+		</Walls>
 		<NPCs>
 			<NPC ID="Scavenger" Percent="100"/>
 		</NPCs>

@@ -22,13 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameData", "GameData", "{88
 		GameFiles\GameData\FeatureGroups.xml = GameFiles\GameData\FeatureGroups.xml
 		GameFiles\GameData\Features.xml = GameFiles\GameData\Features.xml
 		GameFiles\GameData\GameDetails.json = GameFiles\GameData\GameDetails.json
-		GameFiles\GameData\Gates.xml = GameFiles\GameData\Gates.xml
 		GameFiles\GameData\ItemGroups.xml = GameFiles\GameData\ItemGroups.xml
 		GameFiles\GameData\Items.xml = GameFiles\GameData\Items.xml
 		GameFiles\GameData\Jobs.xml = GameFiles\GameData\Jobs.xml
 		Materials.xml = Materials.xml
 		GameFiles\GameData\NPCs.xml = GameFiles\GameData\NPCs.xml
 		GameFiles\GameData\Recipes.xml = GameFiles\GameData\Recipes.xml
+		GameFiles\GameData\Walls.xml = GameFiles\GameData\Walls.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{2AD88C1E-10EF-491C-9652-F96995ED6B72}"

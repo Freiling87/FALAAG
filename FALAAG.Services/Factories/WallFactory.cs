@@ -9,12 +9,12 @@ using FALAAG.Models.Shared;
 
 namespace FALAAG.Factories
 {
-    public static class GateFactory
+    public static class WallFactory
     {
-        private const string _contentDataFilePath = ".\\GameData\\Gates.xml";
-        private static readonly List<Gate> _gateTemplates = new List<Gate>();
+        private const string _contentDataFilePath = ".\\GameData\\Walls.xml";
+        private static readonly List<Wall> _wallTemplates = new List<Wall>();
 
-        static GateFactory()
+        static WallFactory()
         {
             if (File.Exists(_contentDataFilePath))
             {
@@ -22,32 +22,31 @@ namespace FALAAG.Factories
                 data.LoadXml(File.ReadAllText(_contentDataFilePath));
 
                 // XML tags work as a filepath here
-                LoadGatesFromNodes(data.SelectNodes("/Gates/Gate"));
+                LoadWallsFromNodes(data.SelectNodes("/Walls/Wall"));
             }
             else
                 throw new FileNotFoundException($"Missing data file: {_contentDataFilePath}");
         }
 
-        public static Gate CreateGate(string GateTypeID) =>
-            _gateTemplates.FirstOrDefault(Gate => Gate.ID == GateTypeID)?.Clone();
+        public static Wall CreateWall(string id) =>
+            _wallTemplates.FirstOrDefault(w => w.ID == id)?.Clone();
 
-
-        private static void LoadGatesFromNodes(XmlNodeList nodes)
+        private static void LoadWallsFromNodes(XmlNodeList nodes)
         {
             if (nodes == null)
                 return;
 
             foreach (XmlNode node in nodes)
             {
-                Gate gate = new Gate(
+                Wall wall = new Wall(
                     node.AttributeAsString("ID"),
                     node.AttributeAsString("Name"));
 
-                _gateTemplates.Add(gate);
+                _wallTemplates.Add(wall);
             }
         }
 
-        internal static Gate GetGateByID(string id) =>
-            _gateTemplates.FirstOrDefault(g => g.ID == id).Clone();
+        internal static Wall GetWallByID(string id) =>
+            _wallTemplates.FirstOrDefault(g => g.ID == id).Clone();
 	}
 }

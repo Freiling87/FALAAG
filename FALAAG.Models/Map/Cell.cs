@@ -27,7 +27,7 @@ namespace FALAAG.Models
         public string EntryDescription { get; set; }
         public List<Automat> Automats { get; set; } = new List<Automat>();
         public List<Feature> Features { get; set; } = new List<Feature>();
-        public List<Gate> Gates { get; set; } = new List<Gate>();
+        public List<Wall> Walls { get; set; } = new List<Wall>();
         public List<NPC> NPCs { get; set; } = new List<NPC>();
         public List<Feature> PhysicalFeatures { get; set; } = new List<Feature>();
         [JsonIgnore]
@@ -36,8 +36,6 @@ namespace FALAAG.Models
 
 		public Cell(int x, int y, int z, string name, string description, string imagePath)
         {
-            // TODO: On adding to map, detect Priority gates in neighbors, and place them in this Cell.
-
             X = x;
             Y = y;
             Z = z;
@@ -54,8 +52,8 @@ namespace FALAAG.Models
                 Encounters.Add(new NPCEncounter(npcID, chanceOfEncountering));
         }
 
-        public void GetGate(Direction direction) =>
-            Gates.Where(g => g.Direction == direction).FirstOrDefault();
+        public void GetWall(Direction direction) =>
+            Walls.Where(g => g.Direction == direction).FirstOrDefault();
 
         public Cell Clone() =>
             new Cell(X, Y, Z, Name, Description, ImagePath);

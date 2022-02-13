@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace FALAAG.Models
 {
-	public class Gate : PhysicalObject
+	public class Wall : PhysicalObject
 	{
 		public Direction Direction { get; set; }
 		public string ID { get; set; }
 		public Material Material { get; set; }
 		public Cell Cell { get; set; }
 
-		public Gate (string id, string name)
+		public Wall (string id, string name)
 		{
-			// TODO: Reroute all access to this to the GateFactory.
+			// TODO: Reroute all access to this to the WallFactory.
 			ID = id;
 			Name = name;
 		}
 
-		public Gate Clone() =>
-			new Gate(ID, Name);
+		public Wall Clone() =>
+			new Wall(ID, Name);
 	}
 }

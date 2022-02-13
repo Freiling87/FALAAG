@@ -53,7 +53,7 @@ namespace FALAAG.Factories
                                  $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
 
                 AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
-                AddGates(cell, node.SelectNodes("./Gates/Gate"));
+                AddWalls(cell, node.SelectNodes("./Walls/Wall"));
                 AddNPCs(cell, node.SelectNodes("./NPCs/NPC"));
                 AddJobs(cell, node.SelectNodes("./Jobs/Job"));
 
@@ -67,22 +67,22 @@ namespace FALAAG.Factories
             if (npcs == null)
                 return;
 
-            foreach (XmlNode gateNode in npcs)
+            foreach (XmlNode node in npcs)
                 cell.AddNPC(
-                    gateNode.AttributeAsString("ID"),
-                    gateNode.AttributeAsInt("Percent"));
+                    node.AttributeAsString("ID"),
+                    node.AttributeAsInt("Percent"));
         }
 
-        private static void AddGates(Cell cell, XmlNodeList gates)
+        private static void AddWalls(Cell cell, XmlNodeList walls)
 		{
-            if (gates == null)
+            if (walls == null)
                 return;
 
-            foreach (XmlNode gateNode in gates)
+            foreach (XmlNode node in walls)
 			{
-                Gate gate = GateFactory.GetGateByID(gateNode.AttributeAsString("ID"));
-                cell.Gates.Add(gate);
-                gate.Cell = cell;
+                Wall wall = WallFactory.GetWallByID(node.AttributeAsString("ID"));
+                cell.Walls.Add(wall);
+                wall.Cell = cell;
 			}
 		}
 
@@ -166,7 +166,6 @@ namespace FALAAG.Factories
 
         private static bool CanChunkFit(Chunk chunk, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
         {
-            // TODO: Check for reciprocally overriding gate placements
 
 
             return true;

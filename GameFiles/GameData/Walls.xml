@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Walls>
+
+	<Wall ID="CurtainedDoorway" Name="Curtained Doorway" Material="FabricLight"></Wall>
+	<Wall ID="Door" Name="Door" Material="WoodMedium"></Wall>
+	<Wall ID="TrapDoor" Name="Trap Door" Material="WoodMedium"></Wall>
+	<Wall ID="ChainLinkGate" Name="Chain Link Gate" Material="ChainLink"></Wall>
+
+	<Wall ID="Countertop" Name="Solid Countertop" Material="WoodHeavy"></Wall>
+	<Wall ID="WetBar" Name="Solid Wet-Bar" Material="WoodHeavy">
+		<ValidActions>
+			<ValidAction ID="Climb" Difficulty="'15" Noise="'50"/>
+			<ValidAction ID="Jump" Difficulty="'25" Noise="'30"/>
+		</ValidActions>
+
+	</Wall>
+
+	<Wall ID="ChainLinkFence" Name="Chain Link Fence" Material="ChainLink">
+		<ValidActions>
+			<ValidAction ID="Climb" Difficulty="'30" Noise="'50"/>
+			<ValidAction ID="Crawl" Difficulty="'90" Noise="'30"/>
+		</ValidActions>
+	</Wall>
+
+	<Wall ID="DrywallWall" Name="Drywall Wall" Material="WoodLight">
+
+		<ValidActions></ValidActions>
+	</Wall>
+	<Wall ID="WoodenWall" Name="Wooden Wall" Material="WoodMedium"></Wall>
+	<Wall ID="MetalWall" Name="Metal Wall" Material="MetalMedium"></Wall>
+	<Wall ID="GlassWall" Name="Glass Wall" Material="GlassHeavy"></Wall>
+	<Wall ID="SolidGround" Name="Solid Ground" Material="EarthHeavy"></Wall>
+
+	<Wall ID="WindowMedium" Name="Window" Material="GlassMedium"></Wall>
+	<Wall ID="WindowSmall" Name="Small Window" Material="GlassMedium"></Wall>
+	<Wall ID="WindowLarge" Name="Large Window" Material="GlassMedium"></Wall>
+	<Wall ID="Ceiling" Name="Ceiling" Material="">
+		<ValidActions></ValidActions>
+		</Wall>
+
+</Walls>

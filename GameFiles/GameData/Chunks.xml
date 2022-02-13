@@ -21,25 +21,25 @@
 			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="3" Zone="Proprietor"/>
 		</Cells>
 
-		<Gates>
-			<!-- Gates like BarTop should place features into neighboring cell as well. -->
-			<!-- Gate facing should always be *outwards*, if it's possible to keep that consistent. -->
+		<Walls>
+			<!-- Things like BarTop should place features into neighboring cell as well. -->
+			<!-- Facing should always be *outwards*, if it's possible to keep that consistent. -->
 			<!-- Modifiers should also be added at the chunk level, like barring windows if it's a dive bar.-->
-			<Gate X="0" Y="0" Z="0" ID="Window" Facing="S"/>
-			<Gate X="0" Y="1" Z="0" ID="Bartop" Facing="S" Modifiers="Gate"/>
-			<Gate X="0" Y="1" Z="0" ID="Bartop" Facing="E"/>
-			<Gate X="0" Y="2" Z="0" ID="Bartop" Facing="E"/>
-			<Gate X="0" Y="3" Z="-1" ID="TrapDoor" Facing="A"/>
-			<Gate X="0" Y="3" Z="0" ID="Door" Facing="S"/>
-			<Gate X="0" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
+			<Wall X="0" Y="0" Z="0" ID="Window" Facing="S"/>
+			<Wall X="0" Y="1" Z="0" ID="Bartop" Facing="S" Modifiers="LiftGate"/>
+			<Wall X="0" Y="1" Z="0" ID="Bartop" Facing="E"/>
+			<Wall X="0" Y="2" Z="0" ID="Bartop" Facing="E"/>
+			<Wall X="0" Y="3" Z="-1" ID="TrapDoor" Facing="A"/>
+			<Wall X="0" Y="3" Z="0" ID="Door" Facing="S"/>
+			<Wall X="0" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
 			<!-- High Windows in Basements on Z=-1 should just peek out above ground level, allowing people to climb into and out of them. -->
-			<Gate X="0" Y="3" Z="-1" ID="Window" Facing="N" Modifiers="Basement"/>
-			<Gate X="1" Y="0" Z="0" ID="Door" Facing="S"/>
-			<Gate X="1" Y="3" Z="0" ID="Door" Facing="N"/>
-			<Gate X="2" Y="0" Z="0" ID="Window" Facing="S"/>
-			<Gate X="2" Y="3" Z="0" ID="Door" Facing="W"/>
-			<Gate X="2" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
-		</Gates>
+			<Wall X="0" Y="3" Z="-1" ID="Window" Facing="N" Modifiers="Basement"/>
+			<Wall X="1" Y="0" Z="0" ID="Door" Facing="S"/>
+			<Wall X="1" Y="3" Z="0" ID="Door" Facing="N"/>
+			<Wall X="2" Y="0" Z="0" ID="Window" Facing="S"/>
+			<Wall X="2" Y="3" Z="0" ID="Door" Facing="W"/>
+			<Wall X="2" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
+		</Walls>
 
 		<NPCs>
 			<NPC ID="Bartender" Chance="100" Territory="Proprietor"/>"
