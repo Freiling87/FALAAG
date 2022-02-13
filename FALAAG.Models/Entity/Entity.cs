@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using FALAAG.Core;
 
 namespace FALAAG.Models
 {
@@ -146,6 +148,20 @@ namespace FALAAG.Models
             Inventory = Inventory.RemoveItem(item);
         public void InventoryRemoveItems(List<ItemQuantity> itemQuantities) =>
             Inventory = Inventory.RemoveItems(itemQuantities);
+        public int RollSkillAttempt(PhysicalObject target, ActionOption actionOption)
+		{
+            Skill skill = GetSkillByID(actionOption.SkillType);
+            int accumulatedSuccess = actionOption.Difficulty * -1;
+
+            foreach (AttributeComponent ac in skill.AttributeComponents)
+                accumulatedSuccess += (int)(D100() * ac.Percent / 100);
+
+            return accumulatedSuccess;
+		}
+        public int D100() =>
+            DiceService.Instance.Roll(100).Value;
+        public Skill GetSkillByID(SkillType skillType) =>
+            Skills.FirstOrDefault(s => s.ID == skillType.ToString());
         public void TakeDamage(int hitPointsOfDamage)
         {
             HpCur -= hitPointsOfDamage;

@@ -9,24 +9,28 @@
 
 	<Wall ID="Countertop" Name="Solid Countertop" Material="WoodHeavy"></Wall>
 	<Wall ID="WetBar" Name="Solid Wet-Bar" Material="WoodHeavy">
-		<ValidActions>
-			<ValidAction ID="Climb" Difficulty="'15" Noise="'50"/>
-			<ValidAction ID="Jump" Difficulty="'25" Noise="'30"/>
-		</ValidActions>
+		<ActionOptions>
+			<ActionOption ID="Climb" Name="Climb Over" SkillType="Climb" AP="50" Difficulty="'15" Noise="'10" Visibility="'25"/>
+			<ActionOption ID="Vault" Name="Vault Over" SkillType="Vault" AP="25" Difficulty="'25" Noise="'5" Visibility="'25"/>
+		</ActionOptions>
 
 	</Wall>
 
-	<Wall ID="ChainLinkFence" Name="Chain Link Fence" Material="ChainLink">
-		<ValidActions>
-			<ValidAction ID="Climb" Difficulty="'30" Noise="'50"/>
-			<ValidAction ID="Crawl" Difficulty="'90" Noise="'30"/>
-		</ValidActions>
+	<Wall ID="ChainLinkFence" Name="Chain-link Fence" Material="ChainLink">
+
+		<ActionOptions>
+			<ActionOption ID="Climb" Name="Climb Over" SkillType="Climb" AP="'50" Difficulty="'20" Noise="'40" Visibility="'35"/>
+			<ActionOption ID="Vault" Name="Vault Over" SkillType="Vault" AP="'25" Difficulty="'75" Noise="'15" Visibility="'25"/>
+			<ActionOption ID="Crawl" Name="Crawl Under" SkillType="Crawl" AP="'50" Difficulty="'85" Noise="'15" Visibility="'15"/>
+			<ActionOption ID="WireCut" Name="Cut a Hole" SkillType="WireCut" AP="'200" Difficulty="'5" Noise="'10" Visibility="'15"/>
+			<ActionOption ID="KoolAidMan" Name="Burst Through" SkillType="KoolAidMan" AP="'20" Difficulty="'90" Noise="'40" Visibility="'20"/>
+		</ActionOptions>
+
 	</Wall>
 
-	<Wall ID="DrywallWall" Name="Drywall Wall" Material="WoodLight">
+	<Wall ID="ChainLinkFenceLow" Name="Low Chain-link Fence" Material="ChainLink"></Wall>
 
-		<ValidActions></ValidActions>
-	</Wall>
+	<Wall ID="DrywallWall" Name="Drywall Wall" Material="WoodLight"></Wall>
 	<Wall ID="WoodenWall" Name="Wooden Wall" Material="WoodMedium"></Wall>
 	<Wall ID="MetalWall" Name="Metal Wall" Material="MetalMedium"></Wall>
 	<Wall ID="GlassWall" Name="Glass Wall" Material="GlassHeavy"></Wall>
@@ -35,8 +39,6 @@
 	<Wall ID="WindowMedium" Name="Window" Material="GlassMedium"></Wall>
 	<Wall ID="WindowSmall" Name="Small Window" Material="GlassMedium"></Wall>
 	<Wall ID="WindowLarge" Name="Large Window" Material="GlassMedium"></Wall>
-	<Wall ID="Ceiling" Name="Ceiling" Material="">
-		<ValidActions></ValidActions>
-		</Wall>
+	<Wall ID="Ceiling" Name="Ceiling" Material=""></Wall>
 
 </Walls>

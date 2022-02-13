@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FALAAG.Models.Actions.Skills
+namespace FALAAG.Models
 {
 	class Lockpicking : Skill
 	{

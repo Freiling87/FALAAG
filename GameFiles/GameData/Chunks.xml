@@ -5,46 +5,155 @@
 	<MapChunk ID="DiveBar_01" NameGeneral="Bar" Zoning="Commercial" FlippableX="true" FlippableY="true" Districts="Downtown, Slums, Uptown">
 
 		<Cells>
-			<!-- Walls are automatically generated between different Cell types. -->
-			<Cell X="0" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="0" Y="1" Z="0" ID="BarBack" Room="0" Zone="Proprietor"/>
-			<Cell X="0" Y="2" Z="0" ID="BarBack" Room="0" Zone="Proprietor"/>
-			<Cell X="0" Y="3" Z="0" ID="Storeroom" Room="1" Zone="Proprietor"/>
-			<Cell X="1" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="1" Y="1" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="1" Y="2" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="1" Y="3" Z="0" ID="Hallway" Room="0" Zone="Patron"/>
-			<Cell X="2" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="2" Y="1" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="2" Y="2" Z="0" ID="Barroom" Room="0" Zone="Patron"/>
-			<Cell X="2" Y="3" Z="0" ID="BathroomPublicUnisex" Room="2" Zone="Patron"/>
-			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="3" Zone="Proprietor"/>
+			<Cell X="0" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="WoodWall" Direction="South">
+            <Portal ID="Window">
+              <ObjectAttachment ID="BurglarBars"/>
+            </Portal>
+          </Wall>
+          <Wall ID="WoodWall" Direction="West"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="0" Y="1" Z="0" ID="BarBack" Room="0" Zone="Proprietor">
+				<Walls>
+          <Wall ID="WetBar" Direction="South">
+            <Portal ID="LiftGate">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall><Wall ID="WetBar" Direction="East"><Portal></Portal>
+          </Wall>
+          <Wall ID="WoodWall" Direction="West"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="0" Y="2" Z="0" ID="BarBack" Room="0" Zone="Proprietor">
+				<Walls>
+          <Wall ID="TestWall" Direction="West">
+          </Wall>
+          <Wall ID="WetBar" Direction="East"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="0" Y="3" Z="0" ID="Storeroom" Room="1" Zone="Proprietor">
+				<Walls>
+          <Wall ID="Floor" Direction="Below">
+            <Portal ID="TrapDoor">
+              <ObjectAttachment ID="RugConcealment"/>
+            </Portal>
+          </Wall>
+          <Wall ID="WoodenDoor" Direction="South"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="2" Zone="Proprietor">
+				<Walls>
+          <Wall ID="ConcreteWall" Direction="North"><Portal ID="WindowBasement">
+            </Portal></Wall><Wall ID="ConcreteWall" Direction="East"><Portal></Portal></Wall><Wall ID="ConcreteWall" Direction="West"><Portal></Portal>
+          </Wall>
+          <Wall ID="ConcreteWall" Direction="South">
+          	<Portal></Portal>
+          	</Wall>
+				</Walls>
+			</Cell>
+			<Cell X="1" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="WoodenWall" Direction="South">
+            <Portal ID="Door">
+              <ObjectAttachment IDs="[LockHeavy, Crossbar]">
+            	</ObjectAttachment>
+            </Portal>
+          </Wall>
+				</Walls>
+			</Cell>
+			<Cell X="1" Y="1" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+				</Walls>
+			</Cell>
+			<Cell X="1" Y="2" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+				</Walls>
+			</Cell>
+			<Cell X="1" Y="3" Z="0" ID="Hallway" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="WoodenWall" Direction="North">
+            <Portal ID="Door">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="2" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="TestWall" Direction="North">
+            <Portal ID="Window">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="2" Y="1" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="TestWall" Direction="North">
+            <Portal ID="Window">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="2" Y="2" Z="0" ID="Barroom" Room="0" Zone="Patron">
+				<Walls>
+          <Wall ID="TestWall" Direction="North">
+            <Portal ID="Window">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="2" Y="3" Z="0" ID="BathroomPublicUnisex" Room="2" Zone="Patron">
+				<Walls>
+          <Wall ID="TestWall" Direction="North">
+            <Portal ID="Window">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+			</Cell>
+			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="3" Zone="Proprietor">
+				<Walls>
+          <Wall ID="TestWall" Direction="North">
+            <Portal ID="Window">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          </Wall>
+          <Wall ID="TestWall" Direction="North"></Wall>
+				</Walls>
+				</Cell>
 		</Cells>
 
 		<Walls>
-			<!-- Things like BarTop should place features into neighboring cell as well. -->
-			<!-- Facing should always be *outwards*, if it's possible to keep that consistent. -->
-			<!-- Modifiers should also be added at the chunk level, like barring windows if it's a dive bar.-->
-			<Wall X="0" Y="0" Z="0" ID="Window" Facing="S"/>
-			<Wall X="0" Y="1" Z="0" ID="Bartop" Facing="S" Modifiers="LiftGate"/>
-			<Wall X="0" Y="1" Z="0" ID="Bartop" Facing="E"/>
-			<Wall X="0" Y="2" Z="0" ID="Bartop" Facing="E"/>
-			<Wall X="0" Y="3" Z="-1" ID="TrapDoor" Facing="A"/>
-			<Wall X="0" Y="3" Z="0" ID="Door" Facing="S"/>
-			<Wall X="0" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
-			<!-- High Windows in Basements on Z=-1 should just peek out above ground level, allowing people to climb into and out of them. -->
-			<Wall X="0" Y="3" Z="-1" ID="Window" Facing="N" Modifiers="Basement"/>
-			<Wall X="1" Y="0" Z="0" ID="Door" Facing="S"/>
-			<Wall X="1" Y="3" Z="0" ID="Door" Facing="N"/>
-			<Wall X="2" Y="0" Z="0" ID="Window" Facing="S"/>
-			<Wall X="2" Y="3" Z="0" ID="Door" Facing="W"/>
-			<Wall X="2" Y="3" Z="0" ID="Window" Facing="N" Modifiers="High"/>
+			<Wall X="0" Y="0" Z="0" ID="Window" Direction="S"/>
+			<Wall X="0" Y="1" Z="0" ID="Bartop" Direction="S" Modifiers="LiftGate"/>
+			<Wall X="0" Y="1" Z="0" ID="Bartop" Direction="E"/>
+			<Wall X="0" Y="2" Z="0" ID="Bartop" Direction="E"/>
+			<Wall X="0" Y="3" Z="-1" ID="TrapDoor" Direction="A"/>
+			<Wall X="0" Y="3" Z="0" ID="Door" Direction="S"/>
+			<Wall X="0" Y="3" Z="0" ID="Window" Direction="N" Modifiers="High"/>
+			<Wall X="0" Y="3" Z="-1" ID="Window" Direction="N" Modifiers="Basement"/>
+			<Wall X="1" Y="0" Z="0" ID="Door" Direction="S"/>
+			<Wall X="1" Y="3" Z="0" ID="Door" Direction="N"/>
+			<Wall X="2" Y="0" Z="0" ID="Window" Direction="S"/>
+			<Wall X="2" Y="3" Z="0" ID="Door" Direction="W"/>
+			<Wall X="2" Y="3" Z="0" ID="Window" Direction="N" Modifiers="High"/>
 		</Walls>
 
-		<NPCs>
-			<NPC ID="Bartender" Chance="100" Territory="Proprietor"/>"
-			<!-- Patrons should be general NPCs who wander in naturally -->
-		</NPCs>
+		<Roles>
+			<Role ID="Bartender" Territory="Proprietor"/>
+			<Role ID="Barback" Territory="Proprietor"/>
+			<Role ID="Owner" Territory="Proprietor"/>
+			</Roles>
 
 	</MapChunk>
 

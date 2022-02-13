@@ -17,7 +17,7 @@ namespace FALAAG.Models
         Center
     }
 
-    public static class Directions
+    public static class DirectionManager
     {
         static readonly List<Direction> PlaneXY = new List<Direction>() { Direction.North, Direction.East, Direction.South, Direction.West };
         static readonly List<Direction> PlaneXZ = new List<Direction>() { Direction.East, Direction.Below, Direction.West, Direction.Above };

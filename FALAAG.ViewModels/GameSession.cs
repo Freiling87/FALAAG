@@ -230,10 +230,10 @@ namespace FALAAG.ViewModels
         }
         public void MoveDirection(Direction direction)
 		{
-            if (CanMoveTo(direction))
+            if (HasCell(direction))
                 MoveToCell(CurrentWorld.GetNeighbor(CurrentCell, direction));
 		}
-        public bool CanMoveTo(Direction direction) =>
+        public bool HasCell(Direction direction) =>
             CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
         public void MoveToCell(Cell cell) =>
             MoveToCell(cell.X, cell.Y, cell.Z);
@@ -243,10 +243,19 @@ namespace FALAAG.ViewModels
             Direction? path = GetDirectionFromCell(targetCell);
             Wall wall = targetCell.Walls.FirstOrDefault(w => w.Direction == path); 
             
-   //         if (wall != null && wall.)
-			//{
+            if (wall != null)
+			{
+                if (wall.Portal != null)
+                {
+                    if (!wall.Portal.Passable)
+                    {
 
-			//}
+                    }
+                }
+                else
+                    // KoolAidMan shit here
+                    return;
+			}
 
             CurrentCell = targetCell;
             Narrator.OnMovement(CurrentCell);

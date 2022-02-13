@@ -1,5 +1,7 @@
 ﻿using FALAAG.Core;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace FALAAG.Models
 {
@@ -11,6 +13,10 @@ namespace FALAAG.Models
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
 		public string ID { get; set; }
+		public List<ActionOption> PossibleActions { get; set; }
+
+		public ActionOption GetSkillCheck(SkillType skillType) =>
+			PossibleActions.FirstOrDefault(action => action.SkillType == skillType);
 
 		private int _opacity;
 		// 100: No visbility
@@ -18,8 +24,8 @@ namespace FALAAG.Models
 		private int _solidity;
 		// 100: Solid earth, blocks sound completely
 		// 25: Sheetrock wall, allows sensation of objects beyond at 75% of Audibility Distance 
-		private int _visibleDistance;
-		private int _audibleDistance;
+		private int _visibility;
+		private int _audibility;
 
 		public void NarrateEntry()
 		{

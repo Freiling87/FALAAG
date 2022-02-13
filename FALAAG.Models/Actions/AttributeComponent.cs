@@ -3,9 +3,9 @@
 	public class AttributeComponent
 	{
 		public string Key { get; set; }
-		public int Percent { get; set; }
+		public float Percent { get; set; }
 
-		public AttributeComponent(string key, int percent)
+		public AttributeComponent(string key, float percent)
 		{
 			Key = key;
 			Percent = percent;

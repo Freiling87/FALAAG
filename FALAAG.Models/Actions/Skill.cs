@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace FALAAG.Models
 {
+	public enum SkillType
+	{
+		Climbing,
+		Jumping,
+		Lockpicking,
+		Vaulting,
+	}
 	public class Skill
 	{
 		public int Peak { get; set; } // Peak of skill achieved, to allow faster relearning after decay.

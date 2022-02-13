@@ -12,10 +12,13 @@ namespace FALAAG.Models
 		public string ID { get; set; }
 		public Material Material { get; set; }
 		public Cell Cell { get; set; }
+		public Portal Portal { get; set; }
 
 		public Wall (string id, string name)
 		{
-			// TODO: Reroute all access to this to the WallFactory.
+			// TODO: Reroute all access to this constructor to the WallFactory.
+			// TODO: Prefer most-solid material when differing types are adjoining.
+			//	e.g., if a wood and brick wall adjoin, prefer the brick. 
 			ID = id;
 			Name = name;
 		}
