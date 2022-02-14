@@ -10,8 +10,11 @@ namespace FALAAG.Models
 	{
 		private readonly List<Cell> _mapCells = new List<Cell>();
 
-		public void AddCell(Cell location) =>
-			_mapCells.Add(location);
+		public void AddCell(Cell cell)
+        {
+            _mapCells.Add(cell);
+            cell.UpdateWalls();
+        }
 
 		public Cell GetCell(int x, int y, int z) =>
 			_mapCells.Where(c => 

@@ -39,25 +39,22 @@ namespace FALAAG.Factories
                     wallNode.AttributeAsString("WallID"),
                     wallNode.AttributeAsString("Name"));
 
-                XmlNodeList actionOptions = wallNode.SelectNodes("./ActionOptions/ActionOption");
+				foreach (XmlNode actionOptionNode in wallNode.SelectNodes("./ActionOptions/ActionOption"))
+				{
+					wall.ActionOptions.Add(new ActionOption(
+						actionOptionNode.AttributeAsString("ActionID"),
+						actionOptionNode.AttributeAsString("Name"),
+						Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
+						actionOptionNode.AttributeAsInt("Difficulty"),
+						actionOptionNode.AttributeAsInt("Audibility"),
+						actionOptionNode.AttributeAsInt("Visibility")));
+				}
 
-                if (actionOptions.Count > 0)
-                    foreach (XmlNode actionOptionNode in actionOptions)
-					{
-                        wall.ActionOptions.Add(new ActionOption(
-                            actionOptionNode.AttributeAsString("ActionID"),
-                            actionOptionNode.AttributeAsString("Name"),
-                            Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
-                            actionOptionNode.AttributeAsInt("Difficulty"),
-                            actionOptionNode.AttributeAsInt("Audibility"),
-                            actionOptionNode.AttributeAsInt("Visibility")));
-					}
-
-                _wallTemplates.Add(wall);
+				_wallTemplates.Add(wall);
             }
         }
 
         internal static Wall GetWallByID(string id) =>
-            _wallTemplates.FirstOrDefault(g => g.ID == id).Clone();
+            _wallTemplates.FirstOrDefault(w => w.ID == id).Clone();
 	}
 }

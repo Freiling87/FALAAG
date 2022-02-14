@@ -15,12 +15,9 @@ namespace FALAAG.Models
         public string Description { get; }
         [JsonIgnore]
         public string NarrationEntry { get; }
-        // Need to set in XML reader
         [JsonIgnore]
         public string ImagePath { get; }
 
-        // You'd think this should be in Entity, but ultmately this will just be the sum of all doable things in the Cell. Anyone can attempt them, why not?
-        public List<ActionOption> ActionOptions = new List<ActionOption>();
         [JsonIgnore]
         public Automat AutomatHere { get; set; } // Temp
         [JsonIgnore]
@@ -117,6 +114,10 @@ namespace FALAAG.Models
                 WallWest,
             };
 
+        public void UpdateWalls()
+		{
+
+		}
 
 	}
 }

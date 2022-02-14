@@ -10,9 +10,10 @@ namespace FALAAG.Models
 	public enum SkillType
 	{
 		Climbing,
-		Jumping,
-		Lockpicking,
 		Vaulting,
+		Crawling,
+		WireCutting,
+		KoolAidManning,
 	}
 	public class Skill
 	{

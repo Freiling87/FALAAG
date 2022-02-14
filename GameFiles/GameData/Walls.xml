@@ -5,22 +5,6 @@
 		<ActionOptions>
 		</ActionOptions>
 	</Wall>
-	<Wall WallID="WetBar" Name="Wet-Bar" Material="WoodHeavy">
-		<ActionOptions>
-			<ActionOption ActionID="Test" Name="Test" SkillType="Test" AP="'0" Difficulty="'0" Noise="'0" Visibility="'0"/>
-			<ActionOption ActionID="Climb" Name="Climb Over" SkillType="Climb" AP="'50" Difficulty="'15" Noise="'10" Visibility="'25"/>
-			<ActionOption ActionID="Vault" Name="Vault Over" SkillType="Vault" AP="'25" Difficulty="'25" Noise="'5" Visibility="'25"/>
-		</ActionOptions>
-	</Wall>
-	<Wall WallID="ChainLinkFence" Name="Chain-link Fence" Material="ChainLink">
-		<ActionOptions>
-			<ActionOption ActionID="Climb" Name="Climb Over" SkillType="Climb" AP="'50" Difficulty="'20" Noise="'40" Visibility="'35"/>
-			<ActionOption ActionID="Vault" Name="Vault Over" SkillType="Vault" AP="'25" Difficulty="'75" Noise="'15" Visibility="'25"/>
-			<ActionOption ActionID="Crawl" Name="Crawl Under" SkillType="Crawl" AP="'50" Difficulty="'85" Noise="'15" Visibility="'15"/>
-			<ActionOption ActionID="WireCut" Name="Cut a Hole" SkillType="WireCut" AP="'200" Difficulty="'5" Noise="'10" Visibility="'15"/>
-			<ActionOption ActionID="KoolAidMan" Name="Burst Through" SkillType="KoolAidMan" AP="'20" Difficulty="'90" Noise="'40" Visibility="'20"/>
-		</ActionOptions>
-	</Wall>
 	<Wall WallID="ChainLinkFenceLow" Name="Low Chain-link Fence" Material="ChainLink">
 		<ActionOptions>
 		</ActionOptions>
@@ -48,6 +32,21 @@
 		<ActionOptions>
 		</ActionOptions>
 
+	</Wall>
+	<Wall WallID="WetBar" Name="Wet-Bar" Material="WoodHeavy">
+		<ActionOptions>
+			<ActionOption ActionID="Climb" Name="Climb Over" SkillType="Climbing" AP="50" Difficulty="15" Audibility="10" Visibility="25"/>
+			<ActionOption ActionID="Vault" Name="Vault Over" SkillType="Vaulting" AP="25" Difficulty="25" Audibility="5" Visibility="25"/>
+		</ActionOptions>
+	</Wall>
+	<Wall WallID="ChainLinkFence" Name="Chain-link Fence" Material="ChainLink">
+		<ActionOptions>
+			<ActionOption ActionID="Climb" Name="Climb Over" SkillType="Climbing" AP="50" Difficulty="20" Audibility="40" Visibility="35"/>
+			<ActionOption ActionID="Vault" Name="Vault Over" SkillType="Vaulting" AP="25" Difficulty="75" Audibility="15" Visibility="25"/>
+			<ActionOption ActionID="Crawl" Name="Crawl Under" SkillType="Crawling" AP="50" Difficulty="85" Audibility="15" Visibility="15"/>
+			<ActionOption ActionID="WireCut" Name="Cut a Hole" SkillType="WireCutting" AP="200" Difficulty="5" Audibility="10" Visibility="15"/>
+			<ActionOption ActionID="KoolAidMan" Name="Burst Through" SkillType="KoolAidManning" AP="20" Difficulty="90" Audibility="40" Visibility="20"/>
+		</ActionOptions>
 	</Wall>
 
 </Walls>

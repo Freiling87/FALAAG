@@ -52,19 +52,19 @@ namespace FALAAG.Factories
                     node.AttributeAsString("Description"),
                     $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
 
-                AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
-                AddWalls(cell, node.SelectNodes("./Walls/Wall"));
-                AddNPCs(cell, node.SelectNodes("./NPCs/NPC"));
-                AddJobs(cell, node.SelectNodes("./Jobs/Job"));
+                AddAutomatsToCell(cell, node.SelectNodes("./Automats/Automat"));
+                AddWallsToCell(cell, node.SelectNodes("./Walls/Wall"));
+                AddNPCsToCell(cell, node.SelectNodes("./NPCs/NPC"));
+                AddJobsToCell(cell, node.SelectNodes("./Jobs/Job"));
 
                 world.AddCell(cell);
             }
         }
 
         #region Cell Population
-        private static void AddNPCs(Cell cell, XmlNodeList npcs)
+        private static void AddNPCsToCell(Cell cell, XmlNodeList npcs)
         {
-            if (npcs == null)
+            if (npcs != null)
                 return;
 
             foreach (XmlNode node in npcs)
@@ -73,7 +73,7 @@ namespace FALAAG.Factories
                     node.AttributeAsInt("Percent"));
         }
 
-        private static void AddWalls(Cell cell, XmlNodeList walls)
+        private static void AddWallsToCell(Cell cell, XmlNodeList walls)
 		{
             if (walls.Count == 0)
                 return;
@@ -85,7 +85,7 @@ namespace FALAAG.Factories
 			}
 		}
 
-        private static void AddJobs(Cell cell, XmlNodeList jobs)
+        private static void AddJobsToCell(Cell cell, XmlNodeList jobs)
         {
             if (jobs == null)
                 return;
@@ -104,7 +104,7 @@ namespace FALAAG.Factories
                 AutomatFactory.GetAutomatByID(automatHere.AttributeAsString("ID"));
         }
 
-        private static void AddAutomats(Cell cell, XmlNodeList automatsHere)
+        private static void AddAutomatsToCell(Cell cell, XmlNodeList automatsHere)
         {
             if (automatsHere == null)
                 return;
