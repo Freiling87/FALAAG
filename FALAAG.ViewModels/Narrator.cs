@@ -81,32 +81,27 @@ namespace FALAAG.ViewModels
 				MessageBroker.GetInstance().RaiseMessage(narration);
 			}
 		}
-		public static void IntroduceWall(Wall wall)
-		{
-			string narration = "There is a " + wall.Name + " to the " + wall.Direction + ".";
-
-			MessageBroker.GetInstance().RaiseMessage(narration);
-		}
 		public static void IntroduceWalls(Cell cell)
 		{
-			if (!cell.Walls?.Any() ?? false)
+			if (!cell.Walls()?.Any() ?? false)
 				return;
 
-			List<string> wallTypes = cell.Walls.Select(g => g.Name).Distinct().ToList();
+			List<string> wallTypes = cell.Walls().Select(g => g.Name).Distinct().ToList();
 
 			foreach (string wallType in wallTypes)
 			{
-				List<Wall> walls = cell.Walls.Where(g => g.Name == wallType).ToList();
+				List<Wall> walls = cell.Walls().Where(g => g.Name == wallType).ToList();
 				string narration = "";
 
-				if(walls.Count == 1)
+				if (walls.Count == 1)
 				{
-					narration = "There is a " + wallType + " to the " + walls[0].Direction + ".";
+					Wall wall = walls[0];
+					narration = "There is a " + wallType + " to the " + wall.GetDirection().ToString() + ".";
 				}
 				else
 				{
 					narration = "There are " + wallType + "s to the "
-						+ ListDirections(cell.Walls.Where(g => g.Name == wallType).Select(g => g.Direction).ToList())
+						+ ListDirections(cell.Walls().Where(g => g.Name == wallType).Select(g => g.GetDirection()).ToList())
 						+ ".";
 				}
 

@@ -36,5 +36,35 @@ namespace FALAAG.Models
                     : direction == Direction.Below
                         ? cell.Z - 1
                         : cell.Z);
-    }
+
+        public Wall GetWall(Cell cell, Direction direction) =>
+            direction switch
+            {
+                Direction.Above => GetNeighbor(cell, Direction.Above).WallBelow,
+                Direction.Below => cell.WallBelow,
+                Direction.East => GetNeighbor(cell, Direction.East).WallWest,
+                Direction.North => GetNeighbor(cell, Direction.North).WallSouth,
+                Direction.South => cell.WallSouth,
+                Direction.West => cell.WallWest,
+                _ => throw new ArgumentException()
+            };
+
+        public Direction? GetWallDirection(Cell originCell, Wall wall)
+        {
+            if (wall == GetNeighbor(originCell, Direction.Above).WallBelow)
+                return Direction.Above;
+            else if (wall == originCell.WallBelow)
+                return Direction.Below;
+            else if (wall == GetNeighbor(originCell, Direction.East).WallWest)
+                return Direction.East;
+            else if (wall == GetNeighbor(originCell, Direction.North).WallSouth)
+                return Direction.North;
+            else if (wall == originCell.WallSouth)
+                return Direction.South;
+            else if (wall == originCell.WallWest)
+                return Direction.West;
+
+            return null;
+		}
+}
 }

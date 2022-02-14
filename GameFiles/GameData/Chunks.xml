@@ -28,8 +28,6 @@
 			</Cell>
 			<Cell X="0" Y="2" Z="0" ID="BarBack" Room="0" Zone="Proprietor">
 				<Walls>
-          <Wall ID="TestWall" Direction="West">
-          </Wall>
           <Wall ID="WetBar" Direction="East"></Wall>
 				</Walls>
 			</Cell>
@@ -40,7 +38,11 @@
               <ObjectAttachment ID="RugConcealment"/>
             </Portal>
           </Wall>
-          <Wall ID="WoodenDoor" Direction="South"></Wall>
+          <Wall ID="WoodenWall" Direction="South">
+          	<Portal ID="WoodenDoor">
+              <ObjectAttachment ID="LockTumblerSimple"/>
+            </Portal>
+          	</Wall>
 				</Walls>
 			</Cell>
 			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="2" Zone="Proprietor">
@@ -78,47 +80,43 @@
               <ObjectAttachment ID="LatchSimple"/>
             </Portal>
           </Wall>
-          <Wall ID="TestWall" Direction="North"></Wall>
 				</Walls>
 			</Cell>
 			<Cell X="2" Y="0" Z="0" ID="Barroom" Room="0" Zone="Patron">
 				<Walls>
-          <Wall ID="TestWall" Direction="North">
+          <Wall ID="WoodenWall" Direction="South">
             <Portal ID="Window">
-              <ObjectAttachment ID="LatchSimple"/>
+              <ObjectAttachment ID="BurglarBars"/>
             </Portal>
           </Wall>
-          <Wall ID="TestWall" Direction="North"></Wall>
 				</Walls>
 			</Cell>
 			<Cell X="2" Y="1" Z="0" ID="Barroom" Room="0" Zone="Patron">
 				<Walls>
-          <Wall ID="TestWall" Direction="North">
-            <Portal ID="Window">
-              <ObjectAttachment ID="LatchSimple"/>
-            </Portal>
+          <Wall ID="WoodenWall" Direction="East">
           </Wall>
-          <Wall ID="TestWall" Direction="North"></Wall>
 				</Walls>
 			</Cell>
 			<Cell X="2" Y="2" Z="0" ID="Barroom" Room="0" Zone="Patron">
 				<Walls>
-          <Wall ID="TestWall" Direction="North">
-            <Portal ID="Window">
-              <ObjectAttachment ID="LatchSimple"/>
-            </Portal>
+          <Wall ID="WoodenWall" Direction="East">
           </Wall>
-          <Wall ID="TestWall" Direction="North"></Wall>
 				</Walls>
 			</Cell>
 			<Cell X="2" Y="3" Z="0" ID="BathroomPublicUnisex" Room="2" Zone="Patron">
 				<Walls>
-          <Wall ID="TestWall" Direction="North">
-            <Portal ID="Window">
-              <ObjectAttachment ID="LatchSimple"/>
+          <Wall ID="WoodenWall" Direction="West">
+            <Portal ID="WoodenDoor">
+              <ObjectAttachment ID="LockSimple"/>
             </Portal>
           </Wall>
-          <Wall ID="TestWall" Direction="North"></Wall>
+          <Wall ID="WoodenWall" Direction="South"></Wall>
+          <Wall ID="WoodenWall" Direction="East"></Wall>
+          <Wall ID="WoodenWall" Direction="North">
+          	<Portal ID="WindowBasement">
+              <ObjectAttachment ID="LatchSimple"/>
+            </Portal>
+          	</Wall>
 				</Walls>
 			</Cell>
 			<Cell X="0" Y="3" Z="-1" ID="Basement" Room="3" Zone="Proprietor">

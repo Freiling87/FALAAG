@@ -19,5 +19,10 @@ namespace FALAAG.Models
 		public ObjectAttachment Sensor =>
 			Attachments.Where(a => a.AttachmentType == AttachmentType.Sensor).FirstOrDefault();
 		public List<ActionOption> ActionOptions = new List<ActionOption>();
+
+		public Portal(string id)
+		{
+
+		}
 	}
 }

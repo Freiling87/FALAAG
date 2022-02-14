@@ -69,25 +69,25 @@ namespace FALAAG.Factories
                 attributes.First(a => a.ID.Equals("GMS")).ModifiedValue =
                     Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText);
 
-                NPC NPC =
-                    new NPC(node.AttributeAsString("ID"),
-                            RandomName(),
-                            node.AttributeAsString("NameGeneral"),
-                            $".{rootImagePath}{node.AttributeAsString("ImagePath")}",
-                            attributes,
-                            new List<Skill>(),
-                            ItemFactory.CreateItem(node.AttributeAsString("WeaponID")),
-                            node.AttributeAsInt("XPReward"));
+                NPC npc = new (
+                    node.AttributeAsString("ID"),
+                    RandomName(),
+                    node.AttributeAsString("NameGeneral"),
+                    $".{rootImagePath}{node.AttributeAsString("ImagePath")}",
+                    attributes,
+                    new List<Skill>(),
+                    ItemFactory.CreateItem(node.AttributeAsString("WeaponID")),
+                    node.AttributeAsInt("XPReward"));
 
                 XmlNodeList lootItemNodes = node.SelectNodes("./LootItems/LootItem");
-                if (lootItemNodes != null)
-                {
-                    foreach (XmlNode lootItemNode in lootItemNodes)
-                        NPC.AddItemToLootTable(lootItemNode.AttributeAsString("ID"),
-                        lootItemNode.AttributeAsInt("Percentage"));
-                }
 
-                s_NPCTemplates.Add(NPC);
+                if (lootItemNodes != null)
+                    foreach (XmlNode lootItemNode in lootItemNodes)
+                        npc.AddItemToLootTable(
+                            lootItemNode.AttributeAsString("ID"),
+                            lootItemNode.AttributeAsInt("Percentage"));
+
+                s_NPCTemplates.Add(npc);
             }
         }
 

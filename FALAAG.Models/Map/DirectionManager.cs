@@ -8,13 +8,13 @@ namespace FALAAG.Models
 {
     public enum Direction
     {
+        Above,
+        Below,
         East,
         North,
         South,
         West,
-        Above,
-        Below,
-        Center
+        Null
     }
 
     public static class DirectionManager
@@ -23,26 +23,16 @@ namespace FALAAG.Models
         static readonly List<Direction> PlaneXZ = new List<Direction>() { Direction.East, Direction.Below, Direction.West, Direction.Above };
         static readonly List<Direction> PlaneYZ = new List<Direction>() { Direction.North, Direction.Below, Direction.South, Direction.Above };
 
-        private static Direction FlipDirection(Direction direction)
+        private static Direction? FlipDirection(Direction direction) =>
+        direction switch
         {
-            switch (direction)
-            {
-                case Direction.East:
-                    return Direction.West;
-                case Direction.North:
-                    return Direction.South;
-                case Direction.South:
-                    return Direction.North;
-                case Direction.West:
-                    return Direction.East;
-                case Direction.Above:
-                    return Direction.Below;
-                case Direction.Below:
-                    return Direction.Above;
-                default:
-                    return Direction.Center;
-            }
-        }
+            Direction.Above => Direction.Below,
+            Direction.Below => Direction.Above,
+            Direction.East => Direction.West,
+            Direction.North => Direction.South,
+            Direction.South => Direction.North,
+            Direction.West => Direction.East,
+        };
 
         private static List<Direction> RotationPlane(CartesianAxis pinnedAxis)
 		{

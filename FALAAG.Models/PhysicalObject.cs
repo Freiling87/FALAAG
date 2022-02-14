@@ -24,8 +24,8 @@ namespace FALAAG.Models
 		private int _solidity;
 		// 100: Solid earth, blocks sound completely
 		// 25: Sheetrock wall, allows sensation of objects beyond at 75% of Audibility Distance 
-		private int _visibility;
-		private int _audibility;
+		private int _visibleDistance;
+		// TODO: Ambient sounds generated from something like a MachineOperate() action
 
 		public void NarrateEntry()
 		{

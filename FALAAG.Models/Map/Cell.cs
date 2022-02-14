@@ -29,7 +29,14 @@ namespace FALAAG.Models
         public string EntryDescription { get; set; }
         public List<Automat> Automats { get; set; } = new List<Automat>();
         public List<Feature> Features { get; set; } = new List<Feature>();
-        public List<Wall> Walls { get; set; } = new List<Wall>();
+        // Ceiling, North, and East walls are stored in neighboring cells
+        // I hate this solution but it seems like the most elegant
+        public Wall WallBelow { get; set; }
+        public Wall WallSouth { get; set; }
+        public Wall WallWest { get; set; }
+        public Cell CellAbove { get; set; }
+        public Cell CellEast { get; set; }
+        public Cell CellNorth { get; set; }
         public List<NPC> NPCs { get; set; } = new List<NPC>();
         public List<Feature> PhysicalFeatures { get; set; } = new List<Feature>();
         [JsonIgnore]
@@ -54,10 +61,62 @@ namespace FALAAG.Models
                 Encounters.Add(new NPCEncounter(npcID, chanceOfEncountering));
         }
 
-        public void GetWall(Direction direction) =>
-            Walls.Where(g => g.Direction == direction).FirstOrDefault();
-
         public Cell Clone() =>
             new Cell(X, Y, Z, Name, Description, ImagePath);
+
+        public void AddWall(Wall wall, Direction direction)
+		{
+            switch (direction)
+			{
+                case Direction.Above:
+                    wall.Cell = CellAbove;
+                    wall.Cell.WallBelow = wall;
+                    break;
+                case Direction.Below:
+                    wall.Cell = this;
+                    WallBelow = wall;
+                    break;
+                case Direction.East:
+                    wall.Cell = CellEast;
+                    wall.Cell.WallWest = wall;
+                    break;
+                case Direction.North:
+                    wall.Cell = CellNorth;
+                    wall.Cell.WallSouth = wall;
+                    break;
+                case Direction.South:
+                    wall.Cell = this;
+                    WallSouth = wall;
+                    break;
+                case Direction.West:
+                    wall.Cell = this;
+                    WallWest = wall;
+                    break;
+			}
+		}
+
+        public Wall GetWall(Direction direction) =>
+            direction switch
+            {
+                Direction.Above => CellAbove.WallBelow,
+                Direction.Below => WallBelow,
+                Direction.East => CellEast.WallWest,
+                Direction.North => CellNorth.WallSouth,
+                Direction.South => WallSouth,
+                Direction.West => WallWest,
+            };
+
+        public List<Wall> Walls() =>
+            new List<Wall>()
+            {
+                CellAbove.WallBelow,
+                WallBelow,
+                CellEast.WallWest,
+                CellNorth.WallSouth,
+                WallSouth,
+                WallWest,
+            };
+
+
 	}
 }

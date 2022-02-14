@@ -1,92 +1,55 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Cells 
-	RootImagePath="/Images/Cell/">
-
-	<!-- #region Home Base -->
-	<Cell X="0" Y="0" Z="0"
-					 Name ="Abandoned Warehouse"  
-					 Description="Storage Room"
-					 ImageFilename="HB-StorageRoomEmpty.jpg">
-	</Cell>
+<Cells RootImagePath="/Images/Cell/">
+	<Cell X="0" Y="0" Z="0" Name="Abandoned Warehouse" Description="Storage Room" ImageFilename="HB-StorageRoomEmpty.jpg"></Cell>
 	
-	<Cell X="0" Y="0" Z="-1"
-					 Name="Abandoned Warehouse" 
-					 Description="Basement"
-					 ImageFilename="HB-Basement.jpg">
+	<Cell X="0" Y="0" Z="-1" Name="Abandoned Warehouse" Description="Basement" ImageFilename="HB-Basement.jpg">
 		<NPCs>
 			<NPC ID="Rat" Percent="100"/>
 		</NPCs>
 	</Cell>
 	
-	<Cell X="0" Y="0" Z="1"
-					 Name="Abandoned Warehouse" 
-					 Description="Loft Office" 
-					 ImageFilename="HB-OfficeAbandoned.jpg">
-	</Cell>
+	<Cell X="0" Y="0" Z="1" Name="Abandoned Warehouse" Description="Loft Office" ImageFilename="HB-OfficeAbandoned.jpg"></Cell>
 	
-	<Cell X="0" Y="0" Z="2"
-					 Name="Abandoned Warehouse" 
-					 Description="Rooftop"
-					 ImageFilename="HB-Rooftop.jpg">
+	<Cell X="0" Y="0" Z="2" Name="Abandoned Warehouse" Description="Rooftop" ImageFilename="HB-Rooftop.jpg">
 		<NPCs>
-			<NPC ID="Pigeon"  Percent="100"/>
+			<NPC ID="Pigeon" Percent="100"/>
 		</NPCs>
 	</Cell>
-	<!-- #endregion -->
 
-	<Cell X="-1" Y="0" Z="0"
-					 Name="Street"
-					 Description="Street"
-					 ImageFilename="Street_01.jpg">
-	</Cell>
+	<Cell X="-1" Y="0" Z="0" Name="Street" Description="Street" ImageFilename="Street_01.jpg"></Cell>
 
-	<Cell X="-2" Y="0" Z="0"
-				 Name="Junkyard"
-				 Description="Junkyard"
-				 ImageFilename="Junkyard_01.jpg">
-		<Walls>
-			<Wall ID ="ChainLinkFence" Direction="East"/>
-		</Walls>
+	<Cell X="-2" Y="0" Z="0" Name="Junkyard" Description="Junkyard" ImageFilename="Junkyard_01.jpg">
 		<NPCs>
 			<NPC ID="Scavenger" Percent="100"/>
 		</NPCs>
+		<Walls>
+			<Wall ID="ChainLinkFence" Direction="East"/>
+		</Walls>
 	</Cell>
 	
-	<Cell X="0" Y="-1" Z="0"
-					 Name="Pawn Shop" 
-					 Description="Pawn Shop"
-					 ImageFilename="PawnShop.jpg">
+	<Cell X="0" Y="-1" Z="0" Name="Pawn Shop" Description="Pawn Shop" ImageFilename="PawnShop.jpg">
 		<Automats>
 			<Automat ID="AutoPawnMachine" Percent="100"/>
 		</Automats>
 	</Cell>
 
-	<Cell X="0" Y="1" Z="0"
-					 Name="Dipshit's Hideout" 
-					 Description="Dipshit's Hideout"
-					 ImageFilename="DipshitsHideout.jpg">
-		<Jobs>
-			<Job ID="SpecialHeadgear"/>
-		</Jobs>
+	<Cell X="0" Y="1" Z="0" Name="Dipshit's Hideout" Description="Dipshit's Hideout" ImageFilename="DipshitsHideout.jpg">
 		<NPCs>
 			<NPC ID="Dipshit" Percent="100"/>
 		</NPCs>
+		<Jobs>
+			<Job ID="SpecialHeadgear"/>
+		</Jobs>
 	</Cell>
 
-	<Cell X="1" Y="0" Z="0"
-					 Name="The Old Rose" 
-					 Description="The Old Rose"
-					 ImageFilename="TheOldRose.jpg">
+	<Cell X="1" Y="0" Z="0" Name="The Old Rose" Description="The Old Rose" ImageFilename="TheOldRose.jpg">
 		<NPCs>
 			<NPC ID="BarFly" Percent="100"/>
 		</NPCs>
 	</Cell>
 
-	<Cell X="0" Y="-2" Z="0"
-					 Name="Dream Parlor" 
-					 Description="Dream Parlor"
-					 ImageFilename="DreamParlor.jpg">
+	<Cell X="0" Y="-2" Z="0" Name="Dream Parlor" Description="Dream Parlor" ImageFilename="DreamParlor.jpg">
 		<NPCs>
 			<NPC ID="Sleepwalker" Percent="100"/>
 		</NPCs>

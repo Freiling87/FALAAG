@@ -240,18 +240,19 @@ namespace FALAAG.ViewModels
         public void MoveToCell(int x, int y, int z)
         {
             Cell targetCell = CurrentWorld.GetCell(x, y, z);
-            Direction? path = GetDirectionFromCell(targetCell);
-            Wall wall = targetCell.Walls.FirstOrDefault(w => w.Direction == path); 
+            Direction path = GetDirectionFromCurrentCell(targetCell);
+            Wall wall = targetCell.GetWall((Direction)path);
             
             if (wall != null)
 			{
-                if (wall.Portal != null)
-                {
-                    if (!wall.Portal.Passable)
+                if (wall.Portals != null)
+                    foreach (Portal portal in wall.Portals)
                     {
+                        if (!portal.Passable)
+                        {
 
+                        }
                     }
-                }
                 else
                     // KoolAidMan shit here
                     return;
@@ -260,8 +261,7 @@ namespace FALAAG.ViewModels
             CurrentCell = targetCell;
             Narrator.OnMovement(CurrentCell);
         }
-
-		private Direction? GetDirectionFromCell(Cell targetCell)
+		private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{
 			foreach (Direction direction in Enum.GetValues(typeof(Direction)))
 			{
@@ -269,7 +269,7 @@ namespace FALAAG.ViewModels
                     return direction;
 			}
 
-            return null;
+            return Direction.Null;
 		}
 		#endregion
 		#region NPCs

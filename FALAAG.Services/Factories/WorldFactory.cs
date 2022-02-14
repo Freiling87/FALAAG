@@ -44,13 +44,13 @@ namespace FALAAG.Factories
 
             foreach (XmlNode node in nodes)
             {
-                Cell cell = 
-                    new Cell(node.AttributeAsInt("X"),
-                                 node.AttributeAsInt("Y"),
-                                 node.AttributeAsInt("Z"),
-                                 node.AttributeAsString("Name"),
-                                 node.AttributeAsString("Description"),
-                                 $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
+                Cell cell = new Cell(
+                    node.AttributeAsInt("X"),
+                    node.AttributeAsInt("Y"),
+                    node.AttributeAsInt("Z"),
+                    node.AttributeAsString("Name"),
+                    node.AttributeAsString("Description"),
+                    $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
 
                 AddAutomats(cell, node.SelectNodes("./Automats/Automat"));
                 AddWalls(cell, node.SelectNodes("./Walls/Wall"));
@@ -75,14 +75,13 @@ namespace FALAAG.Factories
 
         private static void AddWalls(Cell cell, XmlNodeList walls)
 		{
-            if (walls == null)
+            if (walls.Count == 0)
                 return;
 
             foreach (XmlNode node in walls)
 			{
                 Wall wall = WallFactory.GetWallByID(node.AttributeAsString("ID"));
-                cell.Walls.Add(wall);
-                wall.Cell = cell;
+                cell.AddWall(wall, Enum.Parse<Direction>(node.AttributeAsString("Direction")));
 			}
 		}
 

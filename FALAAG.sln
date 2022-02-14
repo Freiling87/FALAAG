@@ -25,8 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameData", "GameData", "{88
 		GameFiles\GameData\ItemGroups.xml = GameFiles\GameData\ItemGroups.xml
 		GameFiles\GameData\Items.xml = GameFiles\GameData\Items.xml
 		GameFiles\GameData\Jobs.xml = GameFiles\GameData\Jobs.xml
-		Materials.xml = Materials.xml
+		GameFiles\GameData\Materials.xml = GameFiles\GameData\Materials.xml
 		GameFiles\GameData\NPCs.xml = GameFiles\GameData\NPCs.xml
+		GameFiles\GameData\ObjectAttachments.xml = GameFiles\GameData\ObjectAttachments.xml
+		GameFiles\GameData\Portals.xml = GameFiles\GameData\Portals.xml
 		GameFiles\GameData\Recipes.xml = GameFiles\GameData\Recipes.xml
 		GameFiles\GameData\Walls.xml = GameFiles\GameData\Walls.xml
 	EndProjectSection

@@ -31,16 +31,27 @@ namespace FALAAG.Factories
         public static Wall CreateWall(string id) =>
             _wallTemplates.FirstOrDefault(w => w.ID == id)?.Clone();
 
-        private static void LoadWallsFromNodes(XmlNodeList nodes)
+        private static void LoadWallsFromNodes(XmlNodeList walls)
         {
-            if (nodes == null)
-                return;
-
-            foreach (XmlNode node in nodes)
+            foreach (XmlNode wallNode in walls)
             {
                 Wall wall = new Wall(
-                    node.AttributeAsString("ID"),
-                    node.AttributeAsString("Name"));
+                    wallNode.AttributeAsString("WallID"),
+                    wallNode.AttributeAsString("Name"));
+
+                XmlNodeList actionOptions = wallNode.SelectNodes("./ActionOptions/ActionOption");
+
+                if (actionOptions.Count > 0)
+                    foreach (XmlNode actionOptionNode in actionOptions)
+					{
+                        wall.ActionOptions.Add(new ActionOption(
+                            actionOptionNode.AttributeAsString("ActionID"),
+                            actionOptionNode.AttributeAsString("Name"),
+                            Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
+                            actionOptionNode.AttributeAsInt("Difficulty"),
+                            actionOptionNode.AttributeAsInt("Audibility"),
+                            actionOptionNode.AttributeAsInt("Visibility")));
+					}
 
                 _wallTemplates.Add(wall);
             }

@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Cells RootImagePath="/Images/Cell/">
-
-	<!-- #region Barroom -->
 	<Cell ID="BarBack" Name="Bar back area">
 		<!---->
 		<FeatureGroups>
@@ -26,15 +24,11 @@
 			<FeatureGroup ID="TableAndChairs" Percent="50"/>
 		</FeatureGroups>
 	</Cell>
-	
-	<!-- I have Hallway in two different sections. Only time will tell! -->
 	<Cell ID="Hallway" Name="Hallway" ChunkType="DiveBar">
 			<FeatureGroup ID="ATM" Percent="100"/>
 			<FeatureGroup ID="CigaretteMachine" Percent="100"/>
 	
 	</Cell>
-	<!-- #endregion-->
-	<!-- #region Bathrooms -->
 	<Cell ID="BathroomPublicMen" Name="Public Men's Room">
 		<FeatureGroups>
 			<FeatureGroup ID="BathroomFurniture" Percent="100"/>
@@ -54,20 +48,9 @@
 			<FeatureGroup ID="BathroomStalls" Percent="100"/>
 		</FeatureGroups>
 	</Cell>
-	<!-- #endregion -->
-	<!-- #region Generic Exteriors -->
-	<Cell ID="ExteriorUtilitiesRural">
-		<!-- Generator, Septic tank, etc. -->
-	</Cell>
-	<!-- #endregion -->
-	<!-- #region Generic Interiors -->
 	<Cell ID="Hallway">
 		
 	</Cell>
-	<!-- #endregion -->
-	<!-- #region Generic Rooftops -->
-	<!-- #endregion -->
-	<!-- #region Generic Subterrane -->
 	<Cell ID="Basement">
 		<FeatureGroups>
 			<FeatureGroup ID="CleaningSupplies" Percent="50"/>
@@ -77,12 +60,8 @@
 			<FeatureGroup ID="Storage" Percent="50"/>
 		</FeatureGroups>
 	</Cell>
-	<!-- #endregion-->
-	<!-- #region Storage -->
-	<Cell ID="Attic">
-	</Cell>
-	<Cell ID="Storeroom" WallGeneration="Override">
-		<!-- This means to override "Exterior Only" Wallgen cells -->
+	<Cell ID="Attic"></Cell>
+	<Cell ID="Storeroom">
 		<FeatureGroups>
 			<FeatureGroup ID="CleaningSupplies" Percent="50"/>
 			<FeatureGroup ID="Stash" Percent="5"/>
@@ -91,8 +70,6 @@
 			<FeatureGroup ID="Storage" Percent="25"/>
 		</FeatureGroups>
 	</Cell>
-	<Cell ID="WarehouseFloor">
-	</Cell>
-	<!-- #endregion -->
+	<Cell ID="WarehouseFloor"></Cell>
 
 </Cells>

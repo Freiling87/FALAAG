@@ -8,6 +8,7 @@ namespace FALAAG.Models
 {
 	public enum Material
 	{
+		NullDefault,
 		ChainLink,
 		EarthLight, EarthMedium, EarthHeavy,
 		FabricLight, FabricMedium, FabricHeavy,

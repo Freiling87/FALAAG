@@ -12,10 +12,21 @@ namespace FALAAG.Models
 	/// </summary>
 	public class ActionOption
 	{
+		public string ID { get; set; }
+		public string Name { get; set; }
 		public SkillType SkillType { get; set; }
 		public int Difficulty { get; set; }
-		public int Noise { get; set; }
+		public int Audibility { get; set; }
 		public int Visibility { get; set; }
 
+		public ActionOption(string id, string name, SkillType skillType, int difficulty, int audibility, int visibility)
+		{
+			ID = id;
+			Name = name;
+			SkillType = skillType;
+			Difficulty = difficulty;
+			Audibility = audibility;
+			Visibility = visibility;
+		}
 	}
 }

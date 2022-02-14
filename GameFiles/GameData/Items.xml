@@ -81,7 +81,7 @@
 		<FeatureAttachmentItem ID="GlassTint" Name="Glass Tint">
 			<ValidActions></ValidActions>
 			<Modifiers>
-        <Modifier ID="Visibility" Effect="'25" />
+        <Modifier ID="Opacity" Effect="'25"/>
         <Modifier ID="Test" Effect="'0"/>
       </Modifiers>
 		</FeatureAttachmentItem>
