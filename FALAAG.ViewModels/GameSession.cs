@@ -237,14 +237,32 @@ namespace FALAAG.ViewModels
             CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
         public void MoveToCell(Cell cell) =>
             MoveToCell(cell.X, cell.Y, cell.Z);
-        public void MoveToCell(int x, int y, int z)
+        public void MoveToCell(int x, int y, int z) // 
         {
             Cell targetCell = CurrentWorld.GetCell(x, y, z);
-            Direction path = GetDirectionFromCurrentCell(targetCell);
-            Wall wall = targetCell.GetWall((Direction)path);
-            
-            if (wall != null)
-			{
+
+            if (PassedMovementChecks(targetCell, Player))
+            {
+                CurrentCell = targetCell;
+                Narrator.OnMovement(CurrentCell);
+            }
+        }
+        public bool PassedMovementChecks(Cell cell, Entity entity)
+		{
+            bool passed = true;
+
+            Direction path = GetDirectionFromCurrentCell(cell);
+            Wall wall = cell.GetWall((Direction)path);
+
+            /* Check for:
+             *  Enemies blocking
+             *  Portal checks
+             *  Status Effect restrictions
+             *
+             */
+
+            if (wall != null && !wall.Passable)
+            {
                 if (wall.Portals != null)
                     foreach (Portal portal in wall.Portals)
                     {
@@ -254,13 +272,15 @@ namespace FALAAG.ViewModels
                         }
                     }
                 else
-                    // KoolAidMan shit here
-                    return;
-			}
+                // KoolAidMan shit here
+                {
+                    MessageBroker.GetInstance().RaiseMessage("You can't walk through walls... yet.");
+                    return false;
+                }
+            }
 
-            CurrentCell = targetCell;
-            Narrator.OnMovement(CurrentCell);
-        }
+            return passed;
+		}
 		private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{
 			foreach (Direction direction in Enum.GetValues(typeof(Direction)))

@@ -34,6 +34,9 @@ namespace FALAAG.Factories
             else
                 throw new FileNotFoundException($"Missing data file: {dataFilepath}");
 
+            world.PlaceEdgeCells();
+            world.UpdateNeighbors();
+
             return world;
         }
 
@@ -72,7 +75,6 @@ namespace FALAAG.Factories
                     node.AttributeAsString("ID"),
                     node.AttributeAsInt("Percent"));
         }
-
         private static void AddWallsToCell(Cell cell, XmlNodeList walls)
 		{
             if (walls.Count == 0)
@@ -84,7 +86,6 @@ namespace FALAAG.Factories
                 cell.AddWall(wall, Enum.Parse<Direction>(node.AttributeAsString("Direction")));
 			}
 		}
-
         private static void AddJobsToCell(Cell cell, XmlNodeList jobs)
         {
             if (jobs == null)
@@ -93,7 +94,6 @@ namespace FALAAG.Factories
             foreach (XmlNode questNode in jobs)
                 cell.JobsHere.Add(JobFactory.GetJobByID(questNode.AttributeAsString("ID")));
         }
-
         private static void AddAutomat(Cell cell, XmlNode automatHere)
         {
             // TODO: Move to Cell.
@@ -103,7 +103,6 @@ namespace FALAAG.Factories
             cell.AutomatHere =
                 AutomatFactory.GetAutomatByID(automatHere.AttributeAsString("ID"));
         }
-
         private static void AddAutomatsToCell(Cell cell, XmlNodeList automatsHere)
         {
             if (automatsHere == null)
@@ -112,7 +111,6 @@ namespace FALAAG.Factories
             foreach (XmlNode automat in automatsHere)
                 cell.Automats.Add(AutomatFactory.GetAutomatByID(automat.AttributeAsString("ID")));
         }
-
         #endregion
         #region Cell Operations
         private static bool CanCellFit(Cell cell, int x, int y, int z, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
@@ -121,14 +119,16 @@ namespace FALAAG.Factories
 
             return true;
         }
-
         #endregion
         #region Chunk Operations
+        private static bool CanChunkFit(Chunk chunk, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
+        {
+            return true;
+        }
         private static void FlipChunk(Chunk chunk, CartesianAxis axis)
 		{
 
         }
-
         private static void PlaceChunk(Chunk chunkTemplate, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
 		{
             Chunk chunk = chunkTemplate.Clone();
@@ -157,17 +157,9 @@ namespace FALAAG.Factories
 			}
 
 		}
-
         private static void RotateChunk(Chunk chunk, int rotations = 1, bool Clockwise = true)
         {
 
-        }
-
-        private static bool CanChunkFit(Chunk chunk, int mapX, int mapY, int mapZ, bool placeByOrigin = true, bool flipX = false, bool flipY = false, bool flipZ = false, bool rotate = false)
-        {
-
-
-            return true;
         }
 		#endregion
     }

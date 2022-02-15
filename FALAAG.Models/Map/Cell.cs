@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,14 +27,15 @@ namespace FALAAG.Models
         public string EntryDescription { get; set; }
         public List<Automat> Automats { get; set; } = new List<Automat>();
         public List<Feature> Features { get; set; } = new List<Feature>();
-        // Ceiling, North, and East walls are stored in neighboring cells
-        // I hate this solution but it seems like the most elegant
         public Wall WallBelow { get; set; }
         public Wall WallSouth { get; set; }
         public Wall WallWest { get; set; }
         public Cell CellAbove { get; set; }
+        public Cell CellBelow { get; set; }
         public Cell CellEast { get; set; }
         public Cell CellNorth { get; set; }
+        public Cell CellSouth { get; set; }
+        public Cell CellWest { get; set; }
         public List<NPC> NPCs { get; set; } = new List<NPC>();
         public List<Feature> PhysicalFeatures { get; set; } = new List<Feature>();
         [JsonIgnore]
@@ -50,6 +52,19 @@ namespace FALAAG.Models
             ImagePath = imagePath;
         }
 
+        public Cell(int x, int y, int z, bool EdgeCell = false)
+        {
+            if (EdgeCell == false)
+                throw new ArgumentException("Unintended use of this method");
+
+            X = x;
+            Y = y;
+            Z = z;
+            Name = "Edge";
+            Description = "This is the edge of the map. If you're standing here, it's a bug.";
+            // Can vary these later with world-justified edges, e.g. desert, arco wall, etc.
+        }
+
         public void AddNPC(string npcID, int chanceOfEncountering)
         {
             if (Encounters.Exists(m => m.NpcID == npcID))
@@ -63,6 +78,8 @@ namespace FALAAG.Models
 
         public void AddWall(Wall wall, Direction direction)
 		{
+            // TODO: This could all be greatly simplified by creating getters and setters for the variables defined. 
+
             switch (direction)
 			{
                 case Direction.Above:
@@ -103,8 +120,7 @@ namespace FALAAG.Models
                 Direction.West => WallWest,
             };
 
-        public List<Wall> Walls() =>
-            new List<Wall>()
+        public List<Wall> Walls() => new List<Wall>()
             {
                 CellAbove.WallBelow,
                 WallBelow,
@@ -113,11 +129,6 @@ namespace FALAAG.Models
                 WallSouth,
                 WallWest,
             };
-
-        public void UpdateWalls()
-		{
-
-		}
 
 	}
 }
