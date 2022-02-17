@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Actions\Repertoires\**" />
+    <Compile Remove="Actions\SkillChecks\**" />
+    <EmbeddedResource Remove="Actions\Repertoires\**" />
+    <EmbeddedResource Remove="Actions\SkillChecks\**" />
+    <None Remove="Actions\Repertoires\**" />
+    <None Remove="Actions\SkillChecks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Fody" Version="6.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,8 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Actions\Repertoires\" />
-    <Folder Include="Actions\SkillChecks\" />
+    <Folder Include="Actions\Skills\" />
   </ItemGroup>
 
 </Project>

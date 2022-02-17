@@ -41,13 +41,14 @@ namespace FALAAG.Factories
 
 				foreach (XmlNode actionOptionNode in wallNode.SelectNodes("./ActionOptions/ActionOption"))
 				{
-					wall.ActionOptions.Add(new ActionOption(
+					wall.ActionOptions.Append(new ActionOption(
 						actionOptionNode.AttributeAsString("ActionID"),
 						actionOptionNode.AttributeAsString("Name"),
 						Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
 						actionOptionNode.AttributeAsInt("Difficulty"),
 						actionOptionNode.AttributeAsInt("Audibility"),
-						actionOptionNode.AttributeAsInt("Visibility")));
+						actionOptionNode.AttributeAsInt("Visibility"),
+                        wall));
 				}
 
 				_wallTemplates.Add(wall);

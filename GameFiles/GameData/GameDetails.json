@@ -2624,9 +2624,9 @@
   ],
 
   "Skills": [{
-      "ID": "LOCKPICK",
+      "ID": "Lockpicking",
       "Name": "Lockpick",
-      "Group": "Not used",
+      "Group": "TBD",
       "Description": "Lockpick things.",
       "AttributeComponents": [
         {
@@ -2649,9 +2649,9 @@
       ]
     },
 {
-      "ID": "CLIMBLONG",
+      "ID": "ClimbingLong",
       "Name": "Climb (Endurance)",
-      "Group": "Not used",
+      "Group": "TBD",
       "Description": "Climb things, tall ones."
     ,
       "AttributeComponents": [
@@ -2683,9 +2683,9 @@
       ]
     },
 {
-      "ID": "CLIMBFAST",
+      "ID": "ClimbingFast",
       "Name": "Climb (Speed)",
-      "Group": "Not used",
+      "Group": "TBD",
       "Description": "Climb things, quickly.",
       "AttributeComponents": [{
           "Key": "GMS",
@@ -2714,9 +2714,9 @@
           "Key": "CHANCE",
           "Percent": "10"}]},
 {
-      "ID": "FIRSTAID",
+      "ID": "FirstAid",
       "Name": "First Aid",
-      "Group": "Not used",
+      "Group": "TBD",
       "Description": "Stop bleeding. I mean it.",
       "AttributeComponents": [{
           "Key": "FMS",
@@ -2736,9 +2736,9 @@
           "Key": "CHANCE",
           "Percent": "10"}]},
 {
-      "ID": "SEARCH",
+      "ID": "Searching",
       "Name": "Search",
-      "Group": "Not used",
+      "Group": "TBD",
       "Description": "Ransackery",
       "AttributeComponents": [{
           "Key": "CRE",
@@ -2761,9 +2761,9 @@
           "Key": "CHANCE",
           "Percent": "35"}]},
 {
-      "ID": "JUMP",
-      "Name": "Jump",
-      "Group": "Not used",
+      "ID": "JumpingDistance",
+      "Name": "Running Jump",
+      "Group": "TBD",
       "Description": "Jump",
       "AttributeComponents": [{
           "Key": "GMS",

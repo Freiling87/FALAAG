@@ -18,8 +18,14 @@ namespace FALAAG.Models
 		public int Difficulty { get; set; }
 		public int Audibility { get; set; }
 		public int Visibility { get; set; }
+		public PhysicalObject HostObject { get; set; }
+		public string OutcomeProjection 
+		{ 
+			get => "Test Outcome Projection text"; 
+			set { OutcomeProjection = value; } 
+		} // For Action chooser canvas, formatted mini-page of chances and outcomes
 
-		public ActionOption(string id, string name, SkillType skillType, int difficulty, int audibility, int visibility)
+		public ActionOption(string id, string name, SkillType skillType, int difficulty, int audibility, int visibility, PhysicalObject hostObject)
 		{
 			ID = id;
 			Name = name;
@@ -27,6 +33,7 @@ namespace FALAAG.Models
 			Difficulty = difficulty;
 			Audibility = audibility;
 			Visibility = visibility;
+			HostObject = hostObject;
 		}
 	}
 }

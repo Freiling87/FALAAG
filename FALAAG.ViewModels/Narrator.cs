@@ -93,12 +93,13 @@ namespace FALAAG.ViewModels
 				if (walls.Count == 1)
 				{
 					Wall wall = walls[0];
-					narration = "There is a " + wallType + " to the " + wall.GetDirection(cell).ToString() + ".";
+					narration = "There is a " + wallType.ToLower() + " to the " + wall.GetDirection(cell).ToString().ToLower() + ".";
 				}
 				else
 				{
-					narration = "There are " + wallType + "s to the "
-						+ ListDirections(cell.Walls().Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList())
+					// TODO: Make a List → Text method
+					narration = "There are " + wallType.ToLower() + "s to the "
+						+ string.Join(", ", ListDirections(cell.Walls().Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList()).ToLower())
 						+ ".";
 				}
 

@@ -9,12 +9,19 @@ namespace FALAAG.Models
 {
 	public enum SkillType
 	{
-		Climbing,
+		ClimbingLong,
+		ClimbingFast,
 		Vaulting,
 		Crawling,
+		Lockpicking,
 		WireCutting,
 		KoolAidManning,
+		FirstAid,
+		Searching,
+		JumpingDistance
 	}
+	// TODO: Action Delegate Dictionary from XAML Enums to Skill Use Methods, similar to how it's applied in InitializeUserInputActions
+
 	public class Skill
 	{
 		public int Peak { get; set; } // Peak of skill achieved, to allow faster relearning after decay.
@@ -30,6 +37,8 @@ namespace FALAAG.Models
 		public int Modifier { get; set; }
 		public int Value { get; set; }
 		public int ModifiedValue { get; set; }
+		public SkillType SkillType { get; set; }
+
 		public string ModifiedValueDescriptor
 		{
 			get
@@ -64,6 +73,7 @@ namespace FALAAG.Models
 			ID = id;
 			Name = name;
 			Description = description;
+			SkillType = Enum.Parse<SkillType>(id);
 		}
 
 		protected void ReportResult(string result)

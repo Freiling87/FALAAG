@@ -10,7 +10,6 @@ namespace FALAAG.Models
 	{
 		public Material Material { get; set; }
 		public List<Portal> Portals { get; set; } = new List<Portal>();
-		public List<ActionOption> ActionOptions = new List<ActionOption>();
 		public bool Passable { get; set; }
 		public Cell Cell { get; set; }
 

@@ -1,16 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Skills>
+	<!-- Guidelines: 
+	- No capitalization
+	- No terminal periods
+	- Single clauses only 
+	- Demonstrative: "this/that/those thing(s)"
+	- Possessive: "my/your/their"
+	- Reference: "a/the thing"
+	- Reflexive: "your/their/itself"-->
 	<Skill ID="Lockpick" Name="Lockpick" Description="Pick a lock.">
 		<AttributeComponents>
-			<AttributeComponent ID="FMS" Percent="35" />
-			<AttributeComponent ID="SEN" Percent="10" />
+			<AttributeComponent ID="FMS" Percent="35"/>
+			<AttributeComponent ID="SEN" Percent="10"/>
 		</AttributeComponents>
+		<Result_0>"{actor.Reference} clumsily {verb("fall")} right off {target.Reference}"</Result_0>
+		<Result_1>"Fail 1"</Result_1>
+		<Result_2>"{target.Demonstrative} just won't cooperate"</Result_2>
+		<Result_3>"{actor.Reference} just barely {actor.verb("fail")} to open the {target.Reference}"</Result_3>
+		<Result_4>"{actor.Reference} {verb("manage")} to open the {target.Reference}"</Result_4>
+		<Result_5>""</Result_5>
+		<Result_6>"{object.verb("click")} open after little effort"</Result_6>
+		<Result_7>"{actor.Reference} {actor.verb("open")} {object.Reference} effortlessly"</Result_7>
 	</Skill>
 	
 	<Skill ID="Climb" Name="Climb" Description="Climb.">
 		<AttributeComponents>
 
 		</AttributeComponents>
+		<Result_0>"{actor.Reference} clumsily {verb("fall")} right off {target.Reference}"</Result_0>
+		<Result_1>"Fail 1"</Result_1>
+		<Result_2>"Fail 2"</Result_2>
+		<Result_3>"Fail 3"</Result_3>
+		<Result_4>"{actor.Reference} {actor.verb("manage")} to climb the {target.Reference}"</Result_4>
+		<Result_5>"Pass 5"</Result_5>
+		<Result_6>"Pass 6"</Result_6>
+		<Result_7>"{actor.Reference} {actor.verb("climb")} {object.Reference} with an alacrity that surprises even {actor.Reflexive}"</Result_7>
 	</Skill>
 	
 </Skills>

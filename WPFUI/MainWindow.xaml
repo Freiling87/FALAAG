@@ -479,6 +479,81 @@
 
 			</Canvas>
 
+			<!-- Contextual Action Option Dialog -->
+			<Canvas Top="{Binding ActionOptionsDetails.Top}" Left="{Binding ActionOptionsDetails.Left}"
+                    Width="Auto" Height="Auto"
+                    MinHeight="{Binding ActionOptionsDetails.MinHeight}"
+                    MaxHeight="{Binding ActionOptionsDetails.MaxHeight}"
+                    MinWidth="{Binding ActionOptionsDetails.MinWidth}"
+                    MaxWidth="{Binding ActionOptionsDetails.MaxWidth}"
+                    Visibility="{Binding ActionOptionsDetails.IsVisible, Converter={StaticResource BooleanToVisibility}}">
+
+				<Border BorderBrush="Navy" BorderThickness="3"
+                        Background="LightSteelBlue">
+
+					<Grid Margin="2,2,2,2">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="4"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						
+						<!-- Header -->
+						<Label Grid.Row="0" Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               FontWeight="Bold"
+                               Content="Action Options"/>
+
+						<!-- Action Table -->
+						<DataGrid Grid.Row="1" Grid.Column="0"
+                                  Grid.ColumnSpan="1"
+                                  ItemsSource="{Binding CurrentInteraction.ActionOptions}"
+                                  AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  VerticalScrollBarVisibility="Auto"
+                                  MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=MaxHeight}"
+                                  Width="{Binding RelativeSource={RelativeSource FindAncestor,
+                                          AncestorType={x:Type Canvas}},Path=ActualWidth}">
+							<DataGrid.Columns>
+								<DataGridTemplateColumn MinWidth="200">
+									<DataGridTemplateColumn.CellTemplate>
+										<DataTemplate>
+											<Button Click="OnClick_SelectActionOption"
+                                                    Content="{Binding Name, Mode=OneWay}"/>
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+								<DataGridTextColumn Header="Success Chance"
+													Binding="{Binding SuccessChance, Mode=OneWay}">
+								</DataGridTextColumn>
+							</DataGrid.Columns>
+						</DataGrid>
+
+						<!-- Action Outcome Preview -->
+						<TextBlock Grid.Row="1" Grid.Column="1" 
+								   MinWidth="200" MinHeight="200"
+								   Text="{Binding SelectedAction.OutcomeProjection}"/>
+
+						<!-- Confirm / Cancel buttons-->
+						<Button Grid.Row="2" Grid.Column="0"
+								Width="100" Height="25"
+								Content="Cancel"
+								Click="OnClick_CancelActionChoice"/>
+						<Button Grid.Row="2" Grid.Column="1"
+								Width="100" Height="25"
+								Content="Attempt"
+								Click="OnClick_AttemptSelectedAction"/>
+
+					</Grid>
+
+				</Border>
+
+			</Canvas>
 		</Canvas>
 
 		<!-- Navigation and Narration -->

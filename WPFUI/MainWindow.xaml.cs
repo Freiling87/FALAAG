@@ -41,6 +41,25 @@ namespace WPFUI
             }
         }
         #endregion
+        #region Action Option Canvas
+        private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
+        {
+            ActionOption action = ((FrameworkElement)sender).DataContext as ActionOption;
+            _gameSession.ActionOptionsDetails.IsVisible = false;
+            _gameSession.AttemptAction(_gameSession.Player, action);
+        }
+        private void OnClick_SelectActionOption(object sender, RoutedEventArgs e)
+		{
+            _gameSession.SelectedAction = ((FrameworkElement)sender).DataContext as ActionOption;
+            // TODO: Bind TextBlock to update according to ActionOption text contents
+		}
+        private void OnClick_CancelActionChoice(object sender, RoutedEventArgs e)
+        {
+            _gameSession.ActionOptionsDetails.IsVisible = false;
+            _gameSession.CurrentActionOptions.Clear();
+            _gameSession.SelectedAction = null;
+        }
+        #endregion
         #region Input
         private void InitializeUserInputActions()
         {

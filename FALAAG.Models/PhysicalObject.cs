@@ -13,10 +13,10 @@ namespace FALAAG.Models
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
 		public string ID { get; set; }
-		public List<ActionOption> PossibleActions { get; set; }
+		public IEnumerable<ActionOption> ActionOptions { get; set; }
 
 		public ActionOption GetSkillCheck(SkillType skillType) =>
-			PossibleActions.FirstOrDefault(action => action.SkillType == skillType);
+			ActionOptions.FirstOrDefault(action => action.SkillType == skillType);
 
 		private int _opacity;
 		// 100: No visbility

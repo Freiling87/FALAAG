@@ -22,25 +22,20 @@ namespace FALAAG.Models.Shared
             return attribute.Value;
         }
 
-        public static string StringValueOf(this JObject jsonObject, string key)
-        {
-            return jsonObject[key].ToString();
-        }
+        public static string StringValueOf(this JObject jsonObject, string key) =>
+            jsonObject[key].ToString();
 
-        public static string StringValueOf(this JToken jsonToken, string key)
-        {
-            return jsonToken[key].ToString();
-        }
+        public static string StringValueOf(this JToken jsonToken, string key) =>
+            jsonToken[key].ToString();
 
-        public static int IntValueOf(this JToken jsonToken, string key)
-        {
-            return Convert.ToInt32(jsonToken[key]);
-        }
+        public static int IntValueOf(this JToken jsonToken, string key) =>
+            Convert.ToInt32(jsonToken[key]);
 
-        public static EntityAttribute GetAttribute(this Entity entity, string attributeKey)
-        {
-            return entity.Attributes.First(pa => pa.ID.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
-        }
+        public static EntityAttribute GetAttribute(this Entity entity, string attributeKey) =>
+            entity.Attributes.First(ea => ea.ID.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
+
+        public static Skill GetSkill(this Entity entity, SkillType skillType) =>
+            entity.Skills.First(s => s.SkillType.Equals(skillType.ToString()));
 
         public static List<Item> ItemsThatAre(this IEnumerable<Item> inventory, Item.ItemCategory category) =>
             inventory.Where(i => i.Category == category).ToList();

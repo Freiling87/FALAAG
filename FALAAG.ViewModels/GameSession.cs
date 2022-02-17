@@ -6,6 +6,7 @@ using System.Linq;
 using System.ComponentModel;
 using FALAAG.Core;
 using System;
+using System.Collections.Generic;
 
 namespace FALAAG.ViewModels
 {
@@ -89,6 +90,10 @@ namespace FALAAG.ViewModels
         public PopupDetails JobDetails { get; set; }
         public PopupDetails PlayerDetails { get; set; }
         public PopupDetails RecipesDetails { get; set; }
+        public PopupDetails ActionOptionsDetails { get; set; }
+        public PhysicalObject CurrentInteraction { get; set; }
+        public List<ActionOption> CurrentActionOptions = new List<ActionOption>();
+        public ActionOption SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -137,6 +142,16 @@ namespace FALAAG.ViewModels
                 MinWidth = 250,
                 MaxWidth = 400
             };
+            ActionOptionsDetails = new PopupDetails
+            {
+                IsVisible = false,
+                Top = 500,
+                Left = 575,
+                MinHeight = 75,
+                MaxHeight = 800,
+                MinWidth = 250,
+                MaxWidth = 800
+            };
         }
 
         #endregion
@@ -182,6 +197,10 @@ namespace FALAAG.ViewModels
                     Player.OnActionPerformed -= OnConsumableActionPerformed;
             }
         }
+        public void AttemptAction(Entity entity, ActionOption actionOption)
+		{
+
+		}
         #endregion
         #region Message Log
         #endregion
@@ -267,47 +286,44 @@ namespace FALAAG.ViewModels
             CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
         public void MoveToCell(Cell cell)
         {
-            if (PassedMovementChecks(cell, Player))
-            {
-                CurrentCell = cell;
-                Narrator.OnMovement(CurrentCell);
-            }
-        }
-        public void MoveToCell(int x, int y, int z) =>
-            MoveToCell(CurrentWorld.GetCell(x, y, z));
-        public bool PassedMovementChecks(Cell cell, Entity entity)
-		{
             bool passed = true;
-
             Direction path = GetDirectionFromCurrentCell(cell);
-            Wall wall = cell.GetWall((Direction)path);
+            Wall wall = cell.GetWall(path);
 
-            /* Check for:
-             *  Enemies blocking
-             *  Portal checks
-             *  Status Effect restrictions
-             *
-             */
+            // TODO: Check for Status Effects preventing movement
+            // TODO: Enemy blocking access to wall/portal
 
             if (wall != null && !wall.Passable)
             {
+                CurrentInteraction = wall;
+                CurrentActionOptions.Concat(wall.ActionOptions);
+
                 if (wall.Portals != null)
                     foreach (Portal portal in wall.Portals)
                     {
-                        if (!portal.Passable)
-                        {
-
-                        }
+                        CurrentActionOptions = CurrentActionOptions.Concat(portal.ActionOptions).ToList();
                     }
                 else
                 // KoolAidMan shit here
                 {
                     MessageBroker.GetInstance().RaiseMessage("You can't walk through walls... yet.");
-                    return false;
+                    return;
                 }
+
+                if (CurrentActionOptions.Count() > 0)
+                    ActionOptionsDetails.IsVisible = true;
             }
 
-            return passed;
+            // TODO: Set following code to be contingent on passing check in ActionOptionsDetails
+
+            CurrentCell = cell;
+            Narrator.OnMovement(CurrentCell);
+        }
+        public void MoveToCell(int x, int y, int z) =>
+            MoveToCell(CurrentWorld.GetCell(x, y, z));
+        public void PassedMovementChecks(Cell cell, Entity entity)
+		{
+            
 		}
 		private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{
