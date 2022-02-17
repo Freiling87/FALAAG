@@ -76,7 +76,7 @@ namespace FALAAG.Factories
         #region Cell Population
         private static void AddNPCsToCell(Cell cell, XmlNodeList npcs)
         {
-            if (npcs != null)
+            if (npcs == null)
                 return;
 
             foreach (XmlNode node in npcs)
