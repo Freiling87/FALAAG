@@ -26,19 +26,19 @@ namespace FALAAG.Models
 		public Wall Clone() =>
 			new (ID, Name);
 
-		public Direction GetDirection()
+		public Direction GetDirection(Cell context)
 		{
-			if (this == Cell.CellAbove.WallBelow)
+			if (this == context.CellAbove.WallBelow)
 				return Direction.Above;
-			else if (this == Cell.WallBelow)
+			else if (this == context.WallBelow)
 				return Direction.Below;
-			else if (this == Cell.CellEast.WallWest)
+			else if (this == context.CellEast.WallWest)
 				return Direction.East;
-			else if (this == Cell.CellNorth.WallSouth)
+			else if (this == context.CellNorth.WallSouth)
 				return Direction.North;
-			else if (this == Cell.WallSouth)
+			else if (this == context.WallSouth)
 				return Direction.South;
-			else if (this == Cell.WallWest)
+			else if (this == context.WallWest)
 				return Direction.West;
 			else
 				return Direction.Null;
