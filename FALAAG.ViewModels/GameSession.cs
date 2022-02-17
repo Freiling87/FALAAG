@@ -190,42 +190,72 @@ namespace FALAAG.ViewModels
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.Above) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.Above);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public bool HasCellB
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.Below) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.Below);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public bool HasCellE
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.East) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.East);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public bool HasCellN
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.North) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.North);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public bool HasCellS
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.South) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.South);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public bool HasCellW
         {
             get
             {
-                return CurrentWorld.GetNeighbor(CurrentCell, Direction.West) != null;
+                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.West);
+
+                if (cell == null || cell.IsMapEdge)
+                    return false;
+
+                return true;
             }
         }
         public void MoveDirection(Direction direction)
@@ -235,18 +265,16 @@ namespace FALAAG.ViewModels
 		}
         public bool HasCell(Direction direction) =>
             CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
-        public void MoveToCell(Cell cell) =>
-            MoveToCell(cell.X, cell.Y, cell.Z);
-        public void MoveToCell(int x, int y, int z) // 
+        public void MoveToCell(Cell cell)
         {
-            Cell targetCell = CurrentWorld.GetCell(x, y, z);
-
-            if (PassedMovementChecks(targetCell, Player))
+            if (PassedMovementChecks(cell, Player))
             {
-                CurrentCell = targetCell;
+                CurrentCell = cell;
                 Narrator.OnMovement(CurrentCell);
             }
         }
+        public void MoveToCell(int x, int y, int z) =>
+            MoveToCell(CurrentWorld.GetCell(x, y, z));
         public bool PassedMovementChecks(Cell cell, Entity entity)
 		{
             bool passed = true;

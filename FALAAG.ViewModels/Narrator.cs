@@ -83,9 +83,6 @@ namespace FALAAG.ViewModels
 		}
 		public static void IntroduceWalls(Cell cell)
 		{
-			if (!cell.Walls()?.Any() ?? false)
-				return;
-
 			List<string> wallTypes = cell.Walls().Select(g => g.Name).Distinct().ToList();
 
 			foreach (string wallType in wallTypes)

@@ -78,21 +78,11 @@ namespace FALAAG.Models
             int maxY = _mapCells.Max(c => c.Y);
             int maxZ = _mapCells.Max(c => c.Z);
 
-            // X-Axis
-            for (int xTraversal = minX; xTraversal < maxX; xTraversal++)
-                for (int zTraversal = minZ; zTraversal < maxZ; zTraversal++)
-                    AddEdgeCell(xTraversal, minY - 1, zTraversal);
-
-            // Y-Axis
-            for (int yTraversal = minY; yTraversal <= maxY; yTraversal++)
-                for (int zTraversal = minZ; zTraversal <= maxZ; zTraversal++)
-                    AddEdgeCell(minX - 1, yTraversal, zTraversal);
-
-            // Z-Axis
-            for (int xTraversal = minX; xTraversal < maxX; xTraversal++)
-                for (int yTraversal = minY; yTraversal <= maxY; yTraversal++)
-                    AddEdgeCell(xTraversal, yTraversal, minZ - 1);
-            // TODO: Change Cell Wall tracking from Floor to Ceiling. It feels less natural but is more consistent with XYZ axes.
+            for (int xTraversal = minX; xTraversal <= maxX + 1; xTraversal++)
+                for (int yTraversal = minY; yTraversal <= maxY + 1; yTraversal++)
+                    for (int zTraversal = minZ; zTraversal <= maxZ + 1; zTraversal++)
+                        if (GetCell(xTraversal, yTraversal, zTraversal) == null)
+                            AddEdgeCell(xTraversal, yTraversal, zTraversal);
         }
 
         public void UpdateNeighbors()

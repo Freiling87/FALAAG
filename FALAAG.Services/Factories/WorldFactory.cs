@@ -34,9 +34,6 @@ namespace FALAAG.Factories
             else
                 throw new FileNotFoundException($"Missing data file: {dataFilepath}");
 
-            world.PlaceEdgeCells();
-            world.UpdateNeighbors();
-
             return world;
         }
 
@@ -56,11 +53,23 @@ namespace FALAAG.Factories
                     $".{rootImagePath}{node.AttributeAsString("ImageFilename")}");
 
                 AddAutomatsToCell(cell, node.SelectNodes("./Automats/Automat"));
-                AddWallsToCell(cell, node.SelectNodes("./Walls/Wall"));
                 AddNPCsToCell(cell, node.SelectNodes("./NPCs/NPC"));
                 AddJobsToCell(cell, node.SelectNodes("./Jobs/Job"));
 
                 world.AddCell(cell);
+            }
+
+            world.PlaceEdgeCells();
+            world.UpdateNeighbors();
+
+            foreach (XmlNode node in nodes)
+            {
+                Cell cell = world.GetCell(
+                    node.AttributeAsInt("X"),
+                    node.AttributeAsInt("Y"),
+                    node.AttributeAsInt("Z"));
+
+                AddWallsToCell(cell, node.SelectNodes("./Walls/Wall"));
             }
         }
 

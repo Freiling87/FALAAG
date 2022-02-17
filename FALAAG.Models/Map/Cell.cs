@@ -41,6 +41,7 @@ namespace FALAAG.Models
         [JsonIgnore]
         public List<Job> JobsHere { get; set; } = new List<Job>();
         public List<Item> Items { get; set; } = new List<Item>();
+        public bool IsMapEdge { get; set; }
 
 		public Cell(int x, int y, int z, string name, string description, string imagePath)
         {
@@ -50,6 +51,7 @@ namespace FALAAG.Models
             Name = name;
             Description = description;
             ImagePath = imagePath;
+            IsMapEdge = false;
         }
 
         public Cell(int x, int y, int z, bool EdgeCell = false)
@@ -63,6 +65,7 @@ namespace FALAAG.Models
             Name = "Edge";
             Description = "This is the edge of the map. If you're standing here, it's a bug.";
             // Can vary these later with world-justified edges, e.g. desert, arco wall, etc.
+            IsMapEdge = true;
         }
 
         public void AddNPC(string npcID, int chanceOfEncountering)
@@ -120,7 +123,9 @@ namespace FALAAG.Models
                 Direction.West => WallWest,
             };
 
-        public List<Wall> Walls() => new List<Wall>()
+        public List<Wall> Walls()
+        {
+            List<Wall> list = new()
             {
                 CellAbove.WallBelow,
                 WallBelow,
@@ -129,6 +134,10 @@ namespace FALAAG.Models
                 WallSouth,
                 WallWest,
             };
+
+
+            return list.Where(w => w != null).ToList();
+        }
 
 	}
 }
