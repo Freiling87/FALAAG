@@ -28,9 +28,6 @@ namespace FALAAG.Factories
                 throw new FileNotFoundException($"Missing data file: {_contentDataFilePath}");
         }
 
-        public static Wall CreateWall(string id) =>
-            _wallTemplates.FirstOrDefault(w => w.ID == id)?.Clone();
-
         private static void LoadWallsFromNodes(XmlNodeList walls)
         {
             foreach (XmlNode wallNode in walls)
@@ -41,15 +38,15 @@ namespace FALAAG.Factories
 
 				foreach (XmlNode actionOptionNode in wallNode.SelectNodes("./ActionOptions/ActionOption"))
 				{
-					wall.ActionOptions.Append(new ActionOption(
-						actionOptionNode.AttributeAsString("ActionID"),
-						actionOptionNode.AttributeAsString("Name"),
-						Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
-						actionOptionNode.AttributeAsInt("Difficulty"),
-						actionOptionNode.AttributeAsInt("Audibility"),
-						actionOptionNode.AttributeAsInt("Visibility"),
+                    wall.ActionOptions.Append(new ActionOption(
+                        actionOptionNode.AttributeAsString("ActionID"),
+                        actionOptionNode.AttributeAsString("Name"),
+                        Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
+                        actionOptionNode.AttributeAsInt("Difficulty"),
+                        actionOptionNode.AttributeAsInt("Audibility"),
+                        actionOptionNode.AttributeAsInt("Visibility"),
                         wall));
-				}
+                }
 
 				_wallTemplates.Add(wall);
             }

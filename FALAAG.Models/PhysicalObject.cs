@@ -1,5 +1,6 @@
 ﻿using FALAAG.Core;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
@@ -13,7 +14,7 @@ namespace FALAAG.Models
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
 		public string ID { get; set; }
-		public IEnumerable<ActionOption> ActionOptions { get; set; }
+		public ObservableCollection<ActionOption> ActionOptions = new ObservableCollection<ActionOption>();
 
 		public ActionOption GetSkillCheck(SkillType skillType) =>
 			ActionOptions.FirstOrDefault(action => action.SkillType == skillType);

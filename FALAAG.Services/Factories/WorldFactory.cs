@@ -90,10 +90,9 @@ namespace FALAAG.Factories
                 return;
 
             foreach (XmlNode node in walls)
-			{
-                Wall wall = WallFactory.GetWallByID(node.AttributeAsString("ID"));
-                cell.AddWall(wall, Enum.Parse<Direction>(node.AttributeAsString("Direction")));
-			}
+                cell.AddWall(
+                    WallFactory.GetWallByID(node.AttributeAsString("ID")), 
+                    Enum.Parse<Direction>(node.AttributeAsString("Direction")));
 		}
         private static void AddJobsToCell(Cell cell, XmlNodeList jobs)
         {

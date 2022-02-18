@@ -9,16 +9,17 @@ namespace FALAAG.Models
 {
 	public enum SkillType
 	{
-		ClimbingLong,
+		AidingFirst,
 		ClimbingFast,
-		Vaulting,
+		ClimbingLong,
 		Crawling,
-		Lockpicking,
-		WireCutting,
+		JumpingFar,
+		JumpingHigh,
 		KoolAidManning,
-		FirstAid,
+		Lockpicking,
 		Searching,
-		JumpingDistance
+		Vaulting,
+		WireCutting,
 	}
 	// TODO: Action Delegate Dictionary from XAML Enums to Skill Use Methods, similar to how it's applied in InitializeUserInputActions
 

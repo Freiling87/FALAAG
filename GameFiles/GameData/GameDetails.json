@@ -2620,34 +2620,63 @@
           "Modifier": "0"
         }
       ]
-    }
-  ],
+    }]
+,
 
-  "Skills": [{
-      "ID": "Lockpicking",
-      "Name": "Lockpick",
+  "Skills": [
+{
+      "ID": "AidingFirst",
+      "Name": "First Aid",
       "Group": "TBD",
-      "Description": "Lockpick things.",
-      "AttributeComponents": [
-        {
+      "Description": "Stop bleeding. I mean it.",
+      "AttributeComponents": [{
           "Key": "FMS",
-          "Percent": "20"
+          "Percent": "10"
         },
         {
           "Key": "SEN",
-          "Percent": "15"
+          "Percent": "10"
         },
         {
-          "Key": "PTC",
-          "Percent": "10"},
+          "Key": "COM",
+          "Percent": "20"},
         {
           "Key": "TRAIN",
           "Percent": "50"},
         {
           "Key": "CHANCE",
-          "Percent": "5"}
-      ]
-    },
+          "Percent": "10"}]},
+{
+      "ID": "ClimbingFast",
+      "Name": "Climb (Speed)",
+      "Group": "TBD",
+      "Description": "Climb things, quickly.",
+      "AttributeComponents": [{
+          "Key": "GMS",
+          "Percent": "20"
+        },
+        {
+          "Key": "STR",
+          "Percent": "20"
+        },
+        {
+          "Key": "SIZ",
+          "Percent": "-10"},
+        {
+          "Key": "HGT",
+          "Percent": "5"},
+        {
+          "Key": "FLX",
+          "Percent": "10"},
+        {
+          "Key": "SPA",
+          "Percent": "5"},
+        {
+          "Key": "TRAIN",
+          "Percent": "40"},
+        {
+          "Key": "CHANCE",
+          "Percent": "10"}]},
 {
       "ID": "ClimbingLong",
       "Name": "Climb (Endurance)",
@@ -2683,85 +2712,7 @@
       ]
     },
 {
-      "ID": "ClimbingFast",
-      "Name": "Climb (Speed)",
-      "Group": "TBD",
-      "Description": "Climb things, quickly.",
-      "AttributeComponents": [{
-          "Key": "GMS",
-          "Percent": "20"
-        },
-        {
-          "Key": "STR",
-          "Percent": "20"
-        },
-        {
-          "Key": "SIZ",
-          "Percent": "-10"},
-        {
-          "Key": "HGT",
-          "Percent": "5"},
-        {
-          "Key": "FLX",
-          "Percent": "10"},
-        {
-          "Key": "SPA",
-          "Percent": "5"},
-        {
-          "Key": "TRAIN",
-          "Percent": "40"},
-        {
-          "Key": "CHANCE",
-          "Percent": "10"}]},
-{
-      "ID": "FirstAid",
-      "Name": "First Aid",
-      "Group": "TBD",
-      "Description": "Stop bleeding. I mean it.",
-      "AttributeComponents": [{
-          "Key": "FMS",
-          "Percent": "10"
-        },
-        {
-          "Key": "SEN",
-          "Percent": "10"
-        },
-        {
-          "Key": "COM",
-          "Percent": "20"},
-        {
-          "Key": "TRAIN",
-          "Percent": "50"},
-        {
-          "Key": "CHANCE",
-          "Percent": "10"}]},
-{
-      "ID": "Searching",
-      "Name": "Search",
-      "Group": "TBD",
-      "Description": "Ransackery",
-      "AttributeComponents": [{
-          "Key": "CRE",
-          "Percent": "5"
-        },
-        {
-          "Key": "PTC",
-          "Percent": "15"
-        },
-        {
-          "Key": "SEN",
-          "Percent": "10"},
-        {
-          "Key": "SPA",
-          "Percent": "10"},
-        {
-          "Key": "TRAIN",
-          "Percent": "25"},
-        {
-          "Key": "CHANCE",
-          "Percent": "35"}]},
-{
-      "ID": "JumpingDistance",
+      "ID": "JumpingFar",
       "Name": "Running Jump",
       "Group": "TBD",
       "Description": "Jump",
@@ -2793,5 +2744,55 @@
           "Percent": "50"},
         {
           "Key": "CHANCE",
-          "Percent": "5"}]}]
+          "Percent": "5"}]}
+  ,{
+      "ID": "Lockpicking",
+      "Name": "Lockpick",
+      "Group": "TBD",
+      "Description": "Lockpick things.",
+      "AttributeComponents": [
+        {
+          "Key": "FMS",
+          "Percent": "20"
+        },
+        {
+          "Key": "SEN",
+          "Percent": "15"
+        },
+        {
+          "Key": "PTC",
+          "Percent": "10"},
+        {
+          "Key": "TRAIN",
+          "Percent": "50"},
+        {
+          "Key": "CHANCE",
+          "Percent": "5"}
+      ]
+    },
+{
+      "ID": "Searching",
+      "Name": "Search",
+      "Group": "TBD",
+      "Description": "Ransackery",
+      "AttributeComponents": [{
+          "Key": "CRE",
+          "Percent": "5"
+        },
+        {
+          "Key": "PTC",
+          "Percent": "15"
+        },
+        {
+          "Key": "SEN",
+          "Percent": "10"},
+        {
+          "Key": "SPA",
+          "Percent": "10"},
+        {
+          "Key": "TRAIN",
+          "Percent": "25"},
+        {
+          "Key": "CHANCE",
+          "Percent": "35"}]}]
 }
