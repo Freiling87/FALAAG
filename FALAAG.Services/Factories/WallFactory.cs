@@ -38,7 +38,7 @@ namespace FALAAG.Factories
 
 				foreach (XmlNode actionOptionNode in wallNode.SelectNodes("./ActionOptions/ActionOption"))
 				{
-                    wall.ActionOptions.Append(new ActionOption(
+                    wall.ActionOptions.Add(new ActionOption(
                         actionOptionNode.AttributeAsString("ActionID"),
                         actionOptionNode.AttributeAsString("Name"),
                         Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),

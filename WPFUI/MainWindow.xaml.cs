@@ -79,6 +79,8 @@ namespace WPFUI
             _userInputActions.Add(Key.J, () => _gameSession.JobDetails.IsVisible = !_gameSession.JobDetails.IsVisible);
             _userInputActions.Add(Key.P, () => _gameSession.PlayerDetails.IsVisible = !_gameSession.PlayerDetails.IsVisible);
             _userInputActions.Add(Key.R, () => _gameSession.RecipesDetails.IsVisible = !_gameSession.RecipesDetails.IsVisible);
+
+            _userInputActions.Add(Key.O, () => _gameSession.ActionOptionsDetails.IsVisible = !_gameSession.RecipesDetails.IsVisible);
         }
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {

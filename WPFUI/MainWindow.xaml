@@ -479,7 +479,7 @@
 
 			</Canvas>
 
-			<!-- Contextual Action Option Dialog -->
+			<!-- Action Option Dialog -->
 			<Canvas Top="{Binding ActionOptionsDetails.Top}" Left="{Binding ActionOptionsDetails.Left}"
                     Width="Auto" Height="Auto"
                     MinHeight="{Binding ActionOptionsDetails.MinHeight}"
@@ -511,7 +511,7 @@
 						<!-- Action Table -->
 						<DataGrid Grid.Row="1" Grid.Column="0"
                                   Grid.ColumnSpan="1"
-                                  ItemsSource="{Binding CurrentInteraction.ActionOptions}"
+                                  ItemsSource="{Binding CurrentActionOptions}"
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
                                   VerticalScrollBarVisibility="Auto"
@@ -520,7 +520,7 @@
                                   Width="{Binding RelativeSource={RelativeSource FindAncestor,
                                           AncestorType={x:Type Canvas}},Path=ActualWidth}">
 							<DataGrid.Columns>
-								<DataGridTemplateColumn MinWidth="200">
+								<DataGridTemplateColumn Header="Action">
 									<DataGridTemplateColumn.CellTemplate>
 										<DataTemplate>
 											<Button Click="OnClick_SelectActionOption"
@@ -528,7 +528,10 @@
 										</DataTemplate>
 									</DataGridTemplateColumn.CellTemplate>
 								</DataGridTemplateColumn>
-								<DataGridTextColumn Header="Success Chance"
+								<DataGridTextColumn Header="Target"
+													Binding="{Binding HostObject, Mode=OneWay}">
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Chance"
 													Binding="{Binding SuccessChance, Mode=OneWay}">
 								</DataGridTextColumn>
 							</DataGrid.Columns>

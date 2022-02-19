@@ -42,8 +42,26 @@ namespace FALAAG.Models
         public List<Job> JobsHere { get; set; } = new List<Job>();
         public List<Item> Items { get; set; } = new List<Item>();
         public bool IsMapEdge { get; set; }
+        public List<Wall> Walls
+        {
+			get
+            {
+                List<Wall> list = new()
+                {
+                    CellAbove.WallBelow,
+                    WallBelow,
+                    CellEast.WallWest,
+                    CellNorth.WallSouth,
+                    WallSouth,
+                    WallWest,
+                };
 
-		public Cell(int x, int y, int z, string name, string description, string imagePath)
+
+                return list.Where(w => w != null).ToList();
+            }
+        }
+
+        public Cell(int x, int y, int z, string name, string description, string imagePath)
         {
             X = x;
             Y = y;
@@ -123,21 +141,7 @@ namespace FALAAG.Models
                 Direction.West => WallWest,
             };
 
-        public List<Wall> Walls()
-        {
-            List<Wall> list = new()
-            {
-                CellAbove.WallBelow,
-                WallBelow,
-                CellEast.WallWest,
-                CellNorth.WallSouth,
-                WallSouth,
-                WallWest,
-            };
 
-
-            return list.Where(w => w != null).ToList();
-        }
 
 	}
 }

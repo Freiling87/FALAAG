@@ -11,14 +11,12 @@ namespace FALAAG.Models
 		public Wall Wall { get; set; }
 		public bool Passable { get; set; }
 		public bool Opened { get; set; }
-		public List<ObjectAttachment> Attachments { get; set; }
 		public ObjectAttachment Lock =>
-			Attachments.Where(a => a.AttachmentType == AttachmentType.Lock).FirstOrDefault();
+			ObjectAttachments.Where(a => a.AttachmentType == AttachmentType.Lock).FirstOrDefault();
 		public ObjectAttachment Trap =>
-			Attachments.Where(a => a.AttachmentType == AttachmentType.Trap).FirstOrDefault();
+			ObjectAttachments.Where(a => a.AttachmentType == AttachmentType.Trap).FirstOrDefault();
 		public ObjectAttachment Sensor =>
-			Attachments.Where(a => a.AttachmentType == AttachmentType.Sensor).FirstOrDefault();
-		public List<ActionOption> ActionOptions = new List<ActionOption>();
+			ObjectAttachments.Where(a => a.AttachmentType == AttachmentType.Sensor).FirstOrDefault();
 
 		public Portal(string id)
 		{

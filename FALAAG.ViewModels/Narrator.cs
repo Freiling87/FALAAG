@@ -33,7 +33,8 @@ namespace FALAAG.ViewModels
 		// Introduction methods should have more detail than normal. Reintroduce will be for when the player has already encountered the object and gets the idea.
 		public static void IntroduceCell(Cell cell)
 		{
-            string narration = PlayerCharacterPronoun() + " enter a " + cell.Name + ".";
+			// TODO: Change all names to lower by default, since you might need to enforce capitalization on some (e.g. brand names).
+            string narration = PlayerCharacterPronoun() + " walk to a " + cell.Name.ToLower() + ".";
 
             MessageBroker.GetInstance().RaiseMessage(narration);
         }
@@ -83,11 +84,11 @@ namespace FALAAG.ViewModels
 		}
 		public static void IntroduceWalls(Cell cell)
 		{
-			List<string> wallTypes = cell.Walls().Select(g => g.Name).Distinct().ToList();
+			List<string> wallTypes = cell.Walls.Select(g => g.Name).Distinct().ToList();
 
 			foreach (string wallType in wallTypes)
 			{
-				List<Wall> walls = cell.Walls().Where(g => g.Name == wallType).ToList();
+				List<Wall> walls = cell.Walls.Where(g => g.Name == wallType).ToList();
 				string narration = "";
 
 				if (walls.Count == 1)
@@ -99,7 +100,7 @@ namespace FALAAG.ViewModels
 				{
 					// TODO: Make a List → Text method
 					narration = "There are " + wallType.ToLower() + "s to the "
-						+ string.Join(", ", ListDirections(cell.Walls().Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList()).ToLower())
+						+ string.Join(", ", ListDirections(cell.Walls.Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList()).ToLower())
 						+ ".";
 				}
 
@@ -150,6 +151,7 @@ namespace FALAAG.ViewModels
 		}
 		public static string PlayerCharacterPronoun()
 		{
+			// TODO: Third person
 			return "You";
 		}
 		public static string Conjugate(List<Noun> actors, Verb verb, NarrativeTense tense)

@@ -16,6 +16,8 @@ namespace FALAAG.Models
 		public string ID { get; set; }
 		public ObservableCollection<ActionOption> ActionOptions = new ObservableCollection<ActionOption>();
 
+		public List<ObjectAttachment> ObjectAttachments { get; set; }
+
 		public ActionOption GetSkillCheck(SkillType skillType) =>
 			ActionOptions.FirstOrDefault(action => action.SkillType == skillType);
 

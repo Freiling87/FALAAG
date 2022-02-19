@@ -7,6 +7,7 @@ using System.ComponentModel;
 using FALAAG.Core;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace FALAAG.ViewModels
 {
@@ -92,7 +93,7 @@ namespace FALAAG.ViewModels
         public PopupDetails RecipesDetails { get; set; }
         public PopupDetails ActionOptionsDetails { get; set; }
         public PhysicalObject CurrentInteraction { get; set; }
-        public List<ActionOption> CurrentActionOptions = new List<ActionOption>();
+        public ObservableCollection<ActionOption> CurrentActionOptions { get; set; } = new ObservableCollection<ActionOption>();
         public ActionOption SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
 
         public GameSession(Player player, int x, int y, int z)
@@ -199,7 +200,7 @@ namespace FALAAG.ViewModels
         }
         public void AttemptAction(Entity entity, ActionOption actionOption)
 		{
-
+            throw new NotImplementedException();
 		}
         #endregion
         #region Message Log
@@ -284,48 +285,45 @@ namespace FALAAG.ViewModels
 		}
         public bool HasCell(Direction direction) =>
             CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
-        public void MoveToCell(Cell cell)
+        public void MoveToCell(int x, int y, int z) => 
+            MoveToCell(CurrentWorld.GetCell(x, y, z));
+        public void MoveToCell(Cell destination)
         {
             bool passed = true;
-            Direction path = GetDirectionFromCurrentCell(cell);
-            Wall wall = cell.GetWall(path);
+            Direction path = GetDirectionFromCurrentCell(destination);
+            Wall wall = CurrentCell.GetWall(path); // Needs to be opposite, since you're calling from destination. Otherwise, call it from currentCell.
 
             // TODO: Check for Status Effects preventing movement
             // TODO: Enemy blocking access to wall/portal
+            // TODO: Set following code to be contingent on passing check in ActionOptionsDetails
 
+            if (!PassedWall(wall))
+                MessageBroker.GetInstance().RaiseMessage("You can't walk through walls... yet.");
+			else
+            {
+                CurrentCell = destination;
+                Narrator.OnMovement(CurrentCell);
+            }
+        }
+        private bool PassedWall(Wall wall)
+        {
             if (wall != null && !wall.Passable)
             {
                 CurrentInteraction = wall;
-                CurrentActionOptions.Concat(wall.ActionOptions);
 
-                if (wall.Portals != null)
-                    foreach (Portal portal in wall.Portals)
-                    {
-                        CurrentActionOptions = CurrentActionOptions.Concat(portal.ActionOptions).ToList();
-                    }
-                else
-                // KoolAidMan shit here
+                if (wall.MovementActionOptions.Count == 0)
                 {
-                    MessageBroker.GetInstance().RaiseMessage("You can't walk through walls... yet.");
-                    return;
+                    return false;
                 }
 
-                if (CurrentActionOptions.Count() > 0)
-                    ActionOptionsDetails.IsVisible = true;
+                CurrentActionOptions = new ObservableCollection<ActionOption>(wall.MovementActionOptions);
+                ActionOptionsDetails.IsVisible = true;
+                // TODO: Copy the Save Game On Exit menu to return a bool from the result, on whether to move or not.
             }
 
-            // TODO: Set following code to be contingent on passing check in ActionOptionsDetails
-
-            CurrentCell = cell;
-            Narrator.OnMovement(CurrentCell);
+            return true;
         }
-        public void MoveToCell(int x, int y, int z) =>
-            MoveToCell(CurrentWorld.GetCell(x, y, z));
-        public void PassedMovementChecks(Cell cell, Entity entity)
-		{
-            
-		}
-		private Direction GetDirectionFromCurrentCell(Cell targetCell)
+        private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{
 			foreach (Direction direction in Enum.GetValues(typeof(Direction)))
 			{

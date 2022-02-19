@@ -27,9 +27,9 @@ namespace FALAAG.Factories
                     data.SelectSingleNode("/Cells")
                         .AttributeAsString("RootImagePath");
 
-                LoadLocationsFromNodes(world,
-                                       rootImagePath,
-                                       data.SelectNodes("/Cells/Cell"));
+                LoadCells(world,
+                    rootImagePath,
+                    data.SelectNodes("/Cells/Cell"));
             }
             else
                 throw new FileNotFoundException($"Missing data file: {dataFilepath}");
@@ -37,7 +37,8 @@ namespace FALAAG.Factories
             return world;
         }
 
-        private static void LoadLocationsFromNodes(World world, string rootImagePath, XmlNodeList nodes)
+		#region A - Cell Deserialization
+		private static void LoadCells(World world, string rootImagePath, XmlNodeList nodes)
         {
             if (nodes == null)
                 return;
@@ -70,11 +71,14 @@ namespace FALAAG.Factories
                     node.AttributeAsInt("Z"));
 
                 AddWallsToCell(cell, node.SelectNodes("./Walls/Wall"));
+                //AddPortalsToWalls(cell, node.SelectNodes("./Walls/Wall/Portals/Portal"));
             }
         }
-
-        #region Cell Population
-        private static void AddNPCsToCell(Cell cell, XmlNodeList npcs)
+		#endregion
+		#region B - Procedural Generation
+		#endregion
+		#region Cell Population
+		private static void AddNPCsToCell(Cell cell, XmlNodeList npcs)
         {
             if (npcs == null)
                 return;
@@ -90,9 +94,13 @@ namespace FALAAG.Factories
                 return;
 
             foreach (XmlNode node in walls)
+            {
                 cell.AddWall(
-                    WallFactory.GetWallByID(node.AttributeAsString("ID")), 
+                    WallFactory.GetWallByID(node.AttributeAsString("ID")),
                     Enum.Parse<Direction>(node.AttributeAsString("Direction")));
+
+                // TODO: Add ObjectAttachments here from subnodes
+            }
 		}
         private static void AddJobsToCell(Cell cell, XmlNodeList jobs)
         {

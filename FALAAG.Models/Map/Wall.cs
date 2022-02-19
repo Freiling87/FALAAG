@@ -12,6 +12,23 @@ namespace FALAAG.Models
 		public List<Portal> Portals { get; set; } = new List<Portal>();
 		public bool Passable { get; set; }
 		public Cell Cell { get; set; }
+		public List<ActionOption> MovementActionOptions
+		{
+			get
+			{
+				List<ActionOption> list = ActionOptions.ToList();
+
+				foreach(Portal portal in Portals)
+				{
+					list.Concat(portal.ActionOptions);
+
+					foreach (ObjectAttachment objectAttachment in portal.ObjectAttachments)
+						list.Concat(objectAttachment.ActionOptions);
+				}
+
+				return list;
+			}
+		}
 
 		public Wall (string id, string name)
 		{
@@ -20,10 +37,15 @@ namespace FALAAG.Models
 			//	e.g., if a wood and brick wall adjoin, prefer the brick. 
 			ID = id;
 			Name = name;
+			Passable = false;
 		}
 
-		public Wall Clone() =>
-			new (ID, Name);
+		public Wall Clone()
+		{
+			Wall wall = new(ID, Name);
+			wall.ActionOptions = this.ActionOptions;
+			return wall;
+		}
 
 		public Direction GetDirection(Cell context)
 		{
