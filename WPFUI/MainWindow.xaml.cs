@@ -64,6 +64,7 @@ namespace WPFUI
         private void InitializeUserInputActions()
         {
             // To pass arguments with these action delegates, see https://soscsrpg.com/build-a-c-wpf-rpg/lesson-13-1-add-keyboard-input-for-actions-using-delegates/
+            // TODO: These allow movement past walls
             _userInputActions.Add(Key.W, () => _gameSession.MoveDirection(Direction.North));
             _userInputActions.Add(Key.A, () => _gameSession.MoveDirection(Direction.West));
             _userInputActions.Add(Key.S, () => _gameSession.MoveDirection(Direction.South));

@@ -8,18 +8,14 @@ namespace FALAAG.Models
     public class Recipe
     {
         public string ID { get; }
-        [JsonIgnore]
-        public string Name { get; set; }
-        [JsonIgnore]
-        public string Description { get; set; }
+        [JsonIgnore] public string Name { get; set; }
+        [JsonIgnore] public string Description { get; set; }
         public Item GoalItem { get; set; }
 
         [JsonIgnore] public List<ItemQuantity> Ingredients { get; }
-        [JsonIgnore]
-        public List<ItemQuantity> OutputItems { get; }
+        [JsonIgnore] public List<ItemQuantity> OutputItems { get; }
 
-        [JsonIgnore]
-        public string ToolTipContents =>
+        [JsonIgnore] public string ToolTipContents =>
             Name + Environment.NewLine + Environment.NewLine +
             Description + Environment.NewLine + Environment.NewLine + // TODO: Change to GoalItem.Description
 

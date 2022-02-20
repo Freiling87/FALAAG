@@ -146,12 +146,12 @@ namespace FALAAG.ViewModels
             ActionOptionsDetails = new PopupDetails
             {
                 IsVisible = false,
-                Top = 500,
-                Left = 575,
-                MinHeight = 75,
-                MaxHeight = 800,
-                MinWidth = 250,
-                MaxWidth = 800
+                Top = 50,
+                Left = 50,
+                MinHeight = 1400,
+                MaxHeight = 1400,
+                MinWidth = 1400,
+                MaxWidth = 1400
             };
         }
 
@@ -316,7 +316,11 @@ namespace FALAAG.ViewModels
                     return false;
                 }
 
-                CurrentActionOptions = new ObservableCollection<ActionOption>(wall.MovementActionOptions);
+                CurrentActionOptions.Clear();
+                //CurrentActionOptions = new ObservableCollection<ActionOption>(wall.MovementActionOptions);
+                foreach (ActionOption ao in wall.MovementActionOptions)
+                    CurrentActionOptions.Add(ao);
+
                 ActionOptionsDetails.IsVisible = true;
                 // TODO: Copy the Save Game On Exit menu to return a bool from the result, on whether to move or not.
             }

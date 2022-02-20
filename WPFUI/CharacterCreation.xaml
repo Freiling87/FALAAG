@@ -144,7 +144,9 @@
 					Height="24"
 					ItemsSource="{Binding GameDetails.BodyTypes}"
 					DisplayMemberPath="DisplayName"
-					SelectedItem="{Binding SelectedBodyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					SelectedItem="{Binding SelectedBodyType, 
+									Mode=TwoWay, 
+									UpdateSourceTrigger=PropertyChanged}"
 					SelectionChanged="Archetye_OnSelectionChanged"/>
 			<CheckBox Grid.Row="7" Grid.Column="2" 
 					Width="16" Height="16" 

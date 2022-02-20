@@ -20,6 +20,7 @@ namespace FALAAG.Models
 		public int Difficulty { get; set; }
 		public int Audibility { get; set; }
 		public int Visibility { get; set; }
+		public int Duration { get; set; }
 		public PhysicalObject HostObject { get; set; }
 		public string OutcomeProjection 
 		{ 

@@ -493,19 +493,19 @@
 
 					<Grid Margin="2,2,2,2">
 						<Grid.RowDefinitions>
+							<RowDefinition Height="66"/>
 							<RowDefinition Height="Auto"/>
-							<RowDefinition Height="4"/>
-							<RowDefinition Height="*"/>
+							<RowDefinition Height="66"/>
 						</Grid.RowDefinitions>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*"/>
-							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="1400"/>
+							<ColumnDefinition Width="400"/>
 						</Grid.ColumnDefinitions>
 						
 						<!-- Header -->
-						<Label Grid.Row="0" Grid.Column="0"
-                               HorizontalAlignment="Left"
-                               FontWeight="Bold"
+						<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               FontWeight="Bold" FontSize="18"
                                Content="Action Options"/>
 
 						<!-- Action Table -->
@@ -514,13 +514,14 @@
                                   ItemsSource="{Binding CurrentActionOptions}"
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  VerticalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"
                                   MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,
-                                          AncestorType={x:Type Canvas}},Path=MaxHeight}"
+                                          AncestorType={x:Type Canvas}}}"
                                   Width="{Binding RelativeSource={RelativeSource FindAncestor,
-                                          AncestorType={x:Type Canvas}},Path=ActualWidth}">
+                                          AncestorType={x:Type Canvas}}}">
 							<DataGrid.Columns>
-								<DataGridTemplateColumn Header="Action">
+								<DataGridTemplateColumn Header="Action"
+													Width="200">
 									<DataGridTemplateColumn.CellTemplate>
 										<DataTemplate>
 											<Button Click="OnClick_SelectActionOption"
@@ -529,17 +530,38 @@
 									</DataGridTemplateColumn.CellTemplate>
 								</DataGridTemplateColumn>
 								<DataGridTextColumn Header="Target"
-													Binding="{Binding HostObject, Mode=OneWay}">
+													Width="200"
+													Binding="{Binding HostObject.Name, Mode=OneWay}">
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Difficulty"
+													Width="200"
+													Binding="{Binding Difficulty, Mode=OneWay}">
 								</DataGridTextColumn>
 								<DataGridTextColumn Header="Chance"
-													Binding="{Binding SuccessChance, Mode=OneWay}">
+													Width="200"
+													Binding="{Binding OutcomeProjection, Mode=OneWay}">
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Noise"
+													Width="200"
+													Binding="{Binding Audibility, Mode=OneWay}">
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Visibility"
+													Width="200"
+													Binding="{Binding Visibility, Mode=OneWay}">
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Duration"
+													Width="200"
+													Binding="{Binding Duration, Mode=OneWay}">
 								</DataGridTextColumn>
 							</DataGrid.Columns>
 						</DataGrid>
 
 						<!-- Action Outcome Preview -->
 						<TextBlock Grid.Row="1" Grid.Column="1" 
-								   MinWidth="200" MinHeight="200"
+								   MinWidth="400" MaxHeight="400"
+								   Background="White"
+								   Margin="4,4,4,4"
+								   TextWrapping="Wrap"
 								   Text="{Binding SelectedAction.OutcomeProjection}"/>
 
 						<!-- Confirm / Cancel buttons-->
