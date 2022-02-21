@@ -64,9 +64,9 @@ namespace FALAAG.Factories
                 var attributes = s_gameDetails.Attributes;
 
                 // Temporary, be patient.
-                attributes.First(a => a.ID.Equals("GMS")).BaseValue =
+                attributes.First(a => a.AttributeKey.Equals(AttributeKey.GMS)).BaseValue =
                     Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText);
-                attributes.First(a => a.ID.Equals("GMS")).ModifiedValue =
+                attributes.First(a => a.AttributeKey.Equals(AttributeKey.GMS)).ModifiedValue =
                     Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText);
 
                 NPC npc = new (

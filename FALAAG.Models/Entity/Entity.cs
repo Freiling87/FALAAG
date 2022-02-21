@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using FALAAG.Core;
+using FALAAG.Models.Shared;
 
 namespace FALAAG.Models
 {
@@ -193,6 +194,30 @@ namespace FALAAG.Models
             OnActionPerformed?.Invoke(this, result);
         private void RaiseOnKilledEvent() =>
             OnKilled?.Invoke(this, new System.EventArgs());
+
+        public bool RollAction(ActionOption actionOption)
+        {
+            Skill skill = GetSkillByID(actionOption.SkillType);
+            int successTotal = 0;
+
+            foreach (AttributeComponent ac in skill.AttributeComponents)
+			{
+                successTotal += RollComponent(ac);
+                MessageBroker.GetInstance().RaiseMessage("\t[Rolled " + successTotal + " for " + ac.AttributeKey.ToString());
+            }
+
+            if (successTotal >= actionOption.Difficulty)
+                return true;
+
+            return false;
+        }
+        public int RollComponent(AttributeComponent ac)
+		{
+            int attribute = this.GetAttribute(ac.AttributeKey).ModifiedValue;
+            int roll = DiceService.Instance.Roll(100).Value;
+
+            return (attribute * roll / 100);
+		}
 		#endregion
 	}
 }

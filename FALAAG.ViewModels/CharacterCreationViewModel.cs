@@ -135,27 +135,27 @@ namespace FALAAG.ViewModels
                 playerAttribute.Modifier = 0;
 
                 AttributeModifier raceModifier =
-                    SelectedRace.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedRace.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier = raceModifier?.Modifier ?? 0;
 
                 AttributeModifier sexModifier =
-                    SelectedSex.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedSex.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier += sexModifier?.Modifier ?? 0;
 
                 AttributeModifier bodyTypeModifier =
-                    SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedBodyType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier += bodyTypeModifier?.Modifier ?? 0;
 
                 AttributeModifier mindTypeModifier =
-                    SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedMindType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier += mindTypeModifier?.Modifier ?? 0;
 
                 AttributeModifier personaTypeModifier =
-                    SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedPersonaType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier += personaTypeModifier?.Modifier ?? 0;
 
                 AttributeModifier spiritTypeModifier =
-                    SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.ID));
+                    SelectedSpiritType.AttributeModifiers.FirstOrDefault(am => am.ID.Equals(playerAttribute.AttributeKey.ToString()));
                 playerAttribute.Modifier += spiritTypeModifier?.Modifier ?? 0;
 
                 // Add Modifiers as a Percentage Bonus

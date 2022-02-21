@@ -2,12 +2,12 @@
 {
 	public class AttributeComponent
 	{
-		public string Key { get; set; }
+		public AttributeKey AttributeKey { get; set; }
 		public float Percent { get; set; }
 
-		public AttributeComponent(string key, float percent)
+		public AttributeComponent(AttributeKey attributeType, float percent)
 		{
-			Key = key;
+			AttributeKey = attributeType;
 			Percent = percent;
 		}
 	}

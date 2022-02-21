@@ -4,13 +4,42 @@ using System.ComponentModel;
 
 namespace FALAAG.Models
 {
+    public enum AttributeKey
+    {
+        BEU,
+        CDO,
+        CON,
+        COM,
+        CRE,
+        EMP,
+        EXT,
+        FLX,
+        FMS,
+        GMS,
+        GRT,
+        HGT,
+        HED,
+        HOM,
+        LOG,
+        PTC,
+        RCT,
+        SEN,
+        SIZ,
+        SPA,
+        STR,
+        TMP,
+        VER,
+        SKL,
+        LCK,
+    }
+
     // Pattern: Constructor Chain
     public class EntityAttribute : INotifyPropertyChanged
     {
 		public int BaseValue { get; set; }
         public string DisplayName { get; }
         public string DiceNotation { get; }
-        public string ID { get; }
+        public AttributeKey AttributeKey { get; set; }
 		public int ModifiedValue { get; set; }
         public string ModifiedValueDescriptor
 		{
@@ -42,17 +71,17 @@ namespace FALAAG.Models
         public string Description { get; set; }
         public List<Skill> UsedIn = new List<Skill>(); // Should be a one-time generated assignment by querying all skills that have a matching SkillComponent, in order of its importance.
 
-        public EntityAttribute(string key, string displayName, string description, string diceNotation)
+        public EntityAttribute(AttributeKey key, string displayName, string description, string diceNotation)
             : this(key, displayName, description, diceNotation, DiceService.Instance.Roll(diceNotation).Value)
         { }
 
-        public EntityAttribute(string key, string displayName, string description, string diceNotation, int baseValue)
+        public EntityAttribute(AttributeKey key, string displayName, string description, string diceNotation, int baseValue)
             : this(key, displayName, description, diceNotation, baseValue, baseValue)
         { }
 
-        public EntityAttribute(string id, string displayName, string description, string diceNotation, int baseValue, int modifiedValue)
+        public EntityAttribute(AttributeKey attributeKey, string displayName, string description, string diceNotation, int baseValue, int modifiedValue)
         {
-            ID = id;
+            AttributeKey = attributeKey;
             Description = description;
             DisplayName = displayName;
             DiceNotation = diceNotation;

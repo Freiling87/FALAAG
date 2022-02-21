@@ -22,7 +22,7 @@ namespace FALAAG.Services
             foreach (JToken token in gameDetailsJson["Attributes"])
             {
                 gameDetails.Attributes.Add(new EntityAttribute(
-                    token.StringValueOf("Key"),
+                    Enum.Parse<AttributeKey>(token.StringValueOf("Key")),
                     token.StringValueOf("DisplayName"),
                     token.StringValueOf("Description"),
                     token.StringValueOf("DiceNotation")));
@@ -38,7 +38,7 @@ namespace FALAAG.Services
                 if (token["AttributeComponents"] != null)
                     foreach (JToken childToken in token["AttributeComponents"])
                         Skill.AttributeComponents.Add(new AttributeComponent(
-                            childToken.StringValueOf("Key"),
+                            Enum.Parse<AttributeKey>(childToken.StringValueOf("Key")),
                             childToken.IntValueOf("Percent")));
 
                 gameDetails.Skills.Add(Skill);

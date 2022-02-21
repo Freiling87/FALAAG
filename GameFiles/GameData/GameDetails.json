@@ -141,7 +141,12 @@
       "DisplayName": "Verbal Intelligence",
       "DiceNotation": "3d33",
       "Description": "The ability to assess and author communication with layers of meaning."
-    }
+    },
+    {
+      "Key": "LCK",
+      "DisplayName": "Luck",
+      "DiceNotation": "1d100",
+      "Description": "Simply, the game's difficulty slider."}
   ],
 
   "Archetypes": [
@@ -2641,10 +2646,7 @@
           "Key": "COM",
           "Percent": "20"},
         {
-          "Key": "TRAIN",
-          "Percent": "50"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "10"}]},
 {
       "ID": "ClimbingFast",
@@ -2672,10 +2674,7 @@
           "Key": "SPA",
           "Percent": "5"},
         {
-          "Key": "TRAIN",
-          "Percent": "40"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "10"}]},
 {
       "ID": "ClimbingLong",
@@ -2704,10 +2703,7 @@
           "Key": "SPA",
           "Percent": "5"},
         {
-          "Key": "TRAIN",
-          "Percent": "50"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "5"}
       ]
     },
@@ -2740,10 +2736,7 @@
           "Key": "FLX",
           "Percent": "5"},
         {
-          "Key": "TRAIN",
-          "Percent": "50"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "5"}]}
   ,{
       "ID": "Lockpicking",
@@ -2763,10 +2756,7 @@
           "Key": "PTC",
           "Percent": "10"},
         {
-          "Key": "TRAIN",
-          "Percent": "50"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "5"}
       ]
     },
@@ -2790,9 +2780,6 @@
           "Key": "SPA",
           "Percent": "10"},
         {
-          "Key": "TRAIN",
-          "Percent": "25"},
-        {
-          "Key": "CHANCE",
+          "Key": "LCK",
           "Percent": "35"}]}]
 }

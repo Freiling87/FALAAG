@@ -44,9 +44,13 @@ namespace WPFUI
         #region Action Option Canvas
         private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
         {
-            ActionOption action = ((FrameworkElement)sender).DataContext as ActionOption;
+            if (_gameSession.SelectedAction == null)
+                return;
+
             _gameSession.ActionOptionsDetails.IsVisible = false;
-            _gameSession.AttemptAction(_gameSession.Player, action);
+            _gameSession.Player.RollAction(_gameSession.SelectedAction);
+            // TODO: Ensure this is calling a chain of commands and this is the right place to null it out. There's a good chance it won't be.
+            _gameSession.SelectedAction = null;
         }
         private void OnClick_SelectActionOption(object sender, RoutedEventArgs e)
 		{

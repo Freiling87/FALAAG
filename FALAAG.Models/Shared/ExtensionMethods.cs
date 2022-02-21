@@ -32,7 +32,10 @@ namespace FALAAG.Models.Shared
             Convert.ToInt32(jsonToken[key]);
 
         public static EntityAttribute GetAttribute(this Entity entity, string attributeKey) =>
-            entity.Attributes.First(ea => ea.ID.Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
+            entity.Attributes.First(ea => ea.AttributeKey.ToString().Equals(attributeKey, StringComparison.CurrentCultureIgnoreCase));
+
+        public static EntityAttribute GetAttribute(this Entity entity, AttributeKey attributeKey) =>
+            entity.Attributes.First(ea => ea.AttributeKey == attributeKey);
 
         public static Skill GetSkill(this Entity entity, SkillType skillType) =>
             entity.Skills.First(s => s.SkillType.Equals(skillType.ToString()));

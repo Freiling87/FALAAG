@@ -198,10 +198,6 @@ namespace FALAAG.ViewModels
                     Player.OnActionPerformed -= OnConsumableActionPerformed;
             }
         }
-        public void AttemptAction(Entity entity, ActionOption actionOption)
-		{
-            throw new NotImplementedException();
-		}
         #endregion
         #region Message Log
         #endregion

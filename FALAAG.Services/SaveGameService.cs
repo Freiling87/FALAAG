@@ -53,7 +53,7 @@ namespace FALAAG.Services
             foreach (JToken itemToken in (JArray)data[nameof(GameState.Player)][nameof(Player.Attributes)])
             {
                 attributes.Add(new EntityAttribute(
-                                   (string)itemToken[nameof(EntityAttribute.ID)],
+                                   Enum.Parse<AttributeKey>((string)itemToken[nameof(EntityAttribute.AttributeKey)]),
                                    (string)itemToken[nameof(EntityAttribute.DisplayName)],
 								   (string)itemToken[nameof(EntityAttribute.Description)],
                                    (string)itemToken[nameof(EntityAttribute.DiceNotation)],
