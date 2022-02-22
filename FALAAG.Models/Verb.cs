@@ -10,5 +10,10 @@ namespace FALAAG.Models
 	{
 		public string Infinitive { get; }
 		public bool Irregular { get; }
+
+		internal string Conjugate(Entity actor)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -112,6 +112,7 @@ namespace FALAAG.Models
 
             foreach (EntityAttribute attribute in attributes)
                 Attributes.Add(attribute);
+
             foreach (Skill skill in skills)
                 Skills.Add(skill);
 
@@ -149,16 +150,6 @@ namespace FALAAG.Models
             Inventory = Inventory.RemoveItem(item);
         public void InventoryRemoveItems(List<ItemQuantity> itemQuantities) =>
             Inventory = Inventory.RemoveItems(itemQuantities);
-        public int RollSkillAttempt(PhysicalObject target, ActionOption actionOption)
-		{
-            Skill skill = GetSkillByID(actionOption.SkillType);
-            int accumulatedSuccess = actionOption.Difficulty * -1;
-
-            foreach (AttributeComponent ac in skill.AttributeComponents)
-                accumulatedSuccess += (int)(D100() * ac.Percent / 100);
-
-            return accumulatedSuccess;
-		}
         public int D100() =>
             DiceService.Instance.Roll(100).Value;
         public Skill GetSkillByID(SkillType skillType) =>
@@ -200,13 +191,22 @@ namespace FALAAG.Models
             Skill skill = GetSkillByID(actionOption.SkillType);
             int successTotal = 0;
 
+            MessageBroker.GetInstance().RaiseMessage("- Difficulty: " + actionOption.Difficulty);
+
             foreach (AttributeComponent ac in skill.AttributeComponents)
 			{
-                successTotal += RollComponent(ac);
-                MessageBroker.GetInstance().RaiseMessage("\t[Rolled " + successTotal + " for " + ac.AttributeKey.ToString());
+                int result = RollComponent(ac);
+                successTotal += (int)(result * ac.Percent);
+                MessageBroker.GetInstance().RaiseMessage("  - Rolled " + result.ToString().PadLeft(3, '0') + " for " + ac.AttributeKey.ToString());
             }
 
-            if (successTotal >= actionOption.Difficulty)
+            MessageBroker.GetInstance().RaiseMessage("    - Total: " + successTotal.ToString().PadLeft(3, '0'));
+
+            float successRatio = successTotal / actionOption.Difficulty;
+
+            actionOption.Execute(successRatio);
+
+            if (successRatio >= 1)
                 return true;
 
             return false;
@@ -216,7 +216,7 @@ namespace FALAAG.Models
             int attribute = this.GetAttribute(ac.AttributeKey).ModifiedValue;
             int roll = DiceService.Instance.Roll(100).Value;
 
-            return (attribute * roll / 100);
+            return (int)(attribute * roll * ac.Percent);
 		}
 		#endregion
 	}

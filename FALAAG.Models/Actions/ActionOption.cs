@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FALAAG.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,22 +22,40 @@ namespace FALAAG.Models
 		public int Audibility { get; set; }
 		public int Visibility { get; set; }
 		public int Duration { get; set; }
-		public PhysicalObject HostObject { get; set; }
-		public string OutcomeProjection 
-		{ 
-			get => "Test Outcome Projection text"; 
-			set { OutcomeProjection = value; } 
+		public PhysicalObject Target { get; set; }
+		public Entity Actor { get; set; }
+		public int Chance { get; set; }
+
+		public string OutcomeDescriptionDetail 
+		{
+			get => Actor.GetSkillByID(SkillType).Name + " " + Target.Name + Environment.NewLine +
+				"===========================================" + Environment.NewLine +
+				"More info here";
 		} // For Action chooser canvas, formatted mini-page of chances and outcomes
 
-		public ActionOption(string id, string name, SkillType skillType, int difficulty, int audibility, int visibility, PhysicalObject hostObject)
+		public ActionOption(string id, string name, SkillType skillType, int difficulty, int audibility, int visibility, PhysicalObject hostObject, int duration)
 		{
 			ID = id;
 			Name = name;
 			SkillType = skillType;
 			Difficulty = difficulty;
+			Duration = duration;
 			Audibility = audibility;
 			Visibility = visibility;
-			HostObject = hostObject;
+			Target = hostObject;
+		}
+
+		internal void Execute(float successRatio)
+		{
+			string resultText = "";
+
+			if (successRatio >= 1)
+				resultText = "Success";
+			else
+				resultText = "Failure";
+
+			MessageBroker.GetInstance().RaiseMessage(resultText);
+			// Use Delegates
 		}
 	}
 }

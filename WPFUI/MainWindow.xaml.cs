@@ -18,12 +18,10 @@ namespace WPFUI
     {
         #region Header
         private const string SAVE_GAME_FILE_EXTENSION = "falaag";
-
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
         private readonly Dictionary<Key, Action> _userInputActions = new Dictionary<Key, Action>();
         private Point? _dragStart;
         private GameSession _gameSession;
-
         public MainWindow(Player player, int x = 0, int y = 0, int z = 0)
         {
             InitializeComponent();
@@ -39,29 +37,6 @@ namespace WPFUI
                     element.MouseUp += GameCanvas_OnMouseUp;
                 }
             }
-        }
-        #endregion
-        #region Action Option Canvas
-        private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
-        {
-            if (_gameSession.SelectedAction == null)
-                return;
-
-            _gameSession.ActionOptionsDetails.IsVisible = false;
-            _gameSession.Player.RollAction(_gameSession.SelectedAction);
-            // TODO: Ensure this is calling a chain of commands and this is the right place to null it out. There's a good chance it won't be.
-            _gameSession.SelectedAction = null;
-        }
-        private void OnClick_SelectActionOption(object sender, RoutedEventArgs e)
-		{
-            _gameSession.SelectedAction = ((FrameworkElement)sender).DataContext as ActionOption;
-            // TODO: Bind TextBlock to update according to ActionOption text contents
-		}
-        private void OnClick_CancelActionChoice(object sender, RoutedEventArgs e)
-        {
-            _gameSession.ActionOptionsDetails.IsVisible = false;
-            _gameSession.CurrentActionOptions.Clear();
-            _gameSession.SelectedAction = null;
         }
         #endregion
         #region Input
@@ -84,8 +59,6 @@ namespace WPFUI
             _userInputActions.Add(Key.J, () => _gameSession.JobDetails.IsVisible = !_gameSession.JobDetails.IsVisible);
             _userInputActions.Add(Key.P, () => _gameSession.PlayerDetails.IsVisible = !_gameSession.PlayerDetails.IsVisible);
             _userInputActions.Add(Key.R, () => _gameSession.RecipesDetails.IsVisible = !_gameSession.RecipesDetails.IsVisible);
-
-            _userInputActions.Add(Key.O, () => _gameSession.ActionOptionsDetails.IsVisible = !_gameSession.RecipesDetails.IsVisible);
         }
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
@@ -93,58 +66,6 @@ namespace WPFUI
             {
                 _userInputActions[e.Key].Invoke();
                 e.Handled = true;
-            }
-        }
-        private void SetActiveGameSessionTo(GameSession gameSession)
-        {
-            _messageBroker.OnMessageRaised -= OnGameMessageRaised;
-
-            _gameSession = gameSession;
-            DataContext = _gameSession;
-
-            // Clear out previous game's messages
-            GameMessages.Document.Blocks.Clear();
-
-            _messageBroker.OnMessageRaised += OnGameMessageRaised;
-        }
-        private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
-        {
-            Startup startup = new Startup();
-            startup.Show();
-            Close();
-        }
-        private void SaveGame_OnClick(object sender, RoutedEventArgs e) =>
-            SaveGame(); 
-        private void Exit_OnClick(object sender, RoutedEventArgs e) =>
-            Close();
-        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
-        {
-            AskToSaveGame();
-        }
-        private void AskToSaveGame()
-        {
-            YesNoWindow message = new YesNoWindow("Save Game", "Do you want to save your game?");
-            message.Owner = GetWindow(this);
-            message.ShowDialog();
-
-            if (message.ClickedYes)
-                SaveGame();
-        }
-        private void SaveGame()
-        {
-            SaveFileDialog saveFileDialog =
-                new SaveFileDialog
-                {
-                    InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
-                    Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
-                };
-
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                SaveGameService.Save(new GameState(_gameSession.Player,
-                    _gameSession.CurrentCell.X,
-                    _gameSession.CurrentCell.Y,
-                    _gameSession.CurrentCell.Z), saveFileDialog.FileName);
             }
         }
         private void CloseInventoryWindow_OnClick(object sender, RoutedEventArgs e)
@@ -199,6 +120,60 @@ namespace WPFUI
             e.Handled = true;
         }
         #endregion
+        #region Game Data
+        private void SetActiveGameSessionTo(GameSession gameSession)
+        {
+            _messageBroker.OnMessageRaised -= OnGameMessageRaised;
+
+            _gameSession = gameSession;
+            DataContext = _gameSession;
+
+            // Clear out previous game's messages
+            GameMessages.Document.Blocks.Clear();
+
+            _messageBroker.OnMessageRaised += OnGameMessageRaised;
+        }
+        private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
+        {
+            Startup startup = new Startup();
+            startup.Show();
+            Close();
+        }
+        private void SaveGame_OnClick(object sender, RoutedEventArgs e) =>
+            SaveGame();
+        private void Exit_OnClick(object sender, RoutedEventArgs e) =>
+            Close();
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            AskToSaveGame();
+        }
+        private void AskToSaveGame()
+        {
+            YesNoWindow message = new YesNoWindow("Save Game", "Do you want to save your game?");
+            message.Owner = GetWindow(this);
+            message.ShowDialog();
+
+            if (message.ClickedYes)
+                SaveGame();
+        }
+        private void SaveGame()
+        {
+            SaveFileDialog saveFileDialog =
+                new SaveFileDialog
+                {
+                    InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
+                    Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
+                };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                SaveGameService.Save(new GameState(_gameSession.Player,
+                    _gameSession.CurrentCell.X,
+                    _gameSession.CurrentCell.Y,
+                    _gameSession.CurrentCell.Z), saveFileDialog.FileName);
+            }
+        }
+        #endregion
         #region Narration
         public void ClearMessageLog() =>
             GameMessages.Document.Blocks.Clear();
@@ -227,6 +202,8 @@ namespace WPFUI
 		{
             ClearMessageLog();
             _gameSession.MoveDirection(direction);
+            if (_gameSession.MovementActionScreenModal)
+                DisplayMovementActionScreen();
         }
         #endregion
         #region Actions
@@ -254,6 +231,13 @@ namespace WPFUI
                 tradeScreen.DataContext = _gameSession; // Attaches XAML
                 tradeScreen.ShowDialog(); // Show() = non-modal. ShowDialog() = modal
             }
+        }
+        private void DisplayMovementActionScreen()
+		{
+            MovementActions movementActionScreen = new MovementActions();
+            movementActionScreen.Owner = this;
+            movementActionScreen.DataContext = _gameSession; // Attaches XAML
+            movementActionScreen.ShowDialog(); // Show() = non-modal. ShowDialog() = modal
         }
         #endregion
     }

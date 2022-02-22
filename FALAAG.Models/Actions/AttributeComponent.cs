@@ -8,7 +8,7 @@
 		public AttributeComponent(AttributeKey attributeType, float percent)
 		{
 			AttributeKey = attributeType;
-			Percent = percent;
+			Percent = percent / 100f;
 		}
 	}
 }

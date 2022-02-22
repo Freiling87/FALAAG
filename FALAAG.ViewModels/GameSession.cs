@@ -87,14 +87,15 @@ namespace FALAAG.ViewModels
         public bool HasAutomat => CurrentAutomat != null;
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;
+        public bool MovementActionScreenModal { get; set; }
         public PopupDetails InventoryDetails { get; set; }
         public PopupDetails JobDetails { get; set; }
         public PopupDetails PlayerDetails { get; set; }
         public PopupDetails RecipesDetails { get; set; }
-        public PopupDetails ActionOptionsDetails { get; set; }
         public PhysicalObject CurrentInteraction { get; set; }
         public ObservableCollection<ActionOption> CurrentActionOptions { get; set; } = new ObservableCollection<ActionOption>();
         public ActionOption SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
+        public bool ActionOptionSelected => SelectedAction != null;
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -142,16 +143,6 @@ namespace FALAAG.ViewModels
                 MaxHeight = 175,
                 MinWidth = 250,
                 MaxWidth = 400
-            };
-            ActionOptionsDetails = new PopupDetails
-            {
-                IsVisible = false,
-                Top = 50,
-                Left = 50,
-                MinHeight = 1400,
-                MaxHeight = 1400,
-                MinWidth = 1400,
-                MaxWidth = 1400
             };
         }
 
@@ -317,7 +308,7 @@ namespace FALAAG.ViewModels
                 foreach (ActionOption ao in wall.MovementActionOptions)
                     CurrentActionOptions.Add(ao);
 
-                ActionOptionsDetails.IsVisible = true;
+                MovementActionScreenModal = true;
                 // TODO: Copy the Save Game On Exit menu to return a bool from the result, on whether to move or not.
             }
 

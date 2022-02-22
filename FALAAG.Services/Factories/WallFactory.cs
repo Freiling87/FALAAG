@@ -45,7 +45,8 @@ namespace FALAAG.Factories
                         actionOptionNode.AttributeAsInt("Difficulty"),
                         actionOptionNode.AttributeAsInt("Audibility"),
                         actionOptionNode.AttributeAsInt("Visibility"),
-                        wall));
+                        wall,
+                        actionOptionNode.AttributeAsInt("Duration")));
                 }
 
 				_wallTemplates.Add(wall);
