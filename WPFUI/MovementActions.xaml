@@ -19,8 +19,8 @@
 			<RowDefinition Height="50"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1400"/>
-			<ColumnDefinition Width="400"/>
+			<ColumnDefinition Width="1409"/>
+			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 
 		<!-- Header -->
@@ -38,28 +38,34 @@
 				Height="800"
 				VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
 			<DataGrid.Resources>
-				<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
-					<!--<Setter Property="Background" Value="White" />
-					<Setter Property="Foreground" Value="Black" />
-					<Setter Property="BorderBrush" Value="Black"/>
-					<Setter Property="BorderThickness" Value="1 1 1 1"/>
-					<Setter Property="Margin" Value="-1,-1,0,0" />
-					<Setter Property="Height" Value="28" />
-					<Setter Property="Width" Value="auto"/>-->
+				<Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+					<Setter Property="FontFamily" Value="Consolas"/>
+					<Setter Property="Height" Value="40"/>
 					<Setter Property="HorizontalContentAlignment" Value="Center"/>
+				</Style>
+				<Style BasedOn="{StaticResource {x:Type DataGridCell}}" TargetType="{x:Type DataGridCell}">
+					<Setter Property="FontFamily" Value="Consolas"/>
+					<Setter Property="BorderThickness" Value="12"/>
 				</Style>
 			</DataGrid.Resources>
 			
 			<DataGrid.Columns>
+				<!-- Action Option -->
 				<DataGridTemplateColumn Header="Action"
 										Width="200">
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate>
 							<Button Click="OnClick_SelectActionOption"
+									MouseDoubleClick="OnClick_AttemptSelectedAction"
                                     Content="{Binding Name, Mode=OneWay}"/>
 						</DataTemplate>
 					</DataGridTemplateColumn.CellTemplate>
+					<DataGridTemplateColumn.CellStyle>
+						<Style TargetType="DataGridCell">
+						</Style>
+					</DataGridTemplateColumn.CellStyle>
 				</DataGridTemplateColumn>
+				<!-- Target -->
 				<DataGridTextColumn Header="Target"
 									Width="200"
 									Binding="{Binding HostObject.Name, Mode=OneWay}">
@@ -69,6 +75,7 @@
 						</Style>
 					</DataGridTextColumn.ElementStyle>
 				</DataGridTextColumn>
+				<!-- Difficulty -->
 				<DataGridTextColumn Header="Difficulty"
 									Width="200"
 									Binding="{Binding Difficulty, Mode=OneWay}">
@@ -78,6 +85,7 @@
 						</Style>
 					</DataGridTextColumn.ElementStyle>
 				</DataGridTextColumn>
+				<!-- Chance -->
 				<DataGridTextColumn Header="Chance"
 									Width="200"
 									Binding="{Binding Chance, Mode=OneWay}">
@@ -87,6 +95,7 @@
 						</Style>
 					</DataGridTextColumn.ElementStyle>
 				</DataGridTextColumn>
+				<!-- Noise -->
 				<DataGridTextColumn Header="Noise"
 									Width="200"
 									Binding="{Binding Audibility, Mode=OneWay}">
@@ -96,6 +105,7 @@
 						</Style>
 					</DataGridTextColumn.ElementStyle>
 				</DataGridTextColumn>
+				<!-- Visibility -->
 				<DataGridTextColumn Header="Visibility"
 									Width="200"
 									Binding="{Binding Visibility, Mode=OneWay}">
@@ -105,6 +115,7 @@
 						</Style>
 					</DataGridTextColumn.ElementStyle>
 				</DataGridTextColumn>
+				<!-- Duration -->
 				<DataGridTextColumn Header="Duration"
 									Width="200"
 									Binding="{Binding Duration, Mode=OneWay}">

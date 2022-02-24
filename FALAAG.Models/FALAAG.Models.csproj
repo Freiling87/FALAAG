@@ -7,10 +7,13 @@
   <ItemGroup>
     <Compile Remove="Actions\Repertoires\**" />
     <Compile Remove="Actions\SkillChecks\**" />
+    <Compile Remove="Actions\Skills\**" />
     <EmbeddedResource Remove="Actions\Repertoires\**" />
     <EmbeddedResource Remove="Actions\SkillChecks\**" />
+    <EmbeddedResource Remove="Actions\Skills\**" />
     <None Remove="Actions\Repertoires\**" />
     <None Remove="Actions\SkillChecks\**" />
+    <None Remove="Actions\Skills\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,10 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FALAAG.Core\FALAAG.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Actions\Skills\" />
   </ItemGroup>
 
 </Project>

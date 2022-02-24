@@ -18,6 +18,7 @@ namespace FALAAG.Models
 		KoolAidManning,
 		Lockpicking,
 		Searching,
+		SqueezingThrough,
 		Vaulting,
 		WireCutting,
 	}

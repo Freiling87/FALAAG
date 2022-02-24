@@ -186,24 +186,22 @@ namespace FALAAG.Models
         private void RaiseOnKilledEvent() =>
             OnKilled?.Invoke(this, new System.EventArgs());
 
-        public bool RollAction(ActionOption actionOption)
+        public bool Attempt(ActionOption actionOption)
         {
             Skill skill = GetSkillByID(actionOption.SkillType);
             int successTotal = 0;
 
-            MessageBroker.GetInstance().RaiseMessage("- Difficulty: " + actionOption.Difficulty);
-
+            MessageBroker.GetInstance().RaiseMessage("Attempt: " + actionOption.Name + " on " + actionOption.Target.Name);
+            MessageBroker.GetInstance().RaiseMessage("\t  ATTRIBUTE\t\t     ( %ROLL * ATTR * WEIGHT  =  RESULT");
             foreach (AttributeComponent ac in skill.AttributeComponents)
 			{
                 int result = RollComponent(ac);
-                successTotal += (int)(result * ac.Percent);
-                MessageBroker.GetInstance().RaiseMessage("  - Rolled " + result.ToString().PadLeft(3, '0') + " for " + ac.AttributeKey.ToString());
+                successTotal += (int)(result);
             }
 
-            MessageBroker.GetInstance().RaiseMessage("    - Total: " + successTotal.ToString().PadLeft(3, '0'));
+            MessageBroker.GetInstance().RaiseMessage("TOTAL:\t" + successTotal.ToString().PadLeft(3, ' ') + " / " + actionOption.Difficulty.ToString().PadLeft(3, ' '));
 
             float successRatio = successTotal / actionOption.Difficulty;
-
             actionOption.Execute(successRatio);
 
             if (successRatio >= 1)
@@ -214,9 +212,17 @@ namespace FALAAG.Models
         public int RollComponent(AttributeComponent ac)
 		{
             int attribute = this.GetAttribute(ac.AttributeKey).ModifiedValue;
-            int roll = DiceService.Instance.Roll(100).Value;
+            float roll = DiceService.Instance.Roll(100).Value / 100f;
+            int result = (int)MathF.Round(attribute * roll * ac.Percent, 0, MidpointRounding.AwayFromZero);
 
-            return (int)(attribute * roll * ac.Percent);
+			MessageBroker.GetInstance().RaiseMessage(
+                "\t" + this.GetAttribute(ac.AttributeKey).DisplayName.PadRight(24, ' ') + 
+                "\t" + roll.ToString().PadLeft(3, ' ') + 
+                "\t" + attribute.ToString().PadLeft(3, ' ') +
+                "\t" + ac.Percent.ToString().PadRight(4, '0').PadLeft(6, ' ') +
+                "\t\t" + result.ToString().PadLeft(3, ' '));
+
+            return result;
 		}
 		#endregion
 	}

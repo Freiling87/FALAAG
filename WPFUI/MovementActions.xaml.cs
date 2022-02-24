@@ -28,9 +28,9 @@ namespace WPFUI
 
         private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
         {
-            Session.Player.RollAction(Session.SelectedAction);
-            Session.SelectedAction = null;
+            Session.Player.Attempt(Session.SelectedAction);
             Close();
+            ResetGameSession();
         }
         private void OnClick_SelectActionOption(object sender, RoutedEventArgs e)
         {
@@ -40,8 +40,13 @@ namespace WPFUI
         private void OnClick_CancelActionChoice(object sender, RoutedEventArgs e)
         {
             Close();
-            Session.CurrentActionOptions.Clear();
+            ResetGameSession();
+        }
+        private void ResetGameSession()
+        {
             Session.SelectedAction = null;
+            Session.CurrentActionOptions.Clear();
+            Session.MovementActionScreenModal = false;
         }
     }
 }

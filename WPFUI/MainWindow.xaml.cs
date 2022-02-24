@@ -202,6 +202,7 @@ namespace WPFUI
 		{
             ClearMessageLog();
             _gameSession.MoveDirection(direction);
+
             if (_gameSession.MovementActionScreenModal)
                 DisplayMovementActionScreen();
         }

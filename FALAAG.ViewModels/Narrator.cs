@@ -34,15 +34,16 @@ namespace FALAAG.ViewModels
 		public static void IntroduceCell(Cell cell)
 		{
 			// TODO: Change all names to lower by default, since you might need to enforce capitalization on some (e.g. brand names).
-            string narration = PlayerCharacterPronoun() + " walk to a " + cell.Name.ToLower() + ".";
+            string narration = PlayerCharacterPronoun() + " walk to a " + cell.Name.ToLower() + "." +
+				Environment.NewLine;
 
-            MessageBroker.GetInstance().RaiseMessage(narration);
+            MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
         }
         public static void IntroduceNPC(NPC npc)
 		{
             string narration = "You see a " + npc.Name + ".";
 
-            MessageBroker.GetInstance().RaiseMessage(narration);
+            MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
         }
 		public static void IntroduceNPCs(Cell cell)
 		{
@@ -56,7 +57,7 @@ namespace FALAAG.ViewModels
 			List<NPC> nobodies = cell.NPCs.Where(n => n.Importance <= 50).ToList();
 
 			foreach (NPC npc in cell.NPCs)
-				MessageBroker.GetInstance().RaiseMessage("A " + npc.Name + " is here.");
+				MessageBroker.GetInstance().RaiseMessage("A " + npc.Name + " is here." + Environment.NewLine);
 		}
 		public static void IntroduceFeatures(Cell cell)
 		{
@@ -79,7 +80,7 @@ namespace FALAAG.ViewModels
 					narration = "There are " + features.Count.ToString() + " " + featureType + "s here.";
 				}
 
-				MessageBroker.GetInstance().RaiseMessage(narration);
+				MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
 			}
 		}
 		public static void IntroduceWalls(Cell cell)
@@ -104,7 +105,7 @@ namespace FALAAG.ViewModels
 						+ ".";
 				}
 
-				MessageBroker.GetInstance().RaiseMessage(narration);
+				MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
 			}
 		}
 		public static void IntroduceItems(Cell cell)
@@ -128,7 +129,7 @@ namespace FALAAG.ViewModels
 					narration = "There are " + items.Count.ToString() + " " + itemType + "s here.";
 				}
 
-				MessageBroker.GetInstance().RaiseMessage(narration);
+				MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
 			}
 		}
 		public static string ListDirections(List<Direction> directions)

@@ -2781,5 +2781,79 @@
           "Percent": "10"},
         {
           "Key": "LCK",
-          "Percent": "35"}]}]
+          "Percent": "35"}]},
+{
+      "ID": "Vaulting",
+      "Name": "Vault",
+      "Group": "TBD",
+      "Description": "Quickly pass over an obstacle, maintaining your momentum.",
+      "AttributeComponents": [{
+          "Key": "GMS",
+          "Percent": "20"
+        },
+        {
+          "Key": "FLX",
+          "Percent": "5"},
+        {
+          "Key": "HGT",
+          "Percent": "10"},
+        {
+          "Key": "SIZ",
+          "Percent": "-10"},
+        {
+          "Key": "RCT",
+          "Percent": "10"},
+        {
+          "Key": "LCK",
+          "Percent": "5"},
+        {
+          "Key": "STR",
+          "Percent": "5"}]},
+{
+      "ID": "SqueezingThrough",
+      "Name": "Squeeze Through",
+      "Group": "TBD",
+      "Description": "Fit into tight spaces.",
+      "AttributeComponents": [{
+          "Key": "SIZ",
+          "Percent": "-50"
+        },
+        {
+          "Key": "FLX",
+          "Percent": "25"
+        },
+        {
+          "Key": "GMS",
+          "Percent": "10"},
+        {
+          "Key": "PTC",
+          "Percent": "10"},
+        {
+          "Key": "SPA",
+          "Percent": "5"},
+        {
+          "Key": "HGT",
+          "Percent": "-25"}]},
+{
+      "ID": "KoolAidManning",
+      "Name": "Kool Aid Man",
+      "Group": "TBD",
+      "Description": "Burst through a wall or door using your... self.",
+      "AttributeComponents": [{
+          "Key": "STR",
+          "Percent": "50"
+        },
+        {
+          "Key": "SIZ",
+          "Percent": "20"
+        },
+        {
+          "Key": "SEN",
+          "Percent": "-25"},
+        {
+          "Key": "CON",
+          "Percent": "20"},
+        {
+          "Key": "LCK",
+          "Percent": "10"}]}]
 }
