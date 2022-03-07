@@ -9,6 +9,16 @@ using FALAAG.Models.Shared;
 
 namespace FALAAG.Models
 {
+    public enum ActionRate
+    {
+        Null, // For storing in PhysObjects and redefining when cloned to an Actor
+        Slowest, // Stealthy
+        Slow, // Careful
+        Medium, // Casual
+        Fast, // Hurried
+        Fastest // Frantic
+    }
+
     public abstract class Entity : PhysicalObject, INotifyPropertyChanged
     {
 		#region Properties
@@ -18,8 +28,9 @@ namespace FALAAG.Models
         private Dialogue _introduction;
 		private string _id;
 		private bool _useActualName = false;
+        public ActionRate ActionRate { get; set; }
 
-		public int Cash { get; private set; }
+        public int Cash { get; private set; }
 		public Item CurrentConsumable
         {
             get => _currentConsumable;
@@ -109,6 +120,7 @@ namespace FALAAG.Models
             Level = 1;
             NameActual = nameActual;
             NameGeneral = nameGeneral;
+            ActionRate = ActionRate.Medium;
 
             foreach (EntityAttribute attribute in attributes)
                 Attributes.Add(attribute);
@@ -186,7 +198,7 @@ namespace FALAAG.Models
         private void RaiseOnKilledEvent() =>
             OnKilled?.Invoke(this, new System.EventArgs());
 
-        public bool Attempt(ActionOption actionOption)
+        public bool SucceedsAt(ActionOption actionOption)
         {
             Skill skill = GetSkillByID(actionOption.SkillType);
             int successTotal = 0;
@@ -224,6 +236,9 @@ namespace FALAAG.Models
 
             return result;
 		}
-		#endregion
-	}
+        #endregion
+
+        public ActionOption MovementAction(Direction direction) => 
+            new ActionOption(SkillType.Moving.ToString(), SkillType.Moving.ToString(), SkillType.Moving, this, this, ActionRate);
+    }
 }

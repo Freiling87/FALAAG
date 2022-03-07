@@ -48,11 +48,11 @@
 		<WearableItem ID="BirdBeakNecklace" Name="Bird Beak Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="DogToothNecklace" Name="Dog Tooth Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="HelmetCrude" Name="Crude Helmet" Description="A DeepReæl Headset with the machinery stripped out. You might still start dreaming, if you get hit hard enough." Value="5" Slot="HeadOuter" Protection="3"/>
-		<WearableItem ID="HelmetCrudeSpiked" Name="Crude Spiked Helmet" Description="This isn't Mad Max, retard." Value="10" Slot="HeadOuter" Protection="5"/>
-		<WearableItem ID="RatskinCoat" Name="Ratskin Coat" Description="You look unhinged in this, you freak." Value="10" Slot="BodyOuter" Protection="3"/>
+		<WearableItem ID="HelmetCrudeSpiked" Name="Crude Spiked Helmet" Description="This isn't Mad Max, dork." Value="10" Slot="HeadOuter" Protection="5"/>
+		<WearableItem ID="RatskinCoat" Name="Ratskin Coat" Description="You look unhinged." Value="10" Slot="BodyOuter" Protection="3"/>
 		<WearableItem ID="RatskinCoatFinal" Name="Ratsmasher Armor" Description="All who gaze upon you, clad in thy ratly garb, are witness to a great becoming!" Value="100" Slot="BodyOuter" Protection="12"/>
-		<WearableItem ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="9"/>
-		<WearableItem ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat" Description="Very Crust Punk. Very smelly. Very a lot of things." Value="25" Slot="BodyOuter" Protection="5"/>
+		<WearableItem ID="RatskinCoatReinforced" Name="Reinforced Ratskin Coat" Description="Very Crust Punk. If that's your thing." Value="25" Slot="BodyOuter" Protection="9"/>
+		<WearableItem ID="RatskinCoatSpiked" Name="Spiked Ratskin Coat" Description="Very Crust Punk. If that's your thing." Value="25" Slot="BodyOuter" Protection="5"/>
 		<WearableItem ID="RatSkullNecklace" Name="Rat Skull Necklace" Description="Jewelry made from dead animal parts. People will likely not criticize your fashion choice." Value="5" Slot="NeckOuter" Protection="2"/>
 		<WearableItem ID="StreetDruidNecklace" Name="Street Druid Necklace" Description="There are *so many* dead animal parts on this necklace. You should be proud!" Value="25" Slot="NeckOuter" Protection="5"/>
 	</WearableItems>

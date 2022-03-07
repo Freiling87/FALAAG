@@ -103,7 +103,8 @@
 					  DisplayMemberPath="DisplayName"
 					  SelectedItem="{Binding SelectedRace, Mode=TwoWay,
 					  UpdateSourceTrigger=PropertyChanged}"
-					  SelectionChanged="Archetye_OnSelectionChanged"/>
+					  SelectionChanged="Archetye_OnSelectionChanged"
+					  ToolTip="{Binding SelectedRace.Description}"/>
 			<CheckBox Grid.Row="3" Grid.Column="2" 
 					Width="16" Height="16" 
 					HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -126,7 +127,8 @@
 					  DisplayMemberPath="DisplayName"
 					  SelectedItem="{Binding SelectedSex, Mode=TwoWay,
 					  UpdateSourceTrigger=PropertyChanged}"
-					  SelectionChanged="Archetye_OnSelectionChanged"/>
+					  SelectionChanged="Archetye_OnSelectionChanged"
+					  ToolTip="{Binding SelectedRace.Description}"/>
 			<CheckBox Grid.Row="5" Grid.Column="2" 
 					Width="16" Height="16" 
 					HorizontalAlignment="Center" VerticalAlignment="Center" 

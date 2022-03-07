@@ -51,6 +51,17 @@ A numerical representation of:
 	How advantageous your position is in combat (particularly important when outnumbered)
 	Possibly a victory condition for Dialogue (yet to see)
 	How well-hidden you are in Stealth
+###		C	Rate
+From stealthy to frantic. Determine AP cost, noise, accuracy, etc.
+
+Repertoire		Stealthy	Careful		Casual		Hurried		Frantic
+	Combat			Reactive	Defensive	Balanced	Aggressive	Berserk
+	Movement		Sneak		Cautious	Casual		Run			Sprint
+	Speech			Observant	Insinuating	Level		Curt		Overbearing
+
+###		C	Relationship
+An Enum, defines NPC behavior
+Important: can be declared by the player, leading to differences in interaction
 ##	C	Chase
 ###		C	Foot (Combat)
 ###		C	Foot (Tailing)

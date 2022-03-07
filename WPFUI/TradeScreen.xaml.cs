@@ -1,13 +1,13 @@
-﻿using System.Windows;
-using FALAAG.Models;
+﻿using FALAAG.Models;
 using FALAAG.ViewModels;
+using System.Windows;
 
 namespace WPFUI
 {
-    /// <summary>
-    /// Interaction logic for TradeScreen.xaml
-    /// </summary>
-    public partial class TradeScreen : Window
+	/// <summary>
+	/// Interaction logic for TradeScreen.xaml
+	/// </summary>
+	public partial class TradeScreen : Window
     {
         public GameSession Session => DataContext as GameSession;
 
@@ -30,8 +30,7 @@ namespace WPFUI
 
         private void OnClick_Buy(object sender, RoutedEventArgs e)
         {
-            GroupedInventoryItem groupedInventoryItem =
-                ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
+            GroupedInventoryItem groupedInventoryItem = ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
 
             if (groupedInventoryItem != null)
             {

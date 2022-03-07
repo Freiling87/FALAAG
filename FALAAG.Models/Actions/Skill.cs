@@ -15,6 +15,7 @@ namespace FALAAG.Models
 		Crawling,
 		JumpingFar,
 		JumpingHigh,
+		Moving, // Stealthy, Careful, Casual, Hurried, Frantic
 		KoolAidManning,
 		Lockpicking,
 		Searching,

@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace FALAAG.ViewModels
 {
-	public class GameSession : INotifyPropertyChanged
+    public class GameSession : INotifyPropertyChanged
     {
         public string Version { get; } = "0.1.000";
         public event PropertyChangedEventHandler PropertyChanged;
@@ -88,12 +88,18 @@ namespace FALAAG.ViewModels
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;
         public bool MovementActionScreenModal { get; set; }
+        // TODO: Not sure how to access outside of DataContext in MainWindow.xaml. I want to move these bools to MainWindow.xaml.cs.
+        public bool RateButtonSlowestIsEnabled => Player.ActionRate != ActionRate.Slowest;
+        public bool RateButtonSlowIsEnabled => Player.ActionRate != ActionRate.Slow;
+        public bool RateButtonMediumIsEnabled => Player.ActionRate != ActionRate.Medium;
+        public bool RateButtonFastIsEnabled => Player.ActionRate != ActionRate.Fast;
+        public bool RateButtonFastestIsEnabled => Player.ActionRate != ActionRate.Fastest;
         public PopupDetails InventoryDetails { get; set; }
         public PopupDetails JobDetails { get; set; }
         public PopupDetails PlayerDetails { get; set; }
         public PopupDetails RecipesDetails { get; set; }
-        public PhysicalObject CurrentInteraction { get; set; }
-        public ObservableCollection<ActionOption> CurrentActionOptions { get; set; } = new ObservableCollection<ActionOption>();
+        public PhysicalObject CurrentInteraction { get; set; } // TODO: Change this to an ActionOption, which can store a physicalobject as a target anyway; Or eliminate it entirely, once the ActionOptionManager is implemented and you can just traverse the queue for this.
+        public List<ActionOption> CurrentActionOptions { get; set; }
         public ActionOption SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
         public bool ActionOptionSelected => SelectedAction != null;
 
@@ -193,126 +199,22 @@ namespace FALAAG.ViewModels
         #region Message Log
         #endregion
         #region Movement
-        public bool HasCellA
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.Above);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
-        public bool HasCellB
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.Below);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
-        public bool HasCellE
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.East);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
-        public bool HasCellN
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.North);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
-        public bool HasCellS
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.South);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
-        public bool HasCellW
-        {
-            get
-            {
-                Cell cell = CurrentWorld.GetNeighbor(CurrentCell, Direction.West);
-
-                if (cell == null || cell.IsMapEdge)
-                    return false;
-
-                return true;
-            }
-        }
+        public bool HasCell(Direction direction) =>
+            CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
         public void MoveDirection(Direction direction)
 		{
             if (HasCell(direction))
-                MoveToCell(CurrentWorld.GetNeighbor(CurrentCell, direction));
+                CompleteMovement(CurrentWorld.GetNeighbor(CurrentCell, direction));
 		}
-        public bool HasCell(Direction direction) =>
-            CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
         public void MoveToCell(int x, int y, int z) => 
-            MoveToCell(CurrentWorld.GetCell(x, y, z));
-        public void MoveToCell(Cell destination)
+            CompleteMovement(CurrentWorld.GetCell(x, y, z));
+        public void CompleteMovement(Cell destination)
         {
-            bool passed = true;
-            Direction path = GetDirectionFromCurrentCell(destination);
-            Wall wall = CurrentCell.GetWall(path); // Needs to be opposite, since you're calling from destination. Otherwise, call it from currentCell.
-
+            CurrentCell = destination;
+            Narrator.OnMovement(CurrentCell);
             // TODO: Check for Status Effects preventing movement
             // TODO: Enemy blocking access to wall/portal
             // TODO: Set following code to be contingent on passing check in ActionOptionsDetails
-
-            if (!PassedWall(wall))
-                MessageBroker.GetInstance().RaiseMessage("You can't walk through walls... yet.");
-			else
-            {
-                CurrentCell = destination;
-                Narrator.OnMovement(CurrentCell);
-            }
-        }
-        private bool PassedWall(Wall wall)
-        {
-            if (wall != null && !wall.Passable)
-            {
-                CurrentInteraction = wall;
-
-                if (wall.MovementActionOptions.Count == 0)
-                {
-                    return false;
-                }
-
-                CurrentActionOptions.Clear();
-                //CurrentActionOptions = new ObservableCollection<ActionOption>(wall.MovementActionOptions);
-                foreach (ActionOption ao in wall.MovementActionOptions)
-                    CurrentActionOptions.Add(ao);
-
-                MovementActionScreenModal = true;
-                // TODO: Copy the Save Game On Exit menu to return a bool from the result, on whether to move or not.
-            }
-
-            return true;
         }
         private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{

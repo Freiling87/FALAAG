@@ -42,11 +42,9 @@ namespace FALAAG.Factories
                         actionOptionNode.AttributeAsString("ActionID"),
                         actionOptionNode.AttributeAsString("Name"),
                         Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
-                        actionOptionNode.AttributeAsInt("Difficulty"),
-                        actionOptionNode.AttributeAsInt("Audibility"),
-                        actionOptionNode.AttributeAsInt("Visibility"),
+                        null,
                         wall,
-                        actionOptionNode.AttributeAsInt("Duration")));
+                        ActionRate.Null));
                 }
 
 				_wallTemplates.Add(wall);

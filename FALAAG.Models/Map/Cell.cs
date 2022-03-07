@@ -56,7 +56,6 @@ namespace FALAAG.Models
                     WallWest,
                 };
 
-
                 return list.Where(w => w != null).ToList();
             }
         }

@@ -14,6 +14,7 @@ using FALAAG.Core;
 
 namespace WPFUI
 {
+
 	public partial class MainWindow : Window
     {
         #region Header
@@ -149,7 +150,7 @@ namespace WPFUI
         }
         private void AskToSaveGame()
         {
-            YesNoWindow message = new YesNoWindow("Save Game", "Do you want to save your game?");
+            YesNoWindow message = new("Save Game", "Do you want to save your game?");
             message.Owner = GetWindow(this);
             message.ShowDialog();
 
@@ -187,25 +188,70 @@ namespace WPFUI
         // Sender: the button itself, in this case
         // EventArgs: One or more objects of RoutedEventArgs type.
         private void OnClick_Ascend(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.Above);
+            ButtonMovement(Direction.Above);
         private void OnClick_Descend(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.Below);
+            ButtonMovement(Direction.Below);
         private void OnClick_MoveEast(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.East);
+            ButtonMovement(Direction.East);
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.North);
+            ButtonMovement(Direction.North);
         private void OnClick_MoveSouth(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.South);
+            ButtonMovement(Direction.South);
         private void OnClick_MoveWest(object sender, RoutedEventArgs e) =>
-            MoveDirection(Direction.West);
-        private void MoveDirection(Direction direction)
+            ButtonMovement(Direction.West);
+        private void ButtonMovement(Direction direction)
 		{
+            // TODO: I think a lot of this should be done within GameSession. Only put in here what's necessary.
+            // Specifically, set ClearMessageLog 
+
+            Cell origin = _gameSession.CurrentCell;
+            Wall wall = origin.GetWall(direction);
+            Cell destination = _gameSession.CurrentWorld.GetNeighbor(origin, direction);
+
+            // TODO: Command pattern to store intended result action, to be gated behind ActionOption attempt Command.
+            //      This needs to be done before skill checks for other actions, to avoid redundant windows.
+
+            if (wall != null && !wall.Passable)
+			{
+                List<ActionOption> actionOptions = wall.ActionOptions;
+
+                if (actionOptions.Count == 0)
+                    return;
+                else if (actionOptions.Count > 0)
+                {
+                    ActionOption storedMovementAction = _gameSession.Player.MovementAction(direction);
+                    _gameSession.CurrentActionOptions = actionOptions;
+
+                    foreach (ActionOption ao in _gameSession.CurrentActionOptions)
+                        ao.Actor = _gameSession.Player;
+
+                    ActionWindow actionWindow = new(storedMovementAction);
+                    actionWindow.Owner = GetWindow(this);
+                    actionWindow.DataContext = _gameSession; // Attaches XAML
+                    actionWindow.ShowDialog(); // actionWindow later calls CompleteMovement if check is passed
+                    return;
+                }
+            }
+
+            CompleteMovement(direction);
+        }
+        private void CompleteMovement(Direction direction)
+        {
             ClearMessageLog();
             _gameSession.MoveDirection(direction);
-
-            if (_gameSession.MovementActionScreenModal)
-                DisplayMovementActionScreen();
         }
+        #endregion
+        #region Action Rate
+        private void OnClick_RateSlowest(object sender, RoutedEventArgs e) =>
+            _gameSession.Player.ActionRate = ActionRate.Slowest;
+        private void OnClick_RateSlow(object sender, RoutedEventArgs e) =>
+            _gameSession.Player.ActionRate = ActionRate.Slow;
+        private void OnClick_RateMedium(object sender, RoutedEventArgs e) =>
+            _gameSession.Player.ActionRate = ActionRate.Medium;
+        private void OnClick_RateFast(object sender, RoutedEventArgs e) =>
+            _gameSession.Player.ActionRate = ActionRate.Fast;
+        private void OnClick_RateFastest(object sender, RoutedEventArgs e) =>
+            _gameSession.Player.ActionRate = ActionRate.Fastest;
         #endregion
         #region Actions
         private void OnClick_AttackNPC(object sender, RoutedEventArgs e)
@@ -232,13 +278,6 @@ namespace WPFUI
                 tradeScreen.DataContext = _gameSession; // Attaches XAML
                 tradeScreen.ShowDialog(); // Show() = non-modal. ShowDialog() = modal
             }
-        }
-        private void DisplayMovementActionScreen()
-		{
-            MovementActions movementActionScreen = new MovementActions();
-            movementActionScreen.Owner = this;
-            movementActionScreen.DataContext = _gameSession; // Attaches XAML
-            movementActionScreen.ShowDialog(); // Show() = non-modal. ShowDialog() = modal
         }
         #endregion
     }

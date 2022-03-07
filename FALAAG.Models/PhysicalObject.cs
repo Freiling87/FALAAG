@@ -14,7 +14,8 @@ namespace FALAAG.Models
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
 		public string ID { get; set; }
-		public ObservableCollection<ActionOption> ActionOptions = new ObservableCollection<ActionOption>();
+		public List<ActionOption> ActionOptions = new ();
+		// Changed ActionOptions to List from ObservableCollection. If you get errors on forms generating this content, this could be why.
 
 		public List<ObjectAttachment> ObjectAttachments { get; set; }
 
