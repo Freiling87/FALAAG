@@ -12,13 +12,13 @@ namespace FALAAG.Models
 	/// For compiling a list of available actions, for the player or the AI.
 	/// This should also cover SkillChecks.
 	/// </summary>
-	public class ActionOption : INotifyPropertyChanged
+	public class ActionCommand : INotifyPropertyChanged
 	{
 		// RE: Subclasses for each specific game logic (e.g. Lockpick, Leap, etc.)
 		//		The alternative is to keep using a SkillType Enum, and create an
 		//		action delegate library (unsure of term) between those enum members 
 		//		and the skill-specific game logic. Then, (composition > inheritance?) 
-		//		all of those methods are stored within ActionOption itself. 
+		//		all of those methods are stored within ActionCommand itself. 
 		//		I think one of the nice advantages of no-audio/no-graphics will be 
 		//		that pretty much every class is a flyweight, relatively speaking.
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -45,7 +45,7 @@ namespace FALAAG.Models
 				"More info here";
 		} // For Action chooser canvas, formatted mini-page of chances and outcomes
 
-		public ActionOption(string id, string name, SkillType skillType, Entity actor, PhysicalObject target, ActionRate actionRate)
+		public ActionCommand(string id, string name, SkillType skillType, Entity actor, PhysicalObject target, ActionRate actionRate)
 		{
 			ID = id;
 			Name = name;
@@ -54,10 +54,10 @@ namespace FALAAG.Models
 			Actor = actor;
 
 			// These are just placeholders to avoid div/0 errors. 
-			Difficulty = 50;
-			Duration = 50;
-			Audibility = 50;
-			Visibility = 50;
+			Difficulty = 5;
+			Duration = 5;
+			Audibility = 5;
+			Visibility = 5;
 		}
 
 		internal void Execute(float successRatio)
@@ -79,7 +79,16 @@ namespace FALAAG.Models
 		/// It might not be needed for other sources of ActionObjects (e.g. Entity), since those will need to be flexible enough to generate on the fly.
 		/// </summary>
 		/// <returns></returns>
-		public ActionOption Clone() =>
-			new ActionOption(ID, Name, SkillType, Actor, Target, ActionRate);
+		public ActionCommand Clone() =>
+			new ActionCommand(ID, Name, SkillType, Actor, Target, ActionRate);
+		public ActionCommand Clone(Entity entity)
+		{
+			ActionCommand ac = new ActionCommand(ID, Name, SkillType, Actor, Target, ActionRate)
+			{
+				Actor = entity
+			};
+
+			return ac;
+		}
 	}
 }

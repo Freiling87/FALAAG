@@ -12,19 +12,17 @@ namespace WPFUI
     {
         public GameSession GameSession => DataContext as GameSession;
         public string Message { get; set; }
-        public ActionOption ResultAction { get; set; }
+        public ActionCommand ResultAction { get; set; }
 
-        public ActionWindow(ActionOption resultAction)
+        public ActionWindow(ActionCommand resultAction)
 		{
             InitializeComponent();
             ResultAction = resultAction;
-            // _ = GameSession.CurrentActionOptions.Count;
+            // _ = GameSession.CurrentActionCommands.Count;
 		}
 
         private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
         {
-            OnClick_SelectActionOption(sender, e);
-
             if (GameSession.Player.SucceedsAt(GameSession.SelectedAction))
                 ResultAction = GameSession.SelectedAction;
             else
@@ -32,8 +30,8 @@ namespace WPFUI
 
             Terminate();
         }
-        private void OnClick_SelectActionOption(object sender, RoutedEventArgs e) =>
-            GameSession.SelectedAction = ((FrameworkElement)sender).DataContext as ActionOption;
+        private void OnClick_SelectActionCommand(object sender, RoutedEventArgs e) =>
+            GameSession.SelectedAction = ((FrameworkElement)sender).DataContext as ActionCommand;
         private void OnClick_CancelActionChoice(object sender, RoutedEventArgs e) =>
             Terminate();
         private void Terminate()
@@ -41,8 +39,8 @@ namespace WPFUI
             if (GameSession?.SelectedAction is object)
                 GameSession.SelectedAction = null;
 
-            if (GameSession?.CurrentActionOptions is object)
-                GameSession.CurrentActionOptions.Clear();
+            if (GameSession?.CurrentActionCommands is object)
+                GameSession.CurrentActionCommands.Clear();
 
             Close();
         }

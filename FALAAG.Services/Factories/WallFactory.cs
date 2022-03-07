@@ -36,12 +36,12 @@ namespace FALAAG.Factories
                     wallNode.AttributeAsString("WallID"),
                     wallNode.AttributeAsString("Name"));
 
-				foreach (XmlNode actionOptionNode in wallNode.SelectNodes("./ActionOptions/ActionOption"))
+				foreach (XmlNode actionCommandNode in wallNode.SelectNodes("./ActionCommands/ActionCommand"))
 				{
-                    wall.ActionOptions.Add(new ActionOption(
-                        actionOptionNode.AttributeAsString("ActionID"),
-                        actionOptionNode.AttributeAsString("Name"),
-                        Enum.Parse<SkillType>(actionOptionNode.AttributeAsString("SkillType")),
+                    wall.ActionCommands.Add(new ActionCommand(
+                        actionCommandNode.AttributeAsString("ActionID"),
+                        actionCommandNode.AttributeAsString("Name"),
+                        Enum.Parse<SkillType>(actionCommandNode.AttributeAsString("SkillType")),
                         null,
                         wall,
                         ActionRate.Null));

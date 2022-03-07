@@ -98,10 +98,10 @@ namespace FALAAG.ViewModels
         public PopupDetails JobDetails { get; set; }
         public PopupDetails PlayerDetails { get; set; }
         public PopupDetails RecipesDetails { get; set; }
-        public PhysicalObject CurrentInteraction { get; set; } // TODO: Change this to an ActionOption, which can store a physicalobject as a target anyway; Or eliminate it entirely, once the ActionOptionManager is implemented and you can just traverse the queue for this.
-        public List<ActionOption> CurrentActionOptions { get; set; }
-        public ActionOption SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
-        public bool ActionOptionSelected => SelectedAction != null;
+        public PhysicalObject CurrentInteraction { get; set; } // TODO: Change this to an ActionCommand, which can store a physicalobject as a target anyway; Or eliminate it entirely, once the ActionCommandManager is implemented and you can just traverse the queue for this.
+        public List<ActionCommand> CurrentActionCommands { get; set; } = new();
+        public ActionCommand SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
+        public bool ActionCommandSelected => SelectedAction != null;
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -153,6 +153,14 @@ namespace FALAAG.ViewModels
         }
 
         #endregion
+        #region XAML-bound properties
+        public bool HasCellA { get => HasNonEdgeNeighbor(Direction.Above); }
+        public bool HasCellB { get => HasNonEdgeNeighbor(Direction.Below); }
+        public bool HasCellE { get => HasNonEdgeNeighbor(Direction.East); }
+        public bool HasCellN { get => HasNonEdgeNeighbor(Direction.North); }
+        public bool HasCellS { get => HasNonEdgeNeighbor(Direction.South); }
+        public bool HasCellW { get => HasNonEdgeNeighbor(Direction.West); }
+        #endregion
         private void PopulateGameDetails()
         {
             GameDetails = GameDetailsService.ReadGameDetails();
@@ -195,16 +203,21 @@ namespace FALAAG.ViewModels
                     Player.OnActionPerformed -= OnConsumableActionPerformed;
             }
         }
-        #endregion
-        #region Message Log
-        #endregion
-        #region Movement
-        public bool HasCell(Direction direction) =>
-            CurrentWorld.GetNeighbor(CurrentCell, direction) != null;
+		#endregion
+		#region Message Log
+		#endregion
+		#region Movement
+		public bool HasNonEdgeNeighbor(Direction direction)
+		{
+            Cell neighbor = CurrentWorld.GetNeighbor(CurrentCell, direction);
+
+            return 
+                neighbor != null &&
+                !neighbor.IsMapEdge;
+        }
         public void MoveDirection(Direction direction)
 		{
-            if (HasCell(direction))
-                CompleteMovement(CurrentWorld.GetNeighbor(CurrentCell, direction));
+            CompleteMovement(CurrentWorld.GetNeighbor(CurrentCell, direction));
 		}
         public void MoveToCell(int x, int y, int z) => 
             CompleteMovement(CurrentWorld.GetCell(x, y, z));
@@ -214,7 +227,7 @@ namespace FALAAG.ViewModels
             Narrator.OnMovement(CurrentCell);
             // TODO: Check for Status Effects preventing movement
             // TODO: Enemy blocking access to wall/portal
-            // TODO: Set following code to be contingent on passing check in ActionOptionsDetails
+            // TODO: Set following code to be contingent on passing check in ActionCommandsDetails
         }
         private Direction GetDirectionFromCurrentCell(Cell targetCell)
 		{

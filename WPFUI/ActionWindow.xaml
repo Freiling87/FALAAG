@@ -32,7 +32,7 @@
 		<!-- Action Table -->
 		<DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"
 				Margin="4"
-				ItemsSource="{Binding CurrentActionOptions}"
+				ItemsSource="{Binding CurrentActionCommands}"
 				AutoGenerateColumns="False"
 				HeadersVisibility="Column"
 				Height="800"
@@ -55,7 +55,7 @@
 										Width="200">
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate>
-							<Button Click="OnClick_SelectActionOption"
+							<Button Click="OnClick_SelectActionCommand"
 									MouseDoubleClick="OnClick_AttemptSelectedAction"
                                     Content="{Binding Name, Mode=OneWay}"/>
 						</DataTemplate>
@@ -147,7 +147,7 @@
 				Width="100" Height="25"
 				Content="Attempt"
 				Click="OnClick_AttemptSelectedAction"
-				IsEnabled="{ Binding ActionOptionSelected}"/>
+				IsEnabled="{ Binding ActionCommandSelected}"/>
 
 	</Grid>
 

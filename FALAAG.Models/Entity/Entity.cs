@@ -198,12 +198,12 @@ namespace FALAAG.Models
         private void RaiseOnKilledEvent() =>
             OnKilled?.Invoke(this, new System.EventArgs());
 
-        public bool SucceedsAt(ActionOption actionOption)
+        public bool SucceedsAt(ActionCommand actionCommand)
         {
-            Skill skill = GetSkillByID(actionOption.SkillType);
+            Skill skill = GetSkillByID(actionCommand.SkillType);
             int successTotal = 0;
 
-            MessageBroker.GetInstance().RaiseMessage("Attempt: " + actionOption.Name + " on " + actionOption.Target.Name);
+            MessageBroker.GetInstance().RaiseMessage("Attempt: " + actionCommand.Name + " on " + actionCommand.Target.Name);
             MessageBroker.GetInstance().RaiseMessage("\t  ATTRIBUTE\t\t     ( %ROLL * ATTR * WEIGHT  =  RESULT");
             foreach (AttributeComponent ac in skill.AttributeComponents)
 			{
@@ -211,10 +211,10 @@ namespace FALAAG.Models
                 successTotal += (int)(result);
             }
 
-            MessageBroker.GetInstance().RaiseMessage("TOTAL:\t" + successTotal.ToString().PadLeft(3, ' ') + " / " + actionOption.Difficulty.ToString().PadLeft(3, ' '));
+            MessageBroker.GetInstance().RaiseMessage("TOTAL:\t" + successTotal.ToString().PadLeft(3, ' ') + " / " + actionCommand.Difficulty.ToString().PadLeft(3, ' '));
 
-            float successRatio = successTotal / actionOption.Difficulty;
-            actionOption.Execute(successRatio);
+            float successRatio = successTotal / actionCommand.Difficulty;
+            actionCommand.Execute(successRatio);
 
             if (successRatio >= 1)
                 return true;
@@ -238,7 +238,7 @@ namespace FALAAG.Models
 		}
         #endregion
 
-        public ActionOption MovementAction(Direction direction) => 
-            new ActionOption(SkillType.Moving.ToString(), SkillType.Moving.ToString(), SkillType.Moving, this, this, ActionRate);
-    }
+        public ActionCommand MovementAction(Direction direction) => 
+            new ActionCommand(SkillType.Moving.ToString(), SkillType.Moving.ToString(), SkillType.Moving, this, this, ActionRate);
+	}
 }

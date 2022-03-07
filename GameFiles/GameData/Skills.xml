@@ -8,33 +8,21 @@
 	- Possessive: "my/your/their"
 	- Reference: "a/the thing"
 	- Reflexive: "your/their/itself"-->
-	<Skill ID="Lockpicking" Name="Lockpick" Description="Pick a lock.">
-		<AttributeComponents>
-			<AttributeComponent ID="FMS" Percent="35"/>
-			<AttributeComponent ID="SEN" Percent="10"/>
-		</AttributeComponents>
-		<Result_0>"{actor.Reference} clumsily {verb("fall")} right off {target.Reference}"</Result_0>
-		<Result_1>"Fail 1"</Result_1>
-		<Result_2>"{target.Demonstrative} just won't cooperate"</Result_2>
-		<Result_3>"{actor.Reference} just barely {actor.verb("fail")} to open the {target.Reference}"</Result_3>
-		<Result_4>"{actor.Reference} {verb("manage")} to open the {target.Reference}"</Result_4>
-		<Result_5>""</Result_5>
-		<Result_6>"{object.verb("click")} open after little effort"</Result_6>
-		<Result_7>"{actor.Reference} {actor.verb("open")} {object.Reference} effortlessly"</Result_7>
-	</Skill>
 	
 	<Skill ID="ClimbingFast" Name="Climb" Description="Climb.">
 		<AttributeComponents>
-
+			<AttributeComponent ID="XXX" Percent="35"/>
+			<AttributeComponent ID="XXX" Percent="10"/>
 		</AttributeComponents>
-		<Result_0>"{actor.Reference} clumsily {verb("fall")} right off {target.Reference}"</Result_0>
-		<Result_1>"Fail 1"</Result_1>
-		<Result_2>"Fail 2"</Result_2>
-		<Result_3>"Fail 3"</Result_3>
-		<Result_4>"{actor.Reference} {actor.verb("manage")} to climb the {target.Reference}"</Result_4>
-		<Result_5>"Pass 5"</Result_5>
-		<Result_6>"Pass 6"</Result_6>
-		<Result_7>"{actor.Reference} {actor.verb("climb")} {object.Reference} with an alacrity that surprises even {actor.Reflexive}"</Result_7>
+		<ResultStrings>
+			<ResultString ID = "01">"{actor.Reference} clumsily {verb("fall")} right off {target.Reference}"</ResultString>
+			<ResultString ID = "02">"Fail 1"</ResultString>
+			<ResultString ID = "03">"Fail 2"</ResultString>
+			<ResultString ID = "04">"Draw"</ResultString>
+			<ResultString ID = "05">"{actor.Reference} {actor.verb("manage")} to climb the {target.Reference}"</ResultString>
+			<ResultString ID = "06">"Pass 5"</ResultString>
+			<ResultString ID = "07">"{actor.Reference} {actor.verb("climb")} {object.Reference} with an alacrity that surprises even {actor.Reflexive}"</ResultString>
+		</ResultStrings>
 	</Skill>
 	
 </Skills>

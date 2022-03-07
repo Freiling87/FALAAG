@@ -48,10 +48,10 @@ namespace FALAAG.Models
             {
                 List<Wall> list = new()
                 {
-                    CellAbove.WallBelow,
+                    CellAbove?.WallBelow,
                     WallBelow,
-                    CellEast.WallWest,
-                    CellNorth.WallSouth,
+                    CellEast?.WallWest,
+                    CellNorth?.WallSouth,
                     WallSouth,
                     WallWest,
                 };

@@ -2,51 +2,51 @@
 
 <Walls>
 	<Wall WallID="Countertop" Name="Countertop" Material="WoodHeavy">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="ChainLinkFenceLow" Name="Low Chain-link Fence" Material="ChainLink">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 
 	</Wall>
 
 	<Wall WallID="DrywallWall" Name="Drywall Wall" Material="WoodLight">
 
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="WoodenWall" Name="Wooden Wall" Material="WoodMedium">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="MetalWall" Name="Metal Wall" Material="MetalMedium">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="GlassWall" Name="Glass Wall" Material="GlassHeavy">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="SolidGround" Name="Solid Ground" Material="EarthHeavy">
-		<ActionOptions>
-		</ActionOptions>
+		<ActionCommands>
+		</ActionCommands>
 
 	</Wall>
 	<Wall WallID="WetBar" Name="Wet-Bar" Material="WoodHeavy">
-		<ActionOptions>
-			<ActionOption ActionID="ClimbingFast" Name="Climb Over" SkillType="ClimbingFast" Duration="50" Difficulty="5" Audibility="1" Visibility="4"/>
-			<ActionOption ActionID="Vaulting" Name="Vault Over" SkillType="Vaulting" Duration="25" Difficulty="15" Audibility="0" Visibility="3"/>
-		</ActionOptions>
+		<ActionCommands>
+			<ActionCommand ActionID="ClimbingFast" Name="Climb Over" SkillType="ClimbingFast" Duration="50" Difficulty="5" Audibility="1" Visibility="4"/>
+			<ActionCommand ActionID="Vaulting" Name="Vault Over" SkillType="Vaulting" Duration="25" Difficulty="15" Audibility="0" Visibility="3"/>
+		</ActionCommands>
 	</Wall>
 	<Wall WallID="ChainLinkFence" Name="Chain-link Fence" Material="ChainLink">
-		<ActionOptions>
-			<ActionOption ActionID="ClimbingFast" Name="Climb Over Quickly" SkillType="ClimbingFast" Duration="50" Difficulty="15" Audibility="5" Visibility="5"/>
-			<ActionOption ActionID="ClimbingLong" Name="Climb Over Carefully" SkillType="ClimbingLong" Duration="100" Difficulty="10" Audibility="2" Visibility="4"/>
-			<ActionOption ActionID="Vaulting" Name="Vault Over" SkillType="Vaulting" Duration="25" Difficulty="25" Audibility="4" Visibility="5"/>
-			<ActionOption ActionID="SqueezingThrough" Name="Crawl Under" SkillType="SqueezingThrough" Duration="50" Difficulty="20" Audibility="3" Visibility="2"/>
-			<ActionOption ActionID="KoolAidManning" Name="Burst Through" SkillType="KoolAidManning" Duration="20" Difficulty="50" Audibility="6" Visibility="3"/>
-		</ActionOptions>
+		<ActionCommands>
+			<ActionCommand ActionID="ClimbingFast" Name="Climb Over Quickly" SkillType="ClimbingFast" Duration="50" Difficulty="15" Audibility="5" Visibility="5"/>
+			<ActionCommand ActionID="ClimbingLong" Name="Climb Over Carefully" SkillType="ClimbingLong" Duration="100" Difficulty="10" Audibility="2" Visibility="4"/>
+			<ActionCommand ActionID="Vaulting" Name="Vault Over" SkillType="Vaulting" Duration="25" Difficulty="25" Audibility="4" Visibility="5"/>
+			<ActionCommand ActionID="SqueezingThrough" Name="Crawl Under" SkillType="SqueezingThrough" Duration="50" Difficulty="20" Audibility="3" Visibility="2"/>
+			<ActionCommand ActionID="KoolAidManning" Name="Burst Through" SkillType="KoolAidManning" Duration="20" Difficulty="50" Audibility="6" Visibility="3"/>
+		</ActionCommands>
 	</Wall>
 
 </Walls>

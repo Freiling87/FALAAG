@@ -14,13 +14,13 @@ namespace FALAAG.Models
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string Name { get; set; }
 		public string ID { get; set; }
-		public List<ActionOption> ActionOptions = new ();
-		// Changed ActionOptions to List from ObservableCollection. If you get errors on forms generating this content, this could be why.
+		public List<ActionCommand> ActionCommands = new ();
+		// Changed ActionCommands to List from ObservableCollection. If you get errors on forms generating this content, this could be why.
 
 		public List<ObjectAttachment> ObjectAttachments { get; set; }
 
-		public ActionOption GetSkillCheck(SkillType skillType) =>
-			ActionOptions.FirstOrDefault(action => action.SkillType == skillType);
+		public ActionCommand GetSkillCheck(SkillType skillType) =>
+			ActionCommands.FirstOrDefault(action => action.SkillType == skillType);
 
 		private int _opacity;
 		// 100: No visbility

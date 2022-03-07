@@ -44,13 +44,6 @@ namespace WPFUI
         private void InitializeUserInputActions()
         {
             // To pass arguments with these action delegates, see https://soscsrpg.com/build-a-c-wpf-rpg/lesson-13-1-add-keyboard-input-for-actions-using-delegates/
-            // TODO: These allow movement past walls
-            _userInputActions.Add(Key.W, () => _gameSession.MoveDirection(Direction.North));
-            _userInputActions.Add(Key.A, () => _gameSession.MoveDirection(Direction.West));
-            _userInputActions.Add(Key.S, () => _gameSession.MoveDirection(Direction.South));
-            _userInputActions.Add(Key.D, () => _gameSession.MoveDirection(Direction.East));
-            _userInputActions.Add(Key.Q, () => _gameSession.MoveDirection(Direction.Above));
-            _userInputActions.Add(Key.Z, () => _gameSession.MoveDirection(Direction.Below));
 
             _userInputActions.Add(Key.X, () => _gameSession.AttackCurrentNPC());
             _userInputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
@@ -201,6 +194,9 @@ namespace WPFUI
             ButtonMovement(Direction.West);
         private void ButtonMovement(Direction direction)
 		{
+            if (!_gameSession.HasNonEdgeNeighbor(direction))
+                return;
+
             // TODO: I think a lot of this should be done within GameSession. Only put in here what's necessary.
             // Specifically, set ClearMessageLog 
 
@@ -208,22 +204,23 @@ namespace WPFUI
             Wall wall = origin.GetWall(direction);
             Cell destination = _gameSession.CurrentWorld.GetNeighbor(origin, direction);
 
-            // TODO: Command pattern to store intended result action, to be gated behind ActionOption attempt Command.
+            // TODO: Command pattern to store intended result action, to be gated behind ActionCommand attempt Command.
             //      This needs to be done before skill checks for other actions, to avoid redundant windows.
 
             if (wall != null && !wall.Passable)
 			{
-                List<ActionOption> actionOptions = wall.ActionOptions;
+                List<ActionCommand> actionCommands = wall.ActionCommands;
 
-                if (actionOptions.Count == 0)
+                if (actionCommands.Count == 0)
                     return;
-                else if (actionOptions.Count > 0)
+                else if (actionCommands.Count > 0)
                 {
-                    ActionOption storedMovementAction = _gameSession.Player.MovementAction(direction);
-                    _gameSession.CurrentActionOptions = actionOptions;
+                    ActionCommand storedMovementAction = _gameSession.Player.MovementAction(direction);
 
-                    foreach (ActionOption ao in _gameSession.CurrentActionOptions)
-                        ao.Actor = _gameSession.Player;
+                    foreach (ActionCommand ac in actionCommands)
+                    {
+                        _gameSession.CurrentActionCommands.Add(ac.Clone(_gameSession.Player));
+                    }
 
                     ActionWindow actionWindow = new(storedMovementAction);
                     actionWindow.Owner = GetWindow(this);
@@ -231,14 +228,16 @@ namespace WPFUI
                     actionWindow.ShowDialog(); // actionWindow later calls CompleteMovement if check is passed
                     return;
                 }
+                else
+                    throw new NotImplementedException();
             }
 
             CompleteMovement(direction);
         }
         private void CompleteMovement(Direction direction)
         {
-            ClearMessageLog();
             _gameSession.MoveDirection(direction);
+            ClearMessageLog();
         }
         #endregion
         #region Action Rate

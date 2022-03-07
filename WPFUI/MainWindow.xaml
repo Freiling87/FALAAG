@@ -640,13 +640,13 @@
                         Visibility="{Binding HasCellS, Converter={StaticResource BooleanToVisibility}}"
                         Content="South"/>
 				<Button Grid.Row="1" Grid.Column="1"
-                        Height="25" Width="65" Margin="10"
+                        Height="20" Width="65" Margin="0"
 						VerticalAlignment="Top"
                         Click="OnClick_Ascend"
                         Visibility="{Binding HasCellA, Converter={StaticResource BooleanToVisibility}}"
                         Content="Ascend"/>
 				<Button Grid.Row="1" Grid.Column="1"
-                        Height="25" Width="65" Margin="10"
+                        Height="20" Width="65" Margin="0"
 						VerticalAlignment="Bottom"
                         Click="OnClick_Descend"
                         Visibility="{Binding HasCellB, Converter={StaticResource BooleanToVisibility}}"
