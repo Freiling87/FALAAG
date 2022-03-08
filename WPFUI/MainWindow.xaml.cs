@@ -219,7 +219,7 @@ namespace WPFUI
 
                     foreach (ActionCommand ac in actionCommands)
                     {
-                        _gameSession.CurrentActionCommands.Add(ac.Clone(_gameSession.Player));
+                        _gameSession.CurrentActionCommands.Add(ac.CloneForInteraction(_gameSession.Player));
                     }
 
                     ActionWindow actionWindow = new(storedMovementAction);
@@ -242,15 +242,15 @@ namespace WPFUI
         #endregion
         #region Action Rate
         private void OnClick_RateSlowest(object sender, RoutedEventArgs e) =>
-            _gameSession.Player.ActionRate = ActionRate.Slowest;
+            _gameSession.ActionRate = ActionRate.Slowest;
         private void OnClick_RateSlow(object sender, RoutedEventArgs e) =>
-            _gameSession.Player.ActionRate = ActionRate.Slow;
+            _gameSession.ActionRate = ActionRate.Slow;
         private void OnClick_RateMedium(object sender, RoutedEventArgs e) =>
-            _gameSession.Player.ActionRate = ActionRate.Medium;
+            _gameSession.ActionRate = ActionRate.Medium;
         private void OnClick_RateFast(object sender, RoutedEventArgs e) =>
-            _gameSession.Player.ActionRate = ActionRate.Fast;
+            _gameSession.ActionRate = ActionRate.Fast;
         private void OnClick_RateFastest(object sender, RoutedEventArgs e) =>
-            _gameSession.Player.ActionRate = ActionRate.Fastest;
+            _gameSession.ActionRate = ActionRate.Fastest;
         #endregion
         #region Actions
         private void OnClick_AttackNPC(object sender, RoutedEventArgs e)

@@ -238,7 +238,15 @@ namespace FALAAG.Models
 		}
         #endregion
 
-        public ActionCommand MovementAction(Direction direction) => 
-            new ActionCommand(SkillType.Moving.ToString(), SkillType.Moving.ToString(), SkillType.Moving, this, this, ActionRate);
+        public ActionCommand MovementAction(Direction direction)
+        {
+            ActionCommand ac = new ActionCommand(SkillType.Moving.ToString(), SkillType.Moving.ToString(), SkillType.Moving, this, this, ActionRate)
+            {
+                MoveDirection = direction
+            };
+
+            return ac;
+        }
+
 	}
 }

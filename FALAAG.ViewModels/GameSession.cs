@@ -7,7 +7,6 @@ using System.ComponentModel;
 using FALAAG.Core;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace FALAAG.ViewModels
 {
@@ -37,7 +36,20 @@ namespace FALAAG.ViewModels
                 CurrentAutomat = CurrentCell.AutomatHere;
             }
         }
-        [JsonIgnore]
+
+		public void ActionResult(ActionCommand ac)
+		{
+			switch (ac.SkillType)
+			{
+                case SkillType.Moving:
+                    MoveDirection(ac.MoveDirection);
+                    return;
+                default:
+                    throw new NotImplementedException();
+			}
+		}
+
+		[JsonIgnore]
         public NPC CurrentNPC
         {
             get { return _currentNPC; }
@@ -88,12 +100,6 @@ namespace FALAAG.ViewModels
         [JsonIgnore]
         public bool HasNPC => CurrentNPC != null;
         public bool MovementActionScreenModal { get; set; }
-        // TODO: Not sure how to access outside of DataContext in MainWindow.xaml. I want to move these bools to MainWindow.xaml.cs.
-        public bool RateButtonSlowestIsEnabled => Player.ActionRate != ActionRate.Slowest;
-        public bool RateButtonSlowIsEnabled => Player.ActionRate != ActionRate.Slow;
-        public bool RateButtonMediumIsEnabled => Player.ActionRate != ActionRate.Medium;
-        public bool RateButtonFastIsEnabled => Player.ActionRate != ActionRate.Fast;
-        public bool RateButtonFastestIsEnabled => Player.ActionRate != ActionRate.Fastest;
         public PopupDetails InventoryDetails { get; set; }
         public PopupDetails JobDetails { get; set; }
         public PopupDetails PlayerDetails { get; set; }
@@ -102,6 +108,16 @@ namespace FALAAG.ViewModels
         public List<ActionCommand> CurrentActionCommands { get; set; } = new();
         public ActionCommand SelectedAction { get; set; } // For displaying Outcome prediction in Action Option selection window.
         public bool ActionCommandSelected => SelectedAction != null;
+        private ActionRate _actionRate;
+        public ActionRate ActionRate
+		{
+            get { return _actionRate; }
+			set
+			{
+                _actionRate = value;
+                Player.ActionRate = value;
+			}
+		}
 
         public GameSession(Player player, int x, int y, int z)
         {
@@ -154,6 +170,11 @@ namespace FALAAG.ViewModels
 
         #endregion
         #region XAML-bound properties
+        public bool RateButtonSlowestIsEnabled { get => ActionRate != ActionRate.Slowest; }
+        public bool RateButtonSlowIsEnabled { get => ActionRate != ActionRate.Slow; }
+        public bool RateButtonMediumIsEnabled { get => ActionRate != ActionRate.Medium; }
+        public bool RateButtonFastIsEnabled { get => ActionRate != ActionRate.Fast; }
+        public bool RateButtonFastestIsEnabled { get => ActionRate != ActionRate.Fastest; }
         public bool HasCellA { get => HasNonEdgeNeighbor(Direction.Above); }
         public bool HasCellB { get => HasNonEdgeNeighbor(Direction.Below); }
         public bool HasCellE { get => HasNonEdgeNeighbor(Direction.East); }

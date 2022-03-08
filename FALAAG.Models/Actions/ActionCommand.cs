@@ -29,21 +29,112 @@ namespace FALAAG.Models
 		// These four are calculated according to skill values, ActionRate, and maybe others.
 		// TODO: Set these values 
 		public int Audibility { get; set; } // Number of cells at which can be heard, without obstructions; higher values can drown out lower values
+		public string AudibilityString
+		{
+			get
+			{
+				return
+				Audibility > 90
+					? "Extremely Loud"
+				: Audibility > 75
+					? "Very Loud"
+				: Audibility > 50
+					? "Loud"
+				: Audibility > 25
+					? "Noisy"
+				: Audibility > 10
+					? "Quiet"
+					: "Silent";
+			}
+		}
 		public int Difficulty { get; set; } // Difficulty should not be reported to the player - only SuccessChance.
+		public string DifficultyString
+		{
+			get
+			{
+				return
+				Difficulty > 90
+					? "Extremely Hard"
+				: Difficulty > 75
+					? "Very Hard"
+				: Difficulty > 50
+					? "Hard"
+				: Difficulty > 25
+					? "Simple"
+				: Difficulty > 10
+					? "Easy"
+					: "Menial";
+			}
+		}
 		public int Duration { get; set; } // In AP or whatever they're called
+		public string DurationString
+		{
+			get
+			{
+				return
+				Duration > 90
+					? "Time-consuming"
+				: Duration > 75
+					? "Very Slow"
+				: Duration > 50
+					? "Slow"
+				: Duration > 25
+					? "Fast-ish"
+				: Duration > 10
+					? "Fast"
+					: "Instant";
+			}
+		}
 		public int Visibility { get; set; } // Number of cells at which can be seen, with normal vision conditions.
+		public string VisibilityString
+		{
+			get
+			{
+				return
+				Visibility > 90
+					? "Blatant"
+				: Visibility > 75
+					? "Obvious"
+				: Visibility > 50
+					? "Noticeable"
+				: Visibility > 25
+					? "Subtle"
+				: Visibility > 10
+					? "Stealthy"
+					: "Invisible";
+			}
+		}
 
 		public PhysicalObject Target { get; set; }
 		public Entity Actor { get; set; }
 		public ActionRate ActionRate { get; set; }
-		public int Chance { get; set; }
+		public int Chance { get; set; } // Get should calculate odds according to Actor
+
+		private Direction _moveDirection;
+		public Direction MoveDirection
+		{
+			get
+			{
+				if (SkillType != SkillType.Moving)
+					return Direction.Null;
+
+				return _moveDirection;
+			}
+			set
+			{
+				if (value != Direction.Null)
+					SkillType = SkillType.Moving;
+
+				_moveDirection = value;
+			}
+		}
 
 		public string OutcomeDescriptionDetail 
 		{
 			get => Actor.GetSkillByID(SkillType).Name + " " + Target.Name + Environment.NewLine +
 				"===========================================" + Environment.NewLine +
 				"More info here";
-		} // For Action chooser canvas, formatted mini-page of chances and outcomes
+		}
 
 		public ActionCommand(string id, string name, SkillType skillType, Entity actor, PhysicalObject target, ActionRate actionRate)
 		{
@@ -81,7 +172,7 @@ namespace FALAAG.Models
 		/// <returns></returns>
 		public ActionCommand Clone() =>
 			new ActionCommand(ID, Name, SkillType, Actor, Target, ActionRate);
-		public ActionCommand Clone(Entity entity)
+		public ActionCommand CloneForInteraction(Entity entity)
 		{
 			ActionCommand ac = new ActionCommand(ID, Name, SkillType, Actor, Target, ActionRate)
 			{

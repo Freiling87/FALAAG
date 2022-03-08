@@ -23,10 +23,13 @@ namespace WPFUI
 
         private void OnClick_AttemptSelectedAction(object sender, RoutedEventArgs e)
         {
-            if (GameSession.Player.SucceedsAt(GameSession.SelectedAction))
-                ResultAction = GameSession.SelectedAction;
-            else
+            if (!GameSession.Player.SucceedsAt(GameSession.SelectedAction))
                 ResultAction = null;
+			else
+			{
+                // This should be where movement is actually executed
+                GameSession.ActionResult(ResultAction);
+			}
 
             Terminate();
         }

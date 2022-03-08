@@ -597,7 +597,6 @@
 
 			<!-- Movement Controls -->
 			<Grid Grid.Row="0" Grid.Column="1">
-
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />
 					<RowDefinition Height="*" />
@@ -605,7 +604,6 @@
 					<RowDefinition Height="*" />
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
-
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
@@ -664,27 +662,32 @@
 						<ColumnDefinition Width="*"/>
 					</Grid.ColumnDefinitions>
 
-					<!-- Slow Stealth-->
+					<!-- Action Rates-->
 					<Button Grid.Row="0" Grid.Column="0"
-                        Height="40" Width="52" 
-                        Visibility="{Binding RateButtonSlowestIsEnabled, Converter={StaticResource BooleanToVisibility}}"
-						Click="OnClick_RateSlowest"/>
+                        Height="40" Width="40"
+						Visibility="{Binding RateButtonSlowestIsEnabled, Converter={StaticResource BooleanToVisibility}}"
+						Click="OnClick_RateSlowest"
+						Content="20%"/>
 					<Button Grid.Row="0" Grid.Column="1"
-                        Height="40" Width="52" 
+                        Height="40" Width="40" 
                         Visibility="{Binding RateButtonSlowIsEnabled, Converter={StaticResource BooleanToVisibility}}"
-						Click="OnClick_RateSlow"/>
+						Click="OnClick_RateSlow"
+						Content="40%"/>
 					<Button Grid.Row="4" Grid.Column="2"
-                        Height="40" Width="52" 
+                        Height="40" Width="40" 
                         Visibility="{Binding RateButtonMediumIsEnabled, Converter={StaticResource BooleanToVisibility}}"
-						Click="OnClick_RateMedium"/>
+						Click="OnClick_RateMedium"
+						Content="60%"/>
 					<Button Grid.Row="4" Grid.Column="3"
-                        Height="40" Width="52" 
+                        Height="40" Width="40" 
                         Visibility="{Binding RateButtonFastIsEnabled, Converter={StaticResource BooleanToVisibility}}"
-						Click="OnClick_RateFast"/>
+						Click="OnClick_RateFast"
+						Content="80%"/>
 					<Button Grid.Row="4" Grid.Column="4"
-                        Height="40" Width="52" 
+                        Height="40" Width="40" 
                         Visibility="{Binding RateButtonFastestIsEnabled, Converter={StaticResource BooleanToVisibility}}"
-						Click="OnClick_RateFastest"/>
+						Click="OnClick_RateFastest"
+						Content="100%"/>
 
 				</Grid>
 
