@@ -8,6 +8,7 @@ namespace FALAAG.Models
         public List<ItemPercentage> LootTable { get; } = new List<ItemPercentage>();
         public int XpReward { get; }
 		public int Importance { get; set; }
+        public bool IsHostileToPlayer { get; set; } = false;
 
 		public NPC(string id, string nameActual, string nameGeneral, string imagePath,
                        IEnumerable<EntityAttribute> attributes,
@@ -34,5 +35,5 @@ namespace FALAAG.Models
             newNPC.LootTable.AddRange(LootTable);
             return newNPC;
         }
-    }
+	}
 }

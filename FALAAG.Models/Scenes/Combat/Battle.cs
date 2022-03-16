@@ -26,7 +26,8 @@ namespace FALAAG.Models
             _messageBroker.RaiseMessage("");
             _messageBroker.RaiseMessage($"You see a {_opponent.Name} here!");
 
-            if (FirstAttacker(_player, _opponent) == Combatant.Opponent)
+            if ((FirstAttacker(_player, _opponent) == Combatant.Opponent) &&
+                opponent.IsHostileToPlayer)
                 AttackPlayer();
         }
 
@@ -55,6 +56,7 @@ namespace FALAAG.Models
             }
 
             _player.UseCurrentWeaponOn(_opponent);
+            _opponent.IsHostileToPlayer = true;
 
             if (_opponent.IsAlive)
                 AttackPlayer();
