@@ -49,6 +49,16 @@ namespace FALAAG.Models
                         ? cell.Z - 1
                         : cell.Z);
 
+        public List<Cell> GetNeighbors(Cell cell)
+		{
+            List<Cell> neighbors = new();
+
+            foreach (Direction direction in (Direction[])Enum.GetValues(typeof(Direction))) // Might need to use GetNames here instead
+                neighbors.Add(GetNeighbor(cell, direction));
+
+            return neighbors;
+		}
+
         public Direction? GetWallDirection(Cell originCell, Wall wall)
         {
             if (wall == GetNeighbor(originCell, Direction.Above).WallBelow)

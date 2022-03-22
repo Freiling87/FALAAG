@@ -42,6 +42,23 @@ namespace FALAAG.Models
         public List<Job> JobsHere { get; set; } = new List<Job>();
         public List<Item> Items { get; set; } = new List<Item>();
         public bool IsMapEdge { get; set; }
+        public List<Cell> Neighbors
+		{
+			get
+			{
+                List<Cell> list = new()
+                {
+                    CellAbove,
+                    CellBelow,
+                    CellEast,
+                    CellNorth,
+                    CellSouth,
+                    CellWest
+                };
+
+                return list.Where(c => c != null).ToList();
+			}
+		}
         public List<Wall> Walls
         {
 			get
@@ -71,7 +88,16 @@ namespace FALAAG.Models
             IsMapEdge = false;
         }
 
-        public Cell(int x, int y, int z, bool EdgeCell = false)
+		public bool PassableTo(Direction direction)
+		{
+            if (GetWall(direction) == null ||
+                GetWall(direction).Passable)
+                return true;
+
+            return false;
+		}
+
+		public Cell(int x, int y, int z, bool EdgeCell = false)
         {
             if (EdgeCell == false)
                 throw new ArgumentException("Unintended use of this method");
@@ -85,7 +111,25 @@ namespace FALAAG.Models
             IsMapEdge = true;
         }
 
-        public void AddNPC(string npcID, int chanceOfEncountering)
+		public Direction GetDirectionFrom(Cell context)
+		{
+            if (this == context.CellAbove)
+                return Direction.Above;
+            else if (this == context.CellBelow)
+                return Direction.Below;
+            else if (this == context.CellEast)
+                return Direction.East;
+            else if (this == context.CellNorth)
+                return Direction.North;
+            else if (this == context.CellSouth)
+                return Direction.South;
+            else if (this == context.CellWest)
+                return Direction.West;
+            else
+                return Direction.Null;
+        }
+
+		public void AddNPC(string npcID, int chanceOfEncountering)
         {
             if (Encounters.Exists(m => m.NpcID == npcID))
                 Encounters.First(m => m.NpcID == npcID).ChanceOfEncountering = chanceOfEncountering;
@@ -129,6 +173,9 @@ namespace FALAAG.Models
 			}
 		}
 
+        public Cell GetNeighbor(Direction direction) =>
+            Neighbors.Where(n => n.GetDirectionFrom(this) == direction).FirstOrDefault();
+
         public Wall GetWall(Direction direction) =>
             direction switch
             {
@@ -139,8 +186,5 @@ namespace FALAAG.Models
                 Direction.South => WallSouth,
                 Direction.West => WallWest,
             };
-
-
-
 	}
 }

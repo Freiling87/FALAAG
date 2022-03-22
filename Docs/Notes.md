@@ -1,16 +1,33 @@
-# FREE AGENT: Life as a Goon
-Concept: A Text-based RPG inspired by crime-thriller or crime-action films.
+###			Rolling Action Economy
+N.B.: Action Points, like all other "crunchy" game aspects, will be concealed behind a layer of textual descriptions. 
+
+
+#	Older Notes
+
 ##		Issue Tracking
 ###			Quest took 1 instead of 12 to complete, but checked for 12 correctly
 ###			Job not being added to NPC as of lesson 14.5
 ##	SOSCSRPG Tutorial
-- I am struggling to understand the pattern of creating an extra class as a "joiner," in the case of ItemQuantity, NPCEncounter, and QuestStatus.
-- RE: Data Grid control for inventory:
+- "Joiner" pattern? Examples: ItemQuantity, NPCEncounter, and JobStatus. These seem to resemble joiner tables in a database, but in an OOP sense I do not understand why they exist.
+- RE: Data Grid control
 	"There are other columns types you can use to display 
 		checkboxes (DataGridCheckBoxColumn), 
 		dropdown boxes (DataGridComboBoxColumn), 
 		text links (DataGridHyperlinkColumn), and 
 		customized content (DataGridTemplateColumn)."
+	This might be useful for future interfaces, so just making a note here.
+#	Map
+##		Location Generation Hierarchy
+Map
+ District
+  Block 
+   Chunk
+	Gate
+    Cell
+     FeatureGroup
+      Feature
+       ItemGroup
+        Item
 #	Movement & Navigation
 ##		Pace
 Icon with picture of stance to select pace, similar to Intravenous.
@@ -144,6 +161,8 @@ Arm, Leg, Head, etc.
 #####			C	Readymost 
 #####			C	Strongest
 ###		C	Save as New Preset
+
+
 #	OLD NOTES
 ## INSPIRATIONS
 Seent:
@@ -496,17 +515,7 @@ Furniture you can throw or do whatever else to
 ### PhysicalItems
 
 
-# Location Generation Hierarchy
-Map
- District
-  Block
-   Chunk
-	Gate
-    Cell
-     FeatureGroup
-      Feature
-       ItemGroup
-        Item
+
 
 # Narration system
 Many objects will have Narrators attached - storage for various modifiers for the text that will appear. They should communicate with each other, e.g. Actor giving information that colors how MapCell introduces itself.

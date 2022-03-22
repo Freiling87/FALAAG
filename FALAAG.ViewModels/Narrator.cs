@@ -26,6 +26,7 @@ namespace FALAAG.ViewModels
 			IntroduceCell(cell);
 			IntroduceNPCs(cell);
 			IntroduceFeatures(cell);
+			// IntroduceNeighbors(cell);
 			IntroduceWalls(cell);
 			IntroduceItems(cell);
 		}
@@ -83,25 +84,45 @@ namespace FALAAG.ViewModels
 				MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
 			}
 		}
+		public static void IntroduceNeighbors(Cell cell)
+		{
+			List<Cell> neighbors = new();
+			List<Wall> walls = new();
+
+			foreach (Direction direction in Enum.GetValues<Direction>())
+			{
+				Cell neighbor = cell.Neighbors.Where(n => n.GetDirectionFrom(cell) == direction).FirstOrDefault();
+				Wall wall = cell.GetWall(direction);
+
+				if (cell.PassableTo(direction))
+					neighbors.Add(neighbor);
+				{
+					if (wall.Passable)
+						throw new NotImplementedException();
+					else
+						throw new NotImplementedException();
+				}
+			}
+		}
 		public static void IntroduceWalls(Cell cell)
 		{
 			List<string> wallTypes = cell.Walls.Select(g => g.Name).Distinct().ToList();
 
 			foreach (string wallType in wallTypes)
 			{
-				List<Wall> walls = cell.Walls.Where(g => g.Name == wallType).ToList();
+				List<Wall> wallsOfType = cell.Walls.Where(g => g.Name == wallType).ToList();
 				string narration = "";
 
-				if (walls.Count == 1)
+				if (wallsOfType.Count == 1)
 				{
-					Wall wall = walls[0];
+					Wall wall = wallsOfType[0];
 					narration = "There is a " + wallType.ToLower() + " to the " + wall.GetDirection(cell).ToString().ToLower() + ".";
 				}
 				else
 				{
 					// TODO: Make a List → Text method
 					narration = "There are " + wallType.ToLower() + "s to the "
-						+ string.Join(", ", ListDirections(cell.Walls.Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList()).ToLower())
+						+ DirectionsAsStringList(cell.Walls.Where(g => g.Name == wallType).Select(g => g.GetDirection(cell)).ToList()).ToLower()
 						+ ".";
 				}
 
@@ -132,7 +153,7 @@ namespace FALAAG.ViewModels
 				MessageBroker.GetInstance().RaiseMessage(narration + Environment.NewLine);
 			}
 		}
-		public static string ListDirections(List<Direction> directions)
+		public static string DirectionsAsStringList(List<Direction> directions)
 		{
 			string list = "";
 
